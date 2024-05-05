@@ -1,5 +1,4 @@
-﻿using Application.TodoLists.Queries.GetTodos;
-using Toss.Inventory.Catalog.Application.TodoLists.Queries.GetTodos;
+﻿using Application.Todo.TodoLists.Queries.GetTodos;
 using Toss.Inventory.Catalog.Domain.Entities;
 using Toss.Inventory.Catalog.Domain.ValueObjects;
 

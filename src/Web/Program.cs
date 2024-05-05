@@ -1,4 +1,7 @@
+using Toss.Inventory.Catalog.Application;
+using Toss.Inventory.Catalog.Infrastructure;
 using Toss.Inventory.Catalog.Infrastructure.Data;
+using Toss.Inventory.Catalog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -7,7 +7,7 @@ using NSwag;
 using NSwag.Generation.Processors.Security;
 using Application.Common.Interfaces;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Toss.Inventory.Catalog.Web;
 
 public static class DependencyInjection
 {

@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application.Common\Application.Common.csproj" />
-    <ProjectReference Include="..\Application.TodoItems\Application.TodoItems.csproj" />
+    <ProjectReference Include="..\Application.TodoItems\Application.Todo.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.IntegrationT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Common", "src\Application.Common\Application.Common.csproj", "{DE8F02AE-1252-4FE0-8CFB-FA66881AFAA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.TodoItems", "src\Application.TodoItems\Application.TodoItems.csproj", "{E2254546-10D5-4B17-97FE-704BF5F0041A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Todo", "src\Application.TodoItems\Application.Todo.csproj", "{E2254546-10D5-4B17-97FE-704BF5F0041A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

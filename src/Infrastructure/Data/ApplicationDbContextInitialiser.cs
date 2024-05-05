@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using Toss.Inventory.Catalog.Domain.Constants;
+﻿using Toss.Inventory.Catalog.Domain.Constants;
 using Toss.Inventory.Catalog.Domain.Entities;
 using Toss.Inventory.Catalog.Infrastructure.Identity;
 using Microsoft.AspNetCore.Builder;
