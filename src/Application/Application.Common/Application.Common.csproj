@@ -1,24 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Toss.Inventory.Catalog.Application</RootNamespace>
-    <AssemblyName>Toss.Inventory.Catalog.Application</AssemblyName>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" />
     <PackageReference Include="AutoMapper" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="MediatR" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\Application.Common\Application.Common.csproj" />
-    <ProjectReference Include="..\Application.TodoItems\Application.Todo.csproj" />
+    <Folder Include="Common\" />
   </ItemGroup>
-
   <ItemGroup>
-    <Folder Include="TodoItems\" />
+    <ProjectReference Include="..\..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>
