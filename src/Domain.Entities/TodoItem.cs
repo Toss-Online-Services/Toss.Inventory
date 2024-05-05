@@ -1,4 +1,8 @@
-﻿namespace Toss.Inventory.Catalog.Domain.Entities;
+﻿using Toss.Inventory.Catalog.Domain.Common;
+using Toss.Inventory.Catalog.Domain.Enums;
+using Toss.Inventory.Catalog.Domain.Events;
+
+namespace Toss.Inventory.Catalog.Domain.Entities;
 
 public class TodoItem : BaseAuditableEntity
 {

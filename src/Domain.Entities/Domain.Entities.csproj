@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain.Constants\Domain.Constants.csproj" />
-    <ProjectReference Include="..\..\Domain.Enums\Domain.Enums.csproj" />
-    <ProjectReference Include="..\Application.Common\Application.Common.csproj" />
+    <ProjectReference Include="..\Domain.Common\Domain.Common.csproj" />
+    <ProjectReference Include="..\Domain.Enums\Domain.Enums.csproj" />
+    <ProjectReference Include="..\Domain.ValueObjects\Domain.ValueObjects.csproj" />
   </ItemGroup>
 
 </Project>

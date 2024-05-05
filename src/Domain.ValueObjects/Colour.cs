@@ -1,4 +1,7 @@
-﻿namespace Toss.Inventory.Catalog.Domain.ValueObjects;
+﻿using Toss.Inventory.Catalog.Domain.Common;
+using Toss.Inventory.Catalog.Domain.Exceptions;
+
+namespace Toss.Inventory.Catalog.Domain.ValueObjects;
 
 public class Colour(string code) : ValueObject
 {

@@ -21,6 +21,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Application.Common\Application.Common.csproj" />
+    <ProjectReference Include="..\..\Domain.Constants\Domain.Constants.csproj" />
     <ProjectReference Include="..\Infrastructure.Identity\Infrastructure.Identity.csproj" />
   </ItemGroup>
 
