@@ -81,7 +81,7 @@ jobs:
     - name: Create EF Core migrations bundle - bundle migrations
       if: ${{ inputs.build-artifacts == true }}
       run: |
-        dotnet ef migrations bundle --configuration Release -p ./src/Infrastructure/ -s ./src/Web/ -o efbundle.exe
+        dotnet ef migrations bundle --configuration Release -p ./src/Infrastructure/ -s ./src/Web/ -o efbundle.exe --force
       env:
         SkipNSwag: True
 
