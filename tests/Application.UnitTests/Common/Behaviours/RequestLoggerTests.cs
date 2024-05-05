@@ -1,9 +1,9 @@
-﻿using Toss.Inventory.Catalog.Application.Common.Behaviours;
-using Toss.Inventory.Catalog.Application.Common.Interfaces;
-using Toss.Inventory.Catalog.Application.TodoItems.Commands.CreateTodoItem;
+﻿using Toss.Inventory.Catalog.Application.TodoItems.Commands.CreateTodoItem;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
+using Application.Common.Interfaces;
+using Application.Common.Behaviours;
 
 namespace Toss.Inventory.Catalog.Application.UnitTests.Common.Behaviours;
 

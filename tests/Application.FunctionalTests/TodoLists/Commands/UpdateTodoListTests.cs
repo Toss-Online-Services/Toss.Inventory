@@ -1,4 +1,4 @@
-﻿using Toss.Inventory.Catalog.Application.Common.Exceptions;
+﻿using Application.Common.Exceptions;
 using Toss.Inventory.Catalog.Application.TodoLists.Commands.CreateTodoList;
 using Toss.Inventory.Catalog.Application.TodoLists.Commands.UpdateTodoList;
 using Toss.Inventory.Catalog.Domain.Entities;

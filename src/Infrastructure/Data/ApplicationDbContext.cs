@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
-using Toss.Inventory.Catalog.Application.Common.Interfaces;
 using Toss.Inventory.Catalog.Domain.Entities;
 using Toss.Inventory.Catalog.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Application.Common.Interfaces;
 
 namespace Toss.Inventory.Catalog.Infrastructure.Data;
 

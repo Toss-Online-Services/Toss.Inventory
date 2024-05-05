@@ -1,5 +1,4 @@
-﻿using Toss.Inventory.Catalog.Application.Common.Interfaces;
-using Toss.Inventory.Catalog.Domain.Constants;
+﻿using Toss.Inventory.Catalog.Domain.Constants;
 using Toss.Inventory.Catalog.Infrastructure.Data;
 using Toss.Inventory.Catalog.Infrastructure.Data.Interceptors;
 using Toss.Inventory.Catalog.Infrastructure.Identity;
@@ -7,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
+using Application.Common.Interfaces;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

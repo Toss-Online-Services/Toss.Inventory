@@ -1,5 +1,5 @@
-﻿using Toss.Inventory.Catalog.Application.Common.Exceptions;
-using Toss.Inventory.Catalog.Application.Common.Security;
+﻿using Application.Common.Exceptions;
+using Application.Common.Security;
 using Toss.Inventory.Catalog.Application.TodoLists.Commands.CreateTodoList;
 using Toss.Inventory.Catalog.Application.TodoLists.Commands.PurgeTodoLists;
 using Toss.Inventory.Catalog.Domain.Entities;

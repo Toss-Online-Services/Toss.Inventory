@@ -1,4 +1,4 @@
-﻿using Toss.Inventory.Catalog.Application.Common.Models;
+﻿using Application.Common.Models;
 
 namespace Toss.Inventory.Catalog.Application.TodoLists.Queries.GetTodos;
 

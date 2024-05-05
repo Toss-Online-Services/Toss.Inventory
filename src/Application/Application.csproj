@@ -13,7 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Application.Common\Application.Common.csproj" />
+    <ProjectReference Include="..\Application.TodoItems\Application.TodoItems.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TodoItems\" />
   </ItemGroup>
 
 </Project>

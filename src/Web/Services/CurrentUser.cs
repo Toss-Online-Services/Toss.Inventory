@@ -1,6 +1,5 @@
 ﻿using System.Security.Claims;
-
-using Toss.Inventory.Catalog.Application.Common.Interfaces;
+using Application.Common.Interfaces;
 
 namespace Toss.Inventory.Catalog.Web.Services;
 

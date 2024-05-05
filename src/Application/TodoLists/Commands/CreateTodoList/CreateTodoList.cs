@@ -1,4 +1,4 @@
-﻿using Toss.Inventory.Catalog.Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 using Toss.Inventory.Catalog.Domain.Entities;
 
 namespace Toss.Inventory.Catalog.Application.TodoLists.Commands.CreateTodoList;

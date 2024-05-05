@@ -1,8 +1,8 @@
-using Toss.Inventory.Catalog.Application.Common.Interfaces;
-using Toss.Inventory.Catalog.Application.Common.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Application.Common.Interfaces;
+using Application.Common.Models;
 
 namespace Toss.Inventory.Catalog.Infrastructure.Identity;
 

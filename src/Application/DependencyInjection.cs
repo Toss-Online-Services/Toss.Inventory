@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Toss.Inventory.Catalog.Application.Common.Behaviours;
+using Application.Common.Behaviours;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

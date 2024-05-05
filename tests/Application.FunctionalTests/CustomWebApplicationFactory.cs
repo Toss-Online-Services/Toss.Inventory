@@ -1,5 +1,4 @@
 ﻿using System.Data.Common;
-using Toss.Inventory.Catalog.Application.Common.Interfaces;
 using Toss.Inventory.Catalog.Infrastructure.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -8,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Application.Common.Interfaces;
 
 namespace Toss.Inventory.Catalog.Application.FunctionalTests;
 

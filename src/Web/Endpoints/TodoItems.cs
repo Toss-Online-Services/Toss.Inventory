@@ -1,4 +1,4 @@
-﻿using Toss.Inventory.Catalog.Application.Common.Models;
+﻿using Application.Common.Models;
 using Toss.Inventory.Catalog.Application.TodoItems.Commands.CreateTodoItem;
 using Toss.Inventory.Catalog.Application.TodoItems.Commands.DeleteTodoItem;
 using Toss.Inventory.Catalog.Application.TodoItems.Commands.UpdateTodoItem;

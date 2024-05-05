@@ -1,11 +1,11 @@
 ﻿using Azure.Identity;
-using Toss.Inventory.Catalog.Application.Common.Interfaces;
 using Toss.Inventory.Catalog.Infrastructure.Data;
 using Toss.Inventory.Catalog.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
 using NSwag;
 using NSwag.Generation.Processors.Security;
+using Application.Common.Interfaces;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
