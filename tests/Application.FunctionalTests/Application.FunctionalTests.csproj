@@ -36,6 +36,8 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\Domain.Entities\Domain.Entities.csproj" />
         <ProjectReference Include="..\..\src\Domain.ValueObjects\Domain.ValueObjects.csproj" />
+        <ProjectReference Include="..\..\src\Domain\Domain.Entities\Domain.Entities.csproj" />
+        <ProjectReference Include="..\..\src\Domain\Domain.ValueObjects\Domain.ValueObjects.csproj" />
         <ProjectReference Include="..\..\src\Web\Web.csproj" />
     </ItemGroup>
 

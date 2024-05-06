@@ -21,6 +21,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\Application\Application.TodoItems\Application.Todo.csproj" />
         <ProjectReference Include="..\..\src\Domain.Entities\Domain.Entities.csproj" />
+        <ProjectReference Include="..\..\src\Domain\Domain.Entities\Domain.Entities.csproj" />
     </ItemGroup>
 
 </Project>

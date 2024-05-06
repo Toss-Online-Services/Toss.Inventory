@@ -1,11 +1,11 @@
-﻿using Toss.Inventory.Catalog.Domain.Entities;
-using Toss.Inventory.Catalog.Infrastructure.Identity;
+﻿using Toss.Inventory.Catalog.Infrastructure.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Toss.Inventory.Catalog.Domain.Constants;
+using Toss.Inventory.Catalog.Domain.Entities;
 
 namespace Toss.Inventory.Catalog.Infrastructure.Data;
 

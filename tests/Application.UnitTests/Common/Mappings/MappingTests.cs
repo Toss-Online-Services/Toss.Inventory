@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using AutoMapper;
-using Toss.Inventory.Catalog.Domain.Entities;
 using NUnit.Framework;
 using Application.Common.Interfaces;
 using Application.Common.Models;
 using Application.Todo.TodoItems.Queries.GetTodoItemsWithPagination;
 using Application.Todo.TodoLists.Queries.GetTodos;
+using Toss.Inventory.Catalog.Domain.Entities;
 
 namespace Toss.Inventory.Catalog.Application.UnitTests.Common.Mappings;
 

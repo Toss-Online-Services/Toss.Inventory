@@ -1,7 +1,7 @@
-﻿using Toss.Inventory.Catalog.Domain.Common;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Toss.Inventory.Catalog.Domain.Common;
 
 namespace Toss.Inventory.Catalog.Infrastructure.Data.Interceptors;
 

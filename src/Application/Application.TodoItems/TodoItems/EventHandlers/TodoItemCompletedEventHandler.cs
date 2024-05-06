@@ -1,5 +1,5 @@
-﻿using Toss.Inventory.Catalog.Domain.Events;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
+using Toss.Inventory.Catalog.Domain.Events;
 
 namespace Application.Todo.TodoItems.EventHandlers;
 
