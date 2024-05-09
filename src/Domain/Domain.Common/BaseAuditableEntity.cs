@@ -1,6 +1,6 @@
 ﻿namespace Toss.Inventory.Catalog.Domain.Common;
 
-public abstract class BaseAuditableEntity : BaseEntity
+public abstract class BaseAuditableEntity : Entity
 {
     public DateTimeOffset Created { get; set; }
 

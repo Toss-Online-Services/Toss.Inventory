@@ -1,7 +1,7 @@
 ﻿using Application.Common.Exceptions;
 using Application.Todo.TodoLists.Commands.CreateTodoList;
 using Application.Todo.TodoLists.Commands.UpdateTodoList;
-using Toss.Inventory.Catalog.Domain.Entities;
+using Domain.Entities;
 
 namespace Toss.Inventory.Catalog.Application.FunctionalTests.TodoLists.Commands;
 

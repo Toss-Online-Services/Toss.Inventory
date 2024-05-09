@@ -1,21 +1,19 @@
-﻿namespace Toss.Inventory.Catalog.Domain.Common;
+﻿namespace Domain.SeedWork;
 
-//  Learn more: https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/implement-value-objects
 public abstract class ValueObject
 {
     protected static bool EqualOperator(ValueObject left, ValueObject right)
     {
-        if (left is null ^ right is null)
+        if (ReferenceEquals(left, null) ^ ReferenceEquals(right, null))
         {
             return false;
         }
-
-        return left?.Equals(right!) != false;
+        return ReferenceEquals(left, null) || left.Equals(right);
     }
 
     protected static bool NotEqualOperator(ValueObject left, ValueObject right)
     {
-        return !(EqualOperator(left, right));
+        return !EqualOperator(left, right);
     }
 
     protected abstract IEnumerable<object> GetEqualityComponents();
@@ -28,18 +26,19 @@ public abstract class ValueObject
         }
 
         var other = (ValueObject)obj;
+
         return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
     }
 
     public override int GetHashCode()
     {
-        var hash = new HashCode();
+        return GetEqualityComponents()
+            .Select(x => x != null ? x.GetHashCode() : 0)
+            .Aggregate((x, y) => x ^ y);
+    }
 
-        foreach (var component in GetEqualityComponents())
-        {
-            hash.Add(component);
-        }
-
-        return hash.ToHashCode();
+    public ValueObject? GetCopy()
+    {
+        return MemberwiseClone() as ValueObject;
     }
 }

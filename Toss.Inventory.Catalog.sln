@@ -53,13 +53,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.ValueObjects", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{74B0BB17-A12C-4658-9883-3B5C8C236B24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Product", "src\Application\Application.Product\Application.Product.csproj", "{4EB5769C-A6C3-430E-AEF1-21D4606CAADB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Product", "src\Application\Application.Product\Application.Product.csproj", "{4EB5769C-A6C3-430E-AEF1-21D4606CAADB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.SeedWork", "src\Domain\Domain.SeedWork\Domain.SeedWork.csproj", "{94DFE3A3-8FC9-4624-BBD8-F3388C12EE47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.SeedWork", "src\Domain\Domain.SeedWork\Domain.SeedWork.csproj", "{94DFE3A3-8FC9-4624-BBD8-F3388C12EE47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.EventBus", "src\Infrastructure\Infrastructure.EventBus\Infrastructure.EventBus.csproj", "{9F927478-F6AE-49BA-B0E9-A78BFCD8D957}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.EventBus", "src\Infrastructure\Infrastructure.EventBus\Infrastructure.EventBus.csproj", "{9F927478-F6AE-49BA-B0E9-A78BFCD8D957}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.EventBusRabbitMQ", "src\Infrastructure\Infrastructure.EventBusRabbitMQ\Infrastructure.EventBusRabbitMQ.csproj", "{99208BD4-9D07-4F67-B59F-843EB6345C88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.EventBusRabbitMQ", "src\Infrastructure\Infrastructure.EventBusRabbitMQ\Infrastructure.EventBusRabbitMQ.csproj", "{99208BD4-9D07-4F67-B59F-843EB6345C88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{FAE4C766-2FCE-4356-8814-D8256DF2F6AB}"
 	ProjectSection(SolutionItems) = preProject
@@ -67,7 +67,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{FAE4C7
 		src\Shared\MigrateDbContextExtensions.cs = src\Shared\MigrateDbContextExtensions.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.IntegrationEventLogEF", "src\Infrastructure\Infrastructure.IntegrationEventLogEF\Infrastructure.IntegrationEventLogEF.csproj", "{0F120B5F-AB77-41F6-84A9-5764D0C94CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.IntegrationEventLogEF", "src\Infrastructure\Infrastructure.IntegrationEventLogEF\Infrastructure.IntegrationEventLogEF.csproj", "{0F120B5F-AB77-41F6-84A9-5764D0C94CF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Repositories", "src\Domain\Domain.Repositories\Domain.Repositories.csproj", "{98FAB06A-3EAE-4D4C-AAB0-41533443FEBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -155,6 +157,10 @@ Global
 		{0F120B5F-AB77-41F6-84A9-5764D0C94CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F120B5F-AB77-41F6-84A9-5764D0C94CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F120B5F-AB77-41F6-84A9-5764D0C94CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98FAB06A-3EAE-4D4C-AAB0-41533443FEBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98FAB06A-3EAE-4D4C-AAB0-41533443FEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98FAB06A-3EAE-4D4C-AAB0-41533443FEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98FAB06A-3EAE-4D4C-AAB0-41533443FEBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -184,6 +190,7 @@ Global
 		{99208BD4-9D07-4F67-B59F-843EB6345C88} = {92A99E77-2A8B-42AA-BC7C-59C8065E5EFF}
 		{FAE4C766-2FCE-4356-8814-D8256DF2F6AB} = {6ED356A7-8B47-4613-AD01-C85CF28491BD}
 		{0F120B5F-AB77-41F6-84A9-5764D0C94CF7} = {92A99E77-2A8B-42AA-BC7C-59C8065E5EFF}
+		{98FAB06A-3EAE-4D4C-AAB0-41533443FEBF} = {74B0BB17-A12C-4658-9883-3B5C8C236B24}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CB609D9-5D54-4C11-A371-DAAC8B74E430}

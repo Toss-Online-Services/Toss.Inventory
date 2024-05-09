@@ -1,13 +1,12 @@
 ﻿using Application.Common.Interfaces;
-using MediatR;
 
 namespace Application.Product.Product.Commands.CreateProduct;
 
 public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
 {
-    private readonly IApplicationDbContext _context;
+    private readonly IProductRepository _context;
 
-    public CreateProductCommandHandler(IApplicationDbContext context)
+    public CreateProductCommandHandler(IProductRepository context)
     {
         _context = context;
     }

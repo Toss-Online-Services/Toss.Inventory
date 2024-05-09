@@ -6,7 +6,7 @@ using Application.Common.Interfaces;
 using Application.Common.Models;
 using Application.Todo.TodoItems.Queries.GetTodoItemsWithPagination;
 using Application.Todo.TodoLists.Queries.GetTodos;
-using Toss.Inventory.Catalog.Domain.Entities;
+using Domain.Entities;
 
 namespace Toss.Inventory.Catalog.Application.UnitTests.Common.Mappings;
 

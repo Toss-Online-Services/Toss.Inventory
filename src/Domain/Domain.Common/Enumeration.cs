@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace Domain.SeedWork;
 
@@ -20,7 +21,7 @@ public abstract class Enumeration : IComparable
                     .Select(f => f.GetValue(null))
                     .Cast<T>();
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj is not Enumeration otherValue)
         {
@@ -63,5 +64,11 @@ public abstract class Enumeration : IComparable
         return matchingItem;
     }
 
-    public int CompareTo(object other) => Id.CompareTo(((Enumeration)other).Id);
+    public int CompareTo(object? other)
+    {
+        if (other == null) return -1;
+        return Id.CompareTo(((Enumeration)other).Id);
+    }
+
+    //public int CompareTo(object other) => Id.CompareTo(((Enumeration)other).Id);
 }

@@ -1,10 +1,18 @@
-﻿namespace Toss.Inventory.Catalog.Web.Endpoints;
+﻿using Application.Product.Products.Commands.InsertProduct;
+using Application.Todo.TodoItems.Commands.CreateTodoItem;
+
+namespace Toss.Inventory.Catalog.Web.Endpoints;
 
 public class Product : EndpointGroupBase
 {
     public override void Map(WebApplication app)
     {
         app.MapGroup(this)
-            .RequireAuthorization();
+            .RequireAuthorization()
+            .MapPost(CreateProduct);
+    }
+    public Task<int> CreateProduct(ISender sender, InsertProductCommand command)
+    {
+        return sender.Send(command);
     }
 }

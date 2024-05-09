@@ -3,13 +3,18 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain.Common\Domain.Common.csproj" />
     <ProjectReference Include="..\Domain.Enums\Domain.Enums.csproj" />
+    <ProjectReference Include="..\Domain.SeedWork\Domain.SeedWork.csproj" />
     <ProjectReference Include="..\Domain.ValueObjects\Domain.ValueObjects.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Discounts\" />
   </ItemGroup>
 
 </Project>

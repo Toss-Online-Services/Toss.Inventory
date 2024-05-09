@@ -1,4 +1,4 @@
-﻿using Toss.Inventory.Catalog.Domain.Entities;
+﻿using Domain.Entities;
 
 namespace Application.Todo.TodoLists.Queries.GetTodos;
 

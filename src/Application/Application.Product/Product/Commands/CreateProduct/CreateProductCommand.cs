@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Application.Product.Models;
-using MediatR;
 
 namespace Application.Product.Product.Commands.CreateProduct;
 

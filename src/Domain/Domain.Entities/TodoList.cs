@@ -1,11 +1,11 @@
 ﻿using Toss.Inventory.Catalog.Domain.Common;
 using Toss.Inventory.Catalog.Domain.ValueObjects;
 
-namespace Toss.Inventory.Catalog.Domain.Entities;
+namespace Domain.Entities;
 
 public class TodoList : BaseAuditableEntity
 {
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
     public Colour Colour { get; set; } = Colour.White;
 

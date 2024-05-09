@@ -1,48 +1,40 @@
-﻿using MediatR;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.SeedWork;
+namespace Toss.Inventory.Catalog.Domain.Common;
 
 public abstract class Entity
 {
+    // This can easily be modified to be BaseEntity<T> and public T Id to support different key types.
+    // Using non-generic integer types for simplicity
+    public int Id { get; set; }
+
     int? _requestedHashCode;
-    int _Id;
-    public virtual int Id
+
+    private readonly List<BaseEvent> _domainEvents = new();
+
+    [NotMapped]
+    public IReadOnlyCollection<BaseEvent> DomainEvents => _domainEvents.AsReadOnly();
+
+    public void AddDomainEvent(BaseEvent domainEvent)
     {
-        get
-        {
-            return _Id;
-        }
-        protected set
-        {
-            _Id = value;
-        }
+        _domainEvents.Add(domainEvent);
     }
 
-    private List<INotification> _domainEvents;
-    public IReadOnlyCollection<INotification> DomainEvents => _domainEvents?.AsReadOnly();
-
-    public void AddDomainEvent(INotification eventItem)
+    public void RemoveDomainEvent(BaseEvent domainEvent)
     {
-        _domainEvents = _domainEvents ?? new List<INotification>();
-        _domainEvents.Add(eventItem);
-    }
-
-    public void RemoveDomainEvent(INotification eventItem)
-    {
-        _domainEvents?.Remove(eventItem);
+        _domainEvents.Remove(domainEvent);
     }
 
     public void ClearDomainEvents()
     {
-        _domainEvents?.Clear();
+        _domainEvents.Clear();
     }
-
     public bool IsTransient()
     {
         return Id == default;
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj == null || !(obj is Entity))
             return false;

@@ -1,7 +1,6 @@
 ﻿using Toss.Inventory.Catalog.Domain.Common;
-using Toss.Inventory.Catalog.Domain.Entities;
 
-namespace Toss.Inventory.Catalog.Domain.Events;
+namespace Domain.Entities.Events;
 
 public class TodoItemCreatedEvent : BaseEvent
 {
