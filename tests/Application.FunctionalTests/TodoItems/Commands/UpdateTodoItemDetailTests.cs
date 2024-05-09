@@ -3,7 +3,7 @@ using Application.Todo.TodoItems.Commands.UpdateTodoItem;
 using Application.Todo.TodoItems.Commands.UpdateTodoItemDetail;
 using Application.Todo.TodoLists.Commands.CreateTodoList;
 using Domain.Entities;
-using Toss.Inventory.Catalog.Domain.Enums;
+using Domain.Enums;
 
 namespace Toss.Inventory.Catalog.Application.FunctionalTests.TodoItems.Commands;
 

@@ -1,5 +1,5 @@
 ﻿using Application.Common.Interfaces;
-using Toss.Inventory.Catalog.Domain.Events;
+using Domain.Entities.Events;
 
 namespace Application.Todo.TodoItems.Commands.DeleteTodoItem;
 

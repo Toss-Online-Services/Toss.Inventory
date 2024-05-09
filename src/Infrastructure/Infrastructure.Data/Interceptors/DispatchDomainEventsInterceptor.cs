@@ -1,9 +1,9 @@
-﻿using MediatR;
+﻿using Domain.Common;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Toss.Inventory.Catalog.Domain.Common;
 
-namespace Toss.Inventory.Catalog.Infrastructure.Data.Interceptors;
+namespace Infrastructure.Data.Interceptors;
 
 public class DispatchDomainEventsInterceptor : SaveChangesInterceptor
 {

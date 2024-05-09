@@ -1,5 +1,5 @@
-﻿using Toss.Inventory.Catalog.Domain.Common;
-using Toss.Inventory.Catalog.Domain.ValueObjects;
+﻿using Domain.Common;
+using Domain.ValueObjects;
 
 namespace Domain.Entities;
 

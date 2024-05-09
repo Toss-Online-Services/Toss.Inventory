@@ -1,9 +1,9 @@
 ﻿using System.Data.Common;
-using Toss.Inventory.Catalog.Infrastructure.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Respawn;
+using Infrastructure.Data;
 
 namespace Toss.Inventory.Catalog.Application.FunctionalTests;
 

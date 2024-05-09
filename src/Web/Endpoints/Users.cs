@@ -1,4 +1,4 @@
-﻿using Toss.Inventory.Catalog.Infrastructure.Identity;
+﻿using Infrastructure.Identity;
 
 namespace Toss.Inventory.Catalog.Web.Endpoints;
 

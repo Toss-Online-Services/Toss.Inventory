@@ -1,5 +1,4 @@
 ﻿using Application.Product.Products.Commands.InsertProduct;
-using Application.Todo.TodoItems.Commands.CreateTodoItem;
 
 namespace Toss.Inventory.Catalog.Web.Endpoints;
 

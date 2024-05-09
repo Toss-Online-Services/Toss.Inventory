@@ -1,6 +1,4 @@
-﻿using Application.Common.Interfaces;
-
-namespace Application.Product.Product.Commands.CreateProduct;
+﻿namespace Application.Product.Product.Commands.CreateProduct;
 
 public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
 {

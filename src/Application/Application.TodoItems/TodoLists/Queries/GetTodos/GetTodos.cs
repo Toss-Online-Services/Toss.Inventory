@@ -1,7 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
 using Application.Common.Security;
-using Toss.Inventory.Catalog.Domain.Enums;
+using Domain.Enums;
 
 namespace Application.Todo.TodoLists.Queries.GetTodos;
 

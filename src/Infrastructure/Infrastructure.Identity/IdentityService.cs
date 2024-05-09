@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Application.Common.Interfaces;
 using Application.Common.Models;
 
-namespace Toss.Inventory.Catalog.Infrastructure.Identity;
+namespace Infrastructure.Identity;
 
 public class IdentityService : IIdentityService
 {

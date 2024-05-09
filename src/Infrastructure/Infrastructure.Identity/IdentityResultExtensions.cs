@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Application.Common.Models;
 
-namespace Toss.Inventory.Catalog.Infrastructure.Identity;
+namespace Infrastructure.Identity;
 
 public static class IdentityResultExtensions
 {

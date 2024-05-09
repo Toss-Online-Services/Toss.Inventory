@@ -1,15 +1,14 @@
-﻿using Toss.Inventory.Catalog.Infrastructure.Data;
-using Toss.Inventory.Catalog.Infrastructure.Data.Interceptors;
-using Toss.Inventory.Catalog.Infrastructure.Identity;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Application.Common.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using Toss.Inventory.Catalog.Domain.Constants;
+using Domain.Constants;
+using Infrastructure.Identity;
+using Infrastructure.Data.Interceptors;
 
-namespace Toss.Inventory.Catalog.Infrastructure;
+namespace Infrastructure.Data;
 
 public static class DependencyInjection
 {

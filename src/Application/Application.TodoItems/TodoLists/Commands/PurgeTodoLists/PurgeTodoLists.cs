@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Security;
-using Toss.Inventory.Catalog.Domain.Constants;
+using Domain.Constants;
 
 namespace Application.Todo.TodoLists.Commands.PurgeTodoLists;
 

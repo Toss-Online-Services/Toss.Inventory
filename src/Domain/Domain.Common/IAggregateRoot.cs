@@ -1,4 +1,4 @@
-﻿namespace Domain.SeedWork;
+﻿namespace Domain.Common;
 
 public interface IAggregateRoot { }
 

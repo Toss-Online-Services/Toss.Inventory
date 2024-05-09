@@ -1,7 +1,6 @@
 ﻿using Application.Common.Interfaces;
+using Domain.Entities;
 using Domain.Entities.Events;
-using Toss.Inventory.Catalog.Domain.Entities;
-using Toss.Inventory.Catalog.Domain.Events;
 
 namespace Application.Todo.TodoItems.Commands.CreateTodoItem;
 

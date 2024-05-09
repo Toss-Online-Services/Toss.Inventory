@@ -1,5 +1,4 @@
-﻿using Application.Common.Models;
-using Application.Product.Models;
+﻿using Application.Product.Models;
 using AutoMapper;
 
 namespace Application.Product.Products.Commands.InsertProduct;

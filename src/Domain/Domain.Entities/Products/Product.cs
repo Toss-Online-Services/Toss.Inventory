@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Common;
 using Domain.Entities.Events;
-using Domain.SeedWork;
-using MediatR;
-using Toss.Inventory.Catalog.Domain.Common;
 
 namespace Domain.Entities.Products;
 public class Product
@@ -15,6 +7,12 @@ public class Product
 {
     private readonly List<DiscountProductMapping> _discounts;
     private readonly List<ProductPicture> _pictures;
+
+    public Product()
+    {
+        _pictures = new List<ProductPicture>();
+        _discounts = new List<DiscountProductMapping>();
+    }
 
 
     /// <summary>

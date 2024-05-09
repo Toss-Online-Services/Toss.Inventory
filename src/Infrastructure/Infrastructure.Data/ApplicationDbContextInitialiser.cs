@@ -1,13 +1,13 @@
-﻿using Toss.Inventory.Catalog.Infrastructure.Identity;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Toss.Inventory.Catalog.Domain.Constants;
-using Toss.Inventory.Catalog.Domain.Entities;
+using Domain.Constants;
+using Infrastructure.Identity;
+using Domain.Entities;
 
-namespace Toss.Inventory.Catalog.Infrastructure.Data;
+namespace Infrastructure.Data;
 
 public static class InitialiserExtensions
 {
@@ -82,7 +82,7 @@ public class ApplicationDbContextInitialiser
             await _userManager.CreateAsync(administrator, "Administrator1!");
             if (!string.IsNullOrWhiteSpace(administratorRole.Name))
             {
-                await _userManager.AddToRolesAsync(administrator, new [] { administratorRole.Name });
+                await _userManager.AddToRolesAsync(administrator, new[] { administratorRole.Name });
             }
         }
 

@@ -2,7 +2,7 @@
 using Application.Common.Behaviours;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Toss.Inventory.Catalog.Application;
+namespace Application.Todo;
 
 public static class DependencyInjection
 {

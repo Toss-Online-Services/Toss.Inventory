@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Domain.SeedWork;
+namespace Domain.Common;
 
 public interface IRepository<TEntity> where TEntity : IAggregateRoot
 {

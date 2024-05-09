@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Catalog.Domain.Common;
+﻿namespace Domain.Common;
 
 public abstract class BaseAuditableEntity : Entity
 {

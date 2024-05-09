@@ -1,5 +1,5 @@
-﻿using Domain.Entities.Products;
-using Domain.SeedWork;
+﻿using Domain.Common;
+using Domain.Entities.Products;
 
 namespace Domain.Repositories;
 

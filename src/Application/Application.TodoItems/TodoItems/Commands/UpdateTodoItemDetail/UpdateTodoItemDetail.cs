@@ -1,5 +1,5 @@
 ﻿using Application.Common.Interfaces;
-using Toss.Inventory.Catalog.Domain.Enums;
+using Domain.Enums;
 
 namespace Application.Todo.TodoItems.Commands.UpdateTodoItemDetail;
 

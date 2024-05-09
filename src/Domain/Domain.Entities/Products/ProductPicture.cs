@@ -1,4 +1,4 @@
-﻿using Toss.Inventory.Catalog.Domain.Common;
+﻿using Domain.Common;
 
 namespace Domain.Entities.Products;
 

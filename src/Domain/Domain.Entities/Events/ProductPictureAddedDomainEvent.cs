@@ -1,5 +1,5 @@
-﻿using Domain.Entities.Products;
-using Toss.Inventory.Catalog.Domain.Common;
+﻿using Domain.Common;
+using Domain.Entities.Products;
 
 namespace Domain.Entities.Events;
 
