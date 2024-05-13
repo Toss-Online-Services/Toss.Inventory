@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a discount-category mapping class
 /// </summary>
-public partial class DiscountCategoryMapping : DiscountMapping
+public class DiscountCategoryMapping : DiscountMapping
 {
     /// <summary>
     /// Gets or sets the category identifier

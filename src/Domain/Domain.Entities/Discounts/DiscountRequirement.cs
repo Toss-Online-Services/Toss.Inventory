@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a discount requirement
 /// </summary>
-public partial class DiscountRequirement : Entity
+public class DiscountRequirement : Entity
 {
     /// <summary>
     /// Gets or sets the discount identifier

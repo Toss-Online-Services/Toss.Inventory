@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities.Discounts;
 
-public abstract partial class DiscountMapping : Entity
+public abstract class DiscountMapping : Entity
 {
     /// <summary>
     /// Gets the entity identifier

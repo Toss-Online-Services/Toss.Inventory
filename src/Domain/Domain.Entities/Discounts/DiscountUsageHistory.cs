@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a discount usage history entry
 /// </summary>
-public partial class DiscountUsageHistory : Entity
+public class DiscountUsageHistory : Entity
 {
     /// <summary>
     /// Gets or sets the discount identifier

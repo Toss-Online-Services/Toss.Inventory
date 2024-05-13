@@ -5,7 +5,7 @@ namespace Domain.Entities.Discounts;
 /// <summary>
 /// Represents a discount
 /// </summary>
-public partial class Discount : Entity
+public class Discount : BaseAuditableEntity, IAggregateRoot
 {
     /// <summary>
     /// Gets or sets the name
