@@ -1,12 +1,16 @@
-﻿using Domain.Entities;
+﻿using Domain.Common;
+using Domain.Entities;
+using Domain.Entities.Catalog;
 
 namespace Application.Common.Interfaces;
 
-public interface IApplicationDbContext
+public interface IApplicationDbContext: IUnitOfWork
 {
     DbSet<TodoList> TodoLists { get; }
 
     DbSet<TodoItem> TodoItems { get; }
 
-    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+    DbSet<Product> Products { get; }
+
+
 }

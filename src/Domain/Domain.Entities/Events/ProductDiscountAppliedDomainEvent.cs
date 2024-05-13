@@ -1,5 +1,5 @@
-﻿using Domain.Common;
-using Domain.Entities.Products;
+﻿using Domain.Entities.Catalog;
+using Domain.Entities.Discounts;
 
 namespace Domain.Entities.Events;
 

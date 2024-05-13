@@ -6,6 +6,11 @@ using NSwag;
 using NSwag.Generation.Processors.Security;
 using Application.Common.Interfaces;
 using Infrastructure.Data;
+using Application.Common.Behaviours;
+using Domain.Repositories;
+using FluentValidation;
+using Infrastructure.Repositories;
+using System.Reflection;
 
 namespace Toss.Inventory.Catalog.Web;
 
@@ -47,6 +52,21 @@ public static class DependencyInjection
 
             configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
         });
+
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehaviour<,>));
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
+        });
+
+        services.AddScoped<IProductRepository, ProductRepository>();
 
         return services;
     }

@@ -1,6 +1,5 @@
 ﻿using Application.Todo.TodoLists.Commands.CreateTodoList;
 using Application.Todo.TodoLists.Commands.DeleteTodoList;
-using Domain.Entities;
 
 namespace Toss.Inventory.Catalog.Application.FunctionalTests.TodoLists.Commands;
 

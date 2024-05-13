@@ -2,11 +2,11 @@
 using Application.Common.Behaviours;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Application.Todo;
+namespace Application.Common.Extensions;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    public static IServiceCollection AddProductServices(this IServiceCollection services)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
@@ -20,6 +20,8 @@ public static class DependencyInjection
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
         });
+
+        var ass = Assembly.GetExecutingAssembly();
 
         return services;
     }

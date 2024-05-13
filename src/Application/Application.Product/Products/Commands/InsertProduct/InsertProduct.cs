@@ -3,7 +3,7 @@ using AutoMapper;
 
 namespace Application.Product.Products.Commands.InsertProduct;
 
-public record InsertProductCommand : IRequest<int>
+public record InsertProductCommand : IRequest<bool>
 {
     public ProductModel Product { get; set; }
 }
@@ -15,7 +15,7 @@ public class InsertProductCommandValidator : AbstractValidator<InsertProductComm
     }
 }
 
-public class InsertProductCommandHandler : IRequestHandler<InsertProductCommand, int>
+public class InsertProductCommandHandler : IRequestHandler<InsertProductCommand, bool>
 {
     private readonly IProductRepository _context;
     private readonly IMapper _mapper;
@@ -26,8 +26,13 @@ public class InsertProductCommandHandler : IRequestHandler<InsertProductCommand,
         _mapper = mapper;
     }
 
-    public async Task<int> Handle(InsertProductCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(InsertProductCommand request, CancellationToken cancellationToken)
     {
-        return await _context.InsertAsync(_mapper.Map<Domain.Entities.Products.Product>(request.Product));
+
+        Domain.Entities.Catalog.Product product = _mapper.Map<Domain.Entities.Catalog.Product>(request.Product);
+
+        _context.Add(product);
+
+        return await _context.UnitOfWork.SaveEntitiesAsync(cancellationToken);
     }
 }

@@ -1,6 +1,4 @@
-﻿
-using Domain.Common;
-using Domain.Entities.Events;
+﻿using Domain.Entities.Events;
 using Domain.Enums;
 
 namespace Domain.Entities;

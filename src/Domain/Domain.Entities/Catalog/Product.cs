@@ -1,7 +1,7 @@
-﻿using Domain.Common;
+﻿using Domain.Entities.Discounts;
 using Domain.Entities.Events;
 
-namespace Domain.Entities.Products;
+namespace Domain.Entities.Catalog;
 public class Product
     : BaseAuditableEntity, IAggregateRoot
 {
@@ -14,6 +14,9 @@ public class Product
         _discounts = new List<DiscountProductMapping>();
     }
 
+
+    public IReadOnlyCollection<ProductPicture> Pictures => _pictures.AsReadOnly();
+    public IReadOnlyCollection<DiscountProductMapping> Discounts => _discounts.AsReadOnly();
 
     /// <summary>
     /// Gets or sets the product type identifier

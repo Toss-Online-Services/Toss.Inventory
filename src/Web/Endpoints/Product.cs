@@ -7,10 +7,10 @@ public class Product : EndpointGroupBase
     public override void Map(WebApplication app)
     {
         app.MapGroup(this)
-            .RequireAuthorization()
+            //.RequireAuthorization()
             .MapPost(CreateProduct);
     }
-    public Task<int> CreateProduct(ISender sender, InsertProductCommand command)
+    public Task<bool> CreateProduct(ISender sender, InsertProductCommand command)
     {
         return sender.Send(command);
     }

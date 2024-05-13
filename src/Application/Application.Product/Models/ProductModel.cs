@@ -23,7 +23,7 @@ public class ProductModel
     public IList<string> AvailableProductTemplates { get; set; }
 
     //<product type ID, list of supported product template IDs>
-    public Dictionary<int, IList<string>> ProductsTypesSupportedByProductTemplates { get; set; }
+   // public Dictionary<int, IList<string>> ProductsTypesSupportedByProductTemplates { get; set; }
 
     public string Name { get; set; }
 
@@ -310,7 +310,7 @@ public class ProductModel
     {
         public Mapping()
         {
-            CreateMap<Domain.Entities.Products.Product, ProductModel>().ReverseMap();
+            CreateMap<Domain.Entities.Catalog.Product, ProductModel>().ReverseMap();
         }
     }
 }

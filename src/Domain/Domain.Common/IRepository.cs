@@ -10,7 +10,15 @@ public interface IRepository<TEntity> where TEntity : IAggregateRoot
     /// <param name="entity">Entity entry</param>
     /// <param name="publishEvent">Whether to publish event notification</param>
     /// <returns>A task that represents the asynchronous operation</returns>
-    Task<int> InsertAsync(TEntity entity, bool publishEvent = true);
+    TEntity Add(TEntity entity);
+
+    /// <summary>
+    /// Insert the entity entry
+    /// </summary>
+    /// <param name="entity">Entity entry</param>
+    /// <param name="publishEvent">Whether to publish event notification</param>
+    /// <returns>A task that represents the asynchronous operation</returns>
+    Task<TEntity> InsertAsync(TEntity entity, bool publishEvent = true);
 
     /// <summary>
     /// Insert the entity entry

@@ -2,7 +2,6 @@
 using Application.Common.Security;
 using Application.Todo.TodoLists.Commands.CreateTodoList;
 using Application.Todo.TodoLists.Commands.PurgeTodoLists;
-using Domain.Entities;
 
 namespace Toss.Inventory.Catalog.Application.FunctionalTests.TodoLists.Commands;
 

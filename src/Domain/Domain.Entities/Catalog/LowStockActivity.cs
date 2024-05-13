@@ -1,4 +1,4 @@
-namespace Domain.Entities.Products;
+namespace Domain.Entities.Catalog;
 
 /// <summary>
 /// Represents a low stock activity

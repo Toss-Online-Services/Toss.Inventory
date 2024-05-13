@@ -1,9 +1,8 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using Application.Common.Interfaces;
-using Domain.Entities;
 using Infrastructure.Identity;
+using Domain.Entities.Catalog;
 
 namespace Infrastructure.Data;
 
@@ -14,6 +13,13 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
     public DbSet<TodoList> TodoLists => Set<TodoList>();
 
     public DbSet<TodoItem> TodoItems => Set<TodoItem>();
+
+    public DbSet<Product> Products => Set<Product>();
+
+    public Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

@@ -1,6 +1,4 @@
-﻿using Domain.Common;
-
-namespace Domain.Entities.Products;
+﻿namespace Domain.Entities.Catalog;
 
 /// <summary>
 /// Represents a product picture mapping

@@ -1,9 +1,9 @@
-namespace Domain.Entities.Products;
+namespace Domain.Entities.Catalog;
 
 /// <summary>
-/// Represents a recurring product cycle period
+/// Represents a rental product period (for prices)
 /// </summary>
-public enum RecurringProductCyclePeriod
+public enum RentalPricePeriod
 {
     /// <summary>
     /// Days

@@ -30,18 +30,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "integer",
-                  "format": "int32"
+                  "type": "boolean"
                 }
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/api/TodoItems": {
@@ -817,16 +811,6 @@
             "nullable": true,
             "items": {
               "type": "string"
-            }
-          },
-          "productsTypesSupportedByProductTemplates": {
-            "type": "object",
-            "nullable": true,
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
             }
           },
           "name": {

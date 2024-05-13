@@ -1,6 +1,4 @@
-﻿using Domain.Entities;
-
-namespace Application.Todo.TodoLists.Queries.GetTodos;
+﻿namespace Application.Todo.TodoLists.Queries.GetTodos;
 
 public class TodoListDto
 {
