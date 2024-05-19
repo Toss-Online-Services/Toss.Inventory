@@ -16,9 +16,7 @@
     <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain.Entities\Domain.Entities.csproj" />
     <ProjectReference Include="..\..\Domain\Domain.Common\Domain.Common.csproj" />
-    <ProjectReference Include="..\..\Domain\Domain.Entities\Domain.Entities.csproj" />
     <ProjectReference Include="..\..\Domain\Domain.Repositories\Domain.Repositories.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.Repositories\Infrastructure.Repositories.csproj" />
   </ItemGroup>

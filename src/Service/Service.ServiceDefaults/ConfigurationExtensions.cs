@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+
+namespace Service.ServiceDefaults;
 
 public static class ConfigurationExtensions
 {

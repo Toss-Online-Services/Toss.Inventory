@@ -1,4 +1,4 @@
-using Application.Common.Extensions;
+
 using Infrastructure.Data;
 using Toss.Inventory.Catalog.Web;
 
@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddKeyVaultIfConfigured(builder.Configuration);
 
 //builder.Services.AddApplicationServices();
-builder.Services.AddProductServices();
+
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebServices();
 

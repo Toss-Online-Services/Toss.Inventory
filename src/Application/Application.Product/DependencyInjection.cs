@@ -2,7 +2,7 @@
 using Application.Common.Behaviours;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Application.Common.Extensions;
+namespace Application.Product;
 
 public static class DependencyInjection
 {

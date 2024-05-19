@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text.Json;
 
-namespace eShop.ServiceDefaults;
+namespace Service.ServiceDefaults;
 
 internal sealed class OpenApiDefaultValues : IOperationFilter
 {

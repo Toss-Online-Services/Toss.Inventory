@@ -4,7 +4,7 @@ using Domain.Entities.Catalog;
 using Domain.Repositories;
 using Infrastructure.Data;
 
-namespace Infrastructure.Repositories;
+namespace Infrastructure.Data.Repositories;
 
 public class ProductRepository : IProductRepository
 {
@@ -65,7 +65,7 @@ public class ProductRepository : IProductRepository
 
         return product;
     }
-   
+
 
     public Task InsertAsync(IList<Product> entities, bool publishEvent = true)
     {

@@ -1,4 +1,6 @@
-﻿namespace Infrastructure.EventBus.Abstractions;
+﻿using Infrastructure.EventBus.Events;
+
+namespace Infrastructure.EventBus.Abstractions;
 
 public interface IEventBus
 {

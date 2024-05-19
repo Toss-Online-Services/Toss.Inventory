@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
+using Infrastructure.EventBus.Extensions;
 using Infrastructure.EventBus.Abstractions;
+using Infrastructure.EventBus.Events;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.EventBus.Extensions;

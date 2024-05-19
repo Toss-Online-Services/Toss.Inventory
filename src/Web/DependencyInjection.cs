@@ -9,8 +9,8 @@ using Infrastructure.Data;
 using Application.Common.Behaviours;
 using Domain.Repositories;
 using FluentValidation;
-using Infrastructure.Repositories;
 using System.Reflection;
+using Infrastructure.Data.Repositories;
 
 namespace Toss.Inventory.Catalog.Web;
 
