@@ -4,9 +4,9 @@ namespace Infrastructure.Data.Idempotency;
 
 public class RequestManager : IRequestManager
 {
-    private readonly ApplicationDbContext _context;
+    private readonly CatalogContext _context;
 
-    public RequestManager(ApplicationDbContext context)
+    public RequestManager(CatalogContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }

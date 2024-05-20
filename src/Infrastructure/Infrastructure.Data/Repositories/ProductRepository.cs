@@ -7,11 +7,11 @@ namespace Infrastructure.Data.Repositories;
 
 public class ProductRepository : IProductRepository
 {
-    private readonly ApplicationDbContext _context;
+    private readonly CatalogContext _context;
 
     public IUnitOfWork UnitOfWork => _context;
 
-    public ProductRepository(ApplicationDbContext context)
+    public ProductRepository(CatalogContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }

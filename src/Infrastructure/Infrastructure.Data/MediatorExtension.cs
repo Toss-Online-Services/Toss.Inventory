@@ -4,7 +4,7 @@ namespace Infrastructure.Data;
 
 static class MediatorExtension
 {
-    public static async Task DispatchDomainEventsAsync(this IMediator mediator, ProductContext ctx)
+    public static async Task DispatchDomainEventsAsync(this IMediator mediator, CatalogContext ctx)
     {
         var domainEntities = ctx.ChangeTracker
             .Entries<Entity>()
