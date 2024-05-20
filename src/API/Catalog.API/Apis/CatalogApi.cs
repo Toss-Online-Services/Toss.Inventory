@@ -1,4 +1,6 @@
-﻿using Catalog.API.Model;
+﻿
+using Application.Catalog.IntegrationEvents.Events;
+using Catalog.API.Model;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Pgvector.EntityFrameworkCore;
 

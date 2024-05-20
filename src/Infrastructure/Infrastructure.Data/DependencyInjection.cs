@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
-using Application.Common.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Domain.Constants;
 using Infrastructure.Identity;
 using Infrastructure.Data.Interceptors;
+using Application.Common.Interfaces;
 
 namespace Infrastructure.Data;
 

@@ -2,7 +2,6 @@
 using Domain.Common;
 using Domain.Entities.Catalog;
 using Domain.Repositories;
-using Infrastructure.Data;
 
 namespace Infrastructure.Data.Repositories;
 

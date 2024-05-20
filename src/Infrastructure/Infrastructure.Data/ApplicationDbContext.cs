@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Application.Common.Interfaces;
 using Infrastructure.Identity;
 using Domain.Entities.Catalog;
+using Application.Common.Interfaces;
 
 namespace Infrastructure.Data;
 

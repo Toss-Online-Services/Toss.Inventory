@@ -1,5 +1,4 @@
-﻿using Catalog.API.Model;
-using Pgvector;
+﻿using Pgvector;
 
 namespace Catalog.API.Services;
 

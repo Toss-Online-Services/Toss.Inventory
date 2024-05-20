@@ -1,8 +1,8 @@
-﻿using Catalog.API;
+﻿using Application.Catalog.IntegrationEvents;
+using Application.Catalog.IntegrationEvents.EventHandling;
+using Application.Catalog.IntegrationEvents.Events;
+using Catalog.API;
 using Catalog.API.Infrastructure;
-using Catalog.API.IntegrationEvents;
-using Catalog.API.IntegrationEvents.EventHandling;
-using Catalog.API.IntegrationEvents.Events;
 using Catalog.API.Services;
 using Infrastructure.EventBus.Extensions;
 using Infrastructure.EventBusRabbitMQ;

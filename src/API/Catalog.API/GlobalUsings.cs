@@ -1,16 +1,9 @@
-﻿global using Asp.Versioning;
-global using Asp.Versioning.Conventions;
-global using Infrastructure.EventBus.Abstractions;
-global using Infrastructure.EventBus.Events;
-global using Infrastructure.IntegrationEventLogEF;
+﻿global using Asp.Versioning.Conventions;
 global using Infrastructure.IntegrationEventLogEF.Services;
-global using Infrastructure.IntegrationEventLogEF.Utilities;
 global using eShop.ServiceDefaults;
 global using Microsoft.EntityFrameworkCore;
-global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.Extensions.Options;
 global using Npgsql;
-global using Catalog.API.Infrastructure;
-global using Catalog.API.IntegrationEvents.Events;
-global using Catalog.API.Model;
-global using Catalog.API.Services;
+global using Infrastructure.Data;
+
+global using Domain.Entities.Catalog;

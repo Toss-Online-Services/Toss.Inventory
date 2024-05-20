@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using Catalog.API.Model;
 using Microsoft.SemanticKernel.Embeddings;
 using Pgvector;
 

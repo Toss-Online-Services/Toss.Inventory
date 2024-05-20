@@ -1,6 +1,5 @@
-﻿using Catalog.API;
-using Catalog.API.Infrastructure;
-using Catalog.API.IntegrationEvents;
+﻿using Application.Catalog.IntegrationEvents;
+using Catalog.API;
 using Catalog.API.Services;
 
 public class CatalogServices(

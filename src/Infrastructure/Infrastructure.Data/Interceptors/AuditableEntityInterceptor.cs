@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Application.Common.Interfaces;
 using Domain.Common;
+using Application.Common.Interfaces;
 
 namespace Infrastructure.Data.Interceptors;
 

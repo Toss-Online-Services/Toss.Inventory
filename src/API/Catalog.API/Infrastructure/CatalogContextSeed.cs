@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using Catalog.API;
+using Catalog.API.Services;
 using Pgvector;
 
 namespace Catalog.API.Infrastructure;

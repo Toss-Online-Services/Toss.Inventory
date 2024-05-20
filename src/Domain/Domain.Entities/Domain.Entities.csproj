@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Pgvector" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Domain.Common\Domain.Common.csproj" />
     <ProjectReference Include="..\Domain.Enums\Domain.Enums.csproj" />
     <ProjectReference Include="..\Domain.SeedWork\Domain.SeedWork.csproj" />
