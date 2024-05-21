@@ -36,23 +36,23 @@ public class TransactionBehavior<TRequest, TResponse> : IPipelineBehavior<TReque
 
             await strategy.ExecuteAsync(async () =>
             {
-                Guid transactionId;
+                //Guid transactionId;
 
-                await using var transaction = await _dbContext.BeginTransactionAsync();
-                using (_logger.BeginScope(new List<KeyValuePair<string, object>> { new("TransactionContext", transaction.TransactionId) }))
-                {
-                    _logger.LogInformation("Begin transaction {TransactionId} for {CommandName} ({@Command})", transaction.TransactionId, typeName, request);
+                //await using var transaction = await _dbContext.BeginTransactionAsync();
+                //using (_logger.BeginScope(new List<KeyValuePair<string, object>> { new("TransactionContext", transaction.TransactionId) }))
+                //{
+                //    _logger.LogInformation("Begin transaction {TransactionId} for {CommandName} ({@Command})", transaction.TransactionId, typeName, request);
 
-                    response = await next();
+                //    response = await next();
 
-                    _logger.LogInformation("Commit transaction {TransactionId} for {CommandName}", transaction.TransactionId, typeName);
+                //    _logger.LogInformation("Commit transaction {TransactionId} for {CommandName}", transaction.TransactionId, typeName);
 
-                    await _dbContext.CommitTransactionAsync(transaction);
+                //    await _dbContext.CommitTransactionAsync(transaction);
 
-                    transactionId = transaction.TransactionId;
-                }
+                //    transactionId = transaction.TransactionId;
+                //}
 
-                await _CatalogIntegrationEventService.PublishEventsThroughEventBusAsync(transactionId);
+                await _CatalogIntegrationEventService.PublishEventsThroughEventBusAsync(Guid.Empty);
             });
 
             return response;

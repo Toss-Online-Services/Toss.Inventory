@@ -1,23 +1,11 @@
-﻿using Application.Infrastructure.IntegrationEvents;
-using Application.Infrastructure.Behaviours;
-using Application.Infrastructure.IntegrationEvents.EventHandling;
-using Catalog.API;
-using Catalog.API.Infrastructure;
-using Catalog.API.Services;
-using Infrastructure.EventBus.Extensions;
-using Infrastructure.EventBusRabbitMQ;
+﻿using eShop.Catalog.API.Services;
 using Microsoft.SemanticKernel;
-using Service.ServiceDefaults;
+using Infrastructure.EventBusRabbitMQ;
+using Infrastructure.EventBus.Extensions;
 public static class Extensions
 {
     public static void AddApplicationServices(this IHostApplicationBuilder builder)
     {
-
-        var services = builder.Services;
-
-        // Add the authentication services to DI
-        builder.AddDefaultAuthentication();
-
         builder.AddNpgsqlDbContext<CatalogContext>("catalogdb", configureDbContextOptions: dbContextOptionsBuilder =>
         {
             dbContextOptionsBuilder.UseNpgsql(builder =>
@@ -37,16 +25,6 @@ public static class Extensions
         builder.AddRabbitMqEventBus("eventbus")
                .AddSubscription<OrderStatusChangedToAwaitingValidationIntegrationEvent, OrderStatusChangedToAwaitingValidationIntegrationEventHandler>()
                .AddSubscription<OrderStatusChangedToPaidIntegrationEvent, OrderStatusChangedToPaidIntegrationEventHandler>();
-
-        // Configure mediatR
-        services.AddMediatR(cfg =>
-        {
-            cfg.RegisterServicesFromAssemblyContaining(typeof(Program));
-
-            cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
-            cfg.AddOpenBehavior(typeof(ValidatorBehavior<,>));
-            cfg.AddOpenBehavior(typeof(TransactionBehavior<,>));
-        });
 
         builder.Services.AddOptions<CatalogOptions>()
             .BindConfiguration(nameof(CatalogOptions));

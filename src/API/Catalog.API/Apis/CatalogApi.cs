@@ -1,8 +1,7 @@
-﻿using Catalog.API.Model;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Pgvector.EntityFrameworkCore;
 
-namespace Catalog.API.Apis;
+namespace eShop.Catalog.API;
 
 public static class CatalogApi
 {
@@ -244,10 +243,10 @@ public static class CatalogApi
             var priceChangedEvent = new ProductPriceChangedIntegrationEvent(catalogItem.Id, productToUpdate.Price, priceEntry.OriginalValue);
 
             // Achieving atomicity between original Catalog database operation and the IntegrationEventLog thanks to a local transaction
-            await services.EventService.PublishEventsThroughEventBusAsync(priceChangedEvent);
+            await services.EventService.SaveEventAndCatalogContextChangesAsync(priceChangedEvent);
 
             // Publish through the Event Bus and mark the saved event as published
-            await services.EventService.AddAndSaveEventAsync(priceChangedEvent);
+            await services.EventService.PublishThroughEventBusAsync(priceChangedEvent);
         }
         else // Just save the updated product because the Product's Price hasn't changed.
         {

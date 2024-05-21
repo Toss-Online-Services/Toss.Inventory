@@ -57,9 +57,9 @@ public class ProductRepository : IProductRepository
     {
         if (product.IsTransient())
         {
-            return _context.Products
-                .Add(product)
-                .Entity;
+            //return _context.Products
+            //    .Add(product)
+            //    .Entity;
         }
 
         return product;
@@ -95,9 +95,9 @@ public class ProductRepository : IProductRepository
     {
         if (product.IsTransient())
         {
-            return _context.Products
-                .Add(product)
-                .Entity;
+            //return _context.Products
+            //    .Add(product)
+            //    .Entity;
         }
 
         return product;

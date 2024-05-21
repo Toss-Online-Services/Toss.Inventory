@@ -2,7 +2,7 @@
 using Microsoft.SemanticKernel.Embeddings;
 using Pgvector;
 
-namespace Catalog.API.Services;
+namespace eShop.Catalog.API.Services;
 
 public sealed class CatalogAI : ICatalogAI
 {

@@ -1,6 +1,4 @@
-﻿using Domain.Entities.Catalog;
-
-namespace Infrastructure.Data.EntityConfigurations;
+﻿namespace eShop.Catalog.API.Infrastructure.EntityConfigurations;
 
 class CatalogItemEntityTypeConfiguration
     : IEntityTypeConfiguration<CatalogItem>
