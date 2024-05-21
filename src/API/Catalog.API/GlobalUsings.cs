@@ -2,8 +2,8 @@
 global using Asp.Versioning.Conventions;
 global using eShop.Catalog.API;
 global using eShop.Catalog.API.Infrastructure;
-global using eShop.Catalog.API.Infrastructure.EntityConfigurations;
-global using eShop.Catalog.API.Infrastructure.Exceptions;
+global using Infrastructure.Data.EntityConfigurations;
+global using Infrastructure.Data.Exceptions;
 global using eShop.Catalog.API.IntegrationEvents;
 global using eShop.Catalog.API.IntegrationEvents.EventHandling;
 global using eShop.Catalog.API.IntegrationEvents.Events;

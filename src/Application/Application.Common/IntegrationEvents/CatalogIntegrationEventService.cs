@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Data;
+using Infrastructure.Data.Data;
 using Infrastructure.EventBus.Abstractions;
 using Infrastructure.IntegrationEventLogEF.Services;
 using Infrastructure.IntegrationEventLogEF.Utilities;

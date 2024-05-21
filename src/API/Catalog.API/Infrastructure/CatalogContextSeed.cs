@@ -1,5 +1,8 @@
 ﻿using System.Text.Json;
+using Domain.Entities.Catalog;
 using eShop.Catalog.API.Services;
+using Infrastructure.Data;
+using Infrastructure.Data.Data;
 using Pgvector;
 
 namespace eShop.Catalog.API.Infrastructure;

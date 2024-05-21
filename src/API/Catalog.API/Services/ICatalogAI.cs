@@ -1,4 +1,5 @@
-﻿using Pgvector;
+﻿using Domain.Entities.Catalog;
+using Pgvector;
 
 namespace eShop.Catalog.API.Services;
 

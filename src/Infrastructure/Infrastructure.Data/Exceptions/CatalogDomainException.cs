@@ -1,4 +1,5 @@
-﻿
+﻿namespace Infrastructure.Data.Exceptions;
+
 /// <summary>
 /// Exception type for app exceptions
 /// </summary>

@@ -1,4 +1,7 @@
-﻿namespace eShop.Catalog.API.IntegrationEvents.EventHandling;
+﻿using Infrastructure.Data;
+using Infrastructure.Data.Data;
+
+namespace eShop.Catalog.API.IntegrationEvents.EventHandling;
 
 public class OrderStatusChangedToPaidIntegrationEventHandler(
     CatalogContext catalogContext,

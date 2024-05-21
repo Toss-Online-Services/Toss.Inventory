@@ -1,4 +1,5 @@
-﻿using Infrastructure.EventBus.Extensions;
+﻿using Domain.Exceptions;
+using Infrastructure.EventBus.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Infrastructure.Behaviours;

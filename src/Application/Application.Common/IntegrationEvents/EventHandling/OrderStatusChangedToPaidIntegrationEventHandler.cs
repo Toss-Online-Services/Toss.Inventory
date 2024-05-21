@@ -1,5 +1,6 @@
 ﻿using Application.Infrastructure.IntegrationEvents.Events;
 using Infrastructure.Data;
+using Infrastructure.Data.Data;
 using Infrastructure.EventBus.Abstractions;
 using Microsoft.Extensions.Logging;
 

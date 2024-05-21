@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Domain.Entities.Catalog;
 using Microsoft.SemanticKernel.Embeddings;
 using Pgvector;
 

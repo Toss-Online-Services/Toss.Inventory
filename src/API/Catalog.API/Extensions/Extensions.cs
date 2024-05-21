@@ -2,6 +2,8 @@
 using Microsoft.SemanticKernel;
 using Infrastructure.EventBusRabbitMQ;
 using Infrastructure.EventBus.Extensions;
+using Infrastructure.Data;
+using Infrastructure.Data.Data;
 public static class Extensions
 {
     public static void AddApplicationServices(this IHostApplicationBuilder builder)
