@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Data;
-using Infrastructure.Data.Data;
 
 namespace eShop.Catalog.API.IntegrationEvents;
 

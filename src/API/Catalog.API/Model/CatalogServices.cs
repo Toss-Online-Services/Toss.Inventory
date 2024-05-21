@@ -1,6 +1,5 @@
 ﻿using eShop.Catalog.API.Services;
 using Infrastructure.Data;
-using Infrastructure.Data.Data;
 
 public class CatalogServices(
     CatalogContext context,

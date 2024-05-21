@@ -1,6 +1,5 @@
 ﻿using Domain.Entities.Catalog;
 using Infrastructure.Data;
-using Infrastructure.Data.Data;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Pgvector.EntityFrameworkCore;
 

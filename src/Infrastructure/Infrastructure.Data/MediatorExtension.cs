@@ -1,5 +1,4 @@
 ﻿using Domain.Infrastructure;
-using Infrastructure.Data.Data;
 
 namespace Infrastructure.Data;
 

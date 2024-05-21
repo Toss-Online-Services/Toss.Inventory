@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Pgvector;
 using Infrastructure.Data;
-using Infrastructure.Data.Data;
 
 #nullable disable
 

@@ -3,7 +3,7 @@ using Infrastructure.Data.EntityConfigurations;
 using Infrastructure.IntegrationEventLogEF;
 using Microsoft.Extensions.Configuration;
 
-namespace Infrastructure.Data.Data;
+namespace Infrastructure.Data;
 
 /// <remarks>
 /// Add migrations using the following command inside the 'Catalog.API' project directory:
