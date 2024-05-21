@@ -8,5 +8,5 @@ public class DiscountCategoryMapping : DiscountMapping
     /// <summary>
     /// Gets or sets the category identifier
     /// </summary>
-    public override int EntityId { get; set; }
+    public override int ProductId { get; set; }
 }

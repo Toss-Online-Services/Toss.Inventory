@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Catalog;
+using Infrastructure.Data.Configurations;
 using Infrastructure.Data.EntityConfigurations;
 using Infrastructure.IntegrationEventLogEF;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +20,7 @@ public class CatalogContext : DbContext
     public DbSet<CatalogItem> CatalogItems { get; set; }
     public DbSet<CatalogBrand> CatalogBrands { get; set; }
     public DbSet<CatalogType> CatalogTypes { get; set; }
+    public DbSet<Product> Products { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -26,6 +28,7 @@ public class CatalogContext : DbContext
         builder.ApplyConfiguration(new CatalogBrandEntityTypeConfiguration());
         builder.ApplyConfiguration(new CatalogTypeEntityTypeConfiguration());
         builder.ApplyConfiguration(new CatalogItemEntityTypeConfiguration());
+        builder.ApplyConfiguration(new ProductConfiguration());
 
         // Add the outbox table to this context
         builder.UseIntegrationEventLogs();

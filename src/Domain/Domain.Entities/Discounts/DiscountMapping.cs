@@ -17,5 +17,5 @@ public abstract class DiscountMapping : Entity
     /// <summary>
     /// Gets or sets the entity identifier
     /// </summary>
-    public abstract int EntityId { get; set; }
+    public abstract int ProductId { get; set; }
 }
