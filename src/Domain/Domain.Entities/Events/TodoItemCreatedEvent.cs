@@ -1,6 +1,8 @@
-﻿namespace Domain.Entities.Events;
+﻿using Domain.Infrastructure;
 
-public class TodoItemCreatedEvent : BaseEvent
+namespace Domain.Entities.Events;
+
+public record TodoItemCreatedEvent : BaseEvent
 {
     public TodoItemCreatedEvent(TodoItem item)
     {

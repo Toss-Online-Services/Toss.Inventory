@@ -1,4 +1,4 @@
-﻿using Application.Catalog.IntegrationEvents;
+﻿using Application.Infrastructure.IntegrationEvents;
 using Catalog.API;
 using Catalog.API.Services;
 

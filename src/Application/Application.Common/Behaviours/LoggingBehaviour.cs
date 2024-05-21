@@ -1,34 +1,19 @@
-﻿using MediatR.Pipeline;
-using Microsoft.Extensions.Logging;
-using Application.Common.Interfaces;
+﻿using Microsoft.Extensions.Logging;
+using Infrastructure.EventBus.Extensions;
 
-namespace Application.Common.Behaviours;
-
-public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
+namespace Application.Infrastructure.Behaviours;
+public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
-    private readonly ILogger _logger;
-    private readonly IUser _user;
-    private readonly IIdentityService _identityService;
+    private readonly ILogger<LoggingBehavior<TRequest, TResponse>> _logger;
+    public LoggingBehavior(ILogger<LoggingBehavior<TRequest, TResponse>> logger) => _logger = logger;
 
-    public LoggingBehaviour(ILogger<TRequest> logger, IUser user, IIdentityService identityService)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        _logger = logger;
-        _user = user;
-        _identityService = identityService;
-    }
+        _logger.LogInformation("Handling command {CommandName} ({@Command})", request.GetGenericTypeName(), request);
+        var response = await next();
+        _logger.LogInformation("Command {CommandName} handled - response: {@Response}", request.GetGenericTypeName(), response);
 
-    public async Task Process(TRequest request, CancellationToken cancellationToken)
-    {
-        var requestName = typeof(TRequest).Name;
-        var userId = _user.Id ?? string.Empty;
-        string userName = string.Empty;
-
-        if (!string.IsNullOrEmpty(userId))
-        {
-            userName = await _identityService.GetUserNameAsync(userId);
-        }
-
-        _logger.LogInformation("Toss.Inventory.Catalog Request: {Name} {@UserId} {@UserName} {@Request}",
-            requestName, userId, userName, request);
+        return response;
     }
 }
+

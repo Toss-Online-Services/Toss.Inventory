@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
-using OpenTelemetry.Instrumentation.GrpcNetClient;
 
 namespace eShop.ServiceDefaults;
 

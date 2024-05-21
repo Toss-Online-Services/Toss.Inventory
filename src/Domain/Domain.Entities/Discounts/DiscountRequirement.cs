@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities.Discounts;
+﻿using Domain.Infrastructure;
+
+namespace Domain.Entities.Discounts;
 
 /// <summary>
 /// Represents a discount requirement
@@ -8,27 +10,27 @@ public class DiscountRequirement : Entity
     /// <summary>
     /// Gets or sets the discount identifier
     /// </summary>
-    public int DiscountId { get; set; }
+    public int DiscountId { get; private set; }
 
     /// <summary>
     /// Gets or sets the discount requirement rule system name
     /// </summary>
-    public string DiscountRequirementRuleSystemName { get; set; }
+    public string DiscountRequirementRuleSystemName { get; private set; }
 
     /// <summary>
     /// Gets or sets the parent requirement identifier
     /// </summary>
-    public int? ParentId { get; set; }
+    public int? ParentId { get; private set; }
 
     /// <summary>
     /// Gets or sets an interaction type identifier (has a value for the group and null for the child requirements)
     /// </summary>
-    public int? InteractionTypeId { get; set; }
+    public int? InteractionTypeId { get; private set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether this requirement has any child requirements
     /// </summary>
-    public bool IsGroup { get; set; }
+    public bool IsGroup { get; private set; }
 
     /// <summary>
     /// Gets or sets an interaction type

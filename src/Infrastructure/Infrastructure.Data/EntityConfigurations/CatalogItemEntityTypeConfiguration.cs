@@ -7,7 +7,7 @@ class CatalogItemEntityTypeConfiguration
 {
     public void Configure(EntityTypeBuilder<CatalogItem> builder)
     {
-        builder.ToTable("Catalog");
+        builder.ToTable("CatalogItems");
 
         builder.Property(ci => ci.Name)
             .HasMaxLength(50);

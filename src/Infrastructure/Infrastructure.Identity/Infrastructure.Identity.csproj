@@ -15,7 +15,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\Application.Common\Application.Common.csproj" />
+    <ProjectReference Include="..\..\Application\Application.Common\Application.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

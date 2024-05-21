@@ -1,5 +1,5 @@
-﻿using Domain.Common;
-using Domain.Entities.Catalog;
+﻿using Domain.Entities.Catalog;
+using Domain.Infrastructure;
 
 namespace Domain.Repositories;
 

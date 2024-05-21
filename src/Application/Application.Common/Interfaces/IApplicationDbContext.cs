@@ -1,10 +1,10 @@
-﻿using Domain.Common;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Domain.Entities.Catalog;
+using Domain.Infrastructure;
 
-namespace Application.Common.Interfaces;
+namespace Application.Infrastructure.Interfaces;
 
-public interface IApplicationDbContext: IUnitOfWork
+public interface IApplicationDbContext : IUnitOfWork
 {
     DbSet<TodoList> TodoLists { get; }
 

@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
-using Domain.Common;
 using Domain.Entities.Catalog;
+using Domain.Infrastructure;
 using Domain.Repositories;
 
 namespace Infrastructure.Data.Repositories;

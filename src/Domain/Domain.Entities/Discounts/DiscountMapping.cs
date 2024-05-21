@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities.Discounts;
+﻿using Domain.Infrastructure;
+
+namespace Domain.Entities.Discounts;
 
 public abstract class DiscountMapping : Entity
 {
@@ -10,7 +12,7 @@ public abstract class DiscountMapping : Entity
     /// <summary>
     /// Gets or sets the discount identifier
     /// </summary>
-    public int DiscountId { get; set; }
+    public int DiscountId { get; private set; }
 
     /// <summary>
     /// Gets or sets the entity identifier

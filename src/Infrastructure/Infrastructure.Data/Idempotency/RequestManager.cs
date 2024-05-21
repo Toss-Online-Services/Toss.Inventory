@@ -1,6 +1,4 @@
-﻿using Domain.Exceptions;
-
-namespace Infrastructure.Data.Idempotency;
+﻿namespace Infrastructure.Data.Idempotency;
 
 public class RequestManager : IRequestManager
 {

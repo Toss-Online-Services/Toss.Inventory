@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities.Discounts;
+﻿using Domain.Infrastructure;
+
+namespace Domain.Entities.Discounts;
 
 /// <summary>
 /// Represents a discount usage history entry
@@ -8,15 +10,15 @@ public class DiscountUsageHistory : Entity
     /// <summary>
     /// Gets or sets the discount identifier
     /// </summary>
-    public int DiscountId { get; set; }
+    public int DiscountId { get; private set; }
 
     /// <summary>
     /// Gets or sets the order identifier
     /// </summary>
-    public int OrderId { get; set; }
+    public int OrderId { get; private set; }
 
     /// <summary>
     /// Gets or sets the date and time of instance creation
     /// </summary>
-    public DateTime CreatedOnUtc { get; set; }
+    public DateTime CreatedOnUtc { get; private set; }
 }

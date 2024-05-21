@@ -1,4 +1,4 @@
-﻿namespace Application.Common.Models;
+﻿namespace Application.Infrastructure.Models;
 public class CommandResult<T>
 {
     public bool Success { get; set; }
@@ -19,7 +19,7 @@ public class CommandResult<T>
 
     public static CommandResult<T> FailureResult(string message)
     {
-        return new CommandResult<T>(false, message, default(T));
+        return new CommandResult<T>(false, message, default);
     }
 }
 

@@ -1,4 +1,4 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Infrastructure.Interfaces;
 using Domain.Entities.Events;
 
 namespace Application.Todo.TodoItems.Commands.CreateTodoItem;

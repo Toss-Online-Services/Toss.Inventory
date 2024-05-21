@@ -1,6 +1,6 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Mappings;
-using Application.Common.Models;
+﻿using Application.Infrastructure.Interfaces;
+using Application.Infrastructure.Mappings;
+using Application.Infrastructure.Models;
 
 namespace Application.Todo.TodoItems.Queries.GetTodoItemsWithPagination;
 

@@ -1,9 +1,9 @@
-﻿using Application.Catalog.IntegrationEvents.Events;
+﻿using Application.Infrastructure.IntegrationEvents.Events;
 using Infrastructure.Data;
 using Infrastructure.EventBus.Abstractions;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Catalog.IntegrationEvents.EventHandling;
+namespace Application.Infrastructure.IntegrationEvents.EventHandling;
 
 public class OrderStatusChangedToPaidIntegrationEventHandler(
     CatalogContext catalogContext,

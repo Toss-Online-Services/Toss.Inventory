@@ -1,4 +1,5 @@
-﻿using Domain.ValueObjects;
+﻿using Domain.Infrastructure;
+using Domain.ValueObjects;
 
 namespace Domain.Entities;
 
@@ -8,5 +9,5 @@ public class TodoList : BaseAuditableEntity
 
     public Colour Colour { get; set; } = Colour.White;
 
-    public IList<TodoItem> Items { get; private set; } = new List<TodoItem>();
+    public IList<TodoItem> Items { get; set; } = new List<TodoItem>();
 }

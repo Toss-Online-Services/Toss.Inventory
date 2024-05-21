@@ -1,4 +1,4 @@
-﻿namespace Domain.Common;
+﻿namespace Domain.Infrastructure;
 
 public abstract class BaseAuditableEntity : Entity
 {

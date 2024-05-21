@@ -1,5 +1,5 @@
-﻿using Domain.Common;
-using Domain.Exceptions;
+﻿using Domain.Exceptions;
+using Domain.Infrastructure;
 
 namespace Domain.ValueObjects;
 

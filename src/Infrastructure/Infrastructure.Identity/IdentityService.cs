@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Application.Common.Interfaces;
-using Application.Common.Models;
+using Application.Infrastructure.Models;
+using Application.Infrastructure.Interfaces;
 
 namespace Infrastructure.Identity;
 

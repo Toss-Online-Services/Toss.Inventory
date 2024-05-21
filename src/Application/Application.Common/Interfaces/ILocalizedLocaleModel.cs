@@ -1,4 +1,4 @@
-﻿namespace Application.Common.Interfaces;
+﻿namespace Application.Infrastructure.Interfaces;
 public interface ILocalizedLocaleModel
 {
     /// <summary>

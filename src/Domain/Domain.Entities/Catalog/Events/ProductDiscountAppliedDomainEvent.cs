@@ -1,9 +1,10 @@
 ﻿using Domain.Entities.Catalog;
 using Domain.Entities.Discounts;
+using Domain.Infrastructure;
 
-namespace Domain.Entities.Events;
+namespace Domain.Entities.Catalog.Events;
 
-public class ProductDiscountAppliedDomainEvent : BaseEvent
+public record ProductDiscountAppliedDomainEvent : BaseEvent
 {
     public Product Product { get; }
     public DiscountProductMapping Discount { get; }

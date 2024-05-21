@@ -1,4 +1,4 @@
-﻿using Application.Common.Models;
+﻿using Application.Infrastructure.Models;
 
 namespace Application.Todo.TodoLists.Queries.GetTodos;
 

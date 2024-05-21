@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Service.AppHost;
+﻿using Service.AppHost;
 
 var builder = DistributedApplication.CreateBuilder(args);
 

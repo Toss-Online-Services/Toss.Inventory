@@ -1,5 +1,5 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Security;
+﻿using Application.Infrastructure.Interfaces;
+using Application.Infrastructure.Security;
 using Domain.Constants;
 
 namespace Application.Todo.TodoLists.Commands.PurgeTodoLists;

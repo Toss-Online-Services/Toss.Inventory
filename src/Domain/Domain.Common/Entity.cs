@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Common;
+namespace Domain.Infrastructure;
 
 public abstract class Entity
 {

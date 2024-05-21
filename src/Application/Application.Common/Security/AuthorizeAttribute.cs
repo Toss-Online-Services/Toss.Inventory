@@ -1,4 +1,4 @@
-﻿namespace Application.Common.Security;
+﻿namespace Application.Infrastructure.Security;
 
 /// <summary>
 /// Specifies the class this attribute is applied to requires authorization.

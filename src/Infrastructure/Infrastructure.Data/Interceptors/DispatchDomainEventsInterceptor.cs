@@ -1,4 +1,4 @@
-﻿using Domain.Common;
+﻿using Domain.Infrastructure;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Infrastructure.Data.Interceptors;

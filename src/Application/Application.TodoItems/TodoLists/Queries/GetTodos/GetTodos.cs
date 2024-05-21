@@ -1,6 +1,6 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Models;
-using Application.Common.Security;
+﻿using Application.Infrastructure.Interfaces;
+using Application.Infrastructure.Models;
+using Application.Infrastructure.Security;
 using Domain.Enums;
 
 namespace Application.Todo.TodoLists.Queries.GetTodos;

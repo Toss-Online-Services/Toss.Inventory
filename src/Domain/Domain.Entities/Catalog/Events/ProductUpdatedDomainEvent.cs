@@ -1,8 +1,9 @@
 ﻿using Domain.Entities.Catalog;
+using Domain.Infrastructure;
 
-namespace Domain.Entities.Events;
+namespace Domain.Entities.Catalog.Events;
 
-public class ProductUpdatedDomainEvent : BaseEvent
+public record ProductUpdatedDomainEvent : BaseEvent
 {
     public Product Product { get; }
 
