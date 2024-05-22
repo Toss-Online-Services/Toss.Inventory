@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Domain.Entities.Product;
+using System;
 
 namespace Infrastructure.Data.EntityConfigurations.ProductConfigurations
 {
@@ -27,19 +28,66 @@ namespace Infrastructure.Data.EntityConfigurations.ProductConfigurations
             builder.Property(p => p.MetaDescription).HasMaxLength(400);
             builder.Property(p => p.MetaTitle).HasMaxLength(400);
 
-            // Define one-to-one or one-to-many relationships if any
-            builder.OwnsOne(p => p.Price);
-            builder.OwnsOne(p => p.Availability);
-            builder.OwnsOne(p => p.Inventory);
-            builder.OwnsOne(p => p.Shipping);
-            builder.OwnsOne(p => p.Tax);
-            builder.OwnsOne(p => p.DownloadableProduct);
-            builder.OwnsOne(p => p.GiftCard);
-            builder.OwnsOne(p => p.RecurringProduct);
-            builder.OwnsOne(p => p.RentalProduct);
-            builder.OwnsOne(p => p.PhysicalAttributes);
-            builder.OwnsOne(p => p.ComplianceAndStandards);
-            builder.OwnsOne(p => p.Lifecycle);
+            // Map owned entities to separate tables
+            builder.OwnsOne(p => p.Price, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductPrices");
+            });
+
+            builder.OwnsOne(p => p.Availability, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductAvailabilities");
+            });
+
+            builder.OwnsOne(p => p.Inventory, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductInventories");
+            });
+
+            builder.OwnsOne(p => p.Shipping, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductShippings");
+            });
+
+            builder.OwnsOne(p => p.Tax, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductTaxes");
+            });
+
+            builder.OwnsOne(p => p.DownloadableProduct, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductDownloadables");
+            });
+
+            builder.OwnsOne(p => p.GiftCard, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductGiftCards");
+            });
+
+            builder.OwnsOne(p => p.RecurringProduct, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductRecurrings");
+            });
+
+            builder.OwnsOne(p => p.RentalProduct, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductRentals");
+            });
+
+            builder.OwnsOne(p => p.PhysicalAttributes, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductPhysicalAttributes");
+            });
+
+            builder.OwnsOne(p => p.ComplianceAndStandards, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductCompliances");
+            });
+
+            builder.OwnsOne(p => p.Lifecycle, navigationBuilder =>
+            {
+                navigationBuilder.ToTable("ProductLifecycles");
+            });
 
             builder.Property(p => p.DisplayOrder).IsRequired();
             builder.Property(p => p.Published).IsRequired();
@@ -48,5 +96,4 @@ namespace Infrastructure.Data.EntityConfigurations.ProductConfigurations
             builder.Property(p => p.UpdatedOnUtc).IsRequired();
         }
     }
-
 }
