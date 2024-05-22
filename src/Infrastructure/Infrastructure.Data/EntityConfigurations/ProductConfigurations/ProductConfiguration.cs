@@ -10,6 +10,8 @@ namespace Infrastructure.Data.EntityConfigurations.ProductConfigurations
         {
             builder.ToTable("Products");
 
+            builder.Ignore(b => b.DomainEvents);
+
             builder.HasKey(p => p.Id);
 
             builder.Property(p => p.ProductTypeId).IsRequired();

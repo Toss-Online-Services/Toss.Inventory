@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
-public class Inventory : Entity
+public class Inventory : ValueObject
 {
     public int ManageInventoryMethodId { get; set; }
     public int WarehouseId { get; set; }
@@ -21,5 +21,26 @@ public class Inventory : Entity
     public string AllowedQuantities { get; set; }
     public bool AllowAddingOnlyExistingAttributeCombinations { get; set; }
     public bool DisplayAttributeCombinationImagesOnly { get; set; }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return ManageInventoryMethodId;
+        yield return WarehouseId;
+        yield return StockQuantity;
+        yield return MinStockQuantity;
+        yield return LowStockActivityId;
+        yield return NotifyAdminForQuantityBelow;
+        yield return BackorderModeId;
+        yield return AllowedQuantities;
+        yield return AllowAddingOnlyExistingAttributeCombinations;
+        yield return OrderMinimumQuantity;
+        yield return OrderMaximumQuantity;
+        yield return AllowedQuantities;
+        yield return BackorderModeId;
+        yield return AllowedQuantities;
+        yield return AllowAddingOnlyExistingAttributeCombinations;
+        yield return DisplayAttributeCombinationImagesOnly;
+
+    }
 }
 

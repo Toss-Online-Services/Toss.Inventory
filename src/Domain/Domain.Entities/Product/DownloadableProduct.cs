@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
-public class DownloadableProduct : Entity
+public class DownloadableProduct : ValueObject
 {
     public bool IsDownload { get; set; }
     public int DownloadId { get; set; }
@@ -18,5 +18,17 @@ public class DownloadableProduct : Entity
     public int SampleDownloadId { get; set; }
     public bool HasUserAgreement { get; set; }
     public string UserAgreementText { get; set; }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return IsDownload;
+        yield return DownloadId;
+        yield return UnlimitedDownloads;
+        yield return MaxNumberOfDownloads;
+        yield return DownloadExpirationDays;
+        yield return MaxNumberOfDownloads;
+        yield return DownloadActivationTypeId;
+        yield return UserAgreementText;
+    }
 }
 

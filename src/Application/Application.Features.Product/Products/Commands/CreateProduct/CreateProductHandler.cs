@@ -34,7 +34,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductRequest,
     public async Task<bool> Handle(CreateProductRequest request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Creating Order - Order: {@Order}", request);
-        _productRepository.Add(new Domain.Entities.Catalog.Product(_mapper.Map<CreateProductCommand>(request)));
+        _productRepository.Add(new Domain.Entities.Product.Product(_mapper.Map<CreateProductCommand>(request)));
         return await _productRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Pgvector;
@@ -12,9 +13,11 @@ using Pgvector;
 namespace eShop.Catalog.API.Infrastructure.Migrations
 {
     [DbContext(typeof(CatalogContext))]
-    partial class CatalogContextModelSnapshot : ModelSnapshot
+    [Migration("20240522121714_UpdateProduct")]
+    partial class UpdateProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -284,6 +287,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                             b1.Property<int>("DeliveryDateId")
                                 .HasColumnType("integer");
 
+                            b1.Property<int>("Id")
+                                .HasColumnType("integer");
+
                             b1.Property<DateTime?>("PreOrderAvailabilityStartDateTimeUtc")
                                 .HasColumnType("timestamp with time zone");
 
@@ -308,6 +314,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
 
                             b1.Property<string>("EnvironmentalImpact")
                                 .HasColumnType("text");
+
+                            b1.Property<int>("Id")
+                                .HasColumnType("integer");
 
                             b1.Property<bool>("NotReturnable")
                                 .HasColumnType("boolean");
@@ -349,6 +358,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                             b1.Property<bool>("HasUserAgreement")
                                 .HasColumnType("boolean");
 
+                            b1.Property<int>("Id")
+                                .HasColumnType("integer");
+
                             b1.Property<bool>("IsDownload")
                                 .HasColumnType("boolean");
 
@@ -378,6 +390,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                                 .HasColumnType("integer");
 
                             b1.Property<int>("GiftCardTypeId")
+                                .HasColumnType("integer");
+
+                            b1.Property<int>("Id")
                                 .HasColumnType("integer");
 
                             b1.Property<bool>("IsGiftCard")
@@ -413,6 +428,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
 
                             b1.Property<bool>("DisplayAttributeCombinationImagesOnly")
                                 .HasColumnType("boolean");
+
+                            b1.Property<int>("Id")
+                                .HasColumnType("integer");
 
                             b1.Property<int>("LowStockActivityId")
                                 .HasColumnType("integer");
@@ -456,6 +474,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
 
                             b1.Property<DateTime?>("ExpirationDate")
                                 .HasColumnType("timestamp with time zone");
+
+                            b1.Property<int>("Id")
+                                .HasColumnType("integer");
 
                             b1.Property<DateTime?>("ManufactureDate")
                                 .HasColumnType("timestamp with time zone");
@@ -537,6 +558,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                             b1.Property<bool>("CustomerEntersPrice")
                                 .HasColumnType("boolean");
 
+                            b1.Property<int>("Id")
+                                .HasColumnType("integer");
+
                             b1.Property<decimal>("MaximumCustomerEnteredPrice")
                                 .HasColumnType("numeric");
 
@@ -560,6 +584,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                     b.OwnsOne("Domain.Entities.Product.RecurringProduct", "RecurringProduct", b1 =>
                         {
                             b1.Property<int>("ProductId")
+                                .HasColumnType("integer");
+
+                            b1.Property<int>("Id")
                                 .HasColumnType("integer");
 
                             b1.Property<bool>("IsRecurring")
@@ -587,6 +614,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                             b1.Property<int>("ProductId")
                                 .HasColumnType("integer");
 
+                            b1.Property<int>("Id")
+                                .HasColumnType("integer");
+
                             b1.Property<bool>("IsRental")
                                 .HasColumnType("boolean");
 
@@ -612,6 +642,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                             b1.Property<decimal>("AdditionalShippingCharge")
                                 .HasColumnType("numeric");
 
+                            b1.Property<int>("Id")
+                                .HasColumnType("integer");
+
                             b1.Property<bool>("IsFreeShipping")
                                 .HasColumnType("boolean");
 
@@ -632,6 +665,9 @@ namespace eShop.Catalog.API.Infrastructure.Migrations
                     b.OwnsOne("Domain.Entities.Product.Tax", "Tax", b1 =>
                         {
                             b1.Property<int>("ProductId")
+                                .HasColumnType("integer");
+
+                            b1.Property<int>("Id")
                                 .HasColumnType("integer");
 
                             b1.Property<bool>("IsTaxExempt")

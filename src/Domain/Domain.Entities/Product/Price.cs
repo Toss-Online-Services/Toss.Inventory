@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
-public class Price:Entity
+public class Price : ValueObject
 {
     public decimal CurrentPrice { get; set; }
     public decimal OldPrice { get; set; }
@@ -20,5 +21,23 @@ public class Price:Entity
     public decimal BasepriceBaseAmount { get; set; }
     public int BasepriceBaseUnitId { get; set; }
     public bool CallForPrice { get; set; }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        // Using a yield return statement to return each element one at a time
+        yield return CurrentPrice;
+        yield return OldPrice;
+        yield return ProductCost;
+        yield return MinimumCustomerEnteredPrice;
+        yield return MaximumCustomerEnteredPrice;
+        yield return BasepriceAmount;
+        yield return BasepriceBaseUnitId;
+        yield return CallForPrice;
+        yield return ProductCost;
+        yield return MinimumCustomerEnteredPrice;
+        yield return MaximumCustomerEnteredPrice;
+        yield return BasepriceAmount;
+
+    }
 }
 

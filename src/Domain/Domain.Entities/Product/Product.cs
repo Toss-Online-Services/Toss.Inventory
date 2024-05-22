@@ -12,8 +12,14 @@ public class Product
 
     public Product() { }
     public Product(CreateProductCommand command) {
-        Apply(ProductCreatedDomainEvent(command));
+        Apply(command);
     }
+
+    private void Apply(CreateProductCommand command)
+    {
+        throw new NotImplementedException();
+    }
+
     public bool SubjectToAcl { get; }
     public bool LimitedToStores { get; }
     // Identification
