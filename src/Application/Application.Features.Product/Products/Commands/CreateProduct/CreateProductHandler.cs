@@ -1,7 +1,7 @@
 ﻿using Application.Infrastructure.IntegrationEvents;
 using Application.Infrastructure.Interfaces;
 using AutoMapper;
-using Domain.Entities.Catalog.Commands;
+using Domain.Entities.Product.Commands;
 using Domain.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;

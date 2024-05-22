@@ -5,5 +5,5 @@
 /// </summary>
 public interface IDiscountSupported<T> where T : DiscountMapping
 {
-    int Id { get; set; }
+    int Id { get; }
 }

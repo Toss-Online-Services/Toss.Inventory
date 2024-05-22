@@ -1,6 +1,6 @@
-﻿using Domain.Entities.Catalog;
-using Infrastructure.Data.Configurations;
-using Infrastructure.Data.EntityConfigurations;
+﻿using System.Reflection;
+using Domain.Entities.Catalog;
+using Domain.Entities.Product;
 using Infrastructure.IntegrationEventLogEF;
 using Microsoft.Extensions.Configuration;
 
@@ -25,10 +25,7 @@ public class CatalogContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.HasPostgresExtension("vector");
-        builder.ApplyConfiguration(new CatalogBrandEntityTypeConfiguration());
-        builder.ApplyConfiguration(new CatalogTypeEntityTypeConfiguration());
-        builder.ApplyConfiguration(new CatalogItemEntityTypeConfiguration());
-        builder.ApplyConfiguration(new ProductConfiguration());
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         // Add the outbox table to this context
         builder.UseIntegrationEventLogs();

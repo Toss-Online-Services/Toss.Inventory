@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain.Entities.Catalog.Commands;
+using Domain.Entities.Product.Commands;
 using MediatR;
 
 namespace Application.Features.Product.Products.Commands.CreateProduct;
