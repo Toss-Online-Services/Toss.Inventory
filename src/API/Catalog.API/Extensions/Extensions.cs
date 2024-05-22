@@ -1,8 +1,13 @@
-﻿using eShop.Catalog.API.Services;
-using Microsoft.SemanticKernel;
+﻿using Microsoft.SemanticKernel;
 using Infrastructure.EventBusRabbitMQ;
 using Infrastructure.EventBus.Extensions;
 using Infrastructure.Data;
+using Catalog.API.IntegrationEvents.EventHandling;
+using Catalog.API.IntegrationEvents;
+using Catalog.API.Services;
+using Catalog.API.IntegrationEvents.Events;
+using Catalog.API.Infrastructure;
+using Catalog.API;
 public static class Extensions
 {
     public static void AddApplicationServices(this IHostApplicationBuilder builder)

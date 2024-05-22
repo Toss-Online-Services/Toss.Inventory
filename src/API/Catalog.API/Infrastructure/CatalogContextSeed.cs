@@ -1,10 +1,10 @@
 ﻿using System.Text.Json;
+using Catalog.API.Services;
 using Domain.Entities.Catalog;
-using eShop.Catalog.API.Services;
 using Infrastructure.Data;
 using Pgvector;
 
-namespace eShop.Catalog.API.Infrastructure;
+namespace Catalog.API.Infrastructure;
 
 public partial class CatalogContextSeed(
     IWebHostEnvironment env,

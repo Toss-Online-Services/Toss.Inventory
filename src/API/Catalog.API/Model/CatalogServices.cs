@@ -1,4 +1,6 @@
-﻿using eShop.Catalog.API.Services;
+﻿using Catalog.API;
+using Catalog.API.IntegrationEvents;
+using Catalog.API.Services;
 using Infrastructure.Data;
 
 public class CatalogServices(

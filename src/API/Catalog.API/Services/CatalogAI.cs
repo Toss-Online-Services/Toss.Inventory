@@ -3,7 +3,7 @@ using Domain.Entities.Catalog;
 using Microsoft.SemanticKernel.Embeddings;
 using Pgvector;
 
-namespace eShop.Catalog.API.Services;
+namespace Catalog.API.Services;
 
 public sealed class CatalogAI : ICatalogAI
 {

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.Features.Product.Products.Commands.CreateProduct;
 
-public class CreateProductCommandHandler : IRequestHandler<CreateProductRequest, bool>
+public class CreateProductCommandHandler : IRequestHandler<CreateProductRequest, int>
 {
     private readonly IProductRepository _productRepository;
     private readonly IIdentityService _identityService;
@@ -31,10 +31,10 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductRequest,
         _mapper = mapper;
     }
 
-    public async Task<bool> Handle(CreateProductRequest request, CancellationToken cancellationToken)
+    public async Task<int> Handle(CreateProductRequest request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Creating Order - Order: {@Order}", request);
         _productRepository.Add(new Domain.Entities.Product.Product(_mapper.Map<CreateProductCommand>(request)));
-        return await _productRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
+        return await _productRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
     }
 }

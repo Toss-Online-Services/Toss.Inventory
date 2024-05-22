@@ -1,4 +1,4 @@
-﻿namespace eShop.Catalog.API;
+﻿namespace Catalog.API;
 
 public class CatalogOptions
 {

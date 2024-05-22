@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.Product.Products.Commands.CreateProduct;
 
-public record CreateProductRequest : IRequest<bool>
+public record CreateProductRequest : IRequest<int>
 {
     /// <summary>
     /// Gets or sets the product type identifier

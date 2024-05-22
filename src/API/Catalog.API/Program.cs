@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning.Builder;
+using Catalog.API.Apis;
 
 var builder = WebApplication.CreateBuilder(args);
 
