@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.IO;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Infrastructure;
+﻿using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
 public class PhysicalAttributes : ValueObject

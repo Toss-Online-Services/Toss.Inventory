@@ -1,9 +1,10 @@
-﻿using System.Reflection;
+﻿using System.Data;
+using System.Reflection;
 using Domain.Entities.Catalog;
 using Domain.Entities.Product;
 using Domain.Infrastructure;
-using Infrastructure.IntegrationEventLogEF;
-using Microsoft.Extensions.Configuration;
+using MediatR;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Infrastructure.Data;
 

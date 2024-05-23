@@ -1,7 +1,5 @@
-﻿using System.Diagnostics;
-using Domain.Entities.Catalog;
+﻿using Domain.Entities.Catalog;
 using Domain.Entities.Discounts;
-using Domain.Entities.Events;
 using Domain.Entities.Product.Commands;
 using Domain.Infrastructure;
 

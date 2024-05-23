@@ -1,5 +1,4 @@
-﻿global using Asp.Versioning.Conventions;
-global using Infrastructure.EventBus.Abstractions;
+﻿global using Infrastructure.EventBus.Abstractions;
 global using Infrastructure.EventBus.Events;
 global using Infrastructure.IntegrationEventLogEF.Services;
 global using Infrastructure.IntegrationEventLogEF.Utilities;

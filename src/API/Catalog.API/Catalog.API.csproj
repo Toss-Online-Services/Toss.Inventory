@@ -10,12 +10,12 @@
 
   <ItemGroup>
     <Compile Include="..\..\Shared\ActivityExtensions.cs" Link="Extensions\ActivityExtensions.cs" />
-    <Compile Include="..\..\Shared\MigrateDbContextExtensions.cs" Link="Extensions\MigrateDbContextExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Asp.Versioning.Http" />
     <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -38,6 +38,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Application.Features.Product\Application.Features.Product.csproj" />
+    <ProjectReference Include="..\..\Application\Application.Features\Application.Features.csproj" />
     <ProjectReference Include="..\..\Domain\Domain.Entities\Domain.Entities.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.EventBusRabbitMQ\Infrastructure.EventBusRabbitMQ.csproj" />

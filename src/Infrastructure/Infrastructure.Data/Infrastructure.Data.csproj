@@ -5,12 +5,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>
-  <ItemGroup>    
+  <ItemGroup>
+    <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
     <PackageReference Include="Ardalis.GuardClauses" />    
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    </PackageReference>    
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Pgvector" />
+    <PackageReference Include="Pgvector.EntityFrameworkCore" />
     <PackageReference Include="Npgsql" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
   </ItemGroup>
@@ -18,6 +23,10 @@
     <ProjectReference Include="..\..\Domain\Domain.Entities\Domain.Entities.csproj" />
     <ProjectReference Include="..\..\Domain\Domain.Repositories\Domain.Repositories.csproj" />
     <ProjectReference Include="..\Infrastructure.IntegrationEventLogEF\Infrastructure.IntegrationEventLogEF.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Shared\ActivityExtensions.cs" Link="Extensions\ActivityExtensions.cs" />
+    <Compile Include="..\..\Shared\MigrateDbContextExtensions.cs" Link="Extensions\MigrateDbContextExtensions.cs" />
   </ItemGroup>
 
 </Project>

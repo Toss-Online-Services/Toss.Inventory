@@ -6,20 +6,18 @@ using Catalog.API.IntegrationEvents.EventHandling;
 using Catalog.API.IntegrationEvents;
 using Catalog.API.Services;
 using Catalog.API.IntegrationEvents.Events;
-using Catalog.API.Infrastructure;
 using Catalog.API;
 using Service.ServiceDefaults;
 using Application.Infrastructure.Services;
 using Application.Infrastructure.Behaviours;
 using FluentValidation;
-using Application.Features.Product.Products.Commands.CreateProduct;
-using Application.Infrastructure.Commands;
 using Infrastructure.Repositories;
 using Domain.Repositories;
 using Infrastructure.Data.Idempotency;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Generation.Processors.Security;
 using NSwag;
+using Application.Features.Products.Commands.CreateProduct;
 public static class Extensions
 {
     public static void AddApplicationServices(this IHostApplicationBuilder builder)
@@ -37,7 +35,7 @@ public static class Extensions
             });
         });
         // REVIEW: This is done for development ease but shouldn't be here in production
-        builder.Services.AddMigration<CatalogContext, CatalogContextSeed>();
+        //builder.Services.AddMigration<CatalogContext, CatalogContextSeed>();
 
         // Add the integration services that consume the DbContext
         builder.Services.AddTransient<IIntegrationEventLogService, IntegrationEventLogService<CatalogContext>>();
@@ -107,6 +105,7 @@ public static class Extensions
               
     }
 
+    
     private static void AddEventBusSubscriptions(this IEventBusBuilder eventBus)
     {
         eventBus.AddSubscription<OrderStatusChangedToAwaitingValidationIntegrationEvent, OrderStatusChangedToAwaitingValidationIntegrationEventHandler>();

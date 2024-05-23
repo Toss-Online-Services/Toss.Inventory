@@ -1,6 +1,4 @@
-﻿using Infrastructure.EventBus.Events;
-
-namespace Application.Infrastructure.IntegrationEvents;
+﻿namespace Application.Infrastructure.IntegrationEvents;
 
 public interface ICatalogIntegrationEventService
 {

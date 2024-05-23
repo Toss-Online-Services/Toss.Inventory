@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" />
+    <PackageReference Include="AutoMapper" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Domain.Constants\Domain.Constants.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.EventBusRabbitMQ\Infrastructure.EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.EventBus\Infrastructure.EventBus.csproj" />
+    <ProjectReference Include="..\Application.Common\Application.Infrastructure.csproj" />
+    <ProjectReference Include="..\Application.Events\Application.Events.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,9 +1,6 @@
-﻿using Application.Features.Product.Products.Commands.CreateProduct;
-using Application.Infrastructure.Models;
+﻿using Application.Features.Products.Commands.CreateProduct;
 using Catalog.API.Infrastructure;
-using Domain.Entities.Product.Commands;
 using MediatR;
-using Microsoft.AspNetCore.Builder;
 
 namespace Catalog.API.Apis;
 

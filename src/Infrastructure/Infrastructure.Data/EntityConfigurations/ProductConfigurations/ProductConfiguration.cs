@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Domain.Entities.Product;
-using System;
+﻿using Domain.Entities.Product;
 
 namespace Infrastructure.Data.EntityConfigurations.ProductConfigurations
 {
@@ -92,8 +89,8 @@ namespace Infrastructure.Data.EntityConfigurations.ProductConfigurations
             builder.Property(p => p.DisplayOrder).IsRequired();
             builder.Property(p => p.Published).IsRequired();
             builder.Property(p => p.Deleted).IsRequired();
-            builder.Property(p => p.CreatedOnUtc).IsRequired();
-            builder.Property(p => p.UpdatedOnUtc).IsRequired();
+            builder.Property(p => p.Created).IsRequired();
+            builder.Property(p => p.LastModified).IsRequired();
         }
     }
 }

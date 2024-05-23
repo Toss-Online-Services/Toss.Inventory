@@ -3,7 +3,6 @@ using Catalog.API.Infrastructure;
 using Catalog.API.Model;
 using Domain.Entities.Catalog;
 using Infrastructure.Data;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Pgvector.EntityFrameworkCore;
 

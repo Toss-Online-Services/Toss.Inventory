@@ -1,10 +1,7 @@
-﻿using Asp.Versioning.Builder;
-using Catalog.API.Apis;
-using Catalog.API.Infrastructure;
-using Infrastructure.Data;
-using Microsoft.AspNetCore.Builder;
+﻿using Catalog.API.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 builder.AddServiceDefaults();
 builder.AddApplicationServices();
@@ -20,6 +17,9 @@ app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+// Enable middleware to serve generated Swagger as a JSON endpoint
+app.UseSwagger();
+
 app.UseSwaggerUi(settings =>
 {
     settings.Path = "/api";
@@ -30,7 +30,6 @@ app.UseExceptionHandler(options => { });
 
 app.Map("/", () => Results.Redirect("/api"));
 
-app.MapEndpoints();
 
-app.UseDefaultOpenApi();
+app.MapEndpoints();
 app.Run();

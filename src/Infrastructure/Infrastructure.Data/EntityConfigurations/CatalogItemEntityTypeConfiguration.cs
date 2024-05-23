@@ -1,5 +1,6 @@
 ﻿using Domain.Entities.Catalog;
 
+
 namespace Infrastructure.Data.EntityConfigurations;
 
 class CatalogItemEntityTypeConfiguration

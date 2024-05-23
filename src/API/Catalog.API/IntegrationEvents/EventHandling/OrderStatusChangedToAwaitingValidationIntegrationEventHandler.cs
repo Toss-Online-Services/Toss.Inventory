@@ -1,5 +1,4 @@
-﻿using Catalog.API.IntegrationEvents;
-using Catalog.API.IntegrationEvents.Events;
+﻿using Catalog.API.IntegrationEvents.Events;
 using Infrastructure.Data;
 
 namespace Catalog.API.IntegrationEvents.EventHandling;

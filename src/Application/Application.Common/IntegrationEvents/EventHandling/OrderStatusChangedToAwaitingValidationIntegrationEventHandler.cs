@@ -1,7 +1,6 @@
 ﻿using Application.Infrastructure.IntegrationEvents.Events;
 using Infrastructure.Data;
 using Infrastructure.EventBus.Abstractions;
-using Infrastructure.EventBus.Events;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Infrastructure.IntegrationEvents.EventHandling;

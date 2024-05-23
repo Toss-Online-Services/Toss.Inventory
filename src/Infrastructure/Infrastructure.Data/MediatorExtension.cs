@@ -1,4 +1,5 @@
 ﻿using Domain.Infrastructure;
+using MediatR;
 
 namespace Infrastructure.Data;
 

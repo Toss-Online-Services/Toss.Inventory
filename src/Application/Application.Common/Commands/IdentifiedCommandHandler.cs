@@ -1,5 +1,4 @@
-﻿using Domain.Entities.Product.Commands;
-using Infrastructure.Data.Idempotency;
+﻿using Infrastructure.Data.Idempotency;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Infrastructure.Commands;
