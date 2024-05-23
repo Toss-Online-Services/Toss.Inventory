@@ -11,6 +11,10 @@ namespace Infrastructure.Data.Repositories
         private readonly CatalogContext _context;
 
         public IUnitOfWork UnitOfWork => _context;
+        public ProductRepository()
+        {
+                
+        }
 
         public ProductRepository(CatalogContext context)
         {

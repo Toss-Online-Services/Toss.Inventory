@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Application.Events.IntegrationEvents;
 using Application.Infrastructure.Interfaces;
 using Domain.Infrastructure;
+using Application.Infrastructure.Services;
 
 namespace Application.Features;
 
@@ -36,7 +37,8 @@ public static class DependencyInjection
         builder.AddRabbitMqEventBus("eventbus")
            .AddEventBusSubscriptions();
 
-              
+        services.AddTransient<IIdentityService, IdentityService>();
+
 
         return services;
     }

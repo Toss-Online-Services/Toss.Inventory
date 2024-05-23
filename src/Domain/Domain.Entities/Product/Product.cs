@@ -1,25 +1,56 @@
-﻿using Domain.Entities.Catalog;
+﻿using AutoMapper;
+using Domain.Entities.Catalog;
 using Domain.Entities.Discounts;
 using Domain.Entities.Product.Commands;
+using Domain.Entities.Product.Events;
 using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
-public class Product
+public sealed class Product
     : BaseAuditableEntity, IAggregateRoot, ILocalizedEntity, ISlugSupported, IAclSupported, IStoreMappingSupported, Discounts.IDiscountSupported<DiscountProductMapping>
 {
-
     public Product() { }
-    public Product(CreateProductCommand command) {
+
+    public Product(CreateProductCommand command)
+    {
+       
         Apply(command);
     }
 
     private void Apply(CreateProductCommand command)
     {
-        throw new NotImplementedException();
+        SubjectToAcl = command.SubjectToAcl;
+        LimitedToStores = command.LimitedToStores;
+        ProductTypeId = command.ProductTypeId;
+        ParentGroupedProductId = command.ParentGroupedProductId;
+        VisibleIndividually = command.VisibleIndividually;
+        Name = command.Name;
+        ShortDescription = command.ShortDescription;
+        FullDescription = command.FullDescription;
+        AdminComment = command.AdminComment;
+        MetaKeywords = command.MetaKeywords;
+        MetaDescription = command.MetaDescription;
+        MetaTitle = command.MetaTitle;
+        ProductTemplateId = command.ProductTemplateId;
+        VendorId = command.VendorId;
+        DisplayOrder = command.DisplayOrder;
+        Published = command.Published;
+        Deleted = command.Deleted;
+        ProductType = (ProductType)command.ProductTypeId;
+        BackorderMode = (BackorderMode)command.BackorderModeId;
+        DownloadActivationType = (DownloadActivationType)command.DownloadActivationTypeId;
+        GiftCardType = (GiftCardType)command.GiftCardTypeId;
+        LowStockActivity = (LowStockActivity)command.LowStockActivityId;
+        ManageInventoryMethod = (ManageInventoryMethod)command.ManageInventoryMethodId;
+        RecurringCyclePeriod = (RecurringProductCyclePeriod)command.RecurringCyclePeriodId;
+        RentalPricePeriod = (RentalPricePeriod)command.RentalPricePeriodId;
+
+
+        this.AddDomainEvent(new ProductCreatedDomainEvent(this));
     }
 
-    public bool SubjectToAcl { get; }
-    public bool LimitedToStores { get; }
+    public bool SubjectToAcl { get; private set; }
+    public bool LimitedToStores { get; private set; }
     // Identification
     public int ProductTypeId { get; private set; }
     public int ParentGroupedProductId { get; private set; }

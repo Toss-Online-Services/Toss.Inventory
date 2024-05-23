@@ -27,7 +27,23 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductRequest,
     public async Task<int> Handle(CreateProductRequest request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Creating Order - Order: {@Order}", request);
-        _productRepository.Add(new Domain.Entities.Product.Product(_mapper.Map<CreateProductCommand>(request)));
-        return await _productRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+        int res = 0;
+        try
+        {
+            var comm = _mapper.Map<CreateProductCommand>(request);
+            var p = new Domain.Entities.Product.Product(comm);
+
+            _productRepository.Add(p);
+            res = await _productRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex.Message);
+
+            throw;
+        }
+        
+
+        return res;
     }
 }

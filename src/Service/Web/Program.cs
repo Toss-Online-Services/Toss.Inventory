@@ -9,6 +9,7 @@ builder.Services.AddKeyVaultIfConfigured(builder.Configuration);
 
 builder.AddApplicationServices();
 builder.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddDomainServices();
 builder.Services.AddWebServices();
 
 
@@ -31,6 +32,9 @@ app.UseSwaggerUi(settings =>
     settings.Path = "/api";
     settings.DocumentPath = "/api/specification.json";
 });
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 app.MapControllerRoute(
     name: "default",

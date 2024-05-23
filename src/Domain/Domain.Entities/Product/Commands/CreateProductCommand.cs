@@ -1,4 +1,6 @@
-﻿using Domain.Infrastructure;
+﻿using AutoMapper;
+using Domain.Infrastructure;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Domain.Entities.Product.Commands;
 

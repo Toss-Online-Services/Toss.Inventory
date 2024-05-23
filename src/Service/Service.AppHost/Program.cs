@@ -15,7 +15,7 @@ var identityDb = postgres.AddDatabase("identitydb");
 
 var launchProfileName = ShouldUseHttpForEndpoints() ? "http" : "https";
 
-var catalogApi = builder.AddProject<Projects.Catalog_API>("catalog-api")
+var catalogApi = builder.AddProject<Projects.Web>("catalog-api")
     .WithReference(rabbitMq)
     .WithReference(catalogDb);
 

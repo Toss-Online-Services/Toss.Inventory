@@ -5,7 +5,432 @@
     "title": "Template API",
     "version": "1.0.0"
   },
+  "paths": {
+    "/api/ProductApi": {
+      "post": {
+        "tags": [
+          "ProductApi"
+        ],
+        "operationId": "CreateProduct",
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProductRequest"
+              }
+            }
+          },
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "components": {
+    "schemas": {
+      "CreateProductRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "productTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "parentGroupedProductId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "visibleIndividually": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "adminComment": {
+            "type": "string",
+            "nullable": true
+          },
+          "productTemplateId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vendorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "showOnHomepage": {
+            "type": "boolean"
+          },
+          "metaKeywords": {
+            "type": "string",
+            "nullable": true
+          },
+          "metaDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "metaTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "allowCustomerReviews": {
+            "type": "boolean"
+          },
+          "approvedRatingSum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "notApprovedRatingSum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "approvedTotalReviews": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "notApprovedTotalReviews": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "subjectToAcl": {
+            "type": "boolean"
+          },
+          "limitedToStores": {
+            "type": "boolean"
+          },
+          "sku": {
+            "type": "string",
+            "nullable": true
+          },
+          "manufacturerPartNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "gtin": {
+            "type": "string",
+            "nullable": true
+          },
+          "isGiftCard": {
+            "type": "boolean"
+          },
+          "giftCardTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "overriddenGiftCardAmount": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          },
+          "requireOtherProducts": {
+            "type": "boolean"
+          },
+          "requiredProductIds": {
+            "type": "string",
+            "nullable": true
+          },
+          "automaticallyAddRequiredProducts": {
+            "type": "boolean"
+          },
+          "isDownload": {
+            "type": "boolean"
+          },
+          "downloadId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unlimitedDownloads": {
+            "type": "boolean"
+          },
+          "maxNumberOfDownloads": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "downloadExpirationDays": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "downloadActivationTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasSampleDownload": {
+            "type": "boolean"
+          },
+          "sampleDownloadId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasUserAgreement": {
+            "type": "boolean"
+          },
+          "userAgreementText": {
+            "type": "string",
+            "nullable": true
+          },
+          "isRecurring": {
+            "type": "boolean"
+          },
+          "recurringCycleLength": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "recurringCyclePeriodId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "recurringTotalCycles": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isRental": {
+            "type": "boolean"
+          },
+          "rentalPriceLength": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rentalPricePeriodId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isShipEnabled": {
+            "type": "boolean"
+          },
+          "isFreeShipping": {
+            "type": "boolean"
+          },
+          "shipSeparately": {
+            "type": "boolean"
+          },
+          "additionalShippingCharge": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "deliveryDateId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isTaxExempt": {
+            "type": "boolean"
+          },
+          "taxCategoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "manageInventoryMethodId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productAvailabilityRangeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "useMultipleWarehouses": {
+            "type": "boolean"
+          },
+          "warehouseId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "displayStockAvailability": {
+            "type": "boolean"
+          },
+          "displayStockQuantity": {
+            "type": "boolean"
+          },
+          "minStockQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lowStockActivityId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "notifyAdminForQuantityBelow": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "backorderModeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "allowBackInStockSubscriptions": {
+            "type": "boolean"
+          },
+          "orderMinimumQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderMaximumQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "allowedQuantities": {
+            "type": "string",
+            "nullable": true
+          },
+          "allowAddingOnlyExistingAttributeCombinations": {
+            "type": "boolean"
+          },
+          "displayAttributeCombinationImagesOnly": {
+            "type": "boolean"
+          },
+          "notReturnable": {
+            "type": "boolean"
+          },
+          "disableBuyButton": {
+            "type": "boolean"
+          },
+          "disableWishlistButton": {
+            "type": "boolean"
+          },
+          "availableForPreOrder": {
+            "type": "boolean"
+          },
+          "preOrderAvailabilityStartDateTimeUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "callForPrice": {
+            "type": "boolean"
+          },
+          "price": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "oldPrice": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "productCost": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "customerEntersPrice": {
+            "type": "boolean"
+          },
+          "minimumCustomerEnteredPrice": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "maximumCustomerEnteredPrice": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "basepriceEnabled": {
+            "type": "boolean"
+          },
+          "basepriceAmount": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "basepriceUnitId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "basepriceBaseAmount": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "basepriceBaseUnitId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "markAsNew": {
+            "type": "boolean"
+          },
+          "markAsNewStartDateTimeUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "markAsNewEndDateTimeUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "hasTierPrices": {
+            "type": "boolean"
+          },
+          "hasDiscountsApplied": {
+            "type": "boolean"
+          },
+          "weight": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "length": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "width": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "height": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "availableStartDateTimeUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "availableEndDateTimeUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "displayOrder": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "deleted": {
+            "type": "boolean"
+          },
+          "createdOnUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedOnUtc": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
     "securitySchemes": {
       "JWT": {
         "type": "apiKey",
