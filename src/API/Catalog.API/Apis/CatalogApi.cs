@@ -1,39 +1,48 @@
-﻿using Domain.Entities.Catalog;
+﻿using Application.Infrastructure.IntegrationEvents.Events;
+using Catalog.API.Infrastructure;
+using Catalog.API.Model;
+using Domain.Entities.Catalog;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Pgvector.EntityFrameworkCore;
 
-namespace eShop.Catalog.API;
+namespace Catalog.API.Apis;
 
-public static class CatalogApi
+public  class CatalogApi : EndpointGroupBase
 {
-    public static IEndpointRouteBuilder MapCatalogApiV1(this IEndpointRouteBuilder app)
+    public override void Map(WebApplication app)
     {
-        var api = app.MapGroup("api/catalog").HasApiVersion(1.0);
-
-        // Routes for querying catalog items.
-        api.MapGet("/items", GetAllItems);
-        api.MapGet("/items/by", GetItemsByIds);
-        api.MapGet("/items/{id:int}", GetItemById);
-        api.MapGet("/items/by/{name:minlength(1)}", GetItemsByName);
-        api.MapGet("/items/{catalogItemId:int}/pic", GetItemPictureById);
-
-        // Routes for resolving catalog items using AI.
-        api.MapGet("/items/withsemanticrelevance/{text:minlength(1)}", GetItemsBySemanticRelevance);
-
-        // Routes for resolving catalog items by type and brand.
-        api.MapGet("/items/type/{typeId}/brand/{brandId?}", GetItemsByBrandAndTypeId);
-        api.MapGet("/items/type/all/brand/{brandId:int?}", GetItemsByBrandId);
-        api.MapGet("/catalogtypes", async (CatalogContext context) => await context.CatalogTypes.OrderBy(x => x.Type).ToListAsync());
-        api.MapGet("/catalogbrands", async (CatalogContext context) => await context.CatalogBrands.OrderBy(x => x.Brand).ToListAsync());
-
-        // Routes for modifying catalog items.
-        api.MapPut("/items", UpdateItem);
-        api.MapPost("/items", CreateItem);
-        api.MapDelete("/items/{id:int}", DeleteItemById);
-
-        return app;
+        app.MapGroup(this)
+            .MapGet("/items", GetAllItems);
     }
+
+    //public override void Map(WebApplication app)
+    //{
+    //    app.MapGroup(this)
+    //    // Routes for querying catalog items.
+    //    .MapGet("/items", GetAllItems);
+    //    .MapGet("/items/by", GetItemsByIds)
+    //    .MapGet("/items/{id:int}", GetItemById)
+    //    .MapGet("/items/by/{name:minlength(1)}", GetItemsByName)
+    //    .MapGet("/items/{catalogItemId:int}/pic", GetItemPictureById);
+
+    //    // Routes for resolving catalog items using AI.
+    //    api.MapGet("/items/withsemanticrelevance/{text:minlength(1)}", GetItemsBySemanticRelevance);
+
+    //    // Routes for resolving catalog items by type and brand.
+    //    api.MapGet("/items/type/{typeId}/brand/{brandId?}", GetItemsByBrandAndTypeId);
+    //    api.MapGet("/items/type/all/brand/{brandId:int?}", GetItemsByBrandId);
+    //    api.MapGet("/catalogtypes", async (CatalogContext context) => await context.CatalogTypes.OrderBy(x => x.Type).ToListAsync());
+    //    api.MapGet("/catalogbrands", async (CatalogContext context) => await context.CatalogBrands.OrderBy(x => x.Brand).ToListAsync());
+
+    //    // Routes for modifying catalog items.
+    //    api.MapPut("/items", UpdateItem);
+    //    api.MapPost("/items", CreateItem);
+    //    api.MapDelete("/items/{id:int}", DeleteItemById);
+
+    //    return app;
+    //}
 
     public static async Task<Results<Ok<PaginatedItems<CatalogItem>>, BadRequest<string>>> GetAllItems(
         [AsParameters] PaginationRequest paginationRequest,

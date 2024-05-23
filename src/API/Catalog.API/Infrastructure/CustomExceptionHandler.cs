@@ -1,8 +1,6 @@
-﻿using Template.Application.Common.Exceptions;
-using Microsoft.AspNetCore.Diagnostics;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Application.Infrastructure.Exceptions;
-using Ardalis.GuardClauses;
 
 namespace Catalog.API.Infrastructure;
 

@@ -1,5 +1,8 @@
 ﻿using Asp.Versioning.Builder;
 using Catalog.API.Apis;
+using Catalog.API.Infrastructure;
+using Infrastructure.Data;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,10 +16,21 @@ builder.AddDefaultOpenApi(withApiVersioning);
 
 var app = builder.Build();
 
-app.MapDefaultEndpoints();
+app.UseHealthChecks("/health");
+app.UseHttpsRedirection();
+app.UseStaticFiles();
 
-app.NewVersionedApi("Catalog")
-   .MapCatalogApiV1();
+app.UseSwaggerUi(settings =>
+{
+    settings.Path = "/api";
+    settings.DocumentPath = "/api/specification.json";
+});
+
+app.UseExceptionHandler(options => { });
+
+app.Map("/", () => Results.Redirect("/api"));
+
+app.MapEndpoints();
 
 app.UseDefaultOpenApi();
 app.Run();

@@ -2,6 +2,7 @@
 using Application.Infrastructure.Security;
 using Application.Infrastructure.Interfaces;
 using Application.Infrastructure.Exceptions;
+using Application.Infrastructure.Services;
 
 namespace Application.Infrastructure.Behaviours;
 

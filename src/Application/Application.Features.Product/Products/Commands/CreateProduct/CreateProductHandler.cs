@@ -1,5 +1,5 @@
 ﻿using Application.Infrastructure.IntegrationEvents;
-using Application.Infrastructure.Interfaces;
+using Application.Infrastructure.Services;
 using AutoMapper;
 using Domain.Entities.Product.Commands;
 using Domain.Repositories;
