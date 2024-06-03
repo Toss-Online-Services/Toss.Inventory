@@ -3,18 +3,18 @@
 namespace Domain.Entities.Product;
 public class Price : ValueObject
 {
-    public decimal CurrentPrice { get; set; }
-    public decimal OldPrice { get; set; }
-    public decimal ProductCost { get; set; }
-    public bool CustomerEntersPrice { get; set; }
-    public decimal MinimumCustomerEnteredPrice { get; set; }
-    public decimal MaximumCustomerEnteredPrice { get; set; }
-    public bool BasepriceEnabled { get; set; }
-    public decimal BasepriceAmount { get; set; }
-    public int BasepriceUnitId { get; set; }
-    public decimal BasepriceBaseAmount { get; set; }
-    public int BasepriceBaseUnitId { get; set; }
-    public bool CallForPrice { get; set; }
+    public decimal CurrentPrice { get; private set; }
+    public decimal OldPrice { get; private set; }
+    public decimal ProductCost { get; private set; }
+    public bool CustomerEntersPrice { get; private set; }
+    public decimal MinimumCustomerEnteredPrice { get; private set; }
+    public decimal MaximumCustomerEnteredPrice { get; private set; }
+    public bool BasepriceEnabled { get; private set; }
+    public decimal BasepriceAmount { get; private set; }
+    public int BasepriceUnitId { get; private set; }
+    public decimal BasepriceBaseAmount { get; private set; }
+    public int BasepriceBaseUnitId { get; private set; }
+    public bool CallForPrice { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

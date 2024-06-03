@@ -3,14 +3,14 @@
 namespace Domain.Entities.Product;
 public class PhysicalAttributes : ValueObject
 {
-    public decimal Weight { get; set; }
-    public decimal Length { get; set; }
-    public decimal Width { get; set; }
-    public decimal Height { get; set; }
-    public string Color { get; set; }
-    public string Material { get; set; }
-    public string Size { get; set; }
-    public string PackagingType { get; set; }
+    public decimal Weight { get; private set; }
+    public decimal Length { get; private set; }
+    public decimal Width { get; private set; }
+    public decimal Height { get; private set; }
+    public string Color { get; private set; }
+    public string Material { get; private set; }
+    public string Size { get; private set; }
+    public string PackagingType { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

@@ -3,10 +3,10 @@
 namespace Domain.Entities.Product;
 public class Shipping : ValueObject
 {
-    public bool IsShipEnabled { get; set; }
-    public bool IsFreeShipping { get; set; }
-    public bool ShipSeparately { get; set; }
-    public decimal AdditionalShippingCharge { get; set; }
+    public bool IsShipEnabled { get; private set; }
+    public bool IsFreeShipping { get; private set; }
+    public bool ShipSeparately { get; private set; }
+    public decimal AdditionalShippingCharge { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

@@ -3,10 +3,10 @@
 namespace Domain.Entities.Product;
 public class Lifecycle : ValueObject
 {
-    public DateTime? ManufactureDate { get; set; }
-    public DateTime? ExpirationDate { get; set; }
-    public string BatchNumber { get; set; }
-    public string SerialNumber { get; set; }
+    public DateTime? ManufactureDate { get; private set; }
+    public DateTime? ExpirationDate { get; private set; }
+    public string BatchNumber { get; private set; }
+    public string SerialNumber { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

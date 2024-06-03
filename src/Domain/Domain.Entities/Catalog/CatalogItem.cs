@@ -7,43 +7,43 @@ namespace Domain.Entities.Catalog;
 
 public class CatalogItem
 {
-    public int Id { get; set; }
+    public int Id { get; private set; }
 
     [Required]
-    public string Name { get; set; }
+    public string Name { get; private set; }
 
-    public string Description { get; set; }
+    public string Description { get; private set; }
 
-    public decimal Price { get; set; }
+    public decimal Price { get; private set; }
 
-    public string PictureFileName { get; set; }
+    public string PictureFileName { get; private set; }
 
-    public int CatalogTypeId { get; set; }
+    public int CatalogTypeId { get; private set; }
 
-    public CatalogType CatalogType { get; set; }
+    public CatalogType CatalogType { get; private set; }
 
-    public int CatalogBrandId { get; set; }
+    public int CatalogBrandId { get; private set; }
 
-    public CatalogBrand CatalogBrand { get; set; }
+    public CatalogBrand CatalogBrand { get; private set; }
 
     // Quantity in stock
-    public int AvailableStock { get; set; }
+    public int AvailableStock { get; private set; }
 
     // Available stock at which we should reorder
-    public int RestockThreshold { get; set; }
+    public int RestockThreshold { get; private set; }
 
 
     // Maximum number of units that can be in-stock at any time (due to physicial/logistical constraints in warehouses)
-    public int MaxStockThreshold { get; set; }
+    public int MaxStockThreshold { get; private set; }
 
     /// <summary>Optional embedding for the catalog item's description.</summary>
     [JsonIgnore]
-    public Vector Embedding { get; set; }
+    public Vector Embedding { get; private set; }
 
     /// <summary>
     /// True if item is on reorder
     /// </summary>
-    public bool OnReorder { get; set; }
+    public bool OnReorder { get; private set; }
 
     public CatalogItem() { }
 

@@ -1,65 +1,51 @@
 ﻿using Infrastructure.Data;
 using Infrastructure.EventBus.Abstractions;
 using Infrastructure.IntegrationEventLogEF.Services;
-using Infrastructure.IntegrationEventLogEF.Utilities;
 
 namespace Application.Events.IntegrationEvents;
 
-public sealed class CatalogIntegrationEventService(ILogger<CatalogIntegrationEventService> logger,
-    IEventBus eventBus,
-    CatalogContext catalogContext,
-    IIntegrationEventLogService integrationEventLogService)
-    : ICatalogIntegrationEventService, IDisposable
+public class CatalogIntegrationEventService(IEventBus eventBus,
+    CatalogContext CatalogContext,
+    IIntegrationEventLogService integrationEventLogService,
+    ILogger<CatalogIntegrationEventService> logger) : ICatalogIntegrationEventService
 {
-    private volatile bool disposedValue;
+    private readonly IEventBus _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
+    private readonly CatalogContext _CatalogContext = CatalogContext ?? throw new ArgumentNullException(nameof(CatalogContext));
+    private readonly IIntegrationEventLogService _eventLogService = integrationEventLogService ?? throw new ArgumentNullException(nameof(integrationEventLogService));
+    private readonly ILogger<CatalogIntegrationEventService> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
     public async Task PublishThroughEventBusAsync(IntegrationEvent evt)
     {
-        try
-        {
-            logger.LogInformation("Publishing integration event: {IntegrationEventId_published} - ({@IntegrationEvent})", evt.Id, evt);
-
-            await integrationEventLogService.MarkEventAsInProgressAsync(evt.Id);
-            await eventBus.PublishAsync(evt);
-            await integrationEventLogService.MarkEventAsPublishedAsync(evt.Id);
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "Error Publishing integration event: {IntegrationEventId} - ({@IntegrationEvent})", evt.Id, evt);
-            await integrationEventLogService.MarkEventAsFailedAsync(evt.Id);
-        }
+        await PublishThroughEventBusAsync(evt.Id);
     }
-
-    public async Task SaveEventAndCatalogContextChangesAsync(IntegrationEvent evt)
+    public async Task PublishThroughEventBusAsync(Guid transactionId)
     {
-        logger.LogInformation("CatalogIntegrationEventService - Saving changes and integrationEvent: {IntegrationEventId}", evt.Id);
+        var pendingLogEvents = await _eventLogService.RetrieveEventLogsPendingToPublishAsync(transactionId);
 
-        //Use of an EF Core resiliency strategy when using multiple DbContexts within an explicit BeginTransaction():
-        //See: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency            
-        await ResilientTransaction.New(catalogContext).ExecuteAsync(async () =>
+        foreach (var logEvt in pendingLogEvents)
         {
-            // Achieving atomicity between original catalog database operation and the IntegrationEventLog thanks to a local transaction
-            await catalogContext.SaveChangesAsync();
-            await integrationEventLogService.SaveEventAsync(evt, catalogContext.Database.CurrentTransaction);
-        });
-    }
+            _logger.LogInformation("Publishing integration event: {IntegrationEventId} - ({@IntegrationEvent})", logEvt.EventId, logEvt.IntegrationEvent);
 
-    private void Dispose(bool disposing)
-    {
-        if (!disposedValue)
-        {
-            if (disposing)
+            try
             {
-                (integrationEventLogService as IDisposable)?.Dispose();
+                await _eventLogService.MarkEventAsInProgressAsync(logEvt.EventId);
+                await _eventBus.PublishAsync(logEvt.IntegrationEvent);
+                await _eventLogService.MarkEventAsPublishedAsync(logEvt.EventId);
             }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error publishing integration event: {IntegrationEventId}", logEvt.EventId);
 
-            disposedValue = true;
+                await _eventLogService.MarkEventAsFailedAsync(logEvt.EventId);
+            }
         }
     }
 
-    public void Dispose()
+    public async Task AddAndSaveEventAsync(IntegrationEvent evt)
     {
-        Dispose(disposing: true);
-        GC.SuppressFinalize(this);
+        _logger.LogInformation("Enqueuing integration event {IntegrationEventId} to repository ({@IntegrationEvent})", evt.Id, evt);
+        var trns = _CatalogContext.GetCurrentTransaction();
+
+        await _eventLogService.SaveEventAsync(evt, _CatalogContext.GetCurrentTransaction());
     }
 }

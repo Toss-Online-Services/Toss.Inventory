@@ -1,4 +1,5 @@
-﻿using Domain.Infrastructure;
+
+using Domain.Infrastructure;
 
 namespace Domain.Entities.Product.Events;
 

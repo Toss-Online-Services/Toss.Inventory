@@ -10,7 +10,7 @@ namespace Infrastructure.Data.EntityConfigurations.ProductConfigurations
 
             builder.Ignore(b => b.DomainEvents);
 
-            builder.HasKey(p => p.Id);
+            builder.Property(p => p.Id).UseHiLo("productseq"); ;
 
             builder.Property(p => p.ProductTypeId).IsRequired();
             builder.Property(p => p.ParentGroupedProductId).IsRequired();

@@ -13,20 +13,27 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructureServices(this IHostApplicationBuilder builder, IConfiguration configuration)
     {
         var services = builder.Services;
+        var connectionString = configuration.GetConnectionString("catalogdb");
+
+        Guard.Against.Null(connectionString, message: "Connection string 'catalogdb' not found.");
 
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
-
-        builder.AddNpgsqlDbContext<CatalogContext>("catalogdb", configureDbContextOptions: dbContextOptionsBuilder =>
+        services.AddDbContext<CatalogContext>((sp, options) =>
         {
-            dbContextOptionsBuilder.UseNpgsql(builder =>
+            options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
+            options.UseNpgsql(connectionString, npgsqlOptions =>
             {
-                builder.UseVector();
+                npgsqlOptions.UseVector();
             });
         });
-        // REVIEW: This is done for development ease but shouldn't be here in production
-        builder.Services.AddMigration<CatalogContext>();
+
+        if (builder.Environment.IsDevelopment())
+        {
+            // REVIEW: This is done for development ease but shouldn't be here in production
+            builder.Services.AddMigration<CatalogContext>();
+        }
 
         // Add the integration services that consume the DbContext
         services.AddTransient<IIntegrationEventLogService, IntegrationEventLogService<CatalogContext>>();

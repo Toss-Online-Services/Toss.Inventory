@@ -3,9 +3,9 @@
 namespace Domain.Entities.Product;
 public class RentalProduct : ValueObject
 {
-    public bool IsRental { get; set; }
-    public int RentalPriceLength { get; set; }
-    public int RentalPricePeriodId { get; set; }
+    public bool IsRental { get; private set; }
+    public int RentalPriceLength { get; private set; }
+    public int RentalPricePeriodId { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

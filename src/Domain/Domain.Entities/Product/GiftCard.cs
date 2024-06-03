@@ -3,9 +3,9 @@
 namespace Domain.Entities.Product;
 public class GiftCard : ValueObject
 {
-    public bool IsGiftCard { get; set; }
-    public int GiftCardTypeId { get; set; }
-    public decimal? OverriddenGiftCardAmount { get; set; }
+    public bool IsGiftCard { get; private set; }
+    public int GiftCardTypeId { get; private set; }
+    public decimal? OverriddenGiftCardAmount { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

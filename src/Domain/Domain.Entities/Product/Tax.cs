@@ -3,8 +3,8 @@
 namespace Domain.Entities.Product;
 public class Tax : ValueObject
 {
-    public bool IsTaxExempt { get; set; }
-    public int TaxCategoryId { get; set; }
+    public bool IsTaxExempt { get; private set; }
+    public int TaxCategoryId { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

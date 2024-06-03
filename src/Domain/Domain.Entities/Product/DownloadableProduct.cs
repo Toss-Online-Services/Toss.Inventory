@@ -3,16 +3,16 @@
 namespace Domain.Entities.Product;
 public class DownloadableProduct : ValueObject
 {
-    public bool IsDownload { get; set; }
-    public int DownloadId { get; set; }
-    public bool UnlimitedDownloads { get; set; }
-    public int MaxNumberOfDownloads { get; set; }
-    public int? DownloadExpirationDays { get; set; }
-    public int DownloadActivationTypeId { get; set; }
-    public bool HasSampleDownload { get; set; }
-    public int SampleDownloadId { get; set; }
-    public bool HasUserAgreement { get; set; }
-    public string UserAgreementText { get; set; }
+    public bool IsDownload { get; private set; }
+    public int DownloadId { get; private set; }
+    public bool UnlimitedDownloads { get; private set; }
+    public int MaxNumberOfDownloads { get; private set; }
+    public int? DownloadExpirationDays { get; private set; }
+    public int DownloadActivationTypeId { get; private set; }
+    public bool HasSampleDownload { get; private set; }
+    public int SampleDownloadId { get; private set; }
+    public bool HasUserAgreement { get; private set; }
+    public string UserAgreementText { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

@@ -6,3 +6,4 @@ global using FluentValidation;
 global using MediatR;
 global using Infrastructure.EventBusRabbitMQ;
 global using Domain.Entities;
+global using Application.Infrastructure.Extensions;

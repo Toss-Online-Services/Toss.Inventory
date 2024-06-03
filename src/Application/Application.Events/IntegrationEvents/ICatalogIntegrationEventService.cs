@@ -2,6 +2,7 @@
 
 public interface ICatalogIntegrationEventService
 {
-    Task SaveEventAndCatalogContextChangesAsync(IntegrationEvent evt);
+    Task AddAndSaveEventAsync(IntegrationEvent evt);
     Task PublishThroughEventBusAsync(IntegrationEvent evt);
+    Task PublishThroughEventBusAsync(Guid transactionId);
 }

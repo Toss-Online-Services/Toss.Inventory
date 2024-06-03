@@ -29,7 +29,7 @@ public class OrderStatusChangedToAwaitingValidationIntegrationEventHandler(
             ? (IntegrationEvent)new OrderStockRejectedIntegrationEvent(@event.OrderId, confirmedOrderStockItems)
             : new OrderStockConfirmedIntegrationEvent(@event.OrderId);
 
-        await catalogIntegrationEventService.SaveEventAndCatalogContextChangesAsync(confirmedIntegrationEvent);
+        await catalogIntegrationEventService.AddAndSaveEventAsync(confirmedIntegrationEvent);
         await catalogIntegrationEventService.PublishThroughEventBusAsync(confirmedIntegrationEvent);
     }
 }

@@ -6,15 +6,15 @@ namespace Domain.Entities;
 
 public class TodoItem : BaseAuditableEntity
 {
-    public int ListId { get; set; }
+    public int ListId { get; private set; }
 
-    public string Title { get; set; }
+    public string Title { get; private set; }
 
-    public string Note { get; set; }
+    public string Note { get; private set; }
 
-    public PriorityLevel Priority { get; set; }
+    public PriorityLevel Priority { get; private set; }
 
-    public DateTime? Reminder { get; set; }
+    public DateTime? Reminder { get; private set; }
 
     private bool _done;
     public bool Done
@@ -31,5 +31,5 @@ public class TodoItem : BaseAuditableEntity
         }
     }
 
-    public TodoList List { get; set; } = null!;
+    public TodoList List { get; private set; } = null!;
 }

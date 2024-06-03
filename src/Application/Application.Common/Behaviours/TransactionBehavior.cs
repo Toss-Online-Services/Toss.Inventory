@@ -2,6 +2,7 @@
 
 namespace Application.Infrastructure.Behaviours;
 
+using Application.Events.IntegrationEvents;
 using Application.Infrastructure.IntegrationEvents;
 using global::Infrastructure.Data;
 using Microsoft.Extensions.Logging;
@@ -53,7 +54,7 @@ public class TransactionBehavior<TRequest, TResponse> : IPipelineBehavior<TReque
                     transactionId = transaction.TransactionId;
                 }
 
-                await _CatalogIntegrationEventService.PublishEventsThroughEventBusAsync(transactionId);
+                await _CatalogIntegrationEventService.PublishThroughEventBusAsync(transactionId);
             });
 
             return response;

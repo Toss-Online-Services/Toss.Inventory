@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Application.Features;
+namespace Domain.Entities;
 
 public static class DependencyInjection
 {
@@ -11,4 +11,4 @@ public static class DependencyInjection
 
         return services;
     }
-  }
+}

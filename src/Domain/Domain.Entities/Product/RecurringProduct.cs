@@ -3,10 +3,10 @@
 namespace Domain.Entities.Product;
 public class RecurringProduct : ValueObject
 {
-    public bool IsRecurring { get; set; }
-    public int RecurringCycleLength { get; set; }
-    public int RecurringCyclePeriodId { get; set; }
-    public int RecurringTotalCycles { get; set; }
+    public bool IsRecurring { get; private set; }
+    public int RecurringCycleLength { get; private set; }
+    public int RecurringCyclePeriodId { get; private set; }
+    public int RecurringTotalCycles { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

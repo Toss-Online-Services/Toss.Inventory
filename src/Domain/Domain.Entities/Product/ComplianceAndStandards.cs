@@ -3,12 +3,12 @@
 namespace Domain.Entities.Product;
 public class ComplianceAndStandards : ValueObject
 {
-    public bool NotReturnable { get; set; }
-    public string Certifications { get; set; }
-    public string RegulatoryApprovals { get; set; }
-    public string SafetyInformation { get; set; }
-    public string EnvironmentalImpact { get; set; }
-    public string RecyclingInformation { get; set; }
+    public bool NotReturnable { get; private set; }
+    public string Certifications { get; private set; }
+    public string RegulatoryApprovals { get; private set; }
+    public string SafetyInformation { get; private set; }
+    public string EnvironmentalImpact { get; private set; }
+    public string RecyclingInformation { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

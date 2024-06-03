@@ -4,8 +4,8 @@ namespace Domain.Entities.Catalog;
 
 public class CatalogBrand
 {
-    public int Id { get; set; }
+    public int Id { get; private set; }
 
     [Required]
-    public string Brand { get; set; }
+    public string Brand { get; private set; }
 }

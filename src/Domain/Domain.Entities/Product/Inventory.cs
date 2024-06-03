@@ -3,19 +3,19 @@
 namespace Domain.Entities.Product;
 public class Inventory : ValueObject
 {
-    public int ManageInventoryMethodId { get; set; }
-    public int WarehouseId { get; set; }
-    public int StockQuantity { get; set; }
-    public int MinStockQuantity { get; set; }
-    public int LowStockActivityId { get; set; }
-    public int NotifyAdminForQuantityBelow { get; set; }
-    public int BackorderModeId { get; set; }
-    public bool AllowBackInStockSubscriptions { get; set; }
-    public int OrderMinimumQuantity { get; set; }
-    public int OrderMaximumQuantity { get; set; }
-    public string AllowedQuantities { get; set; }
-    public bool AllowAddingOnlyExistingAttributeCombinations { get; set; }
-    public bool DisplayAttributeCombinationImagesOnly { get; set; }
+    public int ManageInventoryMethodId { get; private set; }
+    public int WarehouseId { get; private set; }
+    public int StockQuantity { get; private set; }
+    public int MinStockQuantity { get; private set; }
+    public int LowStockActivityId { get; private set; }
+    public int NotifyAdminForQuantityBelow { get; private set; }
+    public int BackorderModeId { get; private set; }
+    public bool AllowBackInStockSubscriptions { get; private set; }
+    public int OrderMinimumQuantity { get; private set; }
+    public int OrderMaximumQuantity { get; private set; }
+    public string AllowedQuantities { get; private set; }
+    public bool AllowAddingOnlyExistingAttributeCombinations { get; private set; }
+    public bool DisplayAttributeCombinationImagesOnly { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

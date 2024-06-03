@@ -278,18 +278,18 @@
             "type": "integer",
             "format": "int32"
           },
-          "backorderModeId": {
+          "backProductModeId": {
             "type": "integer",
             "format": "int32"
           },
           "allowBackInStockSubscriptions": {
             "type": "boolean"
           },
-          "orderMinimumQuantity": {
+          "productMinimumQuantity": {
             "type": "integer",
             "format": "int32"
           },
-          "orderMaximumQuantity": {
+          "productMaximumQuantity": {
             "type": "integer",
             "format": "int32"
           },
@@ -312,10 +312,10 @@
           "disableWishlistButton": {
             "type": "boolean"
           },
-          "availableForPreOrder": {
+          "availableForPreProduct": {
             "type": "boolean"
           },
-          "preOrderAvailabilityStartDateTimeUtc": {
+          "preProductAvailabilityStartDateTimeUtc": {
             "type": "string",
             "format": "date-time",
             "nullable": true
@@ -410,7 +410,7 @@
             "format": "date-time",
             "nullable": true
           },
-          "displayOrder": {
+          "displayProduct": {
             "type": "integer",
             "format": "int32"
           },

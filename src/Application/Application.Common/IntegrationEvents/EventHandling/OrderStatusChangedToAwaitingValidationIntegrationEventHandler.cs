@@ -1,4 +1,5 @@
-﻿using Application.Infrastructure.IntegrationEvents.Events;
+﻿using Application.Events.IntegrationEvents;
+using Application.Infrastructure.IntegrationEvents.Events;
 using Infrastructure.Data;
 using Infrastructure.EventBus.Abstractions;
 using Microsoft.Extensions.Logging;
@@ -30,7 +31,7 @@ public class OrderStatusChangedToAwaitingValidationIntegrationEventHandler(
             ? (IntegrationEvent)new OrderStockRejectedIntegrationEvent(@event.OrderId, confirmedOrderStockItems)
             : new OrderStockConfirmedIntegrationEvent(@event.OrderId);
 
-        await catalogIntegrationEventService.PublishEventsThroughEventBusAsync(confirmedIntegrationEvent);
+        await catalogIntegrationEventService.PublishThroughEventBusAsync(confirmedIntegrationEvent);
         await catalogIntegrationEventService.AddAndSaveEventAsync(confirmedIntegrationEvent);
     }
 }

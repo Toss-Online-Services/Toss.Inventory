@@ -26,15 +26,14 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductRequest,
 
     public async Task<int> Handle(CreateProductRequest request, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Creating Order - Order: {@Order}", request);
-        int res = 0;
+        _logger.LogInformation("Creating Product - Product: {@Product}", request);
+        int results;
         try
         {
-            var comm = _mapper.Map<CreateProductCommand>(request);
-            var p = new Domain.Entities.Product.Product(comm);
+            CreateProductCommand command = _mapper.Map<CreateProductCommand>(request);
 
-            _productRepository.Add(p);
-            res = await _productRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+            _productRepository.Add(new Domain.Entities.Product.Product(command));
+            results = await _productRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
         }
         catch (Exception ex)
         {
@@ -42,8 +41,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductRequest,
 
             throw;
         }
-        
 
-        return res;
+        return results;
     }
 }

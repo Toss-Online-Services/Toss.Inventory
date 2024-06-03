@@ -2,7 +2,7 @@
 using MediatR;
 using Web.Infrastructure;
 
-namespace Catalog.API.Apis;
+namespace Web.Endpoints;
 
 public class ProductApi : EndpointGroupBase
 {

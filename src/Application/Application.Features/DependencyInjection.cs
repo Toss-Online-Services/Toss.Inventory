@@ -10,6 +10,7 @@ using Application.Events.IntegrationEvents;
 using Application.Infrastructure.Interfaces;
 using Domain.Infrastructure;
 using Application.Infrastructure.Services;
+using Application.Infrastructure.IntegrationEvents;
 
 namespace Application.Features;
 
@@ -30,8 +31,11 @@ public static class DependencyInjection
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehaviour<,>));
-            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
+            cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
+            cfg.AddOpenBehavior(typeof(ValidatorBehavior<,>));
+            cfg.AddOpenBehavior(typeof(TransactionBehavior<,>));
         });
 
         builder.AddRabbitMqEventBus("eventbus")
@@ -44,7 +48,7 @@ public static class DependencyInjection
     }
     private static void AddEventBusSubscriptions(this IEventBusBuilder eventBus)
     {
-        eventBus.AddSubscription<OrderStatusChangedToAwaitingValidationIntegrationEvent, OrderStatusChangedToAwaitingValidationIntegrationEventHandler>();
-        eventBus.AddSubscription<OrderStatusChangedToPaidIntegrationEvent, OrderStatusChangedToPaidIntegrationEventHandler>();
+        //eventBus.AddSubscription<ProductStatusChangedToAwaitingValidationIntegrationEvent, ProductStatusChangedToAwaitingValidationIntegrationEventHandler>();
+        //eventBus.AddSubscription<ProductStatusChangedToPaidIntegrationEvent, ProductStatusChangedToPaidIntegrationEventHandler>();
     }
 }

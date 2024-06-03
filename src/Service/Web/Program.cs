@@ -1,3 +1,4 @@
+using Domain.Entities;
 using Infrastructure.Data;
 using Web;
 using Web.Infrastructure;
