@@ -37,7 +37,7 @@ public class Price : ValueObject
 
     internal void Apply(UpdatePriceCommand priceCommand)
     {
-        CurrentPrice = priceCommand.CurrentPrice;
+        CurrentPrice = priceCommand.Price;
         OldPrice = priceCommand.OldPrice;
         ProductCost = priceCommand.ProductCost;
         CustomerEntersPrice = priceCommand.CustomerEntersPrice;

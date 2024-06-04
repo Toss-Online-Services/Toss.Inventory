@@ -278,18 +278,18 @@
             "type": "integer",
             "format": "int32"
           },
-          "backProductModeId": {
+          "backorderModeId": {
             "type": "integer",
             "format": "int32"
           },
           "allowBackInStockSubscriptions": {
             "type": "boolean"
           },
-          "productMinimumQuantity": {
+          "orderMinimumQuantity": {
             "type": "integer",
             "format": "int32"
           },
-          "productMaximumQuantity": {
+          "orderMaximumQuantity": {
             "type": "integer",
             "format": "int32"
           },
@@ -312,58 +312,13 @@
           "disableWishlistButton": {
             "type": "boolean"
           },
-          "availableForPreProduct": {
+          "availableForPreOrder": {
             "type": "boolean"
           },
-          "preProductAvailabilityStartDateTimeUtc": {
+          "preOrderAvailabilityStartDateTimeUtc": {
             "type": "string",
             "format": "date-time",
             "nullable": true
-          },
-          "callForPrice": {
-            "type": "boolean"
-          },
-          "price": {
-            "type": "number",
-            "format": "decimal"
-          },
-          "oldPrice": {
-            "type": "number",
-            "format": "decimal"
-          },
-          "productCost": {
-            "type": "number",
-            "format": "decimal"
-          },
-          "customerEntersPrice": {
-            "type": "boolean"
-          },
-          "minimumCustomerEnteredPrice": {
-            "type": "number",
-            "format": "decimal"
-          },
-          "maximumCustomerEnteredPrice": {
-            "type": "number",
-            "format": "decimal"
-          },
-          "basepriceEnabled": {
-            "type": "boolean"
-          },
-          "basepriceAmount": {
-            "type": "number",
-            "format": "decimal"
-          },
-          "basepriceUnitId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "basepriceBaseAmount": {
-            "type": "number",
-            "format": "decimal"
-          },
-          "basepriceBaseUnitId": {
-            "type": "integer",
-            "format": "int32"
           },
           "markAsNew": {
             "type": "boolean"
@@ -410,7 +365,7 @@
             "format": "date-time",
             "nullable": true
           },
-          "displayProduct": {
+          "displayOrder": {
             "type": "integer",
             "format": "int32"
           },
@@ -427,6 +382,203 @@
           "updatedOnUtc": {
             "type": "string",
             "format": "date-time"
+          },
+          "price": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdatePriceRequest"
+              }
+            ]
+          },
+          "availability": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdateAvailabilityRequest"
+              }
+            ]
+          },
+          "inventory": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdateInventoryRequest"
+              }
+            ]
+          },
+          "shipping": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdateShippingRequest"
+              }
+            ]
+          }
+        }
+      },
+      "UpdatePriceRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callForPrice": {
+            "type": "boolean"
+          },
+          "price": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "oldPrice": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "productCost": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "customerEntersPrice": {
+            "type": "boolean"
+          },
+          "minimumCustomerEnteredPrice": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "maximumCustomerEnteredPrice": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "basepriceEnabled": {
+            "type": "boolean"
+          },
+          "basepriceAmount": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "basepriceUnitId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "basepriceBaseAmount": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "basepriceBaseUnitId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "UpdateAvailabilityRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "availableStartDateTimeUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "availableEndDateTimeUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "availableForPreOrder": {
+            "type": "boolean"
+          },
+          "preOrderAvailabilityStartDateTimeUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "productAvailabilityRangeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "deliveryDateId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "UpdateInventoryRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "productId": {
+            "type": "string",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "manageInventoryMethodId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "warehouseId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minStockQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lowStockActivityId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "notifyAdminForQuantityBelow": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "backorderModeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "allowBackInStockSubscriptions": {
+            "type": "boolean"
+          },
+          "orderMinimumQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderMaximumQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "allowedQuantities": {
+            "type": "string",
+            "nullable": true
+          },
+          "allowAddingOnlyExistingAttributeCombinations": {
+            "type": "boolean"
+          },
+          "displayAttributeCombinationImagesOnly": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UpdateShippingRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isShipEnabled": {
+            "type": "boolean"
+          },
+          "isFreeShipping": {
+            "type": "boolean"
+          },
+          "shipSeparately": {
+            "type": "boolean"
+          },
+          "additionalShippingCharge": {
+            "type": "number",
+            "format": "decimal"
           }
         }
       }

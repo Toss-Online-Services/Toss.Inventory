@@ -11,9 +11,23 @@ namespace Domain.Entities.Product;
 public sealed class Product
     : BaseAuditableEntity, IAggregateRoot, ILocalizedEntity, ISlugSupported, IAclSupported, IStoreMappingSupported, Discounts.IDiscountSupported<DiscountProductMapping>
 {
-    public Product() { }
+    public Product() {
+        Price = new();
+        Availability = new();
+        Inventory = new();
+        Shipping = new();
+        Tax = new();
+        DownloadableProduct = new();
+        GiftCard = new();
+        RecurringProduct = new();
+        RentalProduct = new();
+        PhysicalAttributes = new();
+        ComplianceAndStandards = new();
+        Lifecycle = new();
 
-    public Product(CreateProductCommand command)
+    }
+
+    public Product(CreateProductCommand command):this()
     {
         Apply(command);
     }
