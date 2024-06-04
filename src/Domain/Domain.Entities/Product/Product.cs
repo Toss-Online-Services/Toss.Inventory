@@ -18,6 +18,7 @@ public sealed class Product
         Apply(command);
     }
 
+    public string ProductId { get; set; }
     public bool SubjectToAcl { get; private set; }
     public bool LimitedToStores { get; private set; }
 
@@ -114,6 +115,8 @@ public sealed class Product
         DisplayOrder = command.DisplayOrder;
         Published = command.Published;
         Deleted = command.Deleted;
+
+
         ProductType = (ProductType)command.ProductTypeId;
         BackorderMode = (BackorderMode)command.BackorderModeId;
         DownloadActivationType = (DownloadActivationType)command.DownloadActivationTypeId;
@@ -123,12 +126,42 @@ public sealed class Product
         RecurringCyclePeriod = (RecurringProductCyclePeriod)command.RecurringCyclePeriodId;
         RentalPricePeriod = (RentalPricePeriod)command.RentalPricePeriodId;
 
-        this.AddDomainEvent(new ProductCreatedDomainEvent(this));
+        Price.Apply(command.Price);
+        Availability.Apply(command.Availability);
+        Inventory.Apply(command.Inventory);
+        Shipping.Apply(command.Shipping);
+
+        AddDomainEvent(new ProductCreatedDomainEvent(this));
     }
 
-    public void Apply(UpdateProductCommand command)
+    public void UpdateAvailability(UpdateAvailabilityCommand availabilityCommand)
+    {
+        Availability.Apply(availabilityCommand);
+        AddDomainEvent(new ProductAvailabilityUpdatedDomainEvent(ProductId, Availability));
+    }
+
+    public void UpdateShipping(UpdateShippingCommand shippingCommand)
+    {
+        Shipping.Apply(shippingCommand);
+        AddDomainEvent(new ProductShippingUpdatedDomainEvent(ProductId, Shipping));
+    }
+
+    public void UpdateInventory(UpdateInventoryCommand inventoryCommand)
+    {
+        Inventory.Apply(inventoryCommand);
+        AddDomainEvent(new ProductInventoryUpdatedDomainEvent(ProductId, Inventory));
+    }
+
+    public void AddPrice(UpdatePriceCommand priceCommand)
+    {
+        Price.Apply(priceCommand);
+        AddDomainEvent(new ProductPriceUpdatedDomainEvent(ProductId, Price));
+    }
+
+    public void Update(UpdateProductCommand command)
     {
         // Update properties based on the event
+        
         SubjectToAcl = command.SubjectToAcl;
         LimitedToStores = command.LimitedToStores;
         ProductTypeId = command.ProductTypeId;
@@ -155,63 +188,25 @@ public sealed class Product
         RecurringCyclePeriod = (RecurringProductCyclePeriod)command.RecurringCyclePeriodId;
         RentalPricePeriod = (RentalPricePeriod)command.RentalPricePeriodId;
 
-        this.AddDomainEvent(new ProductUpdatedDomainEvent(this));
+        AddDomainEvent(new ProductUpdatedDomainEvent(this));
     }
 
-    public void Apply(ProductDeletedEvent @event)
+    public void Delete()
     {
-        this.Deleted = true;
-        this.AddDomainEvent(new ProductDeletedDomainEvent(this));
+        Deleted = true;
+        AddDomainEvent(new ProductDeletedDomainEvent(this));
     }
 
-    public void Apply(ProductPublishedDomainEvent @event)
+    public void Publish()
     {
-        this.Published = true;
-        this.AddDomainEvent(new ProductPublishedDomainEvent(this));
+        Published = true;
+        AddDomainEvent(new ProductPublishedDomainEvent(this));
     }
 
-    public void Apply(ProductUnpublishedDomainEvent @event)
+    public void UnPublish()
     {
-        this.Published = false;
-        this.AddDomainEvent(new ProductUnpublishedDomainEvent(this));
+        Published = false;
+        AddDomainEvent(new ProductUnpublishedDomainEvent(this));
     }
-
-    public void Apply(ProductReviewAddedDomainEvent @event)
-    {
-        // Handle product review added event
-        this.AddDomainEvent(new ProductReviewAddedDomainEvent(this, @event.Review));
-    }
-
-    public void Apply(ProductReviewUpdatedDomainEvent @event)
-    {
-        // Handle product review updated event
-        this.AddDomainEvent(new ProductReviewUpdatedDomainEvent(this, @event.Review));
-    }
-
-    public void Apply(ProductReviewDeletedDomainEvent @event)
-    {
-        // Handle product review deleted event
-        this.AddDomainEvent(new ProductReviewDeletedDomainEvent(this, @event.Review));
-    }
-
-    public void Apply(ProductInventoryAdjustedDomainEvent @event)
-    {
-        // Handle product inventory adjusted event
-       
-        this.AddDomainEvent(new ProductInventoryAdjustedDomainEvent(this, @event.OldQuantity, @event.NewQuantity));
-    }
-
-    public void Apply(ProductStockQuantityChangedDomainEvent @event)
-    {
-        // Handle product stock quantity changed event        
-        this.AddDomainEvent(new ProductStockQuantityChangedDomainEvent(this, @event.OldQuantity, @event.NewQuantity));
-    }
-
-    public void Apply(ProductPriceChangedEvent @event)
-    {
-        // Handle product price changed event
-        this.AddDomainEvent(new ProductPriceChangedDomainEvent(this, @event.OldPrice, @event.NewPrice));
-    }
-
-    // Add other event handling methods as needed
+    
 }

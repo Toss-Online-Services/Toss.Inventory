@@ -1,4 +1,5 @@
-﻿using Domain.Infrastructure;
+﻿using Domain.Entities.Product.Commands;
+using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
 public class Shipping : ValueObject
@@ -14,6 +15,14 @@ public class Shipping : ValueObject
         yield return IsFreeShipping;
         yield return ShipSeparately;
         yield return AdditionalShippingCharge;
+    }
+
+    internal void Apply(UpdateShippingCommand shipping)
+    {
+        IsShipEnabled = shipping.IsShipEnabled;
+        IsFreeShipping = shipping.IsFreeShipping;
+        ShipSeparately = shipping.ShipSeparately;
+        AdditionalShippingCharge = shipping.AdditionalShippingCharge;
     }
 }
 

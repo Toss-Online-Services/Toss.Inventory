@@ -1,4 +1,5 @@
-﻿using Domain.Infrastructure;
+﻿using Domain.Entities.Product.Events;
+using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
 
@@ -7,6 +8,7 @@ namespace Domain.Entities.Product;
 /// </summary>
 public class Review : Entity
 {
+   
     /// <summary>
     /// Gets or sets the customer identifier
     /// </summary>

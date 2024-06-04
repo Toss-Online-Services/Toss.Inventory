@@ -1,4 +1,5 @@
-﻿using Domain.Infrastructure;
+﻿using Domain.Entities.Product.Commands;
+using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
 public class Availability : ValueObject
@@ -17,6 +18,17 @@ public class Availability : ValueObject
         yield return PreOrderAvailabilityStartDateTimeUtc;
         yield return ProductAvailabilityRangeId;
         yield return DeliveryDateId;
+    }
+
+    internal void Apply(UpdateAvailabilityCommand availability)
+    {
+        AvailableStartDateTimeUtc = availability.AvailableStartDateTimeUtc;
+        AvailableEndDateTimeUtc = availability.AvailableEndDateTimeUtc;
+        AvailableForPreOrder = availability.AvailableForPreOrder;
+        PreOrderAvailabilityStartDateTimeUtc = availability.PreOrderAvailabilityStartDateTimeUtc;
+        ProductAvailabilityRangeId = availability.ProductAvailabilityRangeId;
+        DeliveryDateId = availability.DeliveryDateId;
+        
     }
 }
 

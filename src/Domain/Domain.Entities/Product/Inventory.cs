@@ -1,4 +1,5 @@
-﻿using Domain.Infrastructure;
+﻿using Domain.Entities.Product.Commands;
+using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
 public class Inventory : ValueObject
@@ -35,6 +36,24 @@ public class Inventory : ValueObject
         yield return AllowedQuantities;
         yield return AllowAddingOnlyExistingAttributeCombinations;
         yield return DisplayAttributeCombinationImagesOnly;
+
+    }
+
+    internal void Apply(UpdateInventoryCommand inventory)
+    { 
+        ManageInventoryMethodId = inventory.ManageInventoryMethodId;
+        WarehouseId = inventory.WarehouseId;
+        StockQuantity = inventory.StockQuantity;
+        MinStockQuantity = inventory.MinStockQuantity;
+        LowStockActivityId = inventory.LowStockActivityId;
+        NotifyAdminForQuantityBelow = inventory.NotifyAdminForQuantityBelow;
+        BackorderModeId = inventory.BackorderModeId;
+        AllowBackInStockSubscriptions = inventory.AllowBackInStockSubscriptions;
+        OrderMinimumQuantity = inventory.OrderMinimumQuantity;
+        OrderMaximumQuantity = inventory.OrderMaximumQuantity;
+        AllowedQuantities = inventory.AllowedQuantities;
+        AllowAddingOnlyExistingAttributeCombinations = inventory.AllowAddingOnlyExistingAttributeCombinations;
+        DisplayAttributeCombinationImagesOnly = inventory.DisplayAttributeCombinationImagesOnly;
 
     }
 }

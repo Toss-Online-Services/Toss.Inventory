@@ -1,4 +1,5 @@
-﻿using Domain.Infrastructure;
+﻿using Domain.Entities.Product.Commands;
+using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
 public class Price : ValueObject
@@ -32,6 +33,22 @@ public class Price : ValueObject
         yield return MaximumCustomerEnteredPrice;
         yield return BasepriceAmount;
 
+    }
+
+    internal void Apply(UpdatePriceCommand priceCommand)
+    {
+        CurrentPrice = priceCommand.CurrentPrice;
+        OldPrice = priceCommand.OldPrice;
+        ProductCost = priceCommand.ProductCost;
+        CustomerEntersPrice = priceCommand.CustomerEntersPrice;
+        MinimumCustomerEnteredPrice = priceCommand.MinimumCustomerEnteredPrice;
+        MaximumCustomerEnteredPrice = priceCommand.MaximumCustomerEnteredPrice;
+        BasepriceEnabled = priceCommand.BasepriceEnabled;
+        BasepriceAmount = priceCommand.BasepriceAmount;
+        BasepriceUnitId = priceCommand.BasepriceUnitId;
+        BasepriceBaseAmount = priceCommand.BasepriceBaseAmount;
+        BasepriceBaseUnitId = priceCommand.BasepriceBaseUnitId;
+        CallForPrice = priceCommand.CallForPrice;
     }
 }
 
