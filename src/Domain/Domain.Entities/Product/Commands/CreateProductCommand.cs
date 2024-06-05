@@ -384,7 +384,7 @@ public record CreateProductCommand : ICommand<bool>
     /// </summary>
     public DateTime? PreOrderAvailabilityStartDateTimeUtc { get; init; }
 
-    
+
     public bool MarkAsNew { get; init; }
 
     /// <summary>
@@ -476,4 +476,13 @@ public record CreateProductCommand : ICommand<bool>
     public UpdateAvailabilityCommand Availability { get; init; }
     public UpdateInventoryCommand Inventory { get; init; }
     public UpdateShippingCommand Shipping { get; init; }
+    public UpdateTaxCommand Tax { get; init; }
+    public UpdateDownloadableProductCommand DownloadableProduct { get; init; }
+    public UpdateGiftCardCommand GiftCard { get; init; }
+    public UpdateRecurringProductCommand RecurringProduct { get; init; }
+    public UpdateRentalProductCommand RentalProduct { get; init; }
+    public UpdatePhysicalAttributesCommand PhysicalAttributes { get; init; }
+    public UpdateComplianceAndStandardsCommand ComplianceAndStandards { get; init; }
+    public UpdateLifecycleCommand Lifecycle { get; init; }
+
 }

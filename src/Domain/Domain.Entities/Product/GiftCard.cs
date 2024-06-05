@@ -13,5 +13,12 @@ public class GiftCard : ValueObject
         yield return OverriddenGiftCardAmount;
         yield return GiftCardTypeId;
     }
+
+    internal void Apply(UpdateGiftCardCommand giftCard)
+    {
+        IsGiftCard = giftCard.IsGiftCard;
+        OverriddenGiftCardAmount = giftCard.OverriddenGiftCardAmount;
+        GiftCardTypeId = giftCard.GiftCardTypeId;
+    }
 }
 

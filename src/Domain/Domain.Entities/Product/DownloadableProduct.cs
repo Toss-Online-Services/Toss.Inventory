@@ -1,4 +1,5 @@
-﻿using Domain.Infrastructure;
+﻿using Domain.Entities.Product.Commands;
+using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
 public class DownloadableProduct : ValueObject
@@ -24,6 +25,20 @@ public class DownloadableProduct : ValueObject
         yield return MaxNumberOfDownloads;
         yield return DownloadActivationTypeId;
         yield return UserAgreementText;
+    }
+
+    internal void Apply(UpdateDownloadableProductCommand downloadableProduct)
+    {
+        IsDownload = downloadableProduct.IsDownload;
+        DownloadId = downloadableProduct.DownloadId;
+        UnlimitedDownloads = downloadableProduct.UnlimitedDownloads;
+        MaxNumberOfDownloads = downloadableProduct.MaxNumberOfDownloads;
+        DownloadExpirationDays = downloadableProduct.DownloadExpirationDays;
+        DownloadActivationTypeId = downloadableProduct.DownloadActivationTypeId;
+        HasSampleDownload = downloadableProduct.HasSampleDownload;
+        SampleDownloadId = downloadableProduct.SampleDownloadId;
+        HasUserAgreement = downloadableProduct.HasUserAgreement;
+        UserAgreementText = downloadableProduct.UserAgreementText;
     }
 }
 

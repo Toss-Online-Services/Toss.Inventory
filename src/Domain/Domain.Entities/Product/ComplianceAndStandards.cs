@@ -19,5 +19,15 @@ public class ComplianceAndStandards : ValueObject
         yield return EnvironmentalImpact;
         yield return RecyclingInformation;
     }
+
+    internal void Apply(UpdateComplianceAndStandardsCommand complianceAndStandards)
+    {
+        NotReturnable = complianceAndStandards.NotReturnable;
+        Certifications = complianceAndStandards.Certifications;
+        RegulatoryApprovals = complianceAndStandards.RegulatoryApprovals;
+        SafetyInformation = complianceAndStandards.SafetyInformation;
+        EnvironmentalImpact = complianceAndStandards.EnvironmentalImpact;
+        RecyclingInformation = complianceAndStandards.RecyclingInformation;
+    }
 }
 

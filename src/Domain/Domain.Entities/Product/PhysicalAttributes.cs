@@ -24,5 +24,17 @@ public class PhysicalAttributes : ValueObject
         yield return Size;
         yield return PackagingType;
     }
+
+    internal void Apply(UpdatePhysicalAttributesCommand physicalAttributes)
+    {
+        Weight = physicalAttributes.Weight;
+        Length = physicalAttributes.Length;
+        Width = physicalAttributes.Width;
+        Height = physicalAttributes.Height;
+        Color = physicalAttributes.Color;
+        Material = physicalAttributes.Material;
+        Size = physicalAttributes.Size;
+        PackagingType = physicalAttributes.PackagingType;
+    }
 }
 

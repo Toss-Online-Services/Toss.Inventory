@@ -1,4 +1,5 @@
-﻿using Domain.Infrastructure;
+﻿using Domain.Entities.Product.Commands;
+using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
 public class Tax : ValueObject
@@ -11,6 +12,13 @@ public class Tax : ValueObject
         yield return IsTaxExempt;
         yield return TaxCategoryId;
 
+    }
+
+    internal void Apply(UpdateTaxCommand tax)
+    {
+        IsTaxExempt = tax.IsTaxExempt;
+        TaxCategoryId = tax.TaxCategoryId;
+        
     }
 }
 

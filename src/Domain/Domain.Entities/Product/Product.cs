@@ -32,11 +32,12 @@ public sealed class Product
         Apply(command);
     }
 
-    public string ProductId { get; set; }
+    
     public bool SubjectToAcl { get; private set; }
     public bool LimitedToStores { get; private set; }
 
     // Identification
+    public string ProductId { get; set; }
     public int ProductTypeId { get; private set; }
     public int ParentGroupedProductId { get; private set; }
     public bool VisibleIndividually { get; private set; }
@@ -144,6 +145,15 @@ public sealed class Product
         Availability.Apply(command.Availability);
         Inventory.Apply(command.Inventory);
         Shipping.Apply(command.Shipping);
+        Tax.Apply(command.Tax);
+        DownloadableProduct.Apply(command.DownloadableProduct);
+        GiftCard.Apply(command.GiftCard);
+        RecurringProduct.Apply(command.RecurringProduct);
+        RentalProduct.Apply(command.RentalProduct);
+        PhysicalAttributes.Apply(command.PhysicalAttributes);
+        ComplianceAndStandards.Apply(command.ComplianceAndStandards);
+        Lifecycle.Apply(command.Lifecycle);
+
 
         AddDomainEvent(new ProductCreatedDomainEvent(this));
     }

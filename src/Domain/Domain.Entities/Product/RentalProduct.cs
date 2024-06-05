@@ -13,4 +13,11 @@ public class RentalProduct : ValueObject
         yield return RentalPriceLength;
         yield return RentalPricePeriodId;
     }
+
+    internal void Apply(UpdateRentalProductCommand rentalProduct)
+    {
+        IsRental = rentalProduct.IsRental;
+        RentalPriceLength = rentalProduct.RentalPriceLength;
+        RentalPricePeriodId = rentalProduct.RentalPricePeriodId;
+    }
 }

@@ -16,5 +16,13 @@ public class Lifecycle : ValueObject
         yield return SerialNumber;
 
     }
+
+    internal void Apply(UpdateLifecycleCommand lifecycle)
+    {
+        ManufactureDate = lifecycle.ManufactureDate;
+        ExpirationDate = lifecycle.ExpirationDate;
+        BatchNumber = lifecycle.BatchNumber;
+        SerialNumber = lifecycle.SerialNumber;
+    }
 }
 

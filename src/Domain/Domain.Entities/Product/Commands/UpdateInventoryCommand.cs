@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Entities.Product.Commands;
-public record UpdateInventoryCommand(string ProductId, int Quantity) : ICommand<bool>
+public record UpdateInventoryCommand() : ICommand<bool>
 {
     public int ManageInventoryMethodId { get; init; }
     public int WarehouseId { get; init; }

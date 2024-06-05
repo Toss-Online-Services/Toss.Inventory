@@ -15,5 +15,13 @@ public class RecurringProduct : ValueObject
         yield return RecurringCyclePeriodId;
         yield return RecurringTotalCycles;
     }
+
+    internal void Apply(UpdateRecurringProductCommand recurringProduct)
+    {
+        IsRecurring = recurringProduct.IsRecurring;
+        RecurringCycleLength = recurringProduct.RecurringCycleLength;
+        RecurringCyclePeriodId = recurringProduct.RecurringCyclePeriodId;
+        RecurringTotalCycles = recurringProduct.RecurringTotalCycles;
+    }
 }
 
