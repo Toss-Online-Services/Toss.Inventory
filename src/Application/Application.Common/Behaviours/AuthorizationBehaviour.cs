@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Application.Infrastructure.Security;
-using Application.Infrastructure.Interfaces;
 using Application.Infrastructure.Exceptions;
 using Application.Infrastructure.Services;
 using Domain.Infrastructure;

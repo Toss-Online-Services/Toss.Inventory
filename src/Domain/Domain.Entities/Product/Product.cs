@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using Domain.Entities.Catalog;
+﻿using Domain.Entities.Catalog;
 using Domain.Entities.Discounts;
 using Domain.Entities.Product.Commands;
 using Domain.Entities.Product.Events;
-using Domain.Infrastructure;
-using System.Threading.Tasks;
 
 namespace Domain.Entities.Product;
 
@@ -42,6 +39,12 @@ public sealed class Product
     public int ParentGroupedProductId { get; private set; }
     public bool VisibleIndividually { get; private set; }
     public string Name { get; private set; }
+    public string Description { get; private set; }
+    public string Sku { get; set; }
+    public string Gtin { get; set; }
+    public string ManufacturerPartNumber { get; set; }
+    public string VendorPartNumber { get; set; }
+        
 
     // Descriptions
     public string ShortDescription { get; private set; }
@@ -56,6 +59,13 @@ public sealed class Product
     // Branding and Vendor
     public int ProductTemplateId { get; private set; }
     public int VendorId { get; private set; }
+
+    // Display order
+    public int DisplayOrder { get; private set; }
+
+    // Status
+    public bool Published { get; private set; }
+    public bool Deleted { get; private set; }
 
     // Pricing
     public Price Price { get; private set; }
@@ -91,14 +101,7 @@ public sealed class Product
     public ComplianceAndStandards ComplianceAndStandards { get; private set; }
 
     // Lifecycle
-    public Lifecycle Lifecycle { get; private set; }
-
-    // Display order
-    public int DisplayOrder { get; private set; }
-
-    // Status
-    public bool Published { get; private set; }
-    public bool Deleted { get; private set; }
+    public Lifecycle Lifecycle { get; private set; }   
 
     // Enum Mappings
     public ProductType ProductType { get; private set; }

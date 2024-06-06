@@ -1,6 +1,4 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public class ComplianceAndStandards : ValueObject
 {
     public bool NotReturnable { get; private set; }

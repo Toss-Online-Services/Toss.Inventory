@@ -1,7 +1,5 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Product;
- public record UpdatePhysicalAttributesCommand : ICommand<bool>
+﻿namespace Domain.Entities.Product;
+public record UpdatePhysicalAttributesCommand : ICommand<bool>
 {
     public decimal Weight { get; init; }
     public decimal Length { get; init; }

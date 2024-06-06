@@ -1,5 +1,4 @@
-﻿using Domain.Infrastructure;
-using Domain.ValueObjects;
+﻿using Domain.ValueObjects;
 
 namespace Domain.Entities;
 

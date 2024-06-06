@@ -1,7 +1,4 @@
-﻿using Domain.Entities.Product.Commands;
-using Domain.Infrastructure;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public record UpdateComplianceAndStandardsRequest : IRequest<bool>
 {
     public bool NotReturnable { get; init; }

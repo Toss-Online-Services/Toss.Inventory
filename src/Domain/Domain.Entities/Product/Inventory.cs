@@ -1,5 +1,4 @@
 ﻿using Domain.Entities.Product.Commands;
-using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
 public class Inventory : ValueObject
@@ -17,6 +16,9 @@ public class Inventory : ValueObject
     public string AllowedQuantities { get; private set; }
     public bool AllowAddingOnlyExistingAttributeCombinations { get; private set; }
     public bool DisplayAttributeCombinationImagesOnly { get; private set; }
+    public bool UseMultipleWarehouses { get; private set; }
+    public bool DisplayStockAvailability { get; private set; }
+    public bool DisplayStockQuantity { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

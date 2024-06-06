@@ -1,16 +1,10 @@
 ﻿using System.Reflection;
-using Application.Events.IntegrationEvents.EventHandling;
-using Application.Events.IntegrationEvents.Events;
 using Application.Infrastructure.Behaviours;
 using Infrastructure.EventBus.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
-using Infrastructure.EventBus.Extensions;
 using Microsoft.Extensions.Hosting;
 using Application.Events.IntegrationEvents;
-using Application.Infrastructure.Interfaces;
-using Domain.Infrastructure;
 using Application.Infrastructure.Services;
-using Application.Infrastructure.IntegrationEvents;
 
 namespace Application.Features;
 

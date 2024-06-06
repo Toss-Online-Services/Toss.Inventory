@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Events.IntegrationEvents;
+﻿using Application.Events.IntegrationEvents;
 using Application.Features.Products.IntegrationEvents.Events;
-using Domain.Entities.Events;
 using Domain.Entities.Product.Events;
 using Domain.Repositories;
 using Microsoft.Extensions.Logging;

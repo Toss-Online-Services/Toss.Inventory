@@ -1,6 +1,4 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public record UpdateRentalProductRequest : IRequest<bool>
 {
     public bool IsRental { get; init; }

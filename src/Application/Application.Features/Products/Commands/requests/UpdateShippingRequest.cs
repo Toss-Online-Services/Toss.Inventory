@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Features.Products.Commands.CreateProduct;
-
-namespace Domain.Entities.Product.Commands;
+﻿namespace Domain.Entities.Product.Commands;
 
 public record UpdateShippingRequest() : IRequest<bool>
 {

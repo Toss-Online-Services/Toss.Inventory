@@ -1,5 +1,4 @@
 ﻿using Domain.Entities.Catalog;
-using Domain.Infrastructure;
 
 namespace Domain.Entities.Product.Events;
 

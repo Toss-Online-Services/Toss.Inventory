@@ -2,7 +2,6 @@
 using Domain.Entities.Product;
 using Domain.Infrastructure;
 using Domain.Repositories;
-using Infrastructure.Data;
 
 namespace Infrastructure.Data.Repositories
 {

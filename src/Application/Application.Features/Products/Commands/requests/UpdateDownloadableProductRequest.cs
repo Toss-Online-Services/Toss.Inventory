@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Entities.Product.Commands;
+﻿namespace Domain.Entities.Product.Commands;
 public record UpdateDownloadableProductRequest : IRequest<bool>
 {
     public bool IsDownload { get; init; }

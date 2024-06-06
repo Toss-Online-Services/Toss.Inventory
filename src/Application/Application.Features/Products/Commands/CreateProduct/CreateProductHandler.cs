@@ -1,6 +1,4 @@
-﻿using Application.Infrastructure.IntegrationEvents;
-using Application.Infrastructure.Services;
-using Domain.Entities.Product.Commands;
+﻿using Domain.Entities.Product.Commands;
 using Domain.Repositories;
 using Microsoft.Extensions.Logging;
 

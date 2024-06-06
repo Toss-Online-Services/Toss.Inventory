@@ -1,7 +1,4 @@
-﻿using Domain.Entities.Product.Commands;
-using Domain.Infrastructure;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public record UpdateGiftCardRequest : IRequest<bool>
 {
     public bool IsGiftCard { get; init; }

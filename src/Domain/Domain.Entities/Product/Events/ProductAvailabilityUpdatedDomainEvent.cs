@@ -1,4 +1,2 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Product.Events;
+﻿namespace Domain.Entities.Product.Events;
 public record ProductAvailabilityUpdatedDomainEvent(string ProductId, Availability Availability) : BaseEvent;

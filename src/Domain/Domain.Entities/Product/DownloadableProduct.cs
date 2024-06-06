@@ -1,5 +1,4 @@
 ﻿using Domain.Entities.Product.Commands;
-using Domain.Infrastructure;
 
 namespace Domain.Entities.Product;
 public class DownloadableProduct : ValueObject

@@ -1,6 +1,4 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public class RecurringProduct : ValueObject
 {
     public bool IsRecurring { get; private set; }

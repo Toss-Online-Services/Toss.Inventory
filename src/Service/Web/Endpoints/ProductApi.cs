@@ -1,5 +1,4 @@
 ﻿using Application.Features.Products.Commands.CreateProduct;
-using MediatR;
 using Web.Infrastructure;
 
 namespace Web.Endpoints;

@@ -1,6 +1,4 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public class PhysicalAttributes : ValueObject
 {
     public decimal Weight { get; private set; }

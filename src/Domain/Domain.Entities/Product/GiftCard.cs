@@ -1,6 +1,4 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public class GiftCard : ValueObject
 {
     public bool IsGiftCard { get; private set; }

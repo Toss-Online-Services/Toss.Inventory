@@ -3,7 +3,6 @@
 namespace Application.Infrastructure.Behaviours;
 
 using Application.Events.IntegrationEvents;
-using Application.Infrastructure.IntegrationEvents;
 using global::Infrastructure.Data;
 using Microsoft.Extensions.Logging;
 

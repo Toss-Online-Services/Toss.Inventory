@@ -1,6 +1,5 @@
 ﻿using Domain.Entities.Events;
 using Domain.Enums;
-using Domain.Infrastructure;
 
 namespace Domain.Entities;
 

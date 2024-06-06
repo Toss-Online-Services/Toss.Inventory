@@ -1,6 +1,4 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Discounts;
+﻿namespace Domain.Entities.Discounts;
 
 /// <summary>
 /// Represents a discount usage history entry

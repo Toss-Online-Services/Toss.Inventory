@@ -1,6 +1,4 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Events;
+﻿namespace Domain.Entities.Events;
 
 public record TodoItemDeletedEvent : BaseEvent
 {

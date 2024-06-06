@@ -1,6 +1,4 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public record UpdateComplianceAndStandardsCommand : ICommand<bool>
 {
     public bool NotReturnable { get; init; }

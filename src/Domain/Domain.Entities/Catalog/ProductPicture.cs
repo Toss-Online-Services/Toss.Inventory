@@ -1,6 +1,4 @@
-﻿using Domain.Infrastructure;
-
-namespace Domain.Entities.Catalog;
+﻿namespace Domain.Entities.Catalog;
 
 /// <summary>
 /// Represents a product picture mapping

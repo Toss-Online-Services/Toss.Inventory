@@ -1,7 +1,4 @@
-﻿using Domain.Entities.Product.Events;
-using Domain.Infrastructure;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 
 /// <summary>
 /// Represents a product review

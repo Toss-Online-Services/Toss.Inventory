@@ -1,9 +1,4 @@
-﻿using Application.Features.Products.Commands.CreateProduct;
-using AutoMapper;
-using Domain.Infrastructure;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Domain.Entities.Product.Commands;
+﻿namespace Domain.Entities.Product.Commands;
 
 public record UpdateAvailabilityRequest : IRequest<bool>
 {

@@ -3,10 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using Application.Infrastructure.Interfaces;
 using Web.Services;
 using Web.Infrastructure;
-using Infrastructure.Data;
 using Domain.Infrastructure;
 
 namespace Web;
