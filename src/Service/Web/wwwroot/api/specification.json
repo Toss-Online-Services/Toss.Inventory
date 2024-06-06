@@ -379,10 +379,6 @@
             "type": "string",
             "format": "date-time"
           },
-          "updatedOnUtc": {
-            "type": "string",
-            "format": "date-time"
-          },
           "price": {
             "nullable": true,
             "oneOf": [
@@ -412,6 +408,70 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/UpdateShippingRequest"
+              }
+            ]
+          },
+          "tax": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdateTaxRequest"
+              }
+            ]
+          },
+          "downloadableProduct": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdateDownloadableProductRequest"
+              }
+            ]
+          },
+          "giftCard": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdateGiftCardRequest"
+              }
+            ]
+          },
+          "recurringProduct": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdateRecurringProductRequest"
+              }
+            ]
+          },
+          "rentalProduct": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdateRentalProductRequest"
+              }
+            ]
+          },
+          "physicalAttributes": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdatePhysicalAttributesRequest"
+              }
+            ]
+          },
+          "complianceAndStandards": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdateComplianceAndStandardsRequest"
+              }
+            ]
+          },
+          "lifecycle": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UpdateLifecycleRequest"
               }
             ]
           }
@@ -579,6 +639,209 @@
           "additionalShippingCharge": {
             "type": "number",
             "format": "decimal"
+          }
+        }
+      },
+      "UpdateTaxRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isTaxExempt": {
+            "type": "boolean"
+          },
+          "taxCategoryId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "UpdateDownloadableProductRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isDownload": {
+            "type": "boolean"
+          },
+          "downloadId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unlimitedDownloads": {
+            "type": "boolean"
+          },
+          "maxNumberOfDownloads": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "downloadExpirationDays": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "downloadActivationTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasSampleDownload": {
+            "type": "boolean"
+          },
+          "sampleDownloadId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasUserAgreement": {
+            "type": "boolean"
+          },
+          "userAgreementText": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateGiftCardRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isGiftCard": {
+            "type": "boolean"
+          },
+          "giftCardTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "overriddenGiftCardAmount": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateRecurringProductRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isRecurring": {
+            "type": "boolean"
+          },
+          "recurringCycleLength": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "recurringCyclePeriodId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "recurringTotalCycles": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "UpdateRentalProductRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isRental": {
+            "type": "boolean"
+          },
+          "rentalPriceLength": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rentalPricePeriodId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "UpdatePhysicalAttributesRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "weight": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "length": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "width": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "height": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "material": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
+          },
+          "packagingType": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateComplianceAndStandardsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "notReturnable": {
+            "type": "boolean"
+          },
+          "certifications": {
+            "type": "string",
+            "nullable": true
+          },
+          "regulatoryApprovals": {
+            "type": "string",
+            "nullable": true
+          },
+          "safetyInformation": {
+            "type": "string",
+            "nullable": true
+          },
+          "environmentalImpact": {
+            "type": "string",
+            "nullable": true
+          },
+          "recyclingInformation": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateLifecycleRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "manufactureDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "expirationDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "batchNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "serialNumber": {
+            "type": "string",
+            "nullable": true
           }
         }
       }

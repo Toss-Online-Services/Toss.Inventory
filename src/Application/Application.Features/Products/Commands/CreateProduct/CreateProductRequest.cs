@@ -1,4 +1,5 @@
-﻿using Domain.Entities.Product.Commands;
+﻿using Domain.Entities.Product;
+using Domain.Entities.Product.Commands;
 
 namespace Application.Features.Products.Commands.CreateProduct;
 
@@ -468,12 +469,18 @@ public record CreateProductRequest : IRequest<int>
     /// <summary>
     /// Gets or sets the date and time of product update
     /// </summary>
-    public DateTime UpdatedOnUtc { get; init; }
-
     public UpdatePriceRequest Price { get; init; }
     public UpdateAvailabilityRequest Availability { get; init; }
     public UpdateInventoryRequest Inventory { get; init; }
     public UpdateShippingRequest Shipping { get; init; }
+    public UpdateTaxRequest Tax { get; init; }
+    public UpdateDownloadableProductRequest DownloadableProduct { get; init; }
+    public UpdateGiftCardRequest GiftCard { get; init; }
+    public UpdateRecurringProductRequest RecurringProduct { get; init; }
+    public UpdateRentalProductRequest RentalProduct { get; init; }
+    public UpdatePhysicalAttributesRequest PhysicalAttributes { get; init; }
+    public UpdateComplianceAndStandardsRequest ComplianceAndStandards { get; init; }
+    public UpdateLifecycleRequest Lifecycle { get; init; }
 
     private class Mapping : Profile
     {

@@ -154,7 +154,6 @@ public sealed class Product
         ComplianceAndStandards.Apply(command.ComplianceAndStandards);
         Lifecycle.Apply(command.Lifecycle);
 
-
         AddDomainEvent(new ProductCreatedDomainEvent(this));
     }
 
@@ -176,43 +175,52 @@ public sealed class Product
         AddDomainEvent(new ProductInventoryUpdatedDomainEvent(ProductId, Inventory));
     }
 
-    public void AddPrice(UpdatePriceCommand priceCommand)
+    public void UpdatePrice(UpdatePriceCommand priceCommand)
     {
         Price.Apply(priceCommand);
         AddDomainEvent(new ProductPriceUpdatedDomainEvent(ProductId, Price));
     }
 
-    public void Update(UpdateProductCommand command)
+    public void UpdateRecurringProduct(UpdateRecurringProductCommand recurringProductCommand)
     {
-        // Update properties based on the event
-        
-        SubjectToAcl = command.SubjectToAcl;
-        LimitedToStores = command.LimitedToStores;
-        ProductTypeId = command.ProductTypeId;
-        ParentGroupedProductId = command.ParentGroupedProductId;
-        VisibleIndividually = command.VisibleIndividually;
-        Name = command.Name;
-        ShortDescription = command.ShortDescription;
-        FullDescription = command.FullDescription;
-        AdminComment = command.AdminComment;
-        MetaKeywords = command.MetaKeywords;
-        MetaDescription = command.MetaDescription;
-        MetaTitle = command.MetaTitle;
-        ProductTemplateId = command.ProductTemplateId;
-        VendorId = command.VendorId;
-        DisplayOrder = command.DisplayOrder;
-        Published = command.Published;
-        Deleted = command.Deleted;
-        ProductType = (ProductType)command.ProductTypeId;
-        BackorderMode = (BackorderMode)command.BackorderModeId;
-        DownloadActivationType = (DownloadActivationType)command.DownloadActivationTypeId;
-        GiftCardType = (GiftCardType)command.GiftCardTypeId;
-        LowStockActivity = (LowStockActivity)command.LowStockActivityId;
-        ManageInventoryMethod = (ManageInventoryMethod)command.ManageInventoryMethodId;
-        RecurringCyclePeriod = (RecurringProductCyclePeriod)command.RecurringCyclePeriodId;
-        RentalPricePeriod = (RentalPricePeriod)command.RentalPricePeriodId;
+        RecurringProduct.Apply(recurringProductCommand);
+        AddDomainEvent(new ProductRecurringProductUpdatedDomainEvent(ProductId, RecurringProduct));
+    }
 
-        AddDomainEvent(new ProductUpdatedDomainEvent(this));
+    public void UpdateGiftCard(UpdateGiftCardCommand giftCardCommand)
+    {
+        GiftCard.Apply(giftCardCommand);
+        AddDomainEvent(new ProductGiftCardUpdatedDomainEvent(ProductId, GiftCard));
+    }
+
+    public void UpdateDownloadableProduct(UpdateDownloadableProductCommand downloadableProductCommand)
+    {
+        DownloadableProduct.Apply(downloadableProductCommand);
+        AddDomainEvent(new DownloadableProductUpdatedDomainEvent(ProductId, DownloadableProduct));
+    }
+
+    public void UpdateRentalProduct(UpdateRentalProductCommand rentalProductCommand)
+    {
+        RentalProduct.Apply(rentalProductCommand);
+        AddDomainEvent(new RentalProductUpdatedDomainEvent(ProductId, RentalProduct));
+    }
+
+    public void UpdatePhysicalAttributes(UpdatePhysicalAttributesCommand physicalAttributesCommand)
+    {
+        PhysicalAttributes.Apply(physicalAttributesCommand);
+        AddDomainEvent(new ProductPhysicalAttributesUpdatedDomainEvent(ProductId, PhysicalAttributes));
+    }
+
+    public void UpdateComplianceAndStandards(UpdateComplianceAndStandardsCommand complianceAndStandardsCommand)
+    {
+        ComplianceAndStandards.Apply(complianceAndStandardsCommand);
+        AddDomainEvent(new ProductComplianceAndStandardsUpdatedDomainEvent(ProductId, ComplianceAndStandards));
+    }
+
+    public void UpdateLifecycle(UpdateLifecycleCommand lifecycleCommand)
+    {
+        Lifecycle.Apply(lifecycleCommand);
+        AddDomainEvent(new ProductLifecycleUpdatedDomainEvent(ProductId, Lifecycle));
     }
 
     public void Delete()
