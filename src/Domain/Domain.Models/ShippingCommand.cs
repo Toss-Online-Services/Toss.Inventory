@@ -1,6 +1,6 @@
-﻿namespace Domain.Entities.Product.Commands;
+﻿namespace Domain.Models;
 
-public record UpdateShippingCommand() : ICommand<bool>
+public record ShippingCommand()
 {
     public bool IsShipEnabled { get; init; }
     public bool IsFreeShipping { get; init; }

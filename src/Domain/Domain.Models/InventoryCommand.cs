@@ -1,5 +1,5 @@
-﻿namespace Domain.Models.Commands;
-public record InventoryCommand()
+﻿namespace Domain.Models;
+public record InventoryCommand
 {
     public int ManageInventoryMethodId { get; init; }
     public int WarehouseId { get; init; }

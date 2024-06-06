@@ -1,6 +1,6 @@
-﻿namespace Domain.Entities.Product.Commands;
+﻿namespace Domain.Models;
 
-public record UpdatePriceCommand : ICommand<bool>
+public record PriceCommand
 {
     /// <summary>
     /// Gets or sets a value indicating whether to show "Call for Pricing" or "Call for quote" instead of price

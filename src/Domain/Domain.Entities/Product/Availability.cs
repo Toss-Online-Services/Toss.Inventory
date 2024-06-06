@@ -1,6 +1,4 @@
-﻿using Domain.Entities.Product.Commands;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public class Availability : ValueObject
 {
     public DateTime? AvailableStartDateTimeUtc { get; private set; }

@@ -1,5 +1,4 @@
-﻿using Domain.Entities.Product.Commands;
-using Domain.Repositories;
+﻿using Domain.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Features.Products.Commands.CreateProduct;

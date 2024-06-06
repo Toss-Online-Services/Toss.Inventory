@@ -1,6 +1,4 @@
-﻿
-
-namespace Domain.Models.Commands;
+﻿namespace Domain.Models;
 public record RentalProductCommand
 {
     public bool IsRental { get; init; }

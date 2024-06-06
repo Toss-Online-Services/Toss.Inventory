@@ -12,10 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Domain.Commands\Domain.Commands.csproj" />
     <ProjectReference Include="..\Domain.Common\Domain.Infrastructure.csproj" />
     <ProjectReference Include="..\Domain.Enums\Domain.Enums.csproj" />
     <ProjectReference Include="..\Domain.SeedWork\Domain.SeedWork.csproj" />
     <ProjectReference Include="..\Domain.ValueObjects\Domain.ValueObjects.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Product\Commands\" />
   </ItemGroup>
 
 </Project>

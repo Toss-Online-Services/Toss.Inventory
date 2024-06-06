@@ -1,6 +1,4 @@
-﻿using Domain.Entities.Product.Commands;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public class Shipping : ValueObject
 {
     public bool IsShipEnabled { get; private set; }

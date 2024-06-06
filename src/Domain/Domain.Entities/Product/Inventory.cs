@@ -1,6 +1,4 @@
-﻿using Domain.Entities.Product.Commands;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public class Inventory : ValueObject
 {
     public int ManageInventoryMethodId { get; private set; }

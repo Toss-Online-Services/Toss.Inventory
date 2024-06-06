@@ -1,6 +1,4 @@
-﻿using Domain.Entities.Product.Commands;
-
-namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Product;
 public class Price : ValueObject
 {
     public decimal CurrentPrice { get; private set; }

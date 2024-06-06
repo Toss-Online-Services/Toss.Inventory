@@ -1,5 +1,5 @@
-﻿namespace Domain.Entities.Product;
-public record UpdateRecurringProductCommand : ICommand<bool>
+﻿namespace Domain.Models;
+public record RecurringProductCommand
 {
     public bool IsRecurring { get; init; }
     public int RecurringCycleLength { get; init; }

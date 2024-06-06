@@ -1,5 +1,5 @@
-﻿namespace Domain.Entities.Product.Commands;
-public record UpdateDownloadableProductCommand: ICommand<bool>
+﻿namespace Domain.Models;
+public record DownloadableProductCommand
 {
     public bool IsDownload { get; init; }
     public int DownloadId { get; init; }

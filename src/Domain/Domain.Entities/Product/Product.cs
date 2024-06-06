@@ -1,6 +1,5 @@
 ﻿using Domain.Entities.Catalog;
 using Domain.Entities.Discounts;
-using Domain.Entities.Product.Commands;
 using Domain.Entities.Product.Events;
 
 namespace Domain.Entities.Product;

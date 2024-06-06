@@ -1,5 +1,5 @@
-﻿namespace Domain.Entities.Product;
-public record UpdateGiftCardCommand : ICommand<bool>
+﻿namespace Domain.Models;
+public record GiftCardCommand
 {
     public bool IsGiftCard { get; init; }
     public int GiftCardTypeId { get; init; }
