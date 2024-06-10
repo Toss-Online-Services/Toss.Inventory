@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 public class DownloadableProduct : ValueObject
 {
     public bool IsDownload { get; private set; }

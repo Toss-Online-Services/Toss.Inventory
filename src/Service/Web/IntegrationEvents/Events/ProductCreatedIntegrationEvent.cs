@@ -1,4 +1,4 @@
-﻿using Domain.Entities.Product;
+﻿using Domain.Entities.Catalog;
 using Infrastructure.EventBus.Events;
 
 namespace Web.IntegrationEvents.Events;

@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using Domain.Entities.Product;
+using Domain.Entities.Catalog;
 using Domain.Infrastructure;
 using Domain.Repositories;
 

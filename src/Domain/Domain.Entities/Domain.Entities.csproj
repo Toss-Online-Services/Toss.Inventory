@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Domain.ValueObjects\Domain.ValueObjects.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Product\Commands\" />
-  </ItemGroup>
-
 </Project>

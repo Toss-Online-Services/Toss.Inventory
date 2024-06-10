@@ -1,11 +1,11 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 
 /// <summary>
 /// Represents a product review
 /// </summary>
 public class Review : Entity
 {
-   
+
     /// <summary>
     /// Gets or sets the customer identifier
     /// </summary>

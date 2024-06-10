@@ -1,4 +1,4 @@
-﻿using Domain.Entities.Product;
+﻿using Domain.Entities.Catalog;
 using Domain.Infrastructure;
 
 namespace Domain.Repositories;

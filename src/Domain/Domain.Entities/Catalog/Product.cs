@@ -1,13 +1,13 @@
-﻿using Domain.Entities.Catalog;
-using Domain.Entities.Discounts;
+﻿using Domain.Entities.Discounts;
 using Domain.Entities.Product.Events;
 
-namespace Domain.Entities.Product;
+namespace Domain.Entities.Catalog;
 
 public sealed class Product
     : BaseAuditableEntity, IAggregateRoot, ILocalizedEntity, ISlugSupported, IAclSupported, IStoreMappingSupported, Discounts.IDiscountSupported<DiscountProductMapping>
 {
-    public Product() {
+    public Product()
+    {
         Price = new();
         Availability = new();
         Inventory = new();
@@ -23,12 +23,12 @@ public sealed class Product
 
     }
 
-    public Product(CreateProductCommand command):this()
+    public Product(CreateProductCommand command) : this()
     {
         Apply(command);
     }
 
-    
+
     public bool SubjectToAcl { get; private set; }
     public bool LimitedToStores { get; private set; }
 
@@ -43,7 +43,7 @@ public sealed class Product
     public string Gtin { get; set; }
     public string ManufacturerPartNumber { get; set; }
     public string VendorPartNumber { get; set; }
-        
+
 
     // Descriptions
     public string ShortDescription { get; private set; }
@@ -100,7 +100,7 @@ public sealed class Product
     public ComplianceAndStandards ComplianceAndStandards { get; private set; }
 
     // Lifecycle
-    public Lifecycle Lifecycle { get; private set; }   
+    public Lifecycle Lifecycle { get; private set; }
 
     // Enum Mappings
     public ProductType ProductType { get; private set; }
@@ -242,5 +242,5 @@ public sealed class Product
         Published = false;
         AddDomainEvent(new ProductUnpublishedDomainEvent(this));
     }
-    
+
 }

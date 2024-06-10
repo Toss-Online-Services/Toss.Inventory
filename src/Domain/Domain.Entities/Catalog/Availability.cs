@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 public class Availability : ValueObject
 {
     public DateTime? AvailableStartDateTimeUtc { get; private set; }
@@ -25,7 +25,7 @@ public class Availability : ValueObject
         PreOrderAvailabilityStartDateTimeUtc = availability.PreOrderAvailabilityStartDateTimeUtc;
         ProductAvailabilityRangeId = availability.ProductAvailabilityRangeId;
         DeliveryDateId = availability.DeliveryDateId;
-        
+
     }
 }
 

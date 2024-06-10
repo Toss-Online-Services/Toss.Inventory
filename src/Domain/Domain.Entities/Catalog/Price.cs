@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 public class Price : ValueObject
 {
     public decimal CurrentPrice { get; private set; }

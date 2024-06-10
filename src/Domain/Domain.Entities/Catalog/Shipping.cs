@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 public class Shipping : ValueObject
 {
     public bool IsShipEnabled { get; private set; }

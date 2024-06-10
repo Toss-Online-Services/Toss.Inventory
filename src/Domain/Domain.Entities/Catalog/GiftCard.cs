@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 public class GiftCard : ValueObject
 {
     public bool IsGiftCard { get; private set; }

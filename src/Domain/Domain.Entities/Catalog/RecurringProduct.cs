@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 public class RecurringProduct : ValueObject
 {
     public bool IsRecurring { get; private set; }

@@ -1,4 +1,5 @@
-﻿using Domain.Repositories;
+﻿using Domain.Entities.Catalog;
+using Domain.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Features.Products.Commands.CreateProduct;
@@ -29,7 +30,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductRequest,
         {
             CreateProductCommand command = _mapper.Map<CreateProductCommand>(request);
 
-            _productRepository.Add(new Domain.Entities.Product.Product(command));
+            _productRepository.Add(new Product(command));
             results = await _productRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
         }
         catch (Exception ex)

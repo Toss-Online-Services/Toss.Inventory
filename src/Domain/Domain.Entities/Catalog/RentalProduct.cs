@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 public class RentalProduct : ValueObject
 {
     public bool IsRental { get; private set; }

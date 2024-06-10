@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using System.Reflection;
 using Domain.Entities.Catalog;
-using Domain.Entities.Product;
 using Domain.Infrastructure;
 using MediatR;
 using Microsoft.EntityFrameworkCore.Storage;

@@ -1,4 +1,4 @@
-﻿using Domain.Entities.Product;
+﻿using Domain.Entities.Catalog;
 
 namespace Infrastructure.Data.EntityConfigurations.ProductConfigurations
 {

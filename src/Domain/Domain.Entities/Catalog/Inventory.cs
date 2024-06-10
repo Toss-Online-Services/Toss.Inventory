@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 public class Inventory : ValueObject
 {
     public int ManageInventoryMethodId { get; private set; }
@@ -40,7 +40,7 @@ public class Inventory : ValueObject
     }
 
     internal void Apply(UpdateInventoryCommand inventory)
-    { 
+    {
         ManageInventoryMethodId = inventory.ManageInventoryMethodId;
         WarehouseId = inventory.WarehouseId;
         StockQuantity = inventory.StockQuantity;

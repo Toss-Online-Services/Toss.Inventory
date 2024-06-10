@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 public class Tax : ValueObject
 {
     public bool IsTaxExempt { get; private set; }
@@ -15,7 +15,7 @@ public class Tax : ValueObject
     {
         IsTaxExempt = tax.IsTaxExempt;
         TaxCategoryId = tax.TaxCategoryId;
-        
+
     }
 }
 

@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product;
+﻿namespace Domain.Entities.Catalog;
 public class Lifecycle : ValueObject
 {
     public DateTime? ManufactureDate { get; private set; }

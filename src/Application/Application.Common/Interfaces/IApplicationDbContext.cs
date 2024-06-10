@@ -1,5 +1,5 @@
 ﻿using Domain.Entities;
-using Domain.Entities.Product;
+using Domain.Entities.Catalog;
 using Domain.Infrastructure;
 
 namespace Application.Infrastructure.Interfaces;
