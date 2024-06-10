@@ -5,7 +5,7 @@ using NSwag;
 using NSwag.Generation.Processors.Security;
 using Web.Services;
 using Web.Infrastructure;
-using Domain.Infrastructure;
+using Domain.SeedWork;
 
 namespace Web;
 

@@ -1,10 +1,10 @@
-﻿using Domain.Entities.Discounts;
-using Domain.Entities.Product.Events;
+﻿using Domain.Entities.Catalog.Events;
+using Domain.Entities.Discounts;
 
 namespace Domain.Entities.Catalog;
 
 public sealed class Product
-    : BaseAuditableEntity, IAggregateRoot, ILocalizedEntity, ISlugSupported, IAclSupported, IStoreMappingSupported, Discounts.IDiscountSupported<DiscountProductMapping>
+    : BaseAuditableEntity, IAggregateRoot, ILocalizedEntity, ISlugSupported, IAclSupported, IStoreMappingSupported, IDiscountSupported<DiscountProductMapping>
 {
     public Product()
     {

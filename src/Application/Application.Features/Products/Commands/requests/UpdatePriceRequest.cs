@@ -1,6 +1,4 @@
-﻿using Domain.Commands;
-
-namespace Domain.Entities.Product.Commands;
+﻿namespace Domain.Entities.Product.Commands;
 
 public record UpdatePriceRequest : PriceCommand, IRequest<bool>
 {

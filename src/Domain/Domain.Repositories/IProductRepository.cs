@@ -1,5 +1,5 @@
 ﻿using Domain.Entities.Catalog;
-using Domain.Infrastructure;
+using Domain.SeedWork;
 
 namespace Domain.Repositories;
 

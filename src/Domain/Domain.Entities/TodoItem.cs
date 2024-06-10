@@ -1,4 +1,4 @@
-﻿using Domain.Entities.Events;
+﻿using Domain.Entities.Catalog.Events;
 using Domain.Enums;
 
 namespace Domain.Entities;

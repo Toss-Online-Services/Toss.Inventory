@@ -1,5 +1,5 @@
 ﻿using Domain.Exceptions;
-using Domain.Infrastructure;
+using Domain.SeedWork;
 
 namespace Domain.ValueObjects;
 

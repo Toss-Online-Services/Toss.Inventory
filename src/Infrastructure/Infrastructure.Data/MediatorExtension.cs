@@ -1,4 +1,4 @@
-﻿using Domain.Infrastructure;
+﻿using Domain.SeedWork;
 using MediatR;
 
 namespace Infrastructure.Data;

@@ -29,8 +29,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Identity", "src\Infrastructure\Infrastructure.Identity\Infrastructure.Identity.csproj", "{A8818705-629F-44A4-8213-ACF8EE73088D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Infrastructure", "src\Domain\Domain.Common\Domain.Infrastructure.csproj", "{14507CAF-5CCF-4E8F-9F8C-6E9B2ED76CE5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Constants", "src\Domain\Domain.Constants\Domain.Constants.csproj", "{B961E1D4-17B0-4115-BBB1-CED093269C43}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Entities", "src\Domain\Domain.Entities\Domain.Entities.csproj", "{95D7933C-A4A5-4361-A74A-81CE1B685C26}"
@@ -77,9 +75,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Features", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Events", "src\Application\Application.Events\Application.Events.csproj", "{9AE8128A-61A6-490B-8821-8F6184BF26FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Models", "src\Domain\Domain.Models\Domain.Models.csproj", "{4122B1FC-621D-42E7-8A3D-FAE3F22D9DFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Models", "src\Domain\Domain.Models\Domain.Models.csproj", "{4122B1FC-621D-42E7-8A3D-FAE3F22D9DFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Commands", "src\Domain\Domain.Commands\Domain.Commands.csproj", "{50C982BE-0DE8-4E6C-9C12-ECDB0CB05B6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Commands", "src\Domain\Domain.Commands\Domain.Commands.csproj", "{50C982BE-0DE8-4E6C-9C12-ECDB0CB05B6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,10 +101,6 @@ Global
 		{A8818705-629F-44A4-8213-ACF8EE73088D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8818705-629F-44A4-8213-ACF8EE73088D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8818705-629F-44A4-8213-ACF8EE73088D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14507CAF-5CCF-4E8F-9F8C-6E9B2ED76CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14507CAF-5CCF-4E8F-9F8C-6E9B2ED76CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14507CAF-5CCF-4E8F-9F8C-6E9B2ED76CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14507CAF-5CCF-4E8F-9F8C-6E9B2ED76CE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B961E1D4-17B0-4115-BBB1-CED093269C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B961E1D4-17B0-4115-BBB1-CED093269C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B961E1D4-17B0-4115-BBB1-CED093269C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -194,7 +188,6 @@ Global
 		{92A99E77-2A8B-42AA-BC7C-59C8065E5EFF} = {6ED356A7-8B47-4613-AD01-C85CF28491BD}
 		{120BDE20-1B74-40E3-A0DA-6C95C655B772} = {92A99E77-2A8B-42AA-BC7C-59C8065E5EFF}
 		{A8818705-629F-44A4-8213-ACF8EE73088D} = {92A99E77-2A8B-42AA-BC7C-59C8065E5EFF}
-		{14507CAF-5CCF-4E8F-9F8C-6E9B2ED76CE5} = {74B0BB17-A12C-4658-9883-3B5C8C236B24}
 		{B961E1D4-17B0-4115-BBB1-CED093269C43} = {74B0BB17-A12C-4658-9883-3B5C8C236B24}
 		{95D7933C-A4A5-4361-A74A-81CE1B685C26} = {74B0BB17-A12C-4658-9883-3B5C8C236B24}
 		{85C69590-9335-4A22-8FFC-F3D19C5DFC2E} = {74B0BB17-A12C-4658-9883-3B5C8C236B24}

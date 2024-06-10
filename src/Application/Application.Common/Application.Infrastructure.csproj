@@ -15,8 +15,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\Domain.Common\Domain.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Domain\Domain.Repositories\Domain.Repositories.csproj" />
+    <ProjectReference Include="..\..\Domain\Domain.SeedWork\Domain.SeedWork.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.EventBus\Infrastructure.EventBus.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.Repositories\Infrastructure.Repositories.csproj" />

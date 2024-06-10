@@ -1,9 +1,8 @@
 ﻿using Application.Events.IntegrationEvents;
-using Domain.Entities.Product.Events;
 using Domain.Repositories;
-using Microsoft.Extensions.Logging;
 using Application.Infrastructure.Extensions;
 using Web.IntegrationEvents.Events;
+using Domain.Entities.Catalog.Events;
 
 namespace Web.DomainEventHandlers;
 public class ProductCreatedDomainEventHandler : INotificationHandler<ProductCreatedDomainEvent>

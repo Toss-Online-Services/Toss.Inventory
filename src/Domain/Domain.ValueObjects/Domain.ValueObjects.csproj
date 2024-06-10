@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain.Common\Domain.Infrastructure.csproj" />
     <ProjectReference Include="..\Domain.Exceptions\Domain.Exceptions.csproj" />
+    <ProjectReference Include="..\Domain.SeedWork\Domain.SeedWork.csproj" />
   </ItemGroup>
 
 </Project>

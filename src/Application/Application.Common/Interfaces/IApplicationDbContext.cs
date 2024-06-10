@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Entities.Catalog;
-using Domain.Infrastructure;
+using Domain.SeedWork;
 
 namespace Application.Infrastructure.Interfaces;
 

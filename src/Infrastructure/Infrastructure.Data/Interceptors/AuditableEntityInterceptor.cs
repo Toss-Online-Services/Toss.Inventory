@@ -1,4 +1,4 @@
-﻿using Domain.Infrastructure;
+﻿using Domain.SeedWork;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 

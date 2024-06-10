@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using Domain.Infrastructure;
+using Domain.SeedWork;
 
 namespace Web.Services;
 

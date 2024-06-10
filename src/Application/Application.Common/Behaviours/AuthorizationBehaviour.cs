@@ -2,7 +2,7 @@
 using Application.Infrastructure.Security;
 using Application.Infrastructure.Exceptions;
 using Application.Infrastructure.Services;
-using Domain.Infrastructure;
+using Domain.SeedWork;
 
 namespace Application.Infrastructure.Behaviours;
 
