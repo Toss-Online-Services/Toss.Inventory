@@ -43,6 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Application\Application.Events\Application.Events.csproj" />
     <ProjectReference Include="..\..\Application\Application.Features\Application.Features.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.EventBusRabbitMQ\Infrastructure.EventBusRabbitMQ.csproj" />

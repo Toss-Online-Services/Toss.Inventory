@@ -3,8 +3,9 @@ using Application.Features.Products.IntegrationEvents.Events;
 using Domain.Entities.Product.Events;
 using Domain.Repositories;
 using Microsoft.Extensions.Logging;
+using Application.Infrastructure.Extensions; 
 
-namespace Application.Features.Products.DomainEventHandlers;
+namespace Web.DomainEventHandlers;
 public class ProductCreatedDomainEventHandler : INotificationHandler<ProductCreatedDomainEvent>
 {
     private readonly ILogger _logger;
@@ -26,5 +27,6 @@ public class ProductCreatedDomainEventHandler : INotificationHandler<ProductCrea
 
         var integrationEvent = new ProductCreatedIntegrationEvent(notification.product);
         await _catalogIntegrationEventService.AddAndSaveEventAsync(integrationEvent);
+        await _catalogIntegrationEventService.PublishThroughEventBusAsync(integrationEvent);
     }
 }
