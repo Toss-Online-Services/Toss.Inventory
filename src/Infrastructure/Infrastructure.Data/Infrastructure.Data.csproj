@@ -7,17 +7,26 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="FluentMigrator" />
+    <PackageReference Include="FluentMigrator.Runner" />
+    <PackageReference Include="linq2db" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
-    <PackageReference Include="Ardalis.GuardClauses" />    
+    <PackageReference Include="Ardalis.GuardClauses" />
+    <PackageReference Include="Microsoft.Data.SqlClient" />    
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>    
-    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />    
+    <PackageReference Include="MySqlConnector" />    
+    <PackageReference Include="Npgsql" />
     <PackageReference Include="Pgvector" />
     <PackageReference Include="Pgvector.EntityFrameworkCore" />
-    <PackageReference Include="Npgsql" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" />
+    <PackageReference Include="System.Net.NameResolution" />
+    
+    
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Domain.Entities\Domain.Entities.csproj" />
