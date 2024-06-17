@@ -1,2 +1,2 @@
 ﻿namespace Domain.Entities.Catalog.Events;
-public record RentalProductUpdatedDomainEvent(string ProductId, RentalProduct RentalProduct) : BaseEvent;
+public record RentalProductUpdatedDomainEvent(Guid ProductId, RentalProduct RentalProduct) : BaseEvent;

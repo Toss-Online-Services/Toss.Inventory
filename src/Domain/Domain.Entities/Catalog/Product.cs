@@ -33,7 +33,7 @@ public sealed class Product
     public bool LimitedToStores { get; private set; }
 
     // Identification
-    public string ProductId { get; set; }
+    public Guid ProductId { get; set; }
     public int ProductTypeId { get; private set; }
     public int ParentGroupedProductId { get; private set; }
     public bool VisibleIndividually { get; private set; }

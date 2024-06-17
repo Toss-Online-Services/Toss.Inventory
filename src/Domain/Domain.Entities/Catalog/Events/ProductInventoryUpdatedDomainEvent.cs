@@ -1,2 +1,2 @@
 namespace Domain.Entities.Catalog.Events;
-public record ProductInventoryUpdatedDomainEvent(string ProductId, Inventory Inventory) : BaseEvent;
+public record ProductInventoryUpdatedDomainEvent(Guid ProductId, Inventory Inventory) : BaseEvent;

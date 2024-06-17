@@ -1,2 +1,2 @@
 ﻿namespace Domain.Entities.Catalog.Events;
-public record ProductPhysicalAttributesUpdatedDomainEvent(string ProductId, PhysicalAttributes PhysicalAttributes) : BaseEvent;
+public record ProductPhysicalAttributesUpdatedDomainEvent(Guid ProductId, PhysicalAttributes PhysicalAttributes) : BaseEvent;
