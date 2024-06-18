@@ -1,6 +1,4 @@
 ﻿using System.Linq.Expressions;
-using Domain.Entities.Catalog;
-using Domain.SeedWork;
 using Domain.Repositories;
 
 namespace Infrastructure.Data.Repositories

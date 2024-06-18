@@ -7,9 +7,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Azure.Identity" />
     <PackageReference Include="FluentMigrator" />
     <PackageReference Include="FluentMigrator.Runner" />
     <PackageReference Include="linq2db" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
     <PackageReference Include="Ardalis.GuardClauses" />
     <PackageReference Include="Microsoft.Data.SqlClient" />    
@@ -19,11 +21,14 @@
     </PackageReference>    
     <PackageReference Include="Microsoft.Extensions.Hosting" />    
     <PackageReference Include="MySqlConnector" />    
+    <PackageReference Include="Newtonsoft.Json" />    
     <PackageReference Include="Npgsql" />
     <PackageReference Include="Pgvector" />
     <PackageReference Include="Pgvector.EntityFrameworkCore" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
     <PackageReference Include="System.Configuration.ConfigurationManager" />
+    <PackageReference Include="System.Linq" />
+    <PackageReference Include="System.Linq.Async" />
     <PackageReference Include="System.Net.NameResolution" />
     
     

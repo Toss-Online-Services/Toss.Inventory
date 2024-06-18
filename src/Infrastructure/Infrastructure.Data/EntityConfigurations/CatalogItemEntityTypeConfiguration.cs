@@ -1,6 +1,4 @@
-﻿using Domain.Entities.Catalog;
-
-
+﻿using Microsoft.EntityFrameworkCore;
 namespace Infrastructure.Data.EntityConfigurations;
 
 class CatalogItemEntityTypeConfiguration

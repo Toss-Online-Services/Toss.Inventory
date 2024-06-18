@@ -1,4 +1,5 @@
 ﻿using Application.Infrastructure.Models;
+using Infrastructure.Data.Extensions;
 
 namespace Application.Infrastructure.Mappings;
 

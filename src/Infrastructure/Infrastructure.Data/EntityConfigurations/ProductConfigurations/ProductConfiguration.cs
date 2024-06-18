@@ -1,5 +1,4 @@
-﻿using Domain.Entities.Catalog;
-
+﻿using Microsoft.EntityFrameworkCore;
 namespace Infrastructure.Data.EntityConfigurations.ProductConfigurations
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>

@@ -1,7 +1,6 @@
-﻿using Domain.SeedWork;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-
+using Microsoft.EntityFrameworkCore;
 namespace Infrastructure.Data.Interceptors;
 
 public class DispatchDomainEventsInterceptor : SaveChangesInterceptor

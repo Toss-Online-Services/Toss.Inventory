@@ -1,4 +1,6 @@
-﻿namespace Application.Infrastructure.Models;
+﻿using Infrastructure.Data.Extensions;
+
+namespace Application.Infrastructure.Models;
 
 public class PaginatedList<T>
 {

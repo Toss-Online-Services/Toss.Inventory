@@ -66,6 +66,16 @@ public sealed class Product
     public bool Published { get; private set; }
     public bool Deleted { get; private set; }
 
+    /// <summary>
+    /// Gets or sets a required product identifiers (comma separated)
+    /// </summary>
+    public string RequiredProductIds { get; set; }
+
+    /// <summary>
+    /// Gets or sets the comma separated list of allowed quantities. null or empty if any quantity is allowed
+    /// </summary>
+    public string AllowedQuantities { get; set; }
+
     // Pricing
     public Price Price { get; private set; }
 

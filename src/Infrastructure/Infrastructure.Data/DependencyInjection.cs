@@ -5,7 +5,7 @@ using Infrastructure.IntegrationEventLogEF.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
-
+using Microsoft.EntityFrameworkCore;
 namespace Infrastructure.Data;
 
 public static class DependencyInjection
