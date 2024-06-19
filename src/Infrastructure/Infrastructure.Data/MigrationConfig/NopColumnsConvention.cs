@@ -1,7 +1,7 @@
 ﻿using FluentMigrator.Expressions;
 using FluentMigrator.Runner.Conventions;
 
-namespace Infrastructure.Data.Migrations;
+namespace Infrastructure.Data.MigrationConfig;
 
 /// <summary>
 /// Column type convention

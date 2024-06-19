@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Data.Migrations;
+﻿namespace Infrastructure.Data.MigrationConfig;
 
 /// <summary>
 /// Represents the type of migration process

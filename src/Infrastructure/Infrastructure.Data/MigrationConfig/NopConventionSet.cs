@@ -1,7 +1,7 @@
 ﻿using FluentMigrator.Runner;
 using FluentMigrator.Runner.Conventions;
 
-namespace Infrastructure.Data.Migrations;
+namespace Infrastructure.Data.MigrationConfig;
 
 /// <summary>
 /// A set conventions to be applied to expressions

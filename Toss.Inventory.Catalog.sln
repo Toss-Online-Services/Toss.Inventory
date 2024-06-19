@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Identity", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Constants", "src\Domain\Domain.Constants\Domain.Constants.csproj", "{B961E1D4-17B0-4115-BBB1-CED093269C43}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Entities", "src\Domain\Domain.Entities\Domain.Entities.csproj", "{95D7933C-A4A5-4361-A74A-81CE1B685C26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Aggregates", "src\Domain\Domain.Entities\Domain.Aggregates.csproj", "{95D7933C-A4A5-4361-A74A-81CE1B685C26}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Enums", "src\Domain\Domain.Enums\Domain.Enums.csproj", "{85C69590-9335-4A22-8FFC-F3D19C5DFC2E}"
 EndProject

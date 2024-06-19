@@ -1,6 +1,6 @@
 ﻿using FluentMigrator.Runner.VersionTableInfo;
 
-namespace Infrastructure.Data.Migrations;
+namespace Infrastructure.Data.MigrationConfig;
 
 /// <summary>
 /// The migration version table

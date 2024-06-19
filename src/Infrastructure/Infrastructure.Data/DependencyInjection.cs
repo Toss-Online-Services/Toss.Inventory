@@ -6,56 +6,46 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using FluentMigrator.Runner;
+using FluentMigrator;
 using Infrastructure.Data.Models;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Threading.Tasks;
+namespace Infrastructure.Data;
 
-namespace Infrastructure.Data
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddInfrastructureServices(this IHostApplicationBuilder builder, IConfiguration configuration)
     {
-        public static IServiceCollection AddInfrastructureServices(this IHostApplicationBuilder builder, IConfiguration configuration)
+        var services = builder.Services;
+        var connectionString = configuration.GetConnectionString("catalogdb");
+
+        Guard.Against.Null(connectionString, message: "Connection string 'catalogdb' not found.");
+
+        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+        services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+
+        services.AddDbContext<CatalogContext>((sp, options) =>
         {
-            var services = builder.Services;
-            var connectionString = configuration.GetConnectionString("catalogdb");
-
-            Guard.Against.Null(connectionString, message: "Connection string 'catalogdb' not found.");
-
-            services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-            services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
-
-            services.AddDbContext<CatalogContext>((sp, options) =>
+            options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
+            options.UseNpgsql(connectionString, npgsqlOptions =>
             {
-                options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
-                options.UseNpgsql(connectionString, npgsqlOptions =>
-                {
-                    npgsqlOptions.UseVector();
-                });
+                npgsqlOptions.UseVector();
             });
+        });
 
-            if (builder.Environment.IsDevelopment())
-            {
-                // Configure Fluent Migrator
-                services.AddFluentMigratorCore()
-                        .ConfigureRunner(rb => rb
-                            .AddPostgres()
-                            .WithGlobalConnectionString(connectionString)
-                            .ScanIn(typeof(DependencyInjection).Assembly).For.Migrations())
-                        .AddLogging(lb => lb.AddFluentMigratorConsole());
+        if (builder.Environment.IsDevelopment())
+        {
+            // REVIEW: This is done for development ease but shouldn't be here in production
+            builder.Services.AddMigration<CatalogContext>();
 
-                // Add the migration as a hosted service
-                builder.Services.AddMigration<CatalogContext>();
-            }
-
-            // Add the integration services that consume the DbContext
-            services.AddTransient<IIntegrationEventLogService, IntegrationEventLogService<CatalogContext>>();
-
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddSingleton(TimeProvider.System);
-
-            return services;
+            ///InitializeDatabase();
         }
-    }
+
+        // Add the integration services that consume the DbContext
+        services.AddTransient<IIntegrationEventLogService, IntegrationEventLogService<CatalogContext>>();
+
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddSingleton(TimeProvider.System);
+       
+
+        return services;
+    }    
 }

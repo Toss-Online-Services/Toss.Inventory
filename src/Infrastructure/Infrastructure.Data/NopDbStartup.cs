@@ -4,7 +4,7 @@ using FluentMigrator.Runner.Conventions;
 using FluentMigrator.Runner.Initialization;
 using FluentMigrator.Runner.Processors;
 using Infrastructure.Data.Configuration;
-using Infrastructure.Data.Migrations;
+using Infrastructure.Data.MigrationConfig;
 using Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;

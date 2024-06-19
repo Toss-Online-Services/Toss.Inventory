@@ -4,6 +4,7 @@ using System.Reflection;
 using FluentMigrator;
 using Infrastructure.Data.Extensions;
 using Infrastructure.Data.Mapping;
+using Infrastructure.Data.MigrationConfig;
 using Infrastructure.Data.Models;
 using LinqToDB;
 using LinqToDB.Data;
@@ -84,7 +85,7 @@ public abstract partial class BaseDataProvider
     /// </summary>
     public virtual void InitializeDatabase()
     {
-        var migrationManager = EngineContext.Current.Resolve<Data.Migrations.IMigrationManager>();
+        var migrationManager = EngineContext.Current.Resolve<IMigrationManager>();
 
         var targetAssembly = typeof(NopDbStartup).Assembly;
         migrationManager.ApplyUpMigrations(targetAssembly);
@@ -98,7 +99,7 @@ public abstract partial class BaseDataProvider
 
         //mark update migrations as applied
         foreach (var assembly in mAssemblies)
-            migrationManager.ApplyUpMigrations(assembly, Data.Migrations.MigrationProcessType.Update, true);
+            migrationManager.ApplyUpMigrations(assembly, MigrationProcessType.Update, true);
     }
 
     /// <summary>

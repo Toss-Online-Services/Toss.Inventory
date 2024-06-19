@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using FluentMigrator.Infrastructure;
 
-namespace Infrastructure.Data.Migrations;
+namespace Infrastructure.Data.MigrationConfig;
 
 /// <summary>
 /// Represents a migration manager

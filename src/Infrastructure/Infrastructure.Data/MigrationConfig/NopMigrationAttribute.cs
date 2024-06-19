@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using FluentMigrator;
 
-namespace Infrastructure.Data.Migrations;
+namespace Infrastructure.Data.MigrationConfig;
 
 /// <summary>
 /// Attribute for a migration

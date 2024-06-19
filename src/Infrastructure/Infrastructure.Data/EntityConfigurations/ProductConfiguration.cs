@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-namespace Infrastructure.Data.EntityConfigurations.ProductConfigurations
+namespace Infrastructure.Data.EntityConfigurations
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

@@ -2,7 +2,7 @@
 using FluentMigrator.Model;
 using FluentMigrator.Runner.Conventions;
 
-namespace Infrastructure.Data.Migrations;
+namespace Infrastructure.Data.MigrationConfig;
 
 /// <summary>
 /// Convention for the default naming of a foreign key

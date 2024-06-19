@@ -2,7 +2,7 @@ using FluentMigrator;
 using FluentMigrator.Expressions;
 using FluentMigrator.Infrastructure;
 
-namespace Infrastructure.Data.Migrations;
+namespace Infrastructure.Data.MigrationConfig;
 
 /// <summary>
 /// Represents the migration context with a null implementation of a processor that does not do any work

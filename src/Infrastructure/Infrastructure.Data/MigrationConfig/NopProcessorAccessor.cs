@@ -2,7 +2,7 @@
 using FluentMigrator.Exceptions;
 using FluentMigrator.Runner.Processors;
 
-namespace Infrastructure.Data.Migrations;
+namespace Infrastructure.Data.MigrationConfig;
 
 /// <summary>
 /// An <see cref="IProcessorAccessor"/> implementation that selects one generator by data settings

@@ -2,7 +2,7 @@
 using FluentMigrator.Builders.Create.Table;
 using FluentMigrator.Expressions;
 using Infrastructure.Data.Extensions;
-using Infrastructure.Data.Migrations;
+using Infrastructure.Data.MigrationConfig;
 using Infrastructure.Data.Models;
 using LinqToDB.DataProvider;
 using LinqToDB.Mapping;
