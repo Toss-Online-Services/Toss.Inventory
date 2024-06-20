@@ -1,0 +1,66 @@
+﻿@using Nop.Core.Domain.Media
+@model int
+@inject MediaSettings mediaSettings
+
+@{
+    //other variables
+    var random = CommonHelper.GenerateRandomInteger();
+    var clientId = "picture" + random;
+    var endpoint = ViewData["Endpoint"];
+    var tableSelector = ViewData["TableSelector"];
+}
+
+<noscript>
+    <p>Please enable JavaScript to use file uploader.</p>
+</noscript>
+<input type="hidden" asp-for="@Model"/>
+
+<div id="@(clientId)element" class="filepond"></div>
+
+@* register CSS and JS *@
+<link rel="stylesheet" href="~/lib_npm/filepond/filepond.min.css" />
+<script asp-exclude-from-bundle="true" src="~/lib_npm/filepond/filepond.min.js" asp-location="Footer"></script>
+<script asp-exclude-from-bundle="true" src="~/lib_npm/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js" asp-location="Footer"></script>
+
+<script>
+    $(function () {
+        // Register the plugin
+        FilePond.registerPlugin(FilePondPluginFileValidateType);
+
+        var allowedExtensions = ["image/bmp", "image/gif", "image/jpeg", "image/jpg", "image/jpe", "image/jfif", "image/pjpeg", "image/pjp", "image/png", "image/tiff", "image/tif", "image/webp"];
+        
+        @{
+            if (mediaSettings.AllowSVGUploads)
+            {
+                <text>
+                    allowedExtensions.push("image/svg+xml");
+                </text>
+            }
+        }
+
+        // Create a FilePond instance
+        FilePond.create(document.querySelector('#@(clientId)element'), {
+            credits: false,
+            acceptedFileTypes: allowedExtensions,
+            allowMultiple: true,
+            allowRemove: false,
+            allowRevert: false,
+            server: {
+                process: '@endpoint'
+            },
+            onprocessfiles: (error) => {
+                if (error) {
+                    alert(error);
+                    return;
+                }
+
+                if ('@tableSelector'){
+                    updateTable('@tableSelector');
+                
+                }
+            },
+            labelIdle: '@T("Common.FileUploader.DropFiles") / <span class="filepond--label-action">@T("Common.FileUploader.Browse")</span>',
+            labelFileProcessing: '@T("Common.FileUploader.Processing")',
+        });
+    });
+</script>

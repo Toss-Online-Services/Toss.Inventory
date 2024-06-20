@@ -1,8 +1,19 @@
-version: '3.4'
-
+version: "3.4"
 services:
-  web:
-    image: ${DOCKER_REGISTRY-}web
-    build:
-      context: .
-      dockerfile: src/Web/Dockerfile
+    nopcommerce_web:
+        build: .
+        container_name: nopcommerce
+        ports:
+            - "8010:80"
+        depends_on:
+            - nopcommerce_database
+    nopcommerce_database:
+        image: "mcr.microsoft.com/mssql/server:2019-latest"
+        container_name: nopcommerce_mssql_server
+        environment:
+            SA_PASSWORD: "nopCommerce_db_password"
+            ACCEPT_EULA: "Y"
+            MSSQL_PID: "Express"
+
+volumes:
+  nopcommerce_data:            
