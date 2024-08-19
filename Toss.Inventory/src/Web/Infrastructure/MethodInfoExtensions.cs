@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Toss.Inventory.Web.Infrastructure;
+namespace Toss.Inventory.Api.Infrastructure;
 
 public static class MethodInfoExtensions
 {

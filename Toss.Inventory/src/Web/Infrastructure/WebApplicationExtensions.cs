@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
+using Toss.Inventory.Api.Infrastructure;
 
-namespace Toss.Inventory.Web.Infrastructure;
+namespace Toss.Inventory.Api.Infrastructure;
 
 public static class WebApplicationExtensions
 {

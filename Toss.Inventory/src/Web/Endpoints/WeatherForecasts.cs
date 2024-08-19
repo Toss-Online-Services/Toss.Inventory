@@ -1,6 +1,7 @@
-﻿using Toss.Inventory.Application.WeatherForecasts.Queries.GetWeatherForecasts;
+﻿using Toss.Inventory.Api.Infrastructure;
+using Toss.Inventory.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
-namespace Toss.Inventory.Web.Endpoints;
+namespace Toss.Inventory.Api.Endpoints;
 
 public class WeatherForecasts : EndpointGroupBase
 {

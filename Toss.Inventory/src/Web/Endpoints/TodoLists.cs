@@ -1,9 +1,10 @@
-﻿using Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
+﻿using Toss.Inventory.Api.Infrastructure;
+using Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
 using Toss.Inventory.Application.TodoLists.Commands.DeleteTodoList;
 using Toss.Inventory.Application.TodoLists.Commands.UpdateTodoList;
 using Toss.Inventory.Application.TodoLists.Queries.GetTodos;
 
-namespace Toss.Inventory.Web.Endpoints;
+namespace Toss.Inventory.Api.Endpoints;
 
 public class TodoLists : EndpointGroupBase
 {
@@ -19,7 +20,7 @@ public class TodoLists : EndpointGroupBase
 
     public Task<TodosVm> GetTodoLists(ISender sender)
     {
-        return  sender.Send(new GetTodosQuery());
+        return sender.Send(new GetTodosQuery());
     }
 
     public Task<int> CreateTodoList(ISender sender, CreateTodoListCommand command)

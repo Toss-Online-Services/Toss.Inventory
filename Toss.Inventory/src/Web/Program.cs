@@ -1,3 +1,7 @@
+using Toss.Inventory.Api;
+using Toss.Inventory.Api.Infrastructure;
+using Toss.Inventory.Application;
+using Toss.Inventory.Infrastructure;
 using Toss.Inventory.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,6 +1,7 @@
-﻿using Toss.Inventory.Infrastructure.Identity;
+﻿using Toss.Inventory.Api.Infrastructure;
+using Toss.Inventory.Infrastructure.Identity;
 
-namespace Toss.Inventory.Web.Endpoints;
+namespace Toss.Inventory.Api.Endpoints;
 
 public class Users : EndpointGroupBase
 {

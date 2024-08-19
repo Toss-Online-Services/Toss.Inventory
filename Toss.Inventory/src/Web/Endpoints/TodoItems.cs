@@ -1,11 +1,12 @@
-﻿using Toss.Inventory.Application.Common.Models;
+﻿using Toss.Inventory.Api.Infrastructure;
+using Toss.Inventory.Application.Common.Models;
 using Toss.Inventory.Application.TodoItems.Commands.CreateTodoItem;
 using Toss.Inventory.Application.TodoItems.Commands.DeleteTodoItem;
 using Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItem;
 using Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItemDetail;
 using Toss.Inventory.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
-namespace Toss.Inventory.Web.Endpoints;
+namespace Toss.Inventory.Api.Endpoints;
 
 public class TodoItems : EndpointGroupBase
 {

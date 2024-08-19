@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <RootNamespace>Toss.Inventory.Web</RootNamespace>
-    <AssemblyName>Toss.Inventory.Web</AssemblyName>
+    <RootNamespace>Toss.Inventory.Api</RootNamespace>
+    <AssemblyName>Toss.Inventory.Api</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

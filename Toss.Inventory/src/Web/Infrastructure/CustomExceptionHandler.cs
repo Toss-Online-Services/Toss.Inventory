@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Toss.Inventory.Web.Infrastructure;
+namespace Toss.Inventory.Api.Infrastructure;
 
 public class CustomExceptionHandler : IExceptionHandler
 {
