@@ -1,6 +1,6 @@
-﻿using Toss.Inventory.Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 
-namespace Toss.Inventory.Application.TodoLists.Commands.DeleteTodoList;
+namespace Application.TodoLists.Commands.DeleteTodoList;
 
 public record DeleteTodoListCommand(int Id) : IRequest;
 

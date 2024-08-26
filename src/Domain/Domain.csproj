@@ -16,4 +16,8 @@
     <Folder Include="Common\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Caching\Infrastructure.Caching.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,8 +1,7 @@
-using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Application.Common.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using Application.Common.Models;
+using Application.Common.Interfaces;
 
 namespace Toss.Inventory.Infrastructure.Identity;
 
@@ -22,7 +21,7 @@ public class IdentityService : IIdentityService
         _authorizationService = authorizationService;
     }
 
-    public async Task<string?> GetUserNameAsync(string userId)
+    public async Task<string> GetUserNameAsync(string userId)
     {
         var user = await _userManager.FindByIdAsync(userId);
 

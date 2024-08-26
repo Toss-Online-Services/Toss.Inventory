@@ -1,4 +1,4 @@
-﻿using Toss.Inventory.Application.Common.Exceptions;
+﻿using Application.Common.Exceptions;
 using FluentAssertions;
 using FluentValidation.Results;
 using NUnit.Framework;

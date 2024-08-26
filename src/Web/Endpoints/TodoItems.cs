@@ -1,9 +1,9 @@
-﻿using Toss.Inventory.Application.Common.Models;
-using Toss.Inventory.Application.TodoItems.Commands.CreateTodoItem;
-using Toss.Inventory.Application.TodoItems.Commands.DeleteTodoItem;
-using Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItem;
-using Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItemDetail;
-using Toss.Inventory.Application.TodoItems.Queries.GetTodoItemsWithPagination;
+﻿using Application.Common.Models;
+using Application.TodoItems.Commands.CreateTodoItem;
+using Application.TodoItems.Commands.DeleteTodoItem;
+using Application.TodoItems.Commands.UpdateTodoItem;
+using Application.TodoItems.Commands.UpdateTodoItemDetail;
+using Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
 namespace Toss.Inventory.Web.Endpoints;
 

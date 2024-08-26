@@ -1,8 +1,8 @@
-﻿using Domain.Constants;
-using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Application.Common.Security;
+﻿using Application.Common.Interfaces;
+using Application.Common.Security;
+using Domain.Constants;
 
-namespace Toss.Inventory.Application.TodoLists.Commands.PurgeTodoLists;
+namespace Application.TodoLists.Commands.PurgeTodoLists;
 
 [Authorize(Roles = Roles.Administrator)]
 [Authorize(Policy = Policies.CanPurge)]

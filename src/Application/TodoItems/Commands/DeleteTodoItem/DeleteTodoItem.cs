@@ -1,7 +1,7 @@
-﻿using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Domain.Events;
+﻿using Application.Common.Interfaces;
+using Domain.Events;
 
-namespace Toss.Inventory.Application.TodoItems.Commands.DeleteTodoItem;
+namespace Application.TodoItems.Commands.DeleteTodoItem;
 
 public record DeleteTodoItemCommand(int Id) : IRequest;
 

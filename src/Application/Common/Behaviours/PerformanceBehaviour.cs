@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
-using Toss.Inventory.Application.Common.Interfaces;
 using Microsoft.Extensions.Logging;
+using Application.Common.Interfaces;
+using Domain.SeedWork;
 
-namespace Toss.Inventory.Application.Common.Behaviours;
+namespace Application.Common.Behaviours;
 
 public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {

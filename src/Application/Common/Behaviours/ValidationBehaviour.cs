@@ -1,6 +1,6 @@
-﻿using ValidationException = Toss.Inventory.Application.Common.Exceptions.ValidationException;
+﻿using ValidationException = Application.Common.Exceptions.ValidationException;
 
-namespace Toss.Inventory.Application.Common.Behaviours;
+namespace Application.Common.Behaviours;
 
 public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
      where TRequest : notnull

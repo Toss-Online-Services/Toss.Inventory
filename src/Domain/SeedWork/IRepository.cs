@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using Infrastructure.Caching;
 
 namespace Domain.SeedWork;
 
@@ -12,13 +13,127 @@ public interface IRepository<TEntity> where TEntity : IAggregateRoot
     /// <returns>A task that represents the asynchronous operation</returns>
     TEntity Add(TEntity entity);
 
+    /// Get the entity entry
+    /// </summary>
+    /// <param name="id">Entity entry identifier</param>
+    /// <param name="getCacheKey">Function to get a cache key; pass null to don't cache; return null from this function to use the default key</param>
+    /// <param name="includeDeleted">Whether to include deleted items (applies only to <see cref="Nop.Core.Domain.Common.ISoftDeletedEntity"/> entities)</param>
+    /// <param name="useShortTermCache">Whether to use short term cache instead of static cache</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation
+    /// The task result contains the entity entry
+    /// </returns>
+    Task<TEntity> GetByIdAsync(int? id, Func<ICacheKeyService, CacheKey> getCacheKey = null, bool includeDeleted = true, bool useShortTermCache = false);
+
+    /// <summary>
+    /// Get the entity entry
+    /// </summary>
+    /// <param name="id">Entity entry identifier</param>
+    /// <param name="getCacheKey">Function to get a cache key; pass null to don't cache; return null from this function to use the default key</param>
+    /// <param name="includeDeleted">Whether to include deleted items (applies only to <see cref="Nop.Core.Domain.Common.ISoftDeletedEntity"/> entities)</param>
+    /// <returns>
+    /// The entity entry
+    /// </returns>
+    TEntity GetById(int? id, Func<ICacheKeyService, CacheKey> getCacheKey = null, bool includeDeleted = true);
+
+    /// <summary>
+    /// Get entity entries by identifiers
+    /// </summary>
+    /// <param name="ids">Entity entry identifiers</param>
+    /// <param name="getCacheKey">Function to get a cache key; pass null to don't cache; return null from this function to use the default key</param>
+    /// <param name="includeDeleted">Whether to include deleted items (applies only to <see cref="Nop.Core.Domain.Common.ISoftDeletedEntity"/> entities)</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation
+    /// The task result contains the entity entries
+    /// </returns>
+    Task<IList<TEntity>> GetByIdsAsync(IList<int> ids, Func<ICacheKeyService, CacheKey> getCacheKey = null, bool includeDeleted = true);
+
+    ///// <summary>
+    ///// Get all entity entries
+    ///// </summary>
+    ///// <param name="func">Function to select entries</param>
+    ///// <param name="getCacheKey">Function to get a cache key; pass null to don't cache; return null from this function to use the default key</param>
+    ///// <param name="includeDeleted">Whether to include deleted items (applies only to <see cref="Nop.Core.Domain.Common.ISoftDeletedEntity"/> entities)</param>
+    ///// <returns>
+    ///// A task that represents the asynchronous operation
+    ///// The task result contains the entity entries
+    ///// </returns>
+    //Task<IList<TEntity>> GetAllAsync(Func<IQueryable<TEntity>, IQueryable<TEntity>> func = null,
+    //    Func<ICacheKeyService, CacheKey> getCacheKey = null, bool includeDeleted = true);
+
+    /// <summary>
+    /// Get all entity entries
+    /// </summary>
+    /// <param name="func">Function to select entries</param>
+    /// <param name="getCacheKey">Function to get a cache key; pass null to don't cache; return null from this function to use the default key</param>
+    /// <param name="includeDeleted">Whether to include deleted items (applies only to <see cref="Nop.Core.Domain.Common.ISoftDeletedEntity"/> entities)</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation
+    /// The task result contains the entity entries
+    /// </returns>
+    Task<IList<TEntity>> GetAllAsync(Func<IQueryable<TEntity>, Task<IQueryable<TEntity>>> func = null,
+        Func<ICacheKeyService, CacheKey> getCacheKey = null, bool includeDeleted = true);
+
+    /// <summary>
+    /// Get all entity entries
+    /// </summary>
+    /// <param name="func">Function to select entries</param>
+    /// <param name="getCacheKey">Function to get a cache key; pass null to don't cache; return null from this function to use the default key</param>
+    /// <param name="includeDeleted">Whether to include deleted items (applies only to <see cref="Nop.Core.Domain.Common.ISoftDeletedEntity"/> entities)</param>
+    /// <returns>Entity entries</returns>
+    IList<TEntity> GetAll(Func<IQueryable<TEntity>, IQueryable<TEntity>> func = null,
+        Func<ICacheKeyService, CacheKey> getCacheKey = null, bool includeDeleted = true);
+
+    /// <summary>
+    /// Get all entity entries
+    /// </summary>
+    /// <param name="func">Function to select entries</param>
+    /// <param name="getCacheKey">Function to get a cache key; pass null to don't cache; return null from this function to use the default key</param>
+    /// <param name="includeDeleted">Whether to include deleted items (applies only to <see cref="Nop.Core.Domain.Common.ISoftDeletedEntity"/> entities)</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation
+    /// The task result contains the entity entries
+    /// </returns>
+    Task<IList<TEntity>> GetAllAsync(Func<IQueryable<TEntity>, Task<IQueryable<TEntity>>> func,
+        Func<ICacheKeyService, Task<CacheKey>> getCacheKey, bool includeDeleted = true);
+
+    /// <summary>
+    /// Get all entity entries
+    /// </summary>
+    /// <param name="func">Function to select entries</param>
+    /// <param name="pageIndex">Page index</param>
+    /// <param name="pageSize">Page size</param>
+    /// <param name="getOnlyTotalCount">Whether to get only the total number of entries without actually loading data</param>
+    /// <param name="includeDeleted">Whether to include deleted items (applies only to <see cref="Nop.Core.Domain.Common.ISoftDeletedEntity"/> entities)</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation
+    /// The task result contains the paged list of entity entries
+    /// </returns>
+    Task<IPagedList<TEntity>> GetAllPagedAsync(Func<IQueryable<TEntity>, IQueryable<TEntity>> func = null,
+        int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false, bool includeDeleted = true);
+
+    /// <summary>
+    /// Get all entity entries
+    /// </summary>
+    /// <param name="func">Function to select entries</param>
+    /// <param name="pageIndex">Page index</param>
+    /// <param name="pageSize">Page size</param>
+    /// <param name="getOnlyTotalCount">Whether to get only the total number of entries without actually loading data</param>
+    /// <param name="includeDeleted">Whether to include deleted items (applies only to <see cref="Nop.Core.Domain.Common.ISoftDeletedEntity"/> entities)</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation
+    /// The task result contains the paged list of entity entries
+    /// </returns>
+    Task<IPagedList<TEntity>> GetAllPagedAsync(Func<IQueryable<TEntity>, Task<IQueryable<TEntity>>> func = null,
+        int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false, bool includeDeleted = true);
+
     /// <summary>
     /// Insert the entity entry
     /// </summary>
     /// <param name="entity">Entity entry</param>
     /// <param name="publishEvent">Whether to publish event notification</param>
     /// <returns>A task that represents the asynchronous operation</returns>
-    Task<TEntity> InsertAsync(TEntity entity, bool publishEvent = true);
+    Task InsertAsync(TEntity entity, bool publishEvent = true);
 
     /// <summary>
     /// Insert the entity entry
@@ -122,5 +237,13 @@ public interface IRepository<TEntity> where TEntity : IAggregateRoot
     /// A task that represents the asynchronous operation
     /// The task result contains the copy of the passed entity entry
     /// </returns>
+    Task<TEntity> LoadOriginalCopyAsync(TEntity entity);
+
+    /// <summary>
+    /// Truncates database table
+    /// </summary>
+    /// <param name="resetIdentity">Performs reset identity column</param>
+    /// <returns>A task that represents the asynchronous operation</returns>
+    Task TruncateAsync(bool resetIdentity = false);
     IUnitOfWork UnitOfWork { get; }
 }

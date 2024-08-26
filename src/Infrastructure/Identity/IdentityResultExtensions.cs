@@ -1,5 +1,5 @@
-﻿using Toss.Inventory.Application.Common.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using Application.Common.Models;
 
 namespace Toss.Inventory.Infrastructure.Identity;
 

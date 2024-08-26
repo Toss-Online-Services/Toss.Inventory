@@ -1,6 +1,6 @@
-﻿using Toss.Inventory.Application.Common.Models;
+﻿using Application.Common.Models;
 
-namespace Toss.Inventory.Application.TodoLists.Queries.GetTodos;
+namespace Application.TodoLists.Queries.GetTodos;
 
 public class TodosVm
 {

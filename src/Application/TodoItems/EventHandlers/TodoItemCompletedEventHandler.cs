@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Domain.Events;
 
-namespace Toss.Inventory.Application.TodoItems.EventHandlers;
+namespace Application.TodoItems.EventHandlers;
 
 public class TodoItemCompletedEventHandler : INotificationHandler<TodoItemCompletedEvent>
 {

@@ -1,14 +1,14 @@
-﻿using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Domain.Entities;
-using Toss.Inventory.Domain.Events;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
+using Domain.Events;
 
-namespace Toss.Inventory.Application.TodoItems.Commands.CreateTodoItem;
+namespace Application.TodoItems.Commands.CreateTodoItem;
 
 public record CreateTodoItemCommand : IRequest<int>
 {
     public int ListId { get; init; }
 
-    public string? Title { get; init; }
+    public string Title { get; init; }
 }
 
 public class CreateTodoItemCommandHandler : IRequestHandler<CreateTodoItemCommand, int>

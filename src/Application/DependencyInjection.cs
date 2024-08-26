@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
+using Application.Common.Behaviours;
 using Microsoft.Extensions.DependencyInjection;
-using Toss.Inventory.Application.Common.Behaviours;
 
-namespace Toss.Inventory.Application;
+namespace Application;
 
 public static class DependencyInjection
 {

@@ -1,9 +1,10 @@
 ﻿using System.Reflection;
-using Toss.Inventory.Application.Common.Exceptions;
-using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Application.Common.Security;
+using Application.Common.Exceptions;
+using Application.Common.Interfaces;
+using Application.Common.Security;
+using Domain.SeedWork;
 
-namespace Toss.Inventory.Application.Common.Behaviours;
+namespace Application.Common.Behaviours;
 
 public class AuthorizationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {

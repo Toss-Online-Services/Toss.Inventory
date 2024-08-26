@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Application.WeatherForecasts.Queries.GetWeatherForecasts;
+﻿namespace Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
 public class WeatherForecast
 {
@@ -8,5 +8,5 @@ public class WeatherForecast
 
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
-    public string? Summary { get; init; }
+    public string Summary { get; init; }
 }

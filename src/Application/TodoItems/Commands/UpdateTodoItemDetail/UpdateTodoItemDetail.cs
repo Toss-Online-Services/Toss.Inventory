@@ -1,7 +1,7 @@
-﻿using Domain.Enums;
-using Toss.Inventory.Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
+using Domain.Enums;
 
-namespace Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItemDetail;
+namespace Application.TodoItems.Commands.UpdateTodoItemDetail;
 
 public record UpdateTodoItemDetailCommand : IRequest
 {
@@ -11,7 +11,7 @@ public record UpdateTodoItemDetailCommand : IRequest
 
     public PriorityLevel Priority { get; init; }
 
-    public string? Note { get; init; }
+    public string Note { get; init; }
 }
 
 public class UpdateTodoItemDetailCommandHandler : IRequestHandler<UpdateTodoItemDetailCommand>

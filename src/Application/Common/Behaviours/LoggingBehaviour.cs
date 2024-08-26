@@ -1,8 +1,9 @@
-﻿using Toss.Inventory.Application.Common.Interfaces;
-using MediatR.Pipeline;
+﻿using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
+using Application.Common.Interfaces;
+using Domain.SeedWork;
 
-namespace Toss.Inventory.Application.Common.Behaviours;
+namespace Application.Common.Behaviours;
 
 public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
 {
@@ -21,7 +22,7 @@ public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where T
     {
         var requestName = typeof(TRequest).Name;
         var userId = _user.Id ?? string.Empty;
-        string? userName = string.Empty;
+        string userName = string.Empty;
 
         if (!string.IsNullOrEmpty(userId))
         {

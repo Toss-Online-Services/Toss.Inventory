@@ -1,4 +1,4 @@
-﻿using Toss.Inventory.Application.WeatherForecasts.Queries.GetWeatherForecasts;
+﻿using Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
 namespace Toss.Inventory.Web.Endpoints;
 

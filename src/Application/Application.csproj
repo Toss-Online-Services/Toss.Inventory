@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Toss.Inventory.Application</RootNamespace>
-    <AssemblyName>Toss.Inventory.Application</AssemblyName>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

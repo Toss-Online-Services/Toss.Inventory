@@ -1,11 +1,11 @@
-﻿using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Domain.Entities;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
 
-namespace Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
+namespace Application.TodoLists.Commands.CreateTodoList;
 
 public record CreateTodoListCommand : IRequest<int>
 {
-    public string? Title { get; init; }
+    public string Title { get; init; }
 }
 
 public class CreateTodoListCommandHandler : IRequestHandler<CreateTodoListCommand, int>

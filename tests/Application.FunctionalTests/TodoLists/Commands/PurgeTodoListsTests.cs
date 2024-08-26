@@ -1,8 +1,7 @@
-﻿using Domain.Entities;
-using Toss.Inventory.Application.Common.Exceptions;
-using Toss.Inventory.Application.Common.Security;
-using Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
-using Toss.Inventory.Application.TodoLists.Commands.PurgeTodoLists;
+﻿using Application.Common.Exceptions;
+using Application.Common.Security;
+using Application.TodoLists.Commands.PurgeTodoLists;
+using Domain.Entities;
 
 namespace Toss.Inventory.Application.FunctionalTests.TodoLists.Commands;
 

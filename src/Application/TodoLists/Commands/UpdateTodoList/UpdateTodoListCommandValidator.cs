@@ -1,6 +1,6 @@
-﻿using Toss.Inventory.Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 
-namespace Toss.Inventory.Application.TodoLists.Commands.UpdateTodoList;
+namespace Application.TodoLists.Commands.UpdateTodoList;
 
 public class UpdateTodoListCommandValidator : AbstractValidator<UpdateTodoListCommand>
 {

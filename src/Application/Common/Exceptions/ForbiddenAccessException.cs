@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Application.Common.Exceptions;
+﻿namespace Application.Common.Exceptions;
 
 public class ForbiddenAccessException : Exception
 {

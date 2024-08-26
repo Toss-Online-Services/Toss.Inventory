@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Toss.Inventory.Application.Common.Interfaces;
+namespace Application.Common.Interfaces;
 
 public interface IApplicationDbContext
 {

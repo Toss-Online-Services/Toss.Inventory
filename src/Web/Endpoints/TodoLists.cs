@@ -1,7 +1,7 @@
-﻿using Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
-using Toss.Inventory.Application.TodoLists.Commands.DeleteTodoList;
-using Toss.Inventory.Application.TodoLists.Commands.UpdateTodoList;
-using Toss.Inventory.Application.TodoLists.Queries.GetTodos;
+﻿using Application.TodoLists.Commands.CreateTodoList;
+using Application.TodoLists.Commands.DeleteTodoList;
+using Application.TodoLists.Commands.UpdateTodoList;
+using Application.TodoLists.Queries.GetTodos;
 
 namespace Toss.Inventory.Web.Endpoints;
 

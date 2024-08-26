@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Toss.Inventory.Infrastructure</RootNamespace>
-    <AssemblyName>Toss.Inventory.Infrastructure</AssemblyName>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,6 +43,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure.EventBusRabbitMQ\Infrastructure.EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\Infrastructure.EventBus\Infrastructure.EventBus.csproj" />
+    <ProjectReference Include="..\Infrastructure.IntegrationEventLogEF\Infrastructure.IntegrationEventLogEF.csproj" />
   </ItemGroup>
 
 </Project>

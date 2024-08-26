@@ -1,6 +1,6 @@
-﻿using Domain.ValueObjects;
-using Toss.Inventory.Application.TodoLists.Queries.GetTodos;
-using Toss.Inventory.Domain.Entities;
+﻿using Application.TodoLists.Queries.GetTodos;
+using Domain.Entities;
+using Domain.ValueObjects;
 
 namespace Toss.Inventory.Application.FunctionalTests.TodoLists.Queries;
 

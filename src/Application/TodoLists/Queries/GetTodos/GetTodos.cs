@@ -1,9 +1,9 @@
-﻿using Domain.Enums;
-using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Application.Common.Models;
-using Toss.Inventory.Application.Common.Security;
+﻿using Application.Common.Interfaces;
+using Application.Common.Models;
+using Application.Common.Security;
+using Domain.Enums;
 
-namespace Toss.Inventory.Application.TodoLists.Queries.GetTodos;
+namespace Application.TodoLists.Queries.GetTodos;
 
 [Authorize]
 public record GetTodosQuery : IRequest<TodosVm>;

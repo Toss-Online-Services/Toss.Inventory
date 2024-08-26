@@ -2,3 +2,8 @@
 global using FluentAssertions;
 global using Moq;
 global using NUnit.Framework;
+global using Application.TodoItems.Commands.CreateTodoItem;
+global using Application.TodoItems.Commands.UpdateTodoItem;
+global using Application.TodoLists.Commands.CreateTodoList;
+global using Application.TodoLists.Commands.DeleteTodoList;
+global using Application.TodoLists.Commands.UpdateTodoList;

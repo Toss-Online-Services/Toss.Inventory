@@ -1,6 +1,4 @@
-﻿using Domain.Entities;
-
-namespace Domain.SeedWork;
+﻿namespace Domain.Entities;
 
 /// <summary>
 /// Represents an entity which supports discounts

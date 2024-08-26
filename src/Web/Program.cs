@@ -1,7 +1,6 @@
+using Application;
 using eShop.ServiceDefaults;
-using Toss.Inventory.Application;
 using Toss.Inventory.Infrastructure;
-using Toss.Inventory.Infrastructure.Data;
 using Toss.Inventory.Web;
 
 var builder = WebApplication.CreateBuilder(args);

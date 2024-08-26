@@ -1,10 +1,10 @@
-﻿using Toss.Inventory.Application.Common.Models;
+﻿using Application.Common.Models;
 
-namespace Toss.Inventory.Application.Common.Interfaces;
+namespace Application.Common.Interfaces;
 
 public interface IIdentityService
 {
-    Task<string?> GetUserNameAsync(string userId);
+    Task<string> GetUserNameAsync(string userId);
 
     Task<bool> IsInRoleAsync(string userId, string role);
 

@@ -1,11 +1,10 @@
 ﻿using Azure.Identity;
-using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Infrastructure.Data;
 using Toss.Inventory.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
 using NSwag;
 using NSwag.Generation.Processors.Security;
+using Domain.SeedWork;
 
 namespace Toss.Inventory.Web;
 

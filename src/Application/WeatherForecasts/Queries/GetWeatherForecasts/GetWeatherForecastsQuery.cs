@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Application.WeatherForecasts.Queries.GetWeatherForecasts;
+﻿namespace Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
 public record GetWeatherForecastsQuery : IRequest<IEnumerable<WeatherForecast>>;
 

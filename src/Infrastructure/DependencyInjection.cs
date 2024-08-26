@@ -1,5 +1,4 @@
-﻿using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Infrastructure.Data;
+﻿using Toss.Inventory.Infrastructure.Data;
 using Toss.Inventory.Infrastructure.Data.Interceptors;
 using Toss.Inventory.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Domain.Constants;
+using Application.Common.Interfaces;
+using Domain.Entities;
 
 namespace Toss.Inventory.Infrastructure;
 
@@ -44,6 +45,7 @@ public static class DependencyInjection
         //});
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+        services.AddScoped<IProductRepository>(provider => provider.GetRequiredService<ProductRepository>());
 
         services.AddScoped<ApplicationDbContextInitialiser>();
 
