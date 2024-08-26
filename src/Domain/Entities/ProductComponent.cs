@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 public sealed class ProductComponent : Entity
 {
     public ProductComponent()

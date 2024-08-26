@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Toss.Inventory.Domain.Common;
+namespace Domain.SeedWork;
 
 public abstract class BaseEntity
 {

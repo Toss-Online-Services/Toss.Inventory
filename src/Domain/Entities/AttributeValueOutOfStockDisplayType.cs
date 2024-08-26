@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 
 /// <summary>
 /// Represents an attribute value display type when out of stock

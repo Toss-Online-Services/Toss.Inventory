@@ -1,4 +1,4 @@
-﻿using Toss.Inventory.Domain.Entities;
+﻿using Domain.Entities;
 
 namespace Toss.Inventory.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 

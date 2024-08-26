@@ -1,5 +1,4 @@
 ﻿using System.Runtime.InteropServices;
-using Toss.Inventory.Domain.Constants;
 using Toss.Inventory.Domain.Entities;
 using Toss.Inventory.Infrastructure.Identity;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Domain.Constants;
 
 namespace Toss.Inventory.Infrastructure.Data;
 

@@ -1,5 +1,5 @@
-﻿using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Domain.Enums;
+﻿using Domain.Enums;
+using Toss.Inventory.Application.Common.Interfaces;
 
 namespace Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItemDetail;
 

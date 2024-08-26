@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 
 /// <summary>
 /// Product editor settings

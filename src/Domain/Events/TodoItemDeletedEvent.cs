@@ -1,6 +1,8 @@
-﻿namespace Toss.Inventory.Domain.Events;
+﻿using Domain.Entities;
 
-public class TodoItemDeletedEvent : BaseEvent
+namespace Domain.Events;
+
+public record TodoItemDeletedEvent : BaseEvent
 {
     public TodoItemDeletedEvent(TodoItem item)
     {

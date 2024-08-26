@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 public class PhysicalAttributes : ValueObject
 {
     public decimal Weight { get; private set; }

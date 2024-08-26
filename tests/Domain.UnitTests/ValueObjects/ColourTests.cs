@@ -1,7 +1,7 @@
-﻿using Toss.Inventory.Domain.Exceptions;
-using Toss.Inventory.Domain.ValueObjects;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
+using Domain.Exceptions;
+using Domain.ValueObjects;
 
 namespace Toss.Inventory.Domain.UnitTests.ValueObjects;
 

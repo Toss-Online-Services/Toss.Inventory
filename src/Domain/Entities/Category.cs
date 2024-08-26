@@ -1,6 +1,4 @@
-﻿using Domain.Entities.Discounts;
-
-namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 
 /// <summary>
 /// Represents a category

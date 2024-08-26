@@ -1,10 +1,10 @@
-﻿using Toss.Inventory.Domain.Constants;
-using Toss.Inventory.Infrastructure.Data;
+﻿using Toss.Inventory.Infrastructure.Data;
 using Toss.Inventory.Infrastructure.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Domain.Constants;
 
 namespace Toss.Inventory.Application.FunctionalTests;
 

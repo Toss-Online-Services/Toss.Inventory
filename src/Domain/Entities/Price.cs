@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 public class Price : ValueObject
 {
     public decimal CurrentPrice { get; private set; }

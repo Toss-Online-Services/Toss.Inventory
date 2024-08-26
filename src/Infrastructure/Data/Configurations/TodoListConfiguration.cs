@@ -1,6 +1,6 @@
-﻿using Toss.Inventory.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Domain.Entities;
 
 namespace Toss.Inventory.Infrastructure.Data.Configurations;
 

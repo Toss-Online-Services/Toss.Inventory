@@ -1,2 +1,2 @@
-﻿namespace Toss.Inventory.Domain.Entities.Events;
+﻿namespace Domain.Entities.Events;
 public record ProductAvailabilityUpdatedDomainEvent(Guid ProductId, Availability Availability) : BaseEvent;

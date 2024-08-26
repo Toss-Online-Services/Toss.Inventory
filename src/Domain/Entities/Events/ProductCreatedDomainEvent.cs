@@ -1,2 +1,2 @@
-namespace Toss.Inventory.Domain.Entities.Events;
+namespace Domain.Entities.Events;
 public record class ProductCreatedDomainEvent(Product product) : BaseEvent;

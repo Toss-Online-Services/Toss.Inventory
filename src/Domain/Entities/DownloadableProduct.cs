@@ -1,4 +1,5 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿
+namespace Domain.Entities;
 public class DownloadableProduct : ValueObject
 {
     public bool IsDownload { get; private set; }

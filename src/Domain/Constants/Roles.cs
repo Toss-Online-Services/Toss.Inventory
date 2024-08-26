@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Constants;
+﻿namespace Domain.Constants;
 
 public abstract class Roles
 {

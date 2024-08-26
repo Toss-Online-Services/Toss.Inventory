@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 public class RecurringProduct : ValueObject
 {
     public bool IsRecurring { get; private set; }

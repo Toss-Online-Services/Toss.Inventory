@@ -1,8 +1,8 @@
 ﻿using Toss.Inventory.Application.Common.Interfaces;
-using Toss.Inventory.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Domain.SeedWork;
 
 namespace Toss.Inventory.Infrastructure.Data.Interceptors;
 

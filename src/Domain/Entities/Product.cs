@@ -1,7 +1,6 @@
-﻿using Domain.Entities.Catalog.Events;
-using Domain.Entities.Discounts;
+﻿using Domain.Entities.Events;
 
-namespace Toss.Inventory.Domain.Entities;
+namespace Domain.Entities;
 
 public sealed class Product
     : BaseAuditableEntity, IAggregateRoot, ILocalizedEntity, ISlugSupported, IAclSupported, IStoreMappingSupported, IDiscountSupported<DiscountProductMapping>

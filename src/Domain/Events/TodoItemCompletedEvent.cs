@@ -1,6 +1,8 @@
-﻿namespace Toss.Inventory.Domain.Events;
+﻿using Domain.Entities;
 
-public class TodoItemCompletedEvent : BaseEvent
+namespace Domain.Events;
+
+public record TodoItemCompletedEvent : BaseEvent
 {
     public TodoItemCompletedEvent(TodoItem item)
     {

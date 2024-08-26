@@ -1,7 +1,7 @@
-﻿using Toss.Inventory.Domain.Common;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Domain.SeedWork;
 
 namespace Toss.Inventory.Infrastructure.Data.Interceptors;
 

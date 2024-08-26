@@ -1,6 +1,4 @@
-﻿using Domain.Entities.Discounts;
-
-namespace Toss.Inventory.Domain.Entities.Events;
+﻿namespace Domain.Entities.Events;
 
 public record ProductDiscountAppliedDomainEvent : BaseEvent
 {

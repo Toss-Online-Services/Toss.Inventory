@@ -1,12 +1,15 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿using Domain.Entities.Events;
+using Domain.Enums;
+
+namespace Domain.Entities;
 
 public class TodoItem : BaseAuditableEntity
 {
     public int ListId { get; set; }
 
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
-    public string? Note { get; set; }
+    public string Note { get; set; }
 
     public PriorityLevel Priority { get; set; }
 

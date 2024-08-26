@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 public class Inventory : ValueObject
 {
     public int ManageInventoryMethodId { get; private set; }

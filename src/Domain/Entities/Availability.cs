@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 public class Availability : ValueObject
 {
     public DateTime? AvailableStartDateTimeUtc { get; private set; }

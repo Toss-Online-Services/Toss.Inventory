@@ -1,9 +1,9 @@
-﻿using Toss.Inventory.Application.TodoItems.Commands.CreateTodoItem;
+﻿using Domain.Entities;
+using Domain.Enums;
+using Toss.Inventory.Application.TodoItems.Commands.CreateTodoItem;
 using Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItem;
 using Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItemDetail;
 using Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
-using Toss.Inventory.Domain.Entities;
-using Toss.Inventory.Domain.Enums;
 
 namespace Toss.Inventory.Application.FunctionalTests.TodoItems.Commands;
 

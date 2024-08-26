@@ -1,3 +1,3 @@
-﻿namespace Toss.Inventory.Domain.Entities.Events;
+﻿namespace Domain.Entities.Events;
 
-public record class ProductGiftCardUpdatedEvent(Catalog.Product Product, decimal? OldAmount, decimal? NewAmount) : BaseEvent;
+public record class ProductGiftCardUpdatedEvent(Product Product, decimal? OldAmount, decimal? NewAmount) : BaseEvent;

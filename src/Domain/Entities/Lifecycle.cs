@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 public class Lifecycle : ValueObject
 {
     public DateTime? ManufactureDate { get; private set; }

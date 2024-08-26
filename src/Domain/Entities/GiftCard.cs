@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 public class GiftCard : ValueObject
 {
     public bool IsGiftCard { get; private set; }

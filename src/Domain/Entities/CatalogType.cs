@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Toss.Inventory.Domain.Entities;
+namespace Domain.Entities;
 
 public class CatalogType
 {

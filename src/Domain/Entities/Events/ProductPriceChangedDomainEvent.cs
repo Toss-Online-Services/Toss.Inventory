@@ -1,5 +1,2 @@
-namespace Toss.Inventory.Domain.Entities.Events;
-using Catalog;
-using Toss.Inventory.Domain.Entities;
-
+namespace Domain.Entities.Events;
 public record class ProductPriceChangedDomainEvent(Product product, decimal OldPrice, decimal NewPrice) : BaseEvent;

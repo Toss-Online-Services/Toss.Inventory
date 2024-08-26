@@ -1,7 +1,7 @@
-﻿using Toss.Inventory.Application.Common.Interfaces;
+﻿using Domain.Enums;
+using Toss.Inventory.Application.Common.Interfaces;
 using Toss.Inventory.Application.Common.Models;
 using Toss.Inventory.Application.Common.Security;
-using Toss.Inventory.Domain.Enums;
 
 namespace Toss.Inventory.Application.TodoLists.Queries.GetTodos;
 

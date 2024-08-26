@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Domain.Entities;
+﻿namespace Domain.Entities;
 public class Shipping : ValueObject
 {
     public bool IsShipEnabled { get; private set; }

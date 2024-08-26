@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using Domain.Exceptions;
 using Pgvector;
 
-namespace Toss.Inventory.Domain.Entities;
+namespace Domain.Entities;
 
 public class CatalogItem
 {
