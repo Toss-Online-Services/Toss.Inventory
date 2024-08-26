@@ -1,13 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-<<<<<<< HEAD
         <RootNamespace>Toss.Inventory.Application.FunctionalTests</RootNamespace>
         <AssemblyName>Toss.Inventory.Application.FunctionalTests</AssemblyName>
-=======
-        <RootNamespace>Toss.Inventory.Catalog.Application.FunctionalTests</RootNamespace>
-        <AssemblyName>Toss.Inventory.Catalog.Application.FunctionalTests</AssemblyName>
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
     </PropertyGroup>
 
     <ItemGroup>
@@ -31,14 +26,7 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="NUnit3TestAdapter" />
-<<<<<<< HEAD
-        <PackageReference Include="coverlet.collector">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-=======
         <PackageReference Include="coverlet.collector" />
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
         <PackageReference Include="FluentAssertions" />
         <PackageReference Include="Moq" />
         <PackageReference Include="Respawn" />
@@ -46,13 +34,6 @@
     </ItemGroup>
     
     <ItemGroup>
-<<<<<<< HEAD
-=======
-        <ProjectReference Include="..\..\src\Domain.Entities\Domain.Entities.csproj" />
-        <ProjectReference Include="..\..\src\Domain.ValueObjects\Domain.ValueObjects.csproj" />
-        <ProjectReference Include="..\..\src\Domain\Domain.Entities\Domain.Entities.csproj" />
-        <ProjectReference Include="..\..\src\Domain\Domain.ValueObjects\Domain.ValueObjects.csproj" />
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
         <ProjectReference Include="..\..\src\Web\Web.csproj" />
     </ItemGroup>
 

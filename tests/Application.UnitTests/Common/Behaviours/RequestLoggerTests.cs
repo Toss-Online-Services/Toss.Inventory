@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using Toss.Inventory.Application.Common.Behaviours;
 using Toss.Inventory.Application.Common.Interfaces;
 using Toss.Inventory.Application.TodoItems.Commands.CreateTodoItem;
@@ -7,16 +6,6 @@ using Moq;
 using NUnit.Framework;
 
 namespace Toss.Inventory.Application.UnitTests.Common.Behaviours;
-=======
-﻿using Microsoft.Extensions.Logging;
-using Moq;
-using NUnit.Framework;
-using Application.Common.Interfaces;
-using Application.Common.Behaviours;
-using Application.Todo.TodoItems.Commands.CreateTodoItem;
-
-namespace Toss.Inventory.Catalog.Application.UnitTests.Common.Behaviours;
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 public class RequestLoggerTests
 {

@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 ﻿using Toss.Inventory.Application.TodoItems.Commands.CreateTodoItem;
 using Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItem;
 using Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
 using Toss.Inventory.Domain.Entities;
 
 namespace Toss.Inventory.Application.FunctionalTests.TodoItems.Commands;
-=======
-﻿using Application.Todo.TodoItems.Commands.CreateTodoItem;
-using Application.Todo.TodoItems.Commands.UpdateTodoItem;
-using Application.Todo.TodoLists.Commands.CreateTodoList;
-
-namespace Toss.Inventory.Catalog.Application.FunctionalTests.TodoItems.Commands;
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 using static Testing;
 

@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 ﻿using Toss.Inventory.Application.Common.Exceptions;
 using Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
 using Toss.Inventory.Application.TodoLists.Commands.UpdateTodoList;
 using Toss.Inventory.Domain.Entities;
 
 namespace Toss.Inventory.Application.FunctionalTests.TodoLists.Commands;
-=======
-﻿using Application.Common.Exceptions;
-using Application.Todo.TodoLists.Commands.CreateTodoList;
-using Application.Todo.TodoLists.Commands.UpdateTodoList;
-
-namespace Toss.Inventory.Catalog.Application.FunctionalTests.TodoLists.Commands;
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 using static Testing;
 

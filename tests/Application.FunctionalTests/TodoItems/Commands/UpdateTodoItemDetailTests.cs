@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using Toss.Inventory.Application.TodoItems.Commands.CreateTodoItem;
 using Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItem;
 using Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItemDetail;
@@ -7,15 +6,6 @@ using Toss.Inventory.Domain.Entities;
 using Toss.Inventory.Domain.Enums;
 
 namespace Toss.Inventory.Application.FunctionalTests.TodoItems.Commands;
-=======
-﻿using Application.Todo.TodoItems.Commands.CreateTodoItem;
-using Application.Todo.TodoItems.Commands.UpdateTodoItem;
-using Application.Todo.TodoItems.Commands.UpdateTodoItemDetail;
-using Application.Todo.TodoLists.Commands.CreateTodoList;
-using Domain.Enums;
-
-namespace Toss.Inventory.Catalog.Application.FunctionalTests.TodoItems.Commands;
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 using static Testing;
 

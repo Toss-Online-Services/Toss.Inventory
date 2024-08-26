@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using AutoMapper;
-<<<<<<< HEAD
 using Toss.Inventory.Application.Common.Interfaces;
 using Toss.Inventory.Application.Common.Models;
 using Toss.Inventory.Application.TodoItems.Queries.GetTodoItemsWithPagination;
@@ -10,16 +9,6 @@ using Toss.Inventory.Domain.Entities;
 using NUnit.Framework;
 
 namespace Toss.Inventory.Application.UnitTests.Common.Mappings;
-=======
-using NUnit.Framework;
-using Application.Common.Interfaces;
-using Application.Common.Models;
-using Application.Todo.TodoItems.Queries.GetTodoItemsWithPagination;
-using Application.Todo.TodoLists.Queries.GetTodos;
-using Domain.Entities;
-
-namespace Toss.Inventory.Catalog.Application.UnitTests.Common.Mappings;
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 public class MappingTests
 {

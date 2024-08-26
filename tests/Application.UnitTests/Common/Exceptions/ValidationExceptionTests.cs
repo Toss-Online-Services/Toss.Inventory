@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 ﻿using Toss.Inventory.Application.Common.Exceptions;
-=======
-﻿using Application.Common.Exceptions;
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 using FluentAssertions;
 using FluentValidation.Results;
 using NUnit.Framework;
 
-<<<<<<< HEAD
 namespace Toss.Inventory.Application.UnitTests.Common.Exceptions;
-=======
-namespace Toss.Inventory.Catalog.Application.UnitTests.Common.Exceptions;
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 public class ValidationExceptionTests
 {

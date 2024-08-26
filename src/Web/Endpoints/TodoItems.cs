@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using Toss.Inventory.Application.Common.Models;
 using Toss.Inventory.Application.TodoItems.Commands.CreateTodoItem;
 using Toss.Inventory.Application.TodoItems.Commands.DeleteTodoItem;
@@ -7,16 +6,6 @@ using Toss.Inventory.Application.TodoItems.Commands.UpdateTodoItemDetail;
 using Toss.Inventory.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
 namespace Toss.Inventory.Web.Endpoints;
-=======
-﻿using Application.Common.Models;
-using Application.Todo.TodoItems.Commands.CreateTodoItem;
-using Application.Todo.TodoItems.Commands.DeleteTodoItem;
-using Application.Todo.TodoItems.Commands.UpdateTodoItem;
-using Application.Todo.TodoItems.Commands.UpdateTodoItemDetail;
-using Application.Todo.TodoItems.Queries.GetTodoItemsWithPagination;
-
-namespace Toss.Inventory.Catalog.Web.Endpoints;
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 public class TodoItems : EndpointGroupBase
 {

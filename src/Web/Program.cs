@@ -1,22 +1,11 @@
-<<<<<<< HEAD
 using Toss.Inventory.Infrastructure.Data;
-=======
-
-using Infrastructure.Data;
-using Toss.Inventory.Catalog.Web;
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddKeyVaultIfConfigured(builder.Configuration);
 
-<<<<<<< HEAD
 builder.Services.AddApplicationServices();
-=======
-//builder.Services.AddApplicationServices();
-
->>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebServices();
 
