@@ -1,0 +1,9 @@
+﻿global using Infrastructure.EventBus.Abstractions;
+global using Infrastructure.EventBus.Events;
+global using Infrastructure.IntegrationEventLogEF.Services;
+global using Infrastructure.IntegrationEventLogEF.Utilities;
+global using eShop.ServiceDefaults;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Options;
+global using Npgsql;
+global using Ardalis.GuardClauses;

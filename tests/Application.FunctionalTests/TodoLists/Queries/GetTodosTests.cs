@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 ﻿using Toss.Inventory.Application.TodoLists.Queries.GetTodos;
 using Toss.Inventory.Domain.Entities;
 using Toss.Inventory.Domain.ValueObjects;
 
 namespace Toss.Inventory.Application.FunctionalTests.TodoLists.Queries;
+=======
+﻿using Application.Todo.TodoLists.Queries.GetTodos;
+using Domain.ValueObjects;
+
+namespace Toss.Inventory.Catalog.Application.FunctionalTests.TodoLists.Queries;
+>>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 using static Testing;
 

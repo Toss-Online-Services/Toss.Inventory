@@ -1,8 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+<<<<<<< HEAD
         <RootNamespace>Toss.Inventory.Domain.UnitTests</RootNamespace>
         <AssemblyName>Toss.Inventory.Domain.UnitTests</AssemblyName>
+=======
+        <RootNamespace>Toss.Inventory.Catalog.Domain.UnitTests</RootNamespace>
+        <AssemblyName>Toss.Inventory.Catalog.Domain.UnitTests</AssemblyName>
+>>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,7 +26,14 @@
     </ItemGroup>
 
     <ItemGroup>
+<<<<<<< HEAD
         <ProjectReference Include="..\..\src\Domain\Domain.csproj" />
     </ItemGroup>
+=======
+      <ProjectReference Include="..\..\src\Domain\Domain.Exceptions\Domain.Exceptions.csproj" />
+      <ProjectReference Include="..\..\src\Domain\Domain.ValueObjects\Domain.ValueObjects.csproj" />
+    </ItemGroup>
+  
+>>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 </Project>

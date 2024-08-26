@@ -1,11 +1,20 @@
 ﻿using System.Data.Common;
+<<<<<<< HEAD
 using Toss.Inventory.Infrastructure.Data;
+=======
+>>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Respawn;
+<<<<<<< HEAD
 
 namespace Toss.Inventory.Application.FunctionalTests;
+=======
+using Infrastructure.Data;
+
+namespace Toss.Inventory.Catalog.Application.FunctionalTests;
+>>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 public class SqlServerTestDatabase : ITestDatabase
 {

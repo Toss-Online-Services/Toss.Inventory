@@ -1,8 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+<<<<<<< HEAD
         <RootNamespace>Toss.Inventory.Application.UnitTests</RootNamespace>
         <AssemblyName>Toss.Inventory.Application.UnitTests</AssemblyName>
+=======
+        <RootNamespace>Toss.Inventory.Catalog.Application.UnitTests</RootNamespace>
+        <AssemblyName>Toss.Inventory.Catalog.Application.UnitTests</AssemblyName>
+>>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,17 +18,25 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="NUnit3TestAdapter" />
+<<<<<<< HEAD
         <PackageReference Include="coverlet.collector">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+=======
+        <PackageReference Include="coverlet.collector" />
+>>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
         <PackageReference Include="FluentAssertions" />
         <PackageReference Include="Moq" />
     </ItemGroup>
 
     <ItemGroup>
+<<<<<<< HEAD
         <ProjectReference Include="..\..\src\Application\Application.csproj" />
         <ProjectReference Include="..\..\src\Infrastructure\Infrastructure.csproj" />
+=======
+      <ProjectReference Include="..\..\src\Application\Application.TodoItems\Application.Todo.csproj" />
+>>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
     </ItemGroup>
 
 </Project>

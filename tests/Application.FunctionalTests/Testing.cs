@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using Toss.Inventory.Domain.Constants;
 using Toss.Inventory.Infrastructure.Data;
 using Toss.Inventory.Infrastructure.Identity;
@@ -7,6 +8,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Toss.Inventory.Application.FunctionalTests;
+=======
+﻿using MediatR;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Domain.Constants;
+using Infrastructure.Identity;
+using Infrastructure.Data;
+
+namespace Toss.Inventory.Catalog.Application.FunctionalTests;
+>>>>>>> ae4375be3f8c93235bf3c45247357d065e2ac0e1
 
 [SetUpFixture]
 public partial class Testing
