@@ -1,4 +1,4 @@
-﻿namespace Toss.Inventory.Catalog.Application.FunctionalTests;
+﻿namespace Toss.Inventory.Application.FunctionalTests;
 
 public static class TestDatabaseFactory
 {

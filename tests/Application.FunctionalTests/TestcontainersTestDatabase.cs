@@ -1,11 +1,11 @@
 ﻿using System.Data.Common;
+using Toss.Inventory.Infrastructure.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Respawn;
 using Testcontainers.MsSql;
-using Infrastructure.Data;
 
-namespace Toss.Inventory.Catalog.Application.FunctionalTests;
+namespace Toss.Inventory.Application.FunctionalTests;
 
 public class TestcontainersTestDatabase : ITestDatabase
 {

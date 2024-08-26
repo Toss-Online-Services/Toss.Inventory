@@ -1,6 +1,6 @@
-﻿# Toss.Inventory.Catalog
+﻿# Toss.Inventory
 
-The project was generated using the [Clean.Architecture.Solution.Template](https://github.com/jasontaylordev/Toss.Inventory.Catalog) version 8.0.5.
+The project was generated using the [Clean.Architecture.Solution.Template](https://github.com/jasontaylordev/Toss.Inventory) version 8.0.5.
 
 ## Build
 

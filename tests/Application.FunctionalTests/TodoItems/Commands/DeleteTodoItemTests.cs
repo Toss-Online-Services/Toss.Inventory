@@ -1,8 +1,9 @@
-﻿using Application.Todo.TodoItems.Commands.CreateTodoItem;
-using Application.Todo.TodoItems.Commands.DeleteTodoItem;
-using Application.Todo.TodoLists.Commands.CreateTodoList;
+﻿using Toss.Inventory.Application.TodoItems.Commands.CreateTodoItem;
+using Toss.Inventory.Application.TodoItems.Commands.DeleteTodoItem;
+using Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
+using Toss.Inventory.Domain.Entities;
 
-namespace Toss.Inventory.Catalog.Application.FunctionalTests.TodoItems.Commands;
+namespace Toss.Inventory.Application.FunctionalTests.TodoItems.Commands;
 
 using static Testing;
 

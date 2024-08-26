@@ -1,9 +1,9 @@
-﻿using Application.Todo.TodoLists.Queries.GetTodos;
-using Application.Todo.TodoLists.Commands.CreateTodoList;
-using Application.Todo.TodoLists.Commands.UpdateTodoList;
-using Application.Todo.TodoLists.Commands.DeleteTodoList;
+﻿using Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
+using Toss.Inventory.Application.TodoLists.Commands.DeleteTodoList;
+using Toss.Inventory.Application.TodoLists.Commands.UpdateTodoList;
+using Toss.Inventory.Application.TodoLists.Queries.GetTodos;
 
-namespace Toss.Inventory.Catalog.Web.Endpoints;
+namespace Toss.Inventory.Web.Endpoints;
 
 public class TodoLists : EndpointGroupBase
 {

@@ -34,7 +34,7 @@
       "serviceHost": null,
       "serviceBasePath": null,
       "serviceSchemes": [],
-      "infoTitle": "Toss.Inventory.Catalog API",
+      "infoTitle": "Toss.Inventory API",
       "infoDescription": null,
       "infoVersion": "1.0.0",
       "documentTemplate": null,

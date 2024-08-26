@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Toss.Inventory.Catalog.Web.Infrastructure;
+namespace Toss.Inventory.Web.Infrastructure;
 
 public static class IEndpointRouteBuilderExtensions
 {

@@ -1,23 +1,28 @@
-
-using Infrastructure.Data;
-using Toss.Inventory.Catalog.Web;
+using eShop.ServiceDefaults;
+using Toss.Inventory.Application;
+using Toss.Inventory.Infrastructure;
+using Toss.Inventory.Infrastructure.Data;
+using Toss.Inventory.Web;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddServiceDefaults();
 
 // Add services to the container.
 builder.Services.AddKeyVaultIfConfigured(builder.Configuration);
 
-//builder.Services.AddApplicationServices();
-
-builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddApplicationServices();
+builder.AddInfrastructureServices();
 builder.Services.AddWebServices();
 
 var app = builder.Build();
 
+app.MapDefaultEndpoints();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    await app.InitialiseDatabaseAsync();
+    //await app.InitialiseDatabaseAsync();
 }
 else
 {
@@ -25,7 +30,7 @@ else
     app.UseHsts();
 }
 
-app.UseHealthChecks("/health");
+//app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

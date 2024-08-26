@@ -1,7 +1,8 @@
-﻿using Application.Common.Exceptions;
-using Application.Todo.TodoLists.Commands.CreateTodoList;
+﻿using Toss.Inventory.Application.Common.Exceptions;
+using Toss.Inventory.Application.TodoLists.Commands.CreateTodoList;
+using Toss.Inventory.Domain.Entities;
 
-namespace Toss.Inventory.Catalog.Application.FunctionalTests.TodoLists.Commands;
+namespace Toss.Inventory.Application.FunctionalTests.TodoLists.Commands;
 
 using static Testing;
 

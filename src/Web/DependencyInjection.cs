@@ -1,18 +1,13 @@
 ﻿using Azure.Identity;
-using Toss.Inventory.Catalog.Web.Services;
+using Toss.Inventory.Application.Common.Interfaces;
+using Toss.Inventory.Infrastructure.Data;
+using Toss.Inventory.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using Application.Common.Interfaces;
-using Infrastructure.Data;
-using Application.Common.Behaviours;
-using Domain.Repositories;
-using FluentValidation;
-using System.Reflection;
-using Infrastructure.Data.Repositories;
 
-namespace Toss.Inventory.Catalog.Web;
+namespace Toss.Inventory.Web;
 
 public static class DependencyInjection
 {
@@ -24,8 +19,8 @@ public static class DependencyInjection
 
         services.AddHttpContextAccessor();
 
-        services.AddHealthChecks()
-            .AddDbContextCheck<ApplicationDbContext>();
+        //services.AddHealthChecks()
+        //    .AddDbContextCheck<ApplicationDbContext>();
 
         services.AddExceptionHandler<CustomExceptionHandler>();
 
@@ -39,7 +34,7 @@ public static class DependencyInjection
 
         services.AddOpenApiDocument((configure, sp) =>
         {
-            configure.Title = "Toss.Inventory.Catalog API";
+            configure.Title = "Toss.Inventory API";
 
             // Add JWT
             configure.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
@@ -52,21 +47,6 @@ public static class DependencyInjection
 
             configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
         });
-
-        services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
-        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
-        services.AddMediatR(cfg =>
-        {
-            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
-            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehaviour<,>));
-            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
-        });
-
-        services.AddScoped<IProductRepository, ProductRepository>();
 
         return services;
     }

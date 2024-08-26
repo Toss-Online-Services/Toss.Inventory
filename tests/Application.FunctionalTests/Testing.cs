@@ -1,12 +1,12 @@
-﻿using MediatR;
+﻿using Toss.Inventory.Domain.Constants;
+using Toss.Inventory.Infrastructure.Data;
+using Toss.Inventory.Infrastructure.Identity;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Domain.Constants;
-using Infrastructure.Identity;
-using Infrastructure.Data;
 
-namespace Toss.Inventory.Catalog.Application.FunctionalTests;
+namespace Toss.Inventory.Application.FunctionalTests;
 
 [SetUpFixture]
 public partial class Testing

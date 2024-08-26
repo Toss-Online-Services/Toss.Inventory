@@ -39,7 +39,7 @@ if (-not $GitHubRepositoryName) {
 }
 
 if (-not $AzureLocation) {
-  $AzureLocation = "southafricanorth"
+  $AzureLocation = "australiaeast"
 }
 
 if (-not $AzureSubscriptionId) {
