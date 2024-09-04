@@ -9,7 +9,7 @@ using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 
-namespace eShop.ServiceDefaults;
+namespace Toss.ServiceDefaults;
 
 public static partial class Extensions
 {

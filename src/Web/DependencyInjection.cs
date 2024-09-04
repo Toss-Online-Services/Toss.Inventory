@@ -1,12 +1,13 @@
 ﻿using Azure.Identity;
-using Toss.Inventory.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Domain.SeedWork;
+using Web.Services;
+using Web.Infrastructure;
 
-namespace Toss.Inventory.Web;
+namespace Web;
 
 public static class DependencyInjection
 {
@@ -17,6 +18,7 @@ public static class DependencyInjection
         services.AddScoped<IUser, CurrentUser>();
 
         services.AddHttpContextAccessor();
+
 
         //services.AddHealthChecks()
         //    .AddDbContextCheck<ApplicationDbContext>();

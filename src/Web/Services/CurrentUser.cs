@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Domain.SeedWork;
 
-namespace Toss.Inventory.Web.Services;
+namespace Web.Services;
 
 public class CurrentUser : IUser
 {

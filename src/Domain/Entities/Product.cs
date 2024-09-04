@@ -3,7 +3,7 @@
 namespace Domain.Entities;
 
 public sealed class Product
-    : BaseAuditableEntity, IAggregateRoot, ILocalizedEntity, ISlugSupported, IAclSupported, IStoreMappingSupported, IDiscountSupported<DiscountProductMapping>
+    : BaseAuditableEntity, IAggregateRoot
 {
     private readonly List<ProductComponent> _components = [];
     public Product()

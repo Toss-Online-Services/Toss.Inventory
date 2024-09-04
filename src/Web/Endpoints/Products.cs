@@ -1,13 +1,15 @@
-﻿using Application.Common.Models;
+﻿using Application;
 using Application.Products.Commands.CreateProduct;
 using Application.Products.Commands.Requests;
 using Application.Products.Models;
 using Application.Products.Queries.GetProductsWithPagination;
+using Web.Infrastructure;
 
-namespace Toss.Inventory.Web.Endpoints;
+namespace Web.Endpoints;
 
 public class Products : EndpointGroupBase
 {
+
     public override void Map(WebApplication app)
     {
         app.MapGroup(this)

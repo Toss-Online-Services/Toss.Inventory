@@ -21,7 +21,7 @@ public record CreateProductRequest : ProductCommand, IRequest<int>
     {
         public Mapping()
         {
-            CreateMap<UpdateProductDetailRequest, CreateProductCommand>();
+            CreateMap<CreateProductRequest, CreateProductCommand>();
         }
     }
 

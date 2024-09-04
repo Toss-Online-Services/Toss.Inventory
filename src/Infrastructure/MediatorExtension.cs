@@ -1,12 +1,8 @@
-﻿using Domain.SeedWork;
-using MediatR;
-using Toss.Inventory.Infrastructure.Data;
-
-namespace Toss.Inventory.Infrastructure;
+﻿namespace Infrastructure;
 
 static class MediatorExtension
 {
-    public static async Task DispatchDomainEventsAsync(this IMediator mediator, CatalogContext ctx)
+    public static async Task DispatchDomainEventsAsync(this IMediator mediator, ApplicationContext ctx)
     {
         var domainEntities = ctx.ChangeTracker
             .Entries<Entity>()

@@ -1,8 +1,6 @@
-﻿using Application.Common.Mappings;
-using Application.Common.Models;
+﻿using Application.Extensions;
 using Application.Products.Models;
 using Domain.Entities;
-using Microsoft.Extensions.Logging;
 
 namespace Application.Products.Queries.GetProductsWithPagination;
 
@@ -31,7 +29,7 @@ public class GetProductsWithPaginationQueryHandler : IRequestHandler<GetProducts
     public async Task<PaginatedList<ProductModel>> Handle(GetProductsWithPaginationQuery request, CancellationToken cancellationToken)
     {
         // Await the task to get the IList<Product>
-        var products = await _productRepository.GetAllAsync(); // Assuming this returns Task<IList<Product>>
+        List<Product> products = await _productRepository.GetAllAsync(); // Assuming this returns Task<IList<Product>>
 
         // Convert the IList<Product> to IQueryable<Product>
         var queryableProducts = products.AsQueryable();

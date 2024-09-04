@@ -8,7 +8,7 @@ using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Toss.ServiceDefaults;
 
-namespace eShop.ServiceDefaults;
+namespace Toss.ServiceDefaults;
 
 public static partial class Extensions
 {

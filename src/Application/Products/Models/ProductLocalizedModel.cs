@@ -1,7 +1,6 @@
-﻿using Application.Common.Interfaces;
-
+﻿
 namespace Application.Products.Models;
-public record ProductLocalizedModel : ILocalizedLocaleModel
+public record ProductLocalizedModel
 {
     public int LanguageId { get; set; }
 
