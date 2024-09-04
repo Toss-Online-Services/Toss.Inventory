@@ -1,9 +1,4 @@
-﻿using Infrastructure.EventBus.Abstractions;
-using Infrastructure.EventBus.Events;
-using Infrastructure.IntegrationEventLogEF.Services;
-using Microsoft.Extensions.Logging;
-
-namespace Application.IntegrationEvents;
+﻿namespace Application.IntegrationEvents;
 
 public class OrderingIntegrationEventService(IEventBus eventBus,
     ApplicationContext ApplicationContext,

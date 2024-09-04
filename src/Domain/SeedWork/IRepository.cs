@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using Infrastructure.Caching;
-
-namespace Domain.SeedWork;
+﻿namespace Domain.SeedWork;
 
 public interface IRepository<T> where T : IAggregateRoot
 {

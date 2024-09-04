@@ -1,13 +1,13 @@
 ﻿namespace Toss.Inventory.Application.FunctionalTests;
 
-using static Testing;
+//using static Testing;
 
-[TestFixture]
-public abstract class BaseTestFixture
-{
-    [SetUp]
-    public async Task TestSetUp()
-    {
-        await ResetState();
-    }
-}
+//[TestFixture]
+//public abstract class BaseTestFixture
+//{
+//    [SetUp]
+//    public async Task TestSetUp()
+//    {
+//        await ResetState();
+//    }
+//}

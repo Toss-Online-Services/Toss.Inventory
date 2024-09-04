@@ -4,7 +4,7 @@ namespace Toss.Inventory.Application.FunctionalTests;
 
 public interface ITestDatabase
 {
-    Task InitialiseAsync();
+  //  Task InitialiseAsync();
 
     DbConnection GetConnection();
 

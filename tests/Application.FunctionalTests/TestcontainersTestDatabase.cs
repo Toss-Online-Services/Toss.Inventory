@@ -1,5 +1,4 @@
 ﻿using System.Data.Common;
-using Toss.Inventory.Infrastructure.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Respawn;
@@ -21,27 +20,27 @@ public class TestcontainersTestDatabase : ITestDatabase
             .Build();
     }
 
-    public async Task InitialiseAsync()
-    {
-        await _container.StartAsync();
+    //public async Task InitialiseAsync()
+    //{
+    //    await _container.StartAsync();
 
-        _connectionString = _container.GetConnectionString();
+    //    _connectionString = _container.GetConnectionString();
 
-        _connection = new SqlConnection(_connectionString);
+    //    _connection = new SqlConnection(_connectionString);
 
-        var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseSqlServer(_connectionString)
-            .Options;
+    //    var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+    //        .UseSqlServer(_connectionString)
+    //        .Options;
 
-        var context = new ApplicationDbContext(options);
+    //    var context = new ApplicationDbContext(options);
 
-        context.Database.Migrate();
+    //    context.Database.Migrate();
 
-        _respawner = await Respawner.CreateAsync(_connectionString, new RespawnerOptions
-        {
-            TablesToIgnore = new Respawn.Graph.Table[] { "__EFMigrationsHistory" }
-        });
-    }
+    //    _respawner = await Respawner.CreateAsync(_connectionString, new RespawnerOptions
+    //    {
+    //        TablesToIgnore = new Respawn.Graph.Table[] { "__EFMigrationsHistory" }
+    //    });
+    //}
 
     public DbConnection GetConnection()
     {

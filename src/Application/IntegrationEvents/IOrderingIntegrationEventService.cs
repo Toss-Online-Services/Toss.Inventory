@@ -1,6 +1,4 @@
-﻿using Infrastructure.EventBus.Events;
-
-namespace Application.IntegrationEvents;
+﻿namespace Application.IntegrationEvents;
 
 public interface IOrderingIntegrationEventService
 {

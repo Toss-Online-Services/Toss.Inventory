@@ -1,5 +1,4 @@
 ﻿using Domain.Entities;
-using Microsoft.Extensions.Logging;
 
 namespace Application.Products.Commands.CreateProduct;
 

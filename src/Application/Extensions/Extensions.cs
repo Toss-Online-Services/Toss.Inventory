@@ -8,6 +8,7 @@ using Infrastructure.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Toss.Extensions;
 
 namespace Application.Extensions;
 
@@ -26,7 +27,7 @@ public static partial class Extensions
         });
         builder.EnrichNpgsqlDbContext<ApplicationContext>();
 
-        //services.AddMigration<ApplicationContext, ApplicationContextSeed>();
+        services.AddMigration<ApplicationContext>();
 
         // Add the integration services that consume the DbContext
         services.AddTransient<IIntegrationEventLogService, IntegrationEventLogService<ApplicationContext>>();
