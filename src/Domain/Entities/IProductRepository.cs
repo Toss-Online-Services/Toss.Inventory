@@ -7,5 +7,5 @@ public interface IProductRepository: IRepository<Product>
     void Update(Product product);
 
     Task<Product> GetAsync(int productId);
-    Task<List<Product>> GetAllAsync();
+    IQueryable<Product> GetAllAsync();
 }

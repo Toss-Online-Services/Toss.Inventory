@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.Products.Models.Product;
+using Domain.Entities;
 
 namespace Application.Products.Commands.CreateProduct;
 

@@ -2,8 +2,10 @@
 using Application.Products.Commands.CreateProduct;
 using Application.Products.Commands.Requests;
 using Application.Products.Models;
+using Application.Products.Models.Product;
 using Application.Products.Queries.GetProductsWithPagination;
 using Web.Infrastructure;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Web.Endpoints;
 
@@ -31,8 +33,14 @@ public class Products : EndpointGroupBase
             .MapDelete(DeleteProduct, "DeleteProduct/{id}");
     }
 
-    public Task<PaginatedList<ProductModel>> GetProductsWithPagination(ISender sender, [AsParameters] GetProductsWithPaginationQuery query)
+    public Task<PaginatedList<ProductViewModel>> GetProductsWithPagination(ISender sender)//, [AsParameters] GetProductsWithPaginationQuery query)
     {
+        var query = new GetProductsWithPaginationQuery
+        {
+            PageNumber = 1,
+            PageSize = 10
+        };
+
         return sender.Send(query);
     }
 

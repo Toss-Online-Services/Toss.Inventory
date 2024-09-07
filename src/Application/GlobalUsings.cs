@@ -12,3 +12,4 @@ global using Infrastructure.EventBus.Events;
 global using Infrastructure.IntegrationEventLogEF.Services;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.AspNetCore.Http;
+global using Application.Products.Models.Media;

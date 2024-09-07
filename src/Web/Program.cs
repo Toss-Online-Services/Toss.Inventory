@@ -1,4 +1,5 @@
 ﻿using Application.Extensions;
+using AspNetCore.Swagger.Themes;
 using Toss.ServiceDefaults;
 using Web;
 using Web.Infrastructure;
@@ -11,6 +12,17 @@ builder.AddServiceDefaults();
 builder.Services.AddProblemDetails();
 builder.Services.AddWebServices();
 
+// Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularClient",
+        builder => builder
+            .WithOrigins("http://localhost:4200") // Allow requests from the Angular client
+            .AllowAnyMethod()                      // Allow any HTTP methods (GET, POST, etc.)
+            .AllowAnyHeader()                      // Allow any headers
+            .AllowCredentials());                  // Allow credentials if needed
+});
+
 // Add the authentication services to DI
 builder.AddDefaultAuthentication();
 
@@ -19,6 +31,9 @@ var withApiVersioning = builder.Services.AddApiVersioning();
 builder.AddDefaultOpenApi(withApiVersioning);
 
 var app = builder.Build();
+
+// Enable CORS before the endpoints are mapped
+app.UseCors("AllowAngularClient");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {   
@@ -44,7 +59,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapRazorPages();
+app.UseSwaggerUI(ModernStyle.Dark);
 
 app.MapFallbackToFile("index.html");
 

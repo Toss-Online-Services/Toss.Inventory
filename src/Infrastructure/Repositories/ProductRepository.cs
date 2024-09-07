@@ -35,8 +35,8 @@ public class ProductRepository : IProductRepository
         _context.Entry(product).State = EntityState.Modified;
     }
 
-    public async Task<List<Product>> GetAllAsync()
+    public IQueryable<Product> GetAllAsync()
     {
-        return await _context.Products.ToListAsync();
+        return _context.Products;
     }
 }

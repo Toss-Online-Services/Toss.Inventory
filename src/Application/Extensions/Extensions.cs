@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Application.Behaviors;
 using Application.IntegrationEvents;
+using Application.Products.Models.Product;
 using Application.Services;
 using Domain.Entities;
 using Infrastructure.Idempotency;
