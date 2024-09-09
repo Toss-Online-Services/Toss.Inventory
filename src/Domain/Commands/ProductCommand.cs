@@ -6,7 +6,7 @@ public record ProductCommand
     public bool LimitedToStores { get; init; }
 
     // Identification
-    
+
     public int ProductTypeId { get; init; }
     public int ParentGroupedProductId { get; init; }
     public bool VisibleIndividually { get; init; }

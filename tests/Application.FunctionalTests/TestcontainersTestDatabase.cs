@@ -1,6 +1,4 @@
 ﻿using System.Data.Common;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
 using Respawn;
 using Testcontainers.MsSql;
 

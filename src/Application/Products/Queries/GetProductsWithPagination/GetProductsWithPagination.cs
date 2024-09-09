@@ -5,7 +5,7 @@ using Domain.Entities;
 namespace Application.Products.Queries.GetProductsWithPagination;
 
 public record GetProductsWithPaginationQuery : IRequest<PaginatedList<ProductViewModel>>
-{   
+{
     public int PageNumber { get; init; } = 1;
     public int PageSize { get; init; } = 10;
 }
@@ -28,15 +28,24 @@ public class GetProductsWithPaginationQueryHandler : IRequestHandler<GetProducts
 
     public async Task<PaginatedList<ProductViewModel>> Handle(GetProductsWithPaginationQuery request, CancellationToken cancellationToken)
     {
-        // Await the task to get the IList<Product>
-        IQueryable<Product> products =  _productRepository.GetAllAsync(); // Assuming this returns Task<IList<Product>>
-             
+        PaginatedList<ProductViewModel> paginatedList;
+        try
+        {
+            // Await the task to get the IList<Product>
+            IQueryable<Product> products = _productRepository.GetAllAsync(); // Assuming this returns Task<IList<Product>>
 
-        // Apply ProjectTo on the IQueryable<Product>
-        var paginatedList = await products
-            .ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider)
-            .PaginatedListAsync(request.PageNumber, request.PageSize);
 
+            // Apply ProjectTo on the IQueryable<Product>
+            paginatedList = await products
+                .ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider)
+                .PaginatedListAsync(request.PageNumber, request.PageSize);
+
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception(ex.Message);
+        }
         return paginatedList;
     }
 }

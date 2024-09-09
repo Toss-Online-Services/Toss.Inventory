@@ -66,7 +66,7 @@ public static partial class Extensions
                     .AddRuntimeInstrumentation();
 
                 // Configure Semantic Kernel telemetry
-                metrics.AddMeter("Microsoft.SemanticKernel*");                    
+                metrics.AddMeter("Microsoft.SemanticKernel*");
             })
             .WithTracing(tracing =>
             {
@@ -81,7 +81,7 @@ public static partial class Extensions
                     .AddHttpClientInstrumentation();
 
                 // Configure Semantic Kernel telemetry
-                tracing.AddSource("Microsoft.SemanticKernel*");                    
+                tracing.AddSource("Microsoft.SemanticKernel*");
             });
 
         builder.AddOpenTelemetryExporters();

@@ -1,2 +1,2 @@
-﻿global using Domain.SeedWork;
-global using Domain.Commands;
+﻿global using Domain.Commands;
+global using Domain.SeedWork;

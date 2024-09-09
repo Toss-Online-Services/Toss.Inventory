@@ -1,11 +1,9 @@
 ﻿using Application;
 using Application.Products.Commands.CreateProduct;
 using Application.Products.Commands.Requests;
-using Application.Products.Models;
 using Application.Products.Models.Product;
 using Application.Products.Queries.GetProductsWithPagination;
 using Web.Infrastructure;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Web.Endpoints;
 

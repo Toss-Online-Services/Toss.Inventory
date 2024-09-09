@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Application.Behaviors;
 using Application.IntegrationEvents;
-using Application.Products.Models.Product;
 using Application.Services;
 using Domain.Entities;
 using Infrastructure.Idempotency;
@@ -14,10 +13,10 @@ using Toss.Extensions;
 namespace Application.Extensions;
 
 public static partial class Extensions
-{   
+{
     public static void AddApplicationServices(this IHostApplicationBuilder builder)
     {
-        var services = builder.Services;       
+        var services = builder.Services;
 
         // Pooling is disabled because of the following error:
         // Unhandled exception. System.InvalidOperationException:

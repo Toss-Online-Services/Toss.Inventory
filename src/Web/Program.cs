@@ -36,7 +36,7 @@ var app = builder.Build();
 app.UseCors("AllowAngularClient");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-{   
+{
     //await app.InitialiseDatabaseAsync();
 }
 else

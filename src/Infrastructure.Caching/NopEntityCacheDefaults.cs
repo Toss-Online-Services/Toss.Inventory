@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents default values related to caching entities
 /// </summary>
-public static partial class NopEntityCacheDefaults<TEntity> 
+public static partial class NopEntityCacheDefaults<TEntity>
 {
     /// <summary>
     /// Gets an entity type name used in cache keys

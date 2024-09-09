@@ -564,34 +564,6 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "productId": {
-            "type": "string",
-            "format": "guid"
-          },
-          "sku": {
-            "type": "string",
-            "nullable": true
-          },
-          "gtin": {
-            "type": "string",
-            "nullable": true
-          },
-          "manufacturerPartNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "vendorPartNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "requiredProductIds": {
-            "type": "string",
-            "nullable": true
-          },
-          "allowedQuantities": {
-            "type": "string",
-            "nullable": true
-          },
           "components": {
             "type": "array",
             "nullable": true,
@@ -604,6 +576,10 @@
           },
           "limitedToStores": {
             "type": "boolean"
+          },
+          "productId": {
+            "type": "string",
+            "format": "guid"
           },
           "productTypeId": {
             "type": "integer",
@@ -621,6 +597,22 @@
             "nullable": true
           },
           "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "sku": {
+            "type": "string",
+            "nullable": true
+          },
+          "gtin": {
+            "type": "string",
+            "nullable": true
+          },
+          "manufacturerPartNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "vendorPartNumber": {
             "type": "string",
             "nullable": true
           },
@@ -665,6 +657,14 @@
           },
           "deleted": {
             "type": "boolean"
+          },
+          "requiredProductIds": {
+            "type": "string",
+            "nullable": true
+          },
+          "allowedQuantities": {
+            "type": "string",
+            "nullable": true
           },
           "price": {
             "nullable": true,

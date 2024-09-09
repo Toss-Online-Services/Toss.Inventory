@@ -1,11 +1,10 @@
 ﻿using Azure.Identity;
+using Domain.SeedWork;
 using Microsoft.AspNetCore.Mvc;
-
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using Domain.SeedWork;
-using Web.Services;
 using Web.Infrastructure;
+using Web.Services;
 
 namespace Web;
 
