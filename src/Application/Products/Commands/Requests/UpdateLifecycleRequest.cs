@@ -12,4 +12,3 @@ public record UpdateLifecycleRequest : LifecycleCommand, IRequest<bool>
     }
 
 }
-

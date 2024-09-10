@@ -11,5 +11,3 @@ public record UpdateInventoryRequest : InventoryCommand, IRequest<bool>
         }
     }
 }
-
-
