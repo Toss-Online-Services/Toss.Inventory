@@ -41,7 +41,7 @@ public partial class CommonHelper
 
         if (!IsValidEmail(output))
         {
-            throw new NopException("Email is not valid.");
+            throw new DomainException("Email is not valid.");
         }
 
         return output;
@@ -190,10 +190,10 @@ public partial class CommonHelper
 
         var instanceType = instance.GetType();
         var pi = instanceType.GetProperty(propertyName) 
-                 ?? throw new NopException("No property '{0}' found on the instance of type '{1}'.", propertyName, instanceType);
+                 ?? throw new DomainException("No property '{0}' found on the instance of type '{1}'.", propertyName, instanceType);
 
         if (!pi.CanWrite)
-            throw new NopException("The property '{0}' on the instance of type '{1}' does not have a setter.", propertyName, instanceType);
+            throw new DomainException("The property '{0}' on the instance of type '{1}' does not have a setter.", propertyName, instanceType);
         if (value != null && !value.GetType().IsAssignableFrom(pi.PropertyType))
             value = To(value, pi.PropertyType);
         pi.SetValue(instance, value, Array.Empty<object>());

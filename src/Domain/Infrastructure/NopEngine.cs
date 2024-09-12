@@ -202,7 +202,7 @@ public partial class NopEngine : IEngine
                 //try to resolve constructor parameters
                 var parameters = constructor.GetParameters().Select(parameter =>
                 {
-                    var service = Resolve(parameter.ParameterType) ?? throw new NopException("Unknown dependency");
+                    var service = Resolve(parameter.ParameterType) ?? throw new DomainException("Unknown dependency");
                     return service;
                 });
 
@@ -214,7 +214,7 @@ public partial class NopEngine : IEngine
                 innerException = ex;
             }
 
-        throw new NopException("No constructor was found that had all the dependencies satisfied.", innerException);
+        throw new DomainException("No constructor was found that had all the dependencies satisfied.", innerException);
     }
 
     #endregion

@@ -20,6 +20,10 @@
     <PackageReference Include="Nito.AsyncEx.Coordination" />
     <PackageReference Include="System.IO.FileSystem.AccessControl" />
     <PackageReference Include="System.Linq.Async" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\Orders\" />
   </ItemGroup>  
 
 </Project>

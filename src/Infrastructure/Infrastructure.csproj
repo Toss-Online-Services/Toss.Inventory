@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentMigrator" />
+    <PackageReference Include="FluentMigrator.Runner" />
+    <PackageReference Include="linq2db" />
+    <PackageReference Include="Microsoft.Data.SqlClient" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -21,7 +25,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="MySqlConnector" />
+    <PackageReference Include="Npgsql" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" />
+    <PackageReference Include="System.Net.NameResolution" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,7 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="EntityConfigurations\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
 
 

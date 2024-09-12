@@ -1,5 +1,7 @@
 ﻿//using Infrastructure.Data.Extensions;
 
+using Infrastructure.Extensions;
+
 namespace Application;
 
 public class PaginatedList<T>

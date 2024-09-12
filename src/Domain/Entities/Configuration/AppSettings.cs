@@ -36,7 +36,7 @@ public partial class AppSettings
     public TConfig Get<TConfig>() where TConfig : class, IConfig
     {
         if (_configurations[typeof(TConfig)] is not TConfig config)
-            throw new NopException($"No configuration with type '{typeof(TConfig)}' found");
+            throw new DomainException($"No configuration with type '{typeof(TConfig)}' found");
 
         return config;
     }
