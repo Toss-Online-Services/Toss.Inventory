@@ -43,7 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.IntegrationE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.EventBusRabbitMQ", "src\Infrastructure.EventBusRabbitMQ\Infrastructure.EventBusRabbitMQ.csproj", "{70505AEA-CEAA-4994-9743-446AA6A42D9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Caching", "src\Infrastructure.Caching\Infrastructure.Caching.csproj", "{08F5F35D-707B-4BD6-8CEA-797C9FDF40EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Caching", "src\Infrastructure.Caching\Infrastructure.Caching.csproj", "{08F5F35D-707B-4BD6-8CEA-797C9FDF40EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
