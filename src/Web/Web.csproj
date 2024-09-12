@@ -3,6 +3,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Domain.Services\Domain.Services.csproj" />
     <ProjectReference Include="..\Services\Toss.ServiceDefaults\Toss.ServiceDefaults.csproj" />
   </ItemGroup>
 
