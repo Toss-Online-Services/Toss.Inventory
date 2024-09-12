@@ -1,4 +1,5 @@
-﻿using FluentMigrator.Builders.Create.Table;
+﻿
+using FluentMigrator.Builders.Create.Table;
 using Infrastructure.Extensions;
 
 namespace Infrastructure.Mapping.Builders.Discounts;
@@ -17,8 +18,8 @@ public partial class DiscountUsageHistoryBuilder : NopEntityBuilder<DiscountUsag
     public override void MapEntity(CreateTableExpressionBuilder table)
     {
         table
-            .WithColumn(nameof(DiscountUsageHistory.DiscountId)).AsInt32().ForeignKey<Discount>();
-            //.WithColumn(nameof(DiscountUsageHistory.OrderId)).AsInt32().ForeignKey<Order>();
+            .WithColumn(nameof(DiscountUsageHistory.DiscountId)).AsInt32().ForeignKey<Discount>()
+            .WithColumn(nameof(DiscountUsageHistory.OrderId)).AsInt32().ForeignKey<Order>();
     }
 
     #endregion

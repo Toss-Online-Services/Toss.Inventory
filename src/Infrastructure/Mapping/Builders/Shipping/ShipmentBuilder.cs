@@ -16,7 +16,7 @@ public partial class ShipmentBuilder : NopEntityBuilder<Shipment>
     /// <param name="table">Create table expression builder</param>
     public override void MapEntity(CreateTableExpressionBuilder table)
     {
-        //table.WithColumn(nameof(Shipment.OrderId)).AsInt32().ForeignKey<Order>();
+        table.WithColumn(nameof(Shipment.OrderId)).AsInt32().ForeignKey<Order>();
     }
 
     #endregion
