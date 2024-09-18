@@ -1,6 +1,4 @@
-﻿using Domain.Services.Attributes;
-
-namespace Domain.Services.Vendors.Caching;
+﻿namespace Domain.Services.Vendors.Caching;
 
 /// <summary>
 /// Represents a vendor attribute cache event consumer

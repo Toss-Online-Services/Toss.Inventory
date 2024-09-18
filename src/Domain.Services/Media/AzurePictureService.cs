@@ -1,10 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.AspNetCore.Http;
-using Infrastructure;
-using Domain.Services.Seo;
-using Domain.Services.Configuration;
-using Domain.Services.Catalog;
 
 namespace Domain.Services.Media;
 

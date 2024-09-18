@@ -1,10 +1,8 @@
 ﻿using Azure.Identity;
-using Domain.SeedWork;
 using Microsoft.AspNetCore.Mvc;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Web.Infrastructure;
-using Web.Services;
 
 namespace Web;
 
@@ -13,8 +11,6 @@ public static class DependencyInjection
     public static IServiceCollection AddWebServices(this IServiceCollection services)
     {
         services.AddDatabaseDeveloperPageExceptionFilter();
-
-        services.AddScoped<IUser, CurrentUser>();
 
         services.AddHttpContextAccessor();
 

@@ -1,6 +1,4 @@
-﻿using Domain.Services.Events;
-
-namespace Domain.Services.Caching;
+﻿namespace Domain.Services.Caching;
 
 /// <summary>
 /// Represents the base entity cache event consumer

@@ -1,4 +1,6 @@
-﻿namespace Domain.Services.Tax;
+﻿
+
+namespace Domain.Services.Tax;
 
 /// <summary>
 /// Provides an interface for creating tax providers

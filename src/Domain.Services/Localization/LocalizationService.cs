@@ -2,10 +2,8 @@
 using System.Reflection;
 using System.Text;
 using System.Xml;
-using Nop.Core;
-using Infrastructure;
 using Domain.Services.ExportImport;
-using Domain.Services.Configuration;
+using Nop.Core;
 
 namespace Domain.Services.Localization;
 
@@ -465,7 +463,7 @@ public partial class LocalizationService : ILocalizationService
         await xmlWriter.WriteStartDocumentAsync();
         await xmlWriter.WriteStartElementAsync("Language");
         await xmlWriter.WriteAttributeStringAsync("Name", language.Name);
-        await xmlWriter.WriteAttributeStringAsync("SupportedVersion", TossVersion.CURRENT_VERSION);
+        await xmlWriter.WriteAttributeStringAsync("SupportedVersion", NopVersion.CURRENT_VERSION);
 
         var resources = await GetAllResourcesAsync(language.Id);
         foreach (var resource in resources)

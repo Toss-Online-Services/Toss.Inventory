@@ -1,5 +1,4 @@
-﻿using Infrastructure;
-using Domain.Services.Localization;
+﻿
 
 namespace Domain.Services.Catalog;
 

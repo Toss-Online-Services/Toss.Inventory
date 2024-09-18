@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Text;
 using Domain.Entities.Attributes;
-using Domain.Services.Localization;
 
 namespace Domain.Services.Attributes;
 

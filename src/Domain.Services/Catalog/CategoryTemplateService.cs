@@ -1,7 +1,4 @@
-﻿using Domain.Services.Catalog;
-using Infrastructure;
-
-namespace Domain.Services.Catalog;
+﻿namespace Domain.Services.Catalog;
 
 /// <summary>
 /// Category template service

@@ -1,6 +1,4 @@
-﻿using Domain.Services.Localization;
-
-namespace Domain.Services.Stores.Caching;
+﻿namespace Domain.Services.Stores.Caching;
 
 /// <summary>
 /// Represents a store cache event consumer

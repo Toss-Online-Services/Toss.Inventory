@@ -1,6 +1,4 @@
-﻿using Domain.Services.Attributes;
-
-namespace Domain.Services.Common.Caching;
+﻿namespace Domain.Services.Common.Caching;
 
 /// <summary>
 /// Represents a address attribute cache event consumer

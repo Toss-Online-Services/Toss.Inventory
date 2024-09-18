@@ -1,9 +1,6 @@
 ﻿using System.Net;
 using System.Text;
 using Domain.Services.Tax;
-using Domain.Services.Directory;
-using Domain.Services.Media;
-using Domain.Services.Localization;
 
 namespace Domain.Services.Catalog;
 

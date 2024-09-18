@@ -1,6 +1,4 @@
-﻿using Infrastructure;
-
-namespace Domain.Services.Shipping.Date;
+﻿namespace Domain.Services.Shipping.Date;
 
 /// <summary>
 /// Represents the date range service

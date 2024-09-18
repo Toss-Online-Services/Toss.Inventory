@@ -1,7 +1,4 @@
-﻿
-using Infrastructure;
-
-namespace Domain.Services.Vendors;
+﻿namespace Domain.Services.Vendors;
 
 /// <summary>
 /// Vendor service

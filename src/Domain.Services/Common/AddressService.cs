@@ -1,9 +1,5 @@
 ﻿using System.Net;
 using System.Text.RegularExpressions;
-using Domain.Services.Attributes;
-using Domain.Services.Directory;
-using Domain.Services.Localization;
-using Infrastructure;
 
 namespace Domain.Services.Common;
 

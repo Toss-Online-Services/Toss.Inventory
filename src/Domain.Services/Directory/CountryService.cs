@@ -1,7 +1,4 @@
-﻿using Infrastructure;
-using Domain.Services.Localization;
-
-namespace Domain.Services.Directory;
+﻿namespace Domain.Services.Directory;
 
 /// <summary>
 /// Country service

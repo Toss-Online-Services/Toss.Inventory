@@ -1,6 +1,4 @@
-﻿
-
-namespace Domain.Services.Logging.Caching;
+﻿namespace Domain.Services.Logging.Caching;
 
 /// <summary>
 /// Represents a activity log type cache event consumer

@@ -1,4 +1,3 @@
-using Domain.Services.Localization;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 

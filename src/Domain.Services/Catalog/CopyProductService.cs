@@ -1,8 +1,4 @@
-﻿using Domain.Services.Localization;
-using Domain.Services.Media;
-using Domain.Services.Seo;
-
-namespace Domain.Services.Catalog;
+﻿namespace Domain.Services.Catalog;
 
 /// <summary>
 /// Copy Product service

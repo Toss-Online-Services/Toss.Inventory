@@ -1,6 +1,4 @@
-﻿
-
-namespace Domain.Services.Directory;
+﻿namespace Domain.Services.Directory;
 
 /// <summary>
 /// Represents a task for updating exchange rates

@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.StaticFiles;
 using Nop.Core;
-using Infrastructure;
 using SkiaSharp;
 using Svg.Skia;
-using Domain.Services.Seo;
-using Domain.Services.Configuration;
-using Domain.Services.Catalog;
 
 namespace Domain.Services.Media;
 

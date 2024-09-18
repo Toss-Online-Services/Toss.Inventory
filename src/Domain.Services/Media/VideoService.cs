@@ -1,6 +1,4 @@
-﻿using Infrastructure;
-
-namespace Domain.Services.Media;
+﻿namespace Domain.Services.Media;
 
 /// <summary>
 /// Video service

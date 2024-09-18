@@ -1,5 +1,4 @@
-﻿using Domain.Services.Localization;
-using QuestPDF.Fluent;
+﻿using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using IContainer = QuestPDF.Infrastructure.IContainer;

@@ -1,7 +1,4 @@
-﻿using Domain.Services.Localization;
-using Infrastructure;
-
-namespace Domain.Services.Directory;
+﻿namespace Domain.Services.Directory;
 
 /// <summary>
 /// State province service

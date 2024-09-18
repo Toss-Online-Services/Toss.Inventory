@@ -204,7 +204,7 @@ public partial class PluginsInfo : IPluginsInfo
                 continue;
 
             //ensure that plugin is compatible with the current version
-            if (!pluginDescriptor.SupportedVersions.Contains(TossVersion.CURRENT_VERSION, StringComparer.InvariantCultureIgnoreCase))
+            if (!pluginDescriptor.SupportedVersions.Contains(NopVersion.CURRENT_VERSION, StringComparer.InvariantCultureIgnoreCase))
             {
                 incompatiblePlugins.Add(pluginDescriptor.SystemName, PluginIncompatibleType.NotCompatibleWithCurrentVersion);
                 continue;

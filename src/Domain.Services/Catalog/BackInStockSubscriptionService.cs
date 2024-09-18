@@ -1,7 +1,4 @@
-﻿using Domain.Services.Messages;
-using Infrastructure;
-
-namespace Domain.Services.Catalog;
+﻿namespace Domain.Services.Catalog;
 
 /// <summary>
 /// Back in stock subscription service

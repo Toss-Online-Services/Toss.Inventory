@@ -1,6 +1,4 @@
-﻿using Domain.Services.Directory;
-
-namespace Domain.Services.Catalog;
+﻿namespace Domain.Services.Catalog;
 
 /// <summary>
 /// Price calculation service

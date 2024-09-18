@@ -1,8 +1,4 @@
-﻿using Infrastructure;
-using Domain.Services.Seo;
-using Domain.Services.Catalog;
-
-namespace Domain.Services.Catalog;
+﻿namespace Domain.Services.Catalog;
 
 /// <summary>
 /// Product tag service

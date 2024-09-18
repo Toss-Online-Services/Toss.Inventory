@@ -1,9 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
+using Domain;
 using Nop.Core;
-using Infrastructure;
-using Domain.Services.Seo;
-using Domain.Services.Localization;
 
 namespace Nop.Services.Seo;
 

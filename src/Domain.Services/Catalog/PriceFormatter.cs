@@ -1,6 +1,4 @@
 ﻿using System.Globalization;
-using Domain.Services.Directory;
-using Domain.Services.Localization;
 
 namespace Domain.Services.Catalog;
 

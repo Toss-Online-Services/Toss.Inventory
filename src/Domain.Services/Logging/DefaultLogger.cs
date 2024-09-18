@@ -1,6 +1,4 @@
-﻿using Infrastructure;
-
-namespace Domain.Services.Logging;
+﻿namespace Domain.Services.Logging;
 
 /// <summary>
 /// Default logger

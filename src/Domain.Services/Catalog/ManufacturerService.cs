@@ -1,6 +1,4 @@
-﻿using Infrastructure;
-
-namespace Domain.Services.Catalog;
+﻿namespace Domain.Services.Catalog;
 
 /// <summary>
 /// Manufacturer service

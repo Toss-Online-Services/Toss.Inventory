@@ -1,7 +1,4 @@
-﻿using DocumentFormat.OpenXml.Drawing.Diagrams;
-using Domain.Services.Catalog;
-
-namespace Domain.Services.Stores.Caching;
+﻿namespace Domain.Services.Stores.Caching;
 
 /// <summary>
 /// Represents a store mapping cache event consumer

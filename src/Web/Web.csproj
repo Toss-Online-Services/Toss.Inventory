@@ -4,7 +4,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Domain.Services\Domain.Services.csproj" />
+    <ProjectReference Include="..\Infrastructure.Caching\Infrastructure.Caching.csproj" />
     <ProjectReference Include="..\Services\Toss.ServiceDefaults\Toss.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Web.Framework\Web.Framework.csproj" />
   </ItemGroup>
 
   <ItemGroup>

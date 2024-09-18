@@ -1,11 +1,13 @@
-﻿
+﻿using Domain.Entities.Common;
+using Domain.Entities.Shipping;
+using Domain.Entities.Tax;
 
 namespace Domain.Entities.Orders;
 
 /// <summary>
 /// Represents an order
 /// </summary>
-public partial class Order : BaseEntity
+public partial class Order : BaseEntity, ISoftDeletedEntity
 {
     #region Properties
 
@@ -291,4 +293,43 @@ public partial class Order : BaseEntity
 
     #endregion
 
+    #region Custom properties
+
+    /// <summary>
+    /// Gets or sets the order status
+    /// </summary>
+    public OrderStatus OrderStatus
+    {
+        get => (OrderStatus)OrderStatusId;
+        set => OrderStatusId = (int)value;
+    }
+
+    /// <summary>
+    /// Gets or sets the payment status
+    /// </summary>
+    public PaymentStatus PaymentStatus
+    {
+        get => (PaymentStatus)PaymentStatusId;
+        set => PaymentStatusId = (int)value;
+    }
+
+    /// <summary>
+    /// Gets or sets the shipping status
+    /// </summary>
+    public ShippingStatus ShippingStatus
+    {
+        get => (ShippingStatus)ShippingStatusId;
+        set => ShippingStatusId = (int)value;
+    }
+
+    /// <summary>
+    /// Gets or sets the customer tax display type
+    /// </summary>
+    public TaxDisplayType CustomerTaxDisplayType
+    {
+        get => (TaxDisplayType)CustomerTaxDisplayTypeId;
+        set => CustomerTaxDisplayTypeId = (int)value;
+    }
+
+    #endregion
 }

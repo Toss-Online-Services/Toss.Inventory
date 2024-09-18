@@ -1,6 +1,4 @@
-﻿using Domain.Services.Catalog;
-
-namespace Domain.Services.ExportImport;
+﻿namespace Domain.Services.ExportImport;
 
 public partial class ExportSpecificationAttribute : ProductSpecificationAttribute
 {

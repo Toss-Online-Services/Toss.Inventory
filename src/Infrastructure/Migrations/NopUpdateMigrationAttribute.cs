@@ -14,6 +14,6 @@ public partial class NopUpdateMigrationAttribute : NopMigrationAttribute
     public NopUpdateMigrationAttribute(string dateTime, string nopVersion, UpdateMigrationType migrationType) :
         base(dateTime, nopVersion, migrationType, MigrationProcessType.Update)
     {
-        ApplyInDbOnDebugMode = !_config.NopVersion.Equals(TossVersion.CURRENT_VERSION, StringComparison.CurrentCultureIgnoreCase);
+        ApplyInDbOnDebugMode = !_config.NopVersion.Equals(NopVersion.CURRENT_VERSION, StringComparison.CurrentCultureIgnoreCase);
     }
 }

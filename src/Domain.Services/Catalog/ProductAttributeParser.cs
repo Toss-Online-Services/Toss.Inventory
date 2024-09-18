@@ -2,10 +2,6 @@
 using System.Xml;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
-using Infrastructure;
-using Domain.Services.Directory;
-using Domain.Services.Media;
-using Domain.Services.Localization;
 
 namespace Domain.Services.Catalog;
 

@@ -1,6 +1,4 @@
-﻿using Domain.Services.Configuration;
-
-namespace Domain.Services.Common;
+﻿namespace Domain.Services.Common;
 
 /// <summary>
 /// Represents a task to reset license check

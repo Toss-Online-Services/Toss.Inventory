@@ -1,6 +1,4 @@
-﻿using Infrastructure;
-
-namespace Domain.Services.Common;
+﻿namespace Domain.Services.Common;
 
 /// <summary>
 /// Search term service

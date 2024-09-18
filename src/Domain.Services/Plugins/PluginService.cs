@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Domain.Services.Localization;
 using Infrastructure.Migrations;
 using Microsoft.AspNetCore.Http;
 

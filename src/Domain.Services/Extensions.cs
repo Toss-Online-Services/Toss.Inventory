@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Core;
-using Domain.Services.Localization;
 
 namespace Domain.Services;
 

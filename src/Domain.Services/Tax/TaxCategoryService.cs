@@ -1,6 +1,4 @@
-﻿using Infrastructure;
-
-namespace Domain.Services.Tax;
+﻿namespace Domain.Services.Tax;
 
 /// <summary>
 /// Tax category service

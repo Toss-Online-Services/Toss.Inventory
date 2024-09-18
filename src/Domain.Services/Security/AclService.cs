@@ -1,6 +1,4 @@
-﻿using Infrastructure;
-
-namespace Domain.Services.Security;
+﻿namespace Domain.Services.Security;
 
 /// <summary>
 /// ACL service

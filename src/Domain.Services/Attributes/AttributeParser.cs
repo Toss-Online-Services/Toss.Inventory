@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using Domain.Entities.Attributes;
-using Domain.Services.Localization;
 
 namespace Domain.Services.Attributes;
 

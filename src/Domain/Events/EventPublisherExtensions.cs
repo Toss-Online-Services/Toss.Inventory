@@ -1,6 +1,4 @@
-﻿using Domain.Events;
-
-namespace Domain.Events;
+﻿namespace Domain.Events;
 
 /// <summary>
 /// Event publisher extensions

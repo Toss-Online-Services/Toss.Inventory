@@ -1,6 +1,4 @@
-﻿using Infrastructure;
-
-namespace Domain.Services.Stores;
+﻿namespace Domain.Services.Stores;
 
 /// <summary>
 /// Store mapping service

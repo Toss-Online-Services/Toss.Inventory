@@ -2,7 +2,6 @@
 using System.Linq.Expressions;
 using System.Reflection;
 using Nop.Core;
-using Infrastructure;
 
 namespace Domain.Services.Configuration;
 

@@ -1,6 +1,4 @@
 ﻿using System.Globalization;
-using Domain.Services.Configuration;
-using Infrastructure;
 
 namespace Domain.Services.Localization;
 

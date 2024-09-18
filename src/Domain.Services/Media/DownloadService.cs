@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Infrastructure;
 
 namespace Domain.Services.Media;
 

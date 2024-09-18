@@ -1,4 +1,4 @@
-namespace Domain.Services.Catalog;
+﻿namespace Domain.Services.Catalog;
 
 /// <summary>
 /// Provides an interface for creating search provider

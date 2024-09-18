@@ -1,5 +1,4 @@
-﻿
-using Domain.Entities.Attributes;
+﻿using Domain.Entities.Attributes;
 
 namespace Domain.Entities.Orders;
 

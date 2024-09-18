@@ -204,34 +204,7 @@ public partial interface ICustomerService
     /// <param name="customer">Customer</param>
     /// <returns>A task that represents the asynchronous operation</returns>
     Task UpdateCustomerAsync(Customer customer);
-
-    /// <summary>
-    /// Reset data required for checkout
-    /// </summary>
-    /// <param name="customer">Customer</param>
-    /// <param name="storeId">Store identifier</param>
-    /// <param name="clearCouponCodes">A value indicating whether to clear coupon code</param>
-    /// <param name="clearCheckoutAttributes">A value indicating whether to clear selected checkout attributes</param>
-    /// <param name="clearRewardPoints">A value indicating whether to clear "Use reward points" flag</param>
-    /// <param name="clearShippingMethod">A value indicating whether to clear selected shipping method</param>
-    /// <param name="clearPaymentMethod">A value indicating whether to clear selected payment method</param>
-    /// <returns>A task that represents the asynchronous operation</returns>
-    Task ResetCheckoutDataAsync(Customer customer, int storeId,
-        bool clearCouponCodes = false, bool clearCheckoutAttributes = false,
-        bool clearRewardPoints = true, bool clearShippingMethod = true,
-        bool clearPaymentMethod = true);
-
-    /// <summary>
-    /// Delete guest customer records
-    /// </summary>
-    /// <param name="createdFromUtc">Created date from (UTC); null to load all records</param>
-    /// <param name="createdToUtc">Created date to (UTC); null to load all records</param>
-    /// <param name="onlyWithoutShoppingCart">A value indicating whether to delete customers only without shopping cart</param>
-    /// <returns>
-    /// A task that represents the asynchronous operation
-    /// The task result contains the number of deleted customers
-    /// </returns>
-    Task<int> DeleteGuestCustomersAsync(DateTime? createdFromUtc, DateTime? createdToUtc, bool onlyWithoutShoppingCart);
+   
 
     /// <summary>
     /// Gets a tax display type for the customer

@@ -1,6 +1,4 @@
-﻿using Infrastructure;
-
-namespace Domain.Services.Directory;
+﻿namespace Domain.Services.Directory;
 
 /// <summary>
 /// Measure dimension service

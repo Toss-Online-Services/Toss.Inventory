@@ -1,9 +1,5 @@
 ﻿using System.Data.SqlTypes;
-using Infrastructure;
-using Domain.Services.Catalog;
-using Domain.Services.Localization;
 using Domain.Services.Shipping.Date;
-using Domain.Services.Messages;
 
 namespace Domain.Services.Catalog;
 
