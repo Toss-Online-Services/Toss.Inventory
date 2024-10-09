@@ -3,11 +3,11 @@ using Domain;
 using Domain.Caching;
 using Domain.Entities.Catalog;
 using Domain.Entities.Common;
+using Domain.Entities.Configuration;
 using Domain.Entities.Customers;
 using Domain.Entities.Directory;
 using Domain.Events;
 using Domain.Infrastructure;
-using Domain.Services.Caching;
 using Domain.Services.Catalog;
 using Domain.Services.Common;
 using Domain.Services.Configuration;
@@ -28,7 +28,6 @@ using Domain.Services.Stores;
 using Domain.Services.Tax;
 using Domain.Services.Vendors;
 using Infrastructure;
-using Infrastructure.Caching;
 using Infrastructure.DataProviders;
 using Nop.Services.Seo;
 using Toss.ServiceDefaults;
@@ -66,6 +65,7 @@ services.AddScoped(typeof(IRepository<>), typeof(EntityRepository<>));
 
 //Get Settings
 // Register configuration settings in DI
+
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.Configure<CatalogSettings>(builder.Configuration.GetSection("CatalogSettings"));
 builder.Services.Configure<CurrencySettings>(builder.Configuration.GetSection("CurrencySettings"));
@@ -77,6 +77,8 @@ builder.Services.Configure<AddressSettings>(builder.Configuration.GetSection("Ad
 
 // Register the required services
 
+services.AddTransient<IProductService, ProductService>();
+
 services.AddScoped<IBackInStockSubscriptionService, BackInStockSubscriptionService>();
 services.AddScoped<INopDataProvider, PostgreSqlDataProvider>();
 services.AddScoped<ICategoryService, CategoryService>();
@@ -87,7 +89,6 @@ services.AddScoped<IPriceFormatter, PriceFormatter>();
 services.AddScoped<IProductAttributeFormatter, ProductAttributeFormatter>();
 services.AddScoped<IProductAttributeParser, ProductAttributeParser>();
 services.AddScoped<IProductAttributeService, ProductAttributeService>();
-services.AddScoped<IProductService, ProductService>();
 services.AddScoped<ICopyProductService, CopyProductService>();
 services.AddScoped<ISpecificationAttributeService, SpecificationAttributeService>();
 services.AddScoped<IProductTemplateService, ProductTemplateService>();
@@ -132,8 +133,6 @@ services.AddScoped<IWorkContext, WebWorkContext>();
 services.AddScoped<Domain.Caching.IShortTermCacheManager, Domain.Caching.PerRequestCacheManager>();
 services.AddSingleton<INopFileProvider, NopFileProvider>();
 services.AddScoped<IBBCodeHelper, BBCodeHelper>();
-services.AddScoped<Domain.Caching.IStaticCacheManager, RedisCacheManager>();
-services.AddScoped<Domain.Caching.ICacheKeyService, RedisCacheManager>();
 
 // Add CatalogSettings to DI
 

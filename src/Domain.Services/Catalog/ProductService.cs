@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlTypes;
 using Domain.Services.Shipping.Date;
+using Microsoft.Extensions.Options;
 
 namespace Domain.Services.Catalog;
 
@@ -8,6 +9,7 @@ namespace Domain.Services.Catalog;
 /// </summary>
 public partial class ProductService : IProductService
 {
+   
     #region Fields
 
     protected readonly CatalogSettings _catalogSettings;
@@ -53,8 +55,8 @@ public partial class ProductService : IProductService
 
     #region Ctor
 
-    public ProductService(CatalogSettings catalogSettings,
-        CommonSettings commonSettings,
+    public ProductService(IOptions<CatalogSettings> catalogSettings,
+        IOptions<CommonSettings> commonSettings,
         IAclService aclService,
         ICustomerService customerService,
         IDateRangeService dateRangeService,
@@ -89,10 +91,10 @@ public partial class ProductService : IProductService
         IStoreService storeService,
         IStoreMappingService storeMappingService,
         IWorkContext workContext,
-        LocalizationSettings localizationSettings)
+        IOptions<LocalizationSettings> localizationSettings)
     {
-        _catalogSettings = catalogSettings;
-        _commonSettings = commonSettings;
+        _catalogSettings = catalogSettings.Value;
+        _commonSettings = commonSettings.Value;
         _aclService = aclService;
         _customerService = customerService;
         _dateRangeService = dateRangeService;
@@ -127,7 +129,7 @@ public partial class ProductService : IProductService
         _storeMappingService = storeMappingService;
         _storeService = storeService;
         _workContext = workContext;
-        _localizationSettings = localizationSettings;
+        _localizationSettings = localizationSettings.Value;
     }
 
     #endregion

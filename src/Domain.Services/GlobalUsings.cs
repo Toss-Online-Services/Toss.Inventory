@@ -14,7 +14,6 @@ global using Domain.Entities.Tax;
 global using Domain.Entities.Stores;
 global using Domain.Entities.Configuration;
 global using Domain.Entities.Orders;
-global using Domain.Services.Caching;
 global using Domain;
 global using Domain.Services.Discounts;
 global using Domain.Services.Stores;
