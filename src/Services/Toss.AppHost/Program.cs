@@ -17,6 +17,7 @@ var inventoryApi = builder.AddProject<Projects.Web>("inventory-api")
 
 var launchProfileName = ShouldUseHttpForEndpoints() ? "http" : "https";
 
+
 builder.Build().Run();
 
 

@@ -2,7 +2,12 @@
 using Domain;
 using Domain.Caching;
 using Domain.Entities.Catalog;
+using Domain.Entities.Common;
+using Domain.Entities.Customers;
+using Domain.Entities.Directory;
 using Domain.Events;
+using Domain.Infrastructure;
+using Domain.Services.Caching;
 using Domain.Services.Catalog;
 using Domain.Services.Common;
 using Domain.Services.Configuration;
@@ -24,6 +29,7 @@ using Domain.Services.Tax;
 using Domain.Services.Vendors;
 using Infrastructure;
 using Infrastructure.Caching;
+using Infrastructure.DataProviders;
 using Nop.Services.Seo;
 using Toss.ServiceDefaults;
 using Web;
@@ -58,9 +64,21 @@ var services = builder.Services;
 // Register the repositories
 services.AddScoped(typeof(IRepository<>), typeof(EntityRepository<>));
 
+//Get Settings
+// Register configuration settings in DI
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+builder.Services.Configure<CatalogSettings>(builder.Configuration.GetSection("CatalogSettings"));
+builder.Services.Configure<CurrencySettings>(builder.Configuration.GetSection("CurrencySettings"));
+builder.Services.Configure<CommonSettings>(builder.Configuration.GetSection("CommonSettings"));
+builder.Services.Configure<CustomerSettings>(builder.Configuration.GetSection("CustomerSettings"));
+builder.Services.Configure<AddressSettings>(builder.Configuration.GetSection("AddressSettings"));
+
+
+
 // Register the required services
+
 services.AddScoped<IBackInStockSubscriptionService, BackInStockSubscriptionService>();
-services.AddScoped<INopDataProvider, NopDataProvider>();
+services.AddScoped<INopDataProvider, PostgreSqlDataProvider>();
 services.AddScoped<ICategoryService, CategoryService>();
 services.AddScoped<ICompareProductsService, CompareProductsService>();
 services.AddScoped<IRecentlyViewedProductsService, RecentlyViewedProductsService>();
@@ -111,11 +129,17 @@ services.AddScoped<ISettingService, SettingService>();
 services.AddScoped<IHtmlFormatter, HtmlFormatter>();
 services.AddScoped<IVideoService, VideoService>();
 services.AddScoped<IWorkContext, WebWorkContext>();
+services.AddScoped<Domain.Caching.IShortTermCacheManager, Domain.Caching.PerRequestCacheManager>();
+services.AddSingleton<INopFileProvider, NopFileProvider>();
+services.AddScoped<IBBCodeHelper, BBCodeHelper>();
+services.AddScoped<Domain.Caching.IStaticCacheManager, RedisCacheManager>();
+services.AddScoped<Domain.Caching.ICacheKeyService, RedisCacheManager>();
 
 // Add CatalogSettings to DI
-services.Configure<CatalogSettings>(builder.Configuration.GetSection("CatalogSettings"));
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Enable CORS before the endpoints are mapped
 app.UseCors("AllowAngularClient");
@@ -123,7 +147,7 @@ app.UseCors("AllowAngularClient");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    //await app.InitialiseDatabaseAsync();
+    // await app.InitialiseDatabaseAsync();
 }
 else
 {

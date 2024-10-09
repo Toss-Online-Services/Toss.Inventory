@@ -84,6 +84,8 @@ public partial class MigrationVersionInfo : BaseEntity, IVersionTableMetaData
     /// </summary>
     public string AppliedOnColumnName { get; }
 
+    public bool CreateWithPrimaryKey => throw new NotImplementedException();
+
     #endregion
 
     #endregion
