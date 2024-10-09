@@ -1,4 +1,5 @@
-﻿using AspNetCore.Swagger.Themes;
+﻿using System;
+using AspNetCore.Swagger.Themes;
 using Domain;
 using Domain.Caching;
 using Domain.Entities.Catalog;
@@ -6,8 +7,11 @@ using Domain.Entities.Common;
 using Domain.Entities.Configuration;
 using Domain.Entities.Customers;
 using Domain.Entities.Directory;
+using Domain.Entities.Orders;
 using Domain.Events;
 using Domain.Infrastructure;
+using Domain.Services.Attributes;
+using Domain.Services.Caching;
 using Domain.Services.Catalog;
 using Domain.Services.Common;
 using Domain.Services.Configuration;
@@ -20,15 +24,24 @@ using Domain.Services.Html;
 using Domain.Services.Localization;
 using Domain.Services.Logging;
 using Domain.Services.Media;
+using Domain.Services.Media.RoxyFileman;
 using Domain.Services.Messages;
+using Domain.Services.Orders;
+using Domain.Services.Plugins;
 using Domain.Services.Security;
 using Domain.Services.Seo;
 using Domain.Services.Shipping.Date;
 using Domain.Services.Stores;
 using Domain.Services.Tax;
 using Domain.Services.Vendors;
+using FluentMigrator.Runner;
+using FluentMigrator.Runner.Initialization;
 using Infrastructure;
 using Infrastructure.DataProviders;
+using Infrastructure.Migrations;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Nop.Services.Media.RoxyFileman;
 using Nop.Services.Seo;
 using Toss.ServiceDefaults;
 using Web;
@@ -80,7 +93,6 @@ builder.Services.Configure<AddressSettings>(builder.Configuration.GetSection("Ad
 services.AddTransient<IProductService, ProductService>();
 
 services.AddScoped<IBackInStockSubscriptionService, BackInStockSubscriptionService>();
-services.AddScoped<INopDataProvider, PostgreSqlDataProvider>();
 services.AddScoped<ICategoryService, CategoryService>();
 services.AddScoped<ICompareProductsService, CompareProductsService>();
 services.AddScoped<IRecentlyViewedProductsService, RecentlyViewedProductsService>();
@@ -89,6 +101,7 @@ services.AddScoped<IPriceFormatter, PriceFormatter>();
 services.AddScoped<IProductAttributeFormatter, ProductAttributeFormatter>();
 services.AddScoped<IProductAttributeParser, ProductAttributeParser>();
 services.AddScoped<IProductAttributeService, ProductAttributeService>();
+services.AddScoped<IProductService, ProductService>();
 services.AddScoped<ICopyProductService, CopyProductService>();
 services.AddScoped<ISpecificationAttributeService, SpecificationAttributeService>();
 services.AddScoped<IProductTemplateService, ProductTemplateService>();
@@ -115,7 +128,17 @@ services.AddScoped<ILocalizationService, LocalizationService>();
 services.AddScoped<ILocalizedEntityService, LocalizedEntityService>();
 services.AddScoped<ILanguageService, LanguageService>();
 services.AddScoped<IDownloadService, DownloadService>();
+services.AddScoped<IMessageTemplateService, MessageTemplateService>();
+services.AddScoped<IQueuedEmailService, QueuedEmailService>();
+services.AddScoped<INewsLetterSubscriptionService, NewsLetterSubscriptionService>();
+services.AddScoped<INotificationService, NotificationService>();
+services.AddScoped<IEmailAccountService, EmailAccountService>();
 services.AddScoped<IWorkflowMessageService, WorkflowMessageService>();
+services.AddScoped<IMessageTokenProvider, MessageTokenProvider>();
+services.AddScoped<ITokenizer, Tokenizer>();
+services.AddScoped<ISmtpBuilder, SmtpBuilder>();
+services.AddScoped<IEmailSender, EmailSender>();
+services.AddScoped<IGiftCardService, GiftCardService>();
 services.AddScoped<IUrlRecordService, UrlRecordService>();
 services.AddScoped<IDateRangeService, DateRangeService>();
 services.AddScoped<ITaxCategoryService, TaxCategoryService>();
@@ -127,14 +150,99 @@ services.AddScoped<IDateTimeHelper, DateTimeHelper>();
 services.AddScoped<IReviewTypeService, ReviewTypeService>();
 services.AddSingleton<IEventPublisher, EventPublisher>();
 services.AddScoped<ISettingService, SettingService>();
+services.AddScoped<IBBCodeHelper, BBCodeHelper>();
 services.AddScoped<IHtmlFormatter, HtmlFormatter>();
 services.AddScoped<IVideoService, VideoService>();
-services.AddScoped<IWorkContext, WebWorkContext>();
-services.AddScoped<Domain.Caching.IShortTermCacheManager, Domain.Caching.PerRequestCacheManager>();
-services.AddSingleton<INopFileProvider, NopFileProvider>();
-services.AddScoped<IBBCodeHelper, BBCodeHelper>();
+services.AddScoped<INopDataProvider, NopDataProvider>();
+
+
+services.AddSingleton<ICacheKeyManager, CacheKeyManager>();
+services.AddScoped<IShortTermCacheManager, PerRequestCacheManager>();
+
+//file provider
+services.AddScoped<INopFileProvider, NopFileProvider>();
+
+services.AddScoped<ITaxPluginManager, TaxPluginManager>();
+
+services.AddScoped<ICopyProductService, CopyProductService>();
+
+
+services.AddScoped<IPictureService, PictureService>();
+
+//roxy file manager
+services.AddScoped<IRoxyFilemanService, RoxyFilemanService>();
+services.AddScoped<IRoxyFilemanFileProvider, RoxyFilemanFileProvider>();
+
+services.AddScoped<IStaticCacheManager, MemoryDistributedCacheManager>();
+services.AddScoped<ICacheKeyService, MemoryDistributedCacheManager>();
+
+//attribute services
+services.AddScoped(typeof(IAttributeService<,>), typeof(AttributeService<,>));
+
+//attribute parsers
+services.AddScoped(typeof(IAttributeParser<,>), typeof(AttributeParser<,>));
+
+//attribute formatter
+services.AddScoped(typeof(IAttributeFormatter<,>), typeof(AttributeFormatter<,>));
 
 // Add CatalogSettings to DI
+
+services.AddSingleton<ICacheKeyManager, CacheKeyManager>();
+
+services.AddTransient(typeof(IConcurrentCollection<>), typeof(ConcurrentTrie<>));
+
+//work context
+services.AddScoped<IWorkContext, WebWorkContext>();
+
+//store context
+services.AddScoped<IStoreContext, WebStoreContext>();
+
+services.AddTransient<IWorkContext, WebWorkContext>();
+services.AddTransient<Lazy<IWorkContext>>();
+
+
+services.AddTransient<Lazy<IStoreContext>>();
+
+//user agent helper
+services.AddScoped<IUserAgentHelper, UserAgentHelper>();
+services.AddScoped<ISearchPluginManager, SearchPluginManager>();
+
+services.AddScoped<IEmailAccountService, EmailAccountService>();
+
+services.AddScoped<IMessageTemplateService, MessageTemplateService>();
+services.AddScoped<IMessageTokenProvider, MessageTokenProvider>();
+services.AddScoped<IGiftCardService, GiftCardService>();
+services.AddScoped<IDiscountPluginManager, DiscountPluginManager>();
+services.AddScoped<IQueuedEmailService, QueuedEmailService>();
+
+services.AddScoped<ITokenizer, Tokenizer>();
+services.AddScoped<ISmtpBuilder, SmtpBuilder>();
+services.AddScoped<IEmailSender, EmailSender>();
+
+
+
+services.AddScoped<IExchangeRatePluginManager, ExchangeRatePluginManager>();
+
+//plugins
+services.AddScoped<IPluginService, PluginService>();
+
+services.AddSingleton<IMigrationManager, MigrationManager>();
+
+services
+    .AddFluentMigratorCore()
+    .ConfigureRunner(runner => runner
+        .AddSqlServer() // Use your specific database provider, such as AddSqlServer, AddPostgres, etc.
+        .WithGlobalConnectionString("YourConnectionString") // Set the global connection string
+        .ScanIn(typeof(NopDbStartup).Assembly).For.Migrations()) // Replace with the assembly containing your migrations
+    .AddLogging(logging => logging.AddFluentMigratorConsole());
+
+services.AddTransient(p => new Lazy<IVersionLoader>(p.GetRequiredService<IVersionLoader>()));
+
+//web helper
+services.AddScoped<IWebHelper, WebHelper>();
+
+// Register IActionContextAccessor
+services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
 var app = builder.Build();
 

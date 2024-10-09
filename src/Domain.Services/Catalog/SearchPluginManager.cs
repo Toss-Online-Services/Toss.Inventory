@@ -13,10 +13,10 @@ public partial class SearchPluginManager : PluginManager<ISearchProvider>, ISear
 
     #region Ctor
 
-    public SearchPluginManager(CatalogSettings catalogSettings, ICustomerService customerService, IPluginService pluginService)
+    public SearchPluginManager(IOptions<CatalogSettings> catalogSettings, ICustomerService customerService, IPluginService pluginService)
         : base(customerService, pluginService)
     {
-        _catalogSettings = catalogSettings;
+       _catalogSettings = catalogSettings.Value;
     }
 
     #endregion

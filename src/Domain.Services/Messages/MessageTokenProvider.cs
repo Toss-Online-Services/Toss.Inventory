@@ -53,8 +53,8 @@ public partial class MessageTokenProvider : IMessageTokenProvider
 
     #region Ctor
 
-    public MessageTokenProvider(CatalogSettings catalogSettings,
-        CurrencySettings currencySettings,
+    public MessageTokenProvider(IOptions<CatalogSettings> catalogSettings,
+        IOptions<CurrencySettings> currencySettings,
         IActionContextAccessor actionContextAccessor,
         IAddressService addressService,
         IAttributeFormatter<AddressAttribute, AddressAttributeValue> addressAttributeFormatter,
@@ -80,12 +80,12 @@ public partial class MessageTokenProvider : IMessageTokenProvider
         IUrlHelperFactory urlHelperFactory,
         IUrlRecordService urlRecordService,
         IWorkContext workContext,
-        MessageTemplatesSettings templatesSettings,
-        StoreInformationSettings storeInformationSettings,
-        TaxSettings taxSettings)
+        IOptions<MessageTemplatesSettings> templatesSettings,
+        IOptions<StoreInformationSettings> storeInformationSettings,
+        IOptions<TaxSettings> taxSettings)
     {
-        _catalogSettings = catalogSettings;
-        _currencySettings = currencySettings;
+       _catalogSettings = catalogSettings.Value;
+        _currencySettings = currencySettings.Value;
         _actionContextAccessor = actionContextAccessor;
         _addressService = addressService;
         _addressAttributeFormatter = addressAttributeFormatter;
@@ -110,9 +110,9 @@ public partial class MessageTokenProvider : IMessageTokenProvider
         _urlHelperFactory = urlHelperFactory;
         _urlRecordService = urlRecordService;
         _workContext = workContext;
-        _templatesSettings = templatesSettings;
-        _storeInformationSettings = storeInformationSettings;
-        _taxSettings = taxSettings;
+        _templatesSettings = templatesSettings.Value;
+        _storeInformationSettings = storeInformationSettings.Value;
+        _taxSettings = taxSettings.Value;
     }
 
     #endregion

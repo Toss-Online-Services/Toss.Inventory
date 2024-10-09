@@ -26,12 +26,12 @@ public partial class SmtpBuilder : ISmtpBuilder
 
     #region Ctor
 
-    public SmtpBuilder(EmailAccountSettings emailAccountSettings,
+    public SmtpBuilder(IOptions<EmailAccountSettings> emailAccountSettings,
         IEmailAccountService emailAccountService,
         ILocalizationService localizationService,
         INopFileProvider fileProvider)
     {
-        _emailAccountSettings = emailAccountSettings;
+       _emailAccountSettings = emailAccountSettings.Value;
         _emailAccountService = emailAccountService;
         _localizationService = localizationService;
         _fileProvider = fileProvider;

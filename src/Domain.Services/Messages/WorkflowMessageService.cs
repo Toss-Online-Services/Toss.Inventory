@@ -32,8 +32,8 @@ public partial class WorkflowMessageService : IWorkflowMessageService
 
     #region Ctor
 
-    public WorkflowMessageService(CommonSettings commonSettings,
-        EmailAccountSettings emailAccountSettings,
+    public WorkflowMessageService(IOptions<CommonSettings> commonSettings,
+        IOptions<EmailAccountSettings> emailAccountSettings,
         IAddressService addressService,
         ICustomerService customerService,
         IEmailAccountService emailAccountService,
@@ -47,10 +47,10 @@ public partial class WorkflowMessageService : IWorkflowMessageService
         IStoreContext storeContext,
         IStoreService storeService,
         ITokenizer tokenizer,
-        MessagesSettings messagesSettings)
+        IOptions<MessagesSettings> messagesSettings)
     {
-        _commonSettings = commonSettings;
-        _emailAccountSettings = emailAccountSettings;
+        _commonSettings = commonSettings.Value;
+        _emailAccountSettings = emailAccountSettings.Value;
         _addressService = addressService;
         _customerService = customerService;
         _emailAccountService = emailAccountService;
@@ -64,7 +64,7 @@ public partial class WorkflowMessageService : IWorkflowMessageService
         _storeContext = storeContext;
         _storeService = storeService;
         _tokenizer = tokenizer;
-        _messagesSettings = messagesSettings;
+        _messagesSettings = messagesSettings.Value;
     }
 
     #endregion

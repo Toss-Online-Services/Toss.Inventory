@@ -17,9 +17,9 @@ public partial class Tokenizer : ITokenizer
 
     #region Ctor
 
-    public Tokenizer(MessageTemplatesSettings messageTemplatesSettings)
+    public Tokenizer(IOptions<MessageTemplatesSettings> messageTemplatesSettings)
     {
-        _messageTemplatesSettings = messageTemplatesSettings;
+        _messageTemplatesSettings = messageTemplatesSettings.Value;
     }
 
     #endregion

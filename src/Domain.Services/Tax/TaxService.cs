@@ -33,8 +33,8 @@ public partial class TaxService : ITaxService
 
     #region Ctor
 
-    public TaxService(AddressSettings addressSettings,
-        CustomerSettings customerSettings,
+    public TaxService(IOptions<AddressSettings> addressSettings,
+        IOptions<CustomerSettings> customerSettings,
         IAddressService addressService,
         ICheckVatService checkVatService,
         ICountryService countryService,
@@ -48,11 +48,11 @@ public partial class TaxService : ITaxService
         ITaxPluginManager taxPluginManager,
         IWebHelper webHelper,
         IWorkContext workContext,
-        ShippingSettings shippingSettings,
-        TaxSettings taxSettings)
+        IOptions<ShippingSettings> shippingSettings,
+        IOptions<TaxSettings> taxSettings)
     {
-        _addressSettings = addressSettings;
-        _customerSettings = customerSettings;
+        _addressSettings = addressSettings.Value;
+        _customerSettings = customerSettings.Value;
         _addressService = addressService;
         _checkVatService = checkVatService;
         _countryService = countryService;
@@ -66,8 +66,8 @@ public partial class TaxService : ITaxService
         _taxPluginManager = taxPluginManager;
         _webHelper = webHelper;
         _workContext = workContext;
-        _shippingSettings = shippingSettings;
-        _taxSettings = taxSettings;
+        _shippingSettings = shippingSettings.Value;
+        _taxSettings = taxSettings.Value;
     }
 
     #endregion

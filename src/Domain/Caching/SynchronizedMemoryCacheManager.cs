@@ -10,7 +10,7 @@ namespace Domain.Caching;
 /// </remarks>
 public partial class SynchronizedMemoryCacheManager : MemoryCacheManager
 {
-    public SynchronizedMemoryCacheManager(AppSettings appSettings,
+    public SynchronizedMemoryCacheManager(IOptions<AppSettings> appSettings,
         ISynchronizedMemoryCache memoryCache,
         ICacheKeyManager cacheKeyManager) : base(appSettings, memoryCache, cacheKeyManager)
     {

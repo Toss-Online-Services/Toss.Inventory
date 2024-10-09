@@ -1,5 +1,5 @@
 ﻿global using Domain.Infrastructure;
-global using Infrastructure.Migrations;
+global using Microsoft.Extensions.Options;
 global using Domain.Services.Discounts;
 global using Domain;
 global using Domain.Entities.Stores;

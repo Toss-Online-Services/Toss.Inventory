@@ -22,8 +22,8 @@ public partial class PriceCalculationService : IPriceCalculationService
 
     #region Ctor
 
-    public PriceCalculationService(CatalogSettings catalogSettings,
-        CurrencySettings currencySettings,
+    public PriceCalculationService(IOptions<CatalogSettings> catalogSettings,
+        IOptions<CurrencySettings> currencySettings,
         ICategoryService categoryService,
         ICurrencyService currencyService,
         ICustomerService customerService,
@@ -33,8 +33,8 @@ public partial class PriceCalculationService : IPriceCalculationService
         IProductService productService,
         IStaticCacheManager staticCacheManager)
     {
-        _catalogSettings = catalogSettings;
-        _currencySettings = currencySettings;
+       _catalogSettings = catalogSettings.Value;
+        _currencySettings = currencySettings.Value;
         _categoryService = categoryService;
         _currencyService = currencyService;
         _customerService = customerService;

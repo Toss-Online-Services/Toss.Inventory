@@ -17,13 +17,13 @@ public partial class DefaultLogger : ILogger
 
     #region Ctor
 
-    public DefaultLogger(CommonSettings commonSettings,
-        CustomerSettings customerSettings,
+    public DefaultLogger(IOptions<CommonSettings> commonSettings,
+        IOptions<CustomerSettings> customerSettings,
         IRepository<Log> logRepository,
         IWebHelper webHelper)
     {
-        _commonSettings = commonSettings;
-        _customerSettings = customerSettings;
+        _commonSettings = commonSettings.Value;
+        _customerSettings = customerSettings.Value;
         _logRepository = logRepository;
         _webHelper = webHelper;
     }

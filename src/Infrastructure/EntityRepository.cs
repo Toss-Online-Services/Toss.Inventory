@@ -5,6 +5,7 @@ using Domain;
 using Domain.Caching;
 using Domain.Entities.Configuration;
 using Domain.Events;
+using Microsoft.Extensions.Options;
 
 namespace Infrastructure;
 
@@ -30,13 +31,13 @@ public partial class EntityRepository<TEntity> : IRepository<TEntity> where TEnt
         INopDataProvider dataProvider,
         IShortTermCacheManager shortTermCacheManager,
         IStaticCacheManager staticCacheManager,
-        AppSettings appSettings)
+        IOptions<AppSettings> appSettings)
     {
         _eventPublisher = eventPublisher;
         _dataProvider = dataProvider;
         _shortTermCacheManager = shortTermCacheManager;
         _staticCacheManager = staticCacheManager;
-        _usingDistributedCache = appSettings.Get<DistributedCacheConfig>().DistributedCacheType switch
+        _usingDistributedCache = appSettings.Value.Get<DistributedCacheConfig>().DistributedCacheType switch
         {
             DistributedCacheType.Redis => true,
             DistributedCacheType.SqlServer => true,

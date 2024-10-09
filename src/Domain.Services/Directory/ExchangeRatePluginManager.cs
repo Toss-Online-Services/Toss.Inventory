@@ -13,11 +13,11 @@ public partial class ExchangeRatePluginManager : PluginManager<IExchangeRateProv
 
     #region Ctor
 
-    public ExchangeRatePluginManager(CurrencySettings currencySettings,
+    public ExchangeRatePluginManager(IOptions<CurrencySettings> currencySettings,
         ICustomerService customerService,
         IPluginService pluginService) : base(customerService, pluginService)
     {
-        _currencySettings = currencySettings;
+        _currencySettings = currencySettings.Value;
     }
 
     #endregion

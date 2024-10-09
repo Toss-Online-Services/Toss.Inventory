@@ -1,4 +1,5 @@
-﻿namespace Domain.Services.Stores;
+﻿
+namespace Domain.Services.Stores;
 
 /// <summary>
 /// Store mapping service
@@ -16,12 +17,12 @@ public partial class StoreMappingService : IStoreMappingService
 
     #region Ctor
 
-    public StoreMappingService(CatalogSettings catalogSettings,
+    public StoreMappingService(IOptions<CatalogSettings> catalogSettings,
         IRepository<StoreMapping> storeMappingRepository,
         IStaticCacheManager staticCacheManager,
         IStoreContext storeContext)
     {
-        _catalogSettings = catalogSettings;
+       _catalogSettings = catalogSettings.Value;
         _storeMappingRepository = storeMappingRepository;
         _staticCacheManager = staticCacheManager;
         _storeContext = storeContext;

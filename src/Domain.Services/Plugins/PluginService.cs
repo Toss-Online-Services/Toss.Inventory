@@ -25,16 +25,16 @@ public partial class PluginService : IPluginService
 
     #region Ctor
 
-    public PluginService(CatalogSettings catalogSettings,
+    public PluginService(IOptions<CatalogSettings> catalogSettings,
         ICustomerService customerService,
         IHttpContextAccessor httpContextAccessor,
         IMigrationManager migrationManager,
         ILogger logger,
         INopFileProvider fileProvider,
         IWebHelper webHelper,
-        MediaSettings mediaSettings)
+        IOptions<MediaSettings> mediaSettings)
     {
-        _catalogSettings = catalogSettings;
+       _catalogSettings = catalogSettings.Value;
         _customerService = customerService;
         _httpContextAccessor = httpContextAccessor;
         _migrationManager = migrationManager;
@@ -42,7 +42,7 @@ public partial class PluginService : IPluginService
         _fileProvider = fileProvider;
         _pluginsInfo = Singleton<IPluginsInfo>.Instance;
         _webHelper = webHelper;
-        _mediaSettings = mediaSettings;
+        _mediaSettings = mediaSettings.Value;
     }
 
     #endregion

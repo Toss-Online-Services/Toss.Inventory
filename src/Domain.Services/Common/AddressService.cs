@@ -22,7 +22,7 @@ public partial class AddressService : IAddressService
 
     #region Ctor
 
-    public AddressService(AddressSettings addressSettings,
+    public AddressService(IOptions<AddressSettings> addressSettings,
         IAttributeParser<AddressAttribute, AddressAttributeValue> addressAttributeParser,
         IAttributeService<AddressAttribute, AddressAttributeValue> addressAttributeService,
         ICountryService countryService,
@@ -30,7 +30,7 @@ public partial class AddressService : IAddressService
         IRepository<Address> addressRepository,
         IStateProvinceService stateProvinceService)
     {
-        _addressSettings = addressSettings;
+        _addressSettings = addressSettings.Value;
         _addressAttributeParser = addressAttributeParser;
         _addressAttributeService = addressAttributeService;
         _countryService = countryService;

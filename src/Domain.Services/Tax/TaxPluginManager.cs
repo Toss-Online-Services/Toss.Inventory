@@ -15,9 +15,9 @@ public partial class TaxPluginManager : PluginManager<ITaxProvider>, ITaxPluginM
 
     public TaxPluginManager(ICustomerService customerService,
         IPluginService pluginService,
-        TaxSettings taxSettings) : base(customerService, pluginService)
+        IOptions<TaxSettings> taxSettings) : base(customerService, pluginService)
     {
-        _taxSettings = taxSettings;
+        _taxSettings = taxSettings.Value;
     }
 
     #endregion

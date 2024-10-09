@@ -18,14 +18,14 @@ public partial class AclService : IAclService
 
     #region Ctor
 
-    public AclService(CatalogSettings catalogSettings,
+    public AclService(IOptions<CatalogSettings> catalogSettings,
         ICustomerService customerService,
         INopDataProvider dataProvider,
         IRepository<AclRecord> aclRecordRepository,
         IStaticCacheManager staticCacheManager,
         Lazy<IWorkContext> workContext)
     {
-        _catalogSettings = catalogSettings;
+       _catalogSettings = catalogSettings.Value;
         _customerService = customerService;
         _dataProvider = dataProvider;
         _aclRecordRepository = aclRecordRepository;

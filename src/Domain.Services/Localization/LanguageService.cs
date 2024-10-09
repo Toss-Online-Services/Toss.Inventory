@@ -23,13 +23,13 @@ public partial class LanguageService : ILanguageService
         ISettingService settingService,
         IStaticCacheManager staticCacheManager,
         IStoreMappingService storeMappingService,
-        LocalizationSettings localizationSettings)
+        IOptions<LocalizationSettings> localizationSettings)
     {
         _languageRepository = languageRepository;
         _settingService = settingService;
         _staticCacheManager = staticCacheManager;
         _storeMappingService = storeMappingService;
-        _localizationSettings = localizationSettings;
+        _localizationSettings = localizationSettings.Value;
     }
 
     #endregion

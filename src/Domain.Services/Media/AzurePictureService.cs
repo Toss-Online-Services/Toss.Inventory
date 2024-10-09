@@ -27,7 +27,7 @@ public partial class AzurePictureService : PictureService
 
     #region Ctor
 
-    public AzurePictureService(AppSettings appSettings,
+    public AzurePictureService(IOptions<AppSettings> appSettings,
         IDownloadService downloadService,
         IHttpContextAccessor httpContextAccessor,
         ILogger logger,
@@ -41,7 +41,7 @@ public partial class AzurePictureService : PictureService
         IStaticCacheManager staticCacheManager,
         IUrlRecordService urlRecordService,
         IWebHelper webHelper,
-        MediaSettings mediaSettings)
+        IOptions<MediaSettings> mediaSettings)
         : base(downloadService,
             httpContextAccessor,
             logger,
@@ -69,18 +69,18 @@ public partial class AzurePictureService : PictureService
     /// Initialize cloud container
     /// </summary>
     /// <param name="appSettings">App settings</param>
-    protected void OneTimeInit(AppSettings appSettings)
+    protected void OneTimeInit(IOptions<AppSettings> appSettings)
     {
         if (_isInitialized)
             return;
 
-        if (string.IsNullOrEmpty(appSettings.Get<AzureBlobConfig>().ConnectionString))
+        if (string.IsNullOrEmpty(appSettings.Value.Get<AzureBlobConfig>().ConnectionString))
             throw new Exception("Azure connection string for Blob is not specified");
 
-        if (string.IsNullOrEmpty(appSettings.Get<AzureBlobConfig>().ContainerName))
+        if (string.IsNullOrEmpty(appSettings.Value.Get<AzureBlobConfig>().ContainerName))
             throw new Exception("Azure container name for Blob is not specified");
 
-        if (string.IsNullOrEmpty(appSettings.Get<AzureBlobConfig>().EndPoint))
+        if (string.IsNullOrEmpty(appSettings.Value.Get<AzureBlobConfig>().EndPoint))
             throw new Exception("Azure end point for Blob is not specified");
 
         lock (_locker)
@@ -88,10 +88,10 @@ public partial class AzurePictureService : PictureService
             if (_isInitialized)
                 return;
 
-            _azureBlobStorageAppendContainerName = appSettings.Get<AzureBlobConfig>().AppendContainerName;
-            _azureBlobStorageConnectionString = appSettings.Get<AzureBlobConfig>().ConnectionString;
-            _azureBlobStorageContainerName = appSettings.Get<AzureBlobConfig>().ContainerName.Trim().ToLowerInvariant();
-            _azureBlobStorageEndPoint = appSettings.Get<AzureBlobConfig>().EndPoint.Trim().ToLowerInvariant().TrimEnd('/');
+            _azureBlobStorageAppendContainerName = appSettings.Value.Get<AzureBlobConfig>().AppendContainerName;
+            _azureBlobStorageConnectionString = appSettings.Value.Get<AzureBlobConfig>().ConnectionString;
+            _azureBlobStorageContainerName = appSettings.Value.Get<AzureBlobConfig>().ContainerName.Trim().ToLowerInvariant();
+            _azureBlobStorageEndPoint = appSettings.Value.Get<AzureBlobConfig>().EndPoint.Trim().ToLowerInvariant().TrimEnd('/');
 
             _blobServiceClient = new BlobServiceClient(_azureBlobStorageConnectionString);
             _blobContainerClient = _blobServiceClient.GetBlobContainerClient(_azureBlobStorageContainerName);

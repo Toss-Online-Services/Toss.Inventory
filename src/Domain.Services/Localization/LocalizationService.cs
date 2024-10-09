@@ -34,7 +34,7 @@ public partial class LocalizationService : ILocalizationService
         ISettingService settingService,
         IStaticCacheManager staticCacheManager,
         IWorkContext workContext,
-        LocalizationSettings localizationSettings)
+        IOptions<LocalizationSettings> localizationSettings)
     {
         _languageService = languageService;
         _localizedEntityService = localizedEntityService;
@@ -43,7 +43,7 @@ public partial class LocalizationService : ILocalizationService
         _settingService = settingService;
         _staticCacheManager = staticCacheManager;
         _workContext = workContext;
-        _localizationSettings = localizationSettings;
+        _localizationSettings = localizationSettings.Value;
     }
 
     #endregion

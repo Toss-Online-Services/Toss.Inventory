@@ -22,11 +22,11 @@ public partial class LocalizedEntityService : ILocalizedEntityService
 
     public LocalizedEntityService(IRepository<LocalizedProperty> localizedPropertyRepository,
         IStaticCacheManager staticCacheManager,
-        LocalizationSettings localizationSettings)
+        IOptions<LocalizationSettings> localizationSettings)
     {
         _localizedPropertyRepository = localizedPropertyRepository;
         _staticCacheManager = staticCacheManager;
-        _localizationSettings = localizationSettings;
+        _localizationSettings = localizationSettings.Value;
     }
 
     #endregion

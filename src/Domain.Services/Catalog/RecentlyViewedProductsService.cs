@@ -21,14 +21,14 @@ public partial class RecentlyViewedProductsService : IRecentlyViewedProductsServ
 
     #region Ctor
 
-    public RecentlyViewedProductsService(CatalogSettings catalogSettings,
-        CookieSettings cookieSettings,
+    public RecentlyViewedProductsService(IOptions<CatalogSettings> catalogSettings,
+        IOptions<CookieSettings> cookieSettings,
         IHttpContextAccessor httpContextAccessor,
         IProductService productService,
         IWebHelper webHelper)
     {
-        _catalogSettings = catalogSettings;
-        _cookieSettings = cookieSettings;
+       _catalogSettings = catalogSettings.Value;
+       _cookieSettings = cookieSettings.Value;
         _httpContextAccessor = httpContextAccessor;
         _productService = productService;
         _webHelper = webHelper;

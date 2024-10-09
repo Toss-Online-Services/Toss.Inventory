@@ -21,21 +21,21 @@ public partial class PriceFormatter : IPriceFormatter
 
     #region Ctor
 
-    public PriceFormatter(CurrencySettings currencySettings,
+    public PriceFormatter(IOptions<CurrencySettings> currencySettings,
         ICurrencyService currencyService,
         ILocalizationService localizationService,
         IMeasureService measureService,
         IPriceCalculationService priceCalculationService,
         IWorkContext workContext,
-        TaxSettings taxSettings)
+        IOptions<TaxSettings> taxSettings)
     {
-        _currencySettings = currencySettings;
+        _currencySettings = currencySettings.Value;
         _currencyService = currencyService;
         _localizationService = localizationService;
         _measureService = measureService;
         _priceCalculationService = priceCalculationService;
         _workContext = workContext;
-        _taxSettings = taxSettings;
+        _taxSettings = taxSettings.Value;
     }
 
     #endregion

@@ -24,8 +24,8 @@ public partial class NopHttpClient
 
     #region Ctor
 
-    public NopHttpClient(AdminAreaSettings adminAreaSettings,
-        EmailAccountSettings emailAccountSettings,
+    public NopHttpClient(IOptions<AdminAreaSettings> adminAreaSettings,
+        IOptions<EmailAccountSettings> emailAccountSettings,
         HttpClient client,
         IEmailAccountService emailAccountService,
         IHttpContextAccessor httpContextAccessor,
@@ -38,8 +38,8 @@ public partial class NopHttpClient
         client.Timeout = TimeSpan.FromSeconds(5);
         client.DefaultRequestHeaders.Add(HeaderNames.UserAgent, $"nopCommerce-{NopVersion.CURRENT_VERSION}");
 
-        _adminAreaSettings = adminAreaSettings;
-        _emailAccountSettings = emailAccountSettings;
+        _adminAreaSettings = adminAreaSettings.Value;
+       _emailAccountSettings = emailAccountSettings.Value;
         _httpClient = client;
         _emailAccountService = emailAccountService;
         _httpContextAccessor = httpContextAccessor;

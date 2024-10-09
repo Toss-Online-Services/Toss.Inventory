@@ -25,9 +25,9 @@ public partial class RoxyFilemanFileProvider : PhysicalFileProvider, IRoxyFilema
         _nopFileProvider = nopFileProvider;
     }
 
-    public RoxyFilemanFileProvider(INopFileProvider defaultFileProvider, MediaSettings mediaSettings) : this(defaultFileProvider)
+    public RoxyFilemanFileProvider(INopFileProvider defaultFileProvider, IOptions<MediaSettings> mediaSettings) : this(defaultFileProvider)
     {
-        _mediaSettings = mediaSettings;
+        _mediaSettings = mediaSettings.Value;
     }
 
     #endregion

@@ -41,7 +41,7 @@ public partial class ProductAttributeFormatter : IProductAttributeFormatter
         IWebHelper webHelper,
         IWorkContext workContext,
         IStoreContext storeContext,
-        ShoppingCartSettings shoppingCartSettings)
+        IOptions<ShoppingCartSettings> shoppingCartSettings)
     {
         _currencyService = currencyService;
         _downloadService = downloadService;
@@ -55,7 +55,7 @@ public partial class ProductAttributeFormatter : IProductAttributeFormatter
         _webHelper = webHelper;
         _workContext = workContext;
         _storeContext = storeContext;
-        _shoppingCartSettings = shoppingCartSettings;
+        _shoppingCartSettings = shoppingCartSettings.Value;
     }
 
     #endregion

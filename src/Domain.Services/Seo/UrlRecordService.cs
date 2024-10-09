@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
-using Domain;
 using Nop.Core;
 
 namespace Nop.Services.Seo;
@@ -30,15 +29,15 @@ public partial class UrlRecordService : IUrlRecordService
         IRepository<UrlRecord> urlRecordRepository,
         IStaticCacheManager staticCacheManager,
         IWorkContext workContext,
-        LocalizationSettings localizationSettings,
-        SeoSettings seoSettings)
+        IOptions<LocalizationSettings> localizationSettings,
+        IOptions<SeoSettings> seoSettings)
     {
         _languageService = languageService;
         _urlRecordRepository = urlRecordRepository;
         _staticCacheManager = staticCacheManager;
         _workContext = workContext;
-        _localizationSettings = localizationSettings;
-        _seoSettings = seoSettings;
+        _localizationSettings = localizationSettings.Value;
+        _seoSettings = seoSettings.Value;
     }
 
     static UrlRecordService()

@@ -27,7 +27,7 @@ public partial class SpecificationAttributeService : ISpecificationAttributeServ
     #region Ctor
 
     public SpecificationAttributeService(
-        CatalogSettings catalogSettings,
+        IOptions<CatalogSettings> catalogSettings,
         IAclService aclService,
         ICategoryService categoryService,
         IRepository<Product> productRepository,
@@ -42,7 +42,7 @@ public partial class SpecificationAttributeService : ISpecificationAttributeServ
         IStaticCacheManager staticCacheManager,
         IWorkContext workContext)
     {
-        _catalogSettings = catalogSettings;
+       _catalogSettings = catalogSettings.Value;
         _aclService = aclService;
         _categoryService = categoryService;
         _productRepository = productRepository;

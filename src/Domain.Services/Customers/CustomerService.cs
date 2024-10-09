@@ -36,7 +36,7 @@ public partial class CustomerService : ICustomerService
 
     #region Ctor
 
-    public CustomerService(CustomerSettings customerSettings,
+    public CustomerService(IOptions<CustomerSettings> customerSettings,
         IEventPublisher eventPublisher,
         IGenericAttributeService genericAttributeService,
         INopDataProvider dataProvider,
@@ -54,10 +54,10 @@ public partial class CustomerService : ICustomerService
         IShortTermCacheManager shortTermCacheManager,
         IStaticCacheManager staticCacheManager,
         IStoreContext storeContext,
-        ShoppingCartSettings shoppingCartSettings,
-        TaxSettings taxSettings)
+        IOptions<ShoppingCartSettings> shoppingCartSettings,
+        IOptions<TaxSettings> taxSettings)
     {
-        _customerSettings = customerSettings;
+        _customerSettings = customerSettings.Value;
         _eventPublisher = eventPublisher;
         _genericAttributeService = genericAttributeService;
         _dataProvider = dataProvider;
@@ -75,8 +75,8 @@ public partial class CustomerService : ICustomerService
         _shortTermCacheManager = shortTermCacheManager;
         _staticCacheManager = staticCacheManager;
         _storeContext = storeContext;
-        _shoppingCartSettings = shoppingCartSettings;
-        _taxSettings = taxSettings;
+        _shoppingCartSettings = shoppingCartSettings.Value;
+        _taxSettings = taxSettings.Value;
     }
 
     #endregion

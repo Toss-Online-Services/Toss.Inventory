@@ -2,6 +2,7 @@
 using System.Text;
 using Domain.Entities.Configuration;
 
+
 namespace Domain.Caching;
 
 /// <summary>
@@ -17,9 +18,9 @@ public abstract partial class CacheKeyService : ICacheKeyService
 
     #region Ctor
 
-    protected CacheKeyService(AppSettings appSettings)
+    protected CacheKeyService(IOptions<AppSettings> appSettings)
     {
-        _appSettings = appSettings;
+        _appSettings = appSettings.Value;
     }
 
     #endregion

@@ -39,8 +39,8 @@ public partial class WebWorkContext : IWorkContext
 
     #region Ctor
 
-    public WebWorkContext(CookieSettings cookieSettings,
-        CurrencySettings currencySettings,
+    public WebWorkContext(IOptions<CookieSettings> cookieSettings,
+        IOptions<CurrencySettings> currencySettings,
         IAuthenticationService authenticationService,
         ICurrencyService currencyService,
         ICustomerService customerService,
@@ -52,11 +52,11 @@ public partial class WebWorkContext : IWorkContext
         IUserAgentHelper userAgentHelper,
         IVendorService vendorService,
         IWebHelper webHelper,
-        LocalizationSettings localizationSettings,
-        TaxSettings taxSettings)
+        IOptions<LocalizationSettings> localizationSettings,
+        IOptions<TaxSettings> taxSettings)
     {
-        _cookieSettings = cookieSettings;
-        _currencySettings = currencySettings;
+       _cookieSettings = cookieSettings.Value;
+        _currencySettings = currencySettings.Value;
         _authenticationService = authenticationService;
         _currencyService = currencyService;
         _customerService = customerService;
@@ -68,8 +68,8 @@ public partial class WebWorkContext : IWorkContext
         _userAgentHelper = userAgentHelper;
         _vendorService = vendorService;
         _webHelper = webHelper;
-        _localizationSettings = localizationSettings;
-        _taxSettings = taxSettings;
+        _localizationSettings = localizationSettings.Value;
+        _taxSettings = taxSettings.Value;
     }
 
     #endregion

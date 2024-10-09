@@ -16,12 +16,12 @@ public partial class CurrencyService : ICurrencyService
 
     #region Ctor
 
-    public CurrencyService(CurrencySettings currencySettings,
+    public CurrencyService(IOptions<CurrencySettings> currencySettings,
         IExchangeRatePluginManager exchangeRatePluginManager,
         IRepository<Currency> currencyRepository,
         IStoreMappingService storeMappingService)
     {
-        _currencySettings = currencySettings;
+        _currencySettings = currencySettings.Value;
         _exchangeRatePluginManager = exchangeRatePluginManager;
         _currencyRepository = currencyRepository;
         _storeMappingService = storeMappingService;

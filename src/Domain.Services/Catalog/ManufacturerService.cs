@@ -25,7 +25,7 @@ public partial class ManufacturerService : IManufacturerService
 
     #region Ctor
 
-    public ManufacturerService(CatalogSettings catalogSettings,
+    public ManufacturerService(IOptions<CatalogSettings> catalogSettings,
         IAclService aclService,
         ICategoryService categoryService,
         ICustomerService customerService,
@@ -39,7 +39,7 @@ public partial class ManufacturerService : IManufacturerService
         IStoreMappingService storeMappingService,
         IWorkContext workContext)
     {
-        _catalogSettings = catalogSettings;
+       _catalogSettings = catalogSettings.Value;
         _aclService = aclService;
         _categoryService = categoryService;
         _customerService = customerService;

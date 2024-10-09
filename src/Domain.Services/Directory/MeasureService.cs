@@ -17,11 +17,11 @@ public partial class MeasureService : IMeasureService
 
     public MeasureService(IRepository<MeasureDimension> measureDimensionRepository,
         IRepository<MeasureWeight> measureWeightRepository,
-        MeasureSettings measureSettings)
+        IOptions<MeasureSettings> measureSettings)
     {
         _measureDimensionRepository = measureDimensionRepository;
         _measureWeightRepository = measureWeightRepository;
-        _measureSettings = measureSettings;
+        _measureSettings = measureSettings.Value;
     }
 
     #endregion

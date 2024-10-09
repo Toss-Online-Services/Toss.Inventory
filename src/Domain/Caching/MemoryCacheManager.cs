@@ -31,7 +31,7 @@ public partial class MemoryCacheManager : CacheKeyService, IStaticCacheManager
 
     #region Ctor
 
-    public MemoryCacheManager(AppSettings appSettings, IMemoryCache memoryCache, ICacheKeyManager cacheKeyManager)
+    public MemoryCacheManager(IOptions<AppSettings> appSettings, IMemoryCache memoryCache, ICacheKeyManager cacheKeyManager)
         : base(appSettings)
     {
         _memoryCache = memoryCache;

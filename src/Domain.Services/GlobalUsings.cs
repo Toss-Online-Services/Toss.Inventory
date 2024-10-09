@@ -1,4 +1,5 @@
 ﻿global using System.Data;
+global using Microsoft.Extensions.Options;
 global using Domain.Entities.Catalog;
 global using Domain.Entities.Common;
 global using Domain.Entities.Customers;

@@ -14,10 +14,10 @@ public partial class ClearLogTask : IScheduleTask
 
     #region Ctor
 
-    public ClearLogTask(CommonSettings commonSettings,
+    public ClearLogTask(IOptions<CommonSettings> commonSettings,
         ILogger logger)
     {
-        _commonSettings = commonSettings;
+        _commonSettings = commonSettings.Value;
         _logger = logger;
     }
 

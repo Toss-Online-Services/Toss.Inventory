@@ -43,7 +43,7 @@ public partial class PictureService : IPictureService
         ISettingService settingService,
         IUrlRecordService urlRecordService,
         IWebHelper webHelper,
-        MediaSettings mediaSettings)
+        IOptions<MediaSettings> mediaSettings)
     {
         _downloadService = downloadService;
         _httpContextAccessor = httpContextAccessor;
@@ -57,7 +57,7 @@ public partial class PictureService : IPictureService
         _settingService = settingService;
         _urlRecordService = urlRecordService;
         _webHelper = webHelper;
-        _mediaSettings = mediaSettings;
+        _mediaSettings = mediaSettings.Value;
     }
 
     #endregion

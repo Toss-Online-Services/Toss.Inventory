@@ -14,10 +14,10 @@ public partial class UpdateExchangeRateTask : IScheduleTask
 
     #region Ctor
 
-    public UpdateExchangeRateTask(CurrencySettings currencySettings,
+    public UpdateExchangeRateTask(IOptions<CurrencySettings> currencySettings,
         ICurrencyService currencyService)
     {
-        _currencySettings = currencySettings;
+        _currencySettings = currencySettings.Value;
         _currencyService = currencyService;
     }
 

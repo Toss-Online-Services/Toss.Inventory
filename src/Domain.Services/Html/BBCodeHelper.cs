@@ -24,9 +24,9 @@ public partial class BBCodeHelper : IBBCodeHelper
 
     #region Ctor
 
-    public BBCodeHelper(CommonSettings commonSettings)
+    public BBCodeHelper(IOptions<CommonSettings> commonSettings)
     {
-        _commonSettings = commonSettings;
+        _commonSettings = commonSettings.Value;
     }
 
     #endregion

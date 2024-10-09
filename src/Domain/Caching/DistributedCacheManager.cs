@@ -29,7 +29,7 @@ public abstract class DistributedCacheManager : CacheKeyService, IStaticCacheMan
 
     #region Ctor
 
-    protected DistributedCacheManager(AppSettings appSettings,
+    protected DistributedCacheManager(IOptions<AppSettings> appSettings,
         IDistributedCache distributedCache,
         ICacheKeyManager cacheKeyManager,
         IConcurrentCollection<object> concurrentCollection)

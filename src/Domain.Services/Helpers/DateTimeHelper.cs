@@ -16,10 +16,10 @@ public partial class DateTimeHelper : IDateTimeHelper
 
     #region Ctor
 
-    public DateTimeHelper(DateTimeSettings dateTimeSettings,
+    public DateTimeHelper(IOptions<DateTimeSettings> dateTimeSettings,
         IWorkContext workContext)
     {
-        _dateTimeSettings = dateTimeSettings;
+        _dateTimeSettings = dateTimeSettings.Value;
         _workContext = workContext;
     }
 

@@ -19,13 +19,13 @@ public partial class CustomerActivityService : ICustomerActivityService
 
     #region Ctor
 
-    public CustomerActivityService(CustomerSettings customerSettings,
+    public CustomerActivityService(IOptions<CustomerSettings> customerSettings,
         IRepository<ActivityLog> activityLogRepository,
         IRepository<ActivityLogType> activityLogTypeRepository,
         IWebHelper webHelper,
         IWorkContext workContext)
     {
-        _customerSettings = customerSettings;
+        _customerSettings = customerSettings.Value;
         _activityLogRepository = activityLogRepository;
         _activityLogTypeRepository = activityLogTypeRepository;
         _webHelper = webHelper;

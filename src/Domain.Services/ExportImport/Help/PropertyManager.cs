@@ -38,10 +38,10 @@ public partial class PropertyManager<T, L> where L : Language
     /// <param name="catalogSettings">Catalog settings</param>
     /// <param name="localizedProperties">Localized access properties</param>
     /// <param name="languages">Languages</param>
-    public PropertyManager(IEnumerable<PropertyByName<T, L>> defaultProperties, CatalogSettings catalogSettings, IEnumerable<PropertyByName<T, L>> localizedProperties = null, IList<L> languages = null)
+    public PropertyManager(IEnumerable<PropertyByName<T, L>> defaultProperties, IOptions<CatalogSettings> catalogSettings, IEnumerable<PropertyByName<T, L>> localizedProperties = null, IList<L> languages = null)
     {
         _defaultProperties = new Dictionary<string, PropertyByName<T, L>>();
-        _catalogSettings = catalogSettings;
+       _catalogSettings = catalogSettings.Value;
         _localizedProperties = new Dictionary<string, PropertyByName<T, L>>();
         _languages = new List<L>();
 

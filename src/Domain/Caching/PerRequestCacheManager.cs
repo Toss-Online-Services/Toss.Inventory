@@ -16,7 +16,7 @@ public partial class PerRequestCacheManager : CacheKeyService, IShortTermCacheMa
 
     #region Ctor
 
-    public PerRequestCacheManager(AppSettings appSettings) : base(appSettings)
+    public PerRequestCacheManager(IOptions<AppSettings> appSettings) : base(appSettings)
     {
         _concurrentCollection = new ConcurrentTrie<object>();
     }
