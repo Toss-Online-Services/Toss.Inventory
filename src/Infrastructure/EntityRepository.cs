@@ -31,18 +31,29 @@ public partial class EntityRepository<TEntity> : IRepository<TEntity> where TEnt
         INopDataProvider dataProvider,
         IShortTermCacheManager shortTermCacheManager,
         IStaticCacheManager staticCacheManager,
-        IOptions<AppSettings> appSettings)
+        IOptions<AppSettings> appSettings,
+        IOptions<DistributedCacheConfig> distributedSettings)
     {
         _eventPublisher = eventPublisher;
         _dataProvider = dataProvider;
         _shortTermCacheManager = shortTermCacheManager;
         _staticCacheManager = staticCacheManager;
-        _usingDistributedCache = appSettings.Value.Get<DistributedCacheConfig>().DistributedCacheType switch
+        var t = distributedSettings.Value;
+
+
+        _usingDistributedCache = distributedSettings.Value.DistributedCacheType switch
         {
             DistributedCacheType.Redis => true,
             DistributedCacheType.SqlServer => true,
             _ => false
         };
+
+        //_usingDistributedCache = appSettings.Value.Get<DistributedCacheConfig>().DistributedCacheType switch
+        //{
+        //    DistributedCacheType.Redis => true,
+        //    DistributedCacheType.SqlServer => true,
+        //    _ => false
+        //};
     }
 
     #endregion

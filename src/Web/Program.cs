@@ -86,6 +86,9 @@ builder.Services.Configure<CommonSettings>(builder.Configuration.GetSection("Com
 builder.Services.Configure<CustomerSettings>(builder.Configuration.GetSection("CustomerSettings"));
 builder.Services.Configure<AddressSettings>(builder.Configuration.GetSection("AddressSettings"));
 
+services.AddSingleton<AppSettings>();
+services.Configure<DistributedCacheConfig>(builder.Configuration.GetSection("DistributedCacheConfig"));
+
 
 
 // Register the required services
@@ -153,7 +156,7 @@ services.AddScoped<ISettingService, SettingService>();
 services.AddScoped<IBBCodeHelper, BBCodeHelper>();
 services.AddScoped<IHtmlFormatter, HtmlFormatter>();
 services.AddScoped<IVideoService, VideoService>();
-services.AddScoped<INopDataProvider, NopDataProvider>();
+services.AddScoped<INopDataProvider, PostgreSqlDataProvider>();
 
 
 services.AddSingleton<ICacheKeyManager, CacheKeyManager>();

@@ -16,7 +16,12 @@ public partial class AppSettings
 
     #region Ctor
 
-    public AppSettings(IList<IConfig> configurations = null)
+    public AppSettings()
+    {
+        _configurations = new Dictionary<Type, IConfig>();
+    }
+
+    public AppSettings(IList<IConfig> configurations = null) : this()
     {
         _configurations = configurations
                               ?.OrderBy(config => config.GetOrder())
