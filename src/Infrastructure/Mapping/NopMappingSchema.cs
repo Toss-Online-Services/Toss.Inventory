@@ -33,7 +33,7 @@ public static class NopMappingSchema
 
         return EntityDescriptors.GetOrAdd(entityType, t =>
         {
-            var tableName = NameCompatibilityManager.GetTableName(t);
+            var tableName = t.Name;
             var expression = new CreateTableExpression { TableName = tableName };
             var builder = new CreateTableExpressionBuilder(expression, new NullMigrationContext());
             builder.RetrieveTableExpressions(t);

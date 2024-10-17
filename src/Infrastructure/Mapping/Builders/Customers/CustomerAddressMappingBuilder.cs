@@ -17,9 +17,9 @@ public partial class CustomerAddressMappingBuilder : NopEntityBuilder<CustomerAd
     public override void MapEntity(CreateTableExpressionBuilder table)
     {
         table
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(CustomerAddressMapping), nameof(CustomerAddressMapping.AddressId)))
+            .WithColumn(nameof(CustomerAddressMapping.AddressId))
             .AsInt32().ForeignKey<Address>().PrimaryKey()
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(CustomerAddressMapping), nameof(CustomerAddressMapping.CustomerId)))
+            .WithColumn(nameof(CustomerAddressMapping.CustomerId))
             .AsInt32().ForeignKey<Customer>().PrimaryKey();
     }
 

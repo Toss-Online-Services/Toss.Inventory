@@ -6,6 +6,7 @@ using Domain.Caching;
 using Domain.Entities.Configuration;
 using Domain.Events;
 using Microsoft.Extensions.Options;
+using Autofac.Core;
 
 namespace Infrastructure;
 
@@ -22,6 +23,7 @@ public partial class EntityRepository<TEntity> : IRepository<TEntity> where TEnt
     protected readonly IShortTermCacheManager _shortTermCacheManager;
     protected readonly IStaticCacheManager _staticCacheManager;
     protected readonly bool _usingDistributedCache;
+    protected readonly InventoryContext _context;
 
     #endregion
 
@@ -32,14 +34,14 @@ public partial class EntityRepository<TEntity> : IRepository<TEntity> where TEnt
         IShortTermCacheManager shortTermCacheManager,
         IStaticCacheManager staticCacheManager,
         IOptions<AppSettings> appSettings,
-        IOptions<DistributedCacheConfig> distributedSettings)
+        IOptions<DistributedCacheConfig> distributedSettings,
+        InventoryContext context)
     {
         _eventPublisher = eventPublisher;
         _dataProvider = dataProvider;
         _shortTermCacheManager = shortTermCacheManager;
         _staticCacheManager = staticCacheManager;
-        var t = distributedSettings.Value;
-
+        _context = context;
 
         _usingDistributedCache = distributedSettings.Value.DistributedCacheType switch
         {
@@ -440,9 +442,36 @@ public partial class EntityRepository<TEntity> : IRepository<TEntity> where TEnt
     /// <returns>A task that represents the asynchronous operation</returns>
     public virtual async Task InsertAsync(TEntity entity, bool publishEvent = true)
     {
+
         ArgumentNullException.ThrowIfNull(entity);
 
-        await _dataProvider.InsertEntityAsync(entity);
+        try
+        {
+            //await _dataProvider.InsertEntityAsync(entity);
+            _context.Products.Add(entity as Product);
+            await _context.SaveChangesAsync();
+            //event notification
+            if (publishEvent)
+                await _eventPublisher.EntityInsertedAsync(entity);
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception(ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// Insert the entity entry
+    /// </summary>
+    /// <param name="entity">Entity entry</param>
+    /// <param name="publishEvent">Whether to publish event notification</param>
+    /// <returns>A task that represents the asynchronous operation</returns>
+    public virtual async Task InsertAsync(Product entity, bool publishEvent = true)
+    {
+        ArgumentNullException.ThrowIfNull(entity);
+
+        //await _dataProvider.InsertEntityAsync(entity);
 
         //event notification
         if (publishEvent)

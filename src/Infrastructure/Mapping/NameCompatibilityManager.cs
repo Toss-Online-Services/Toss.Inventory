@@ -6,7 +6,7 @@ namespace Infrastructure.Mapping;
 /// <summary>
 /// Helper class for maintaining backward compatibility of table naming
 /// </summary>
-public static partial class NameCompatibilityManager
+public static partial class NameCompatibilityManager2
 {
     #region Fields
 

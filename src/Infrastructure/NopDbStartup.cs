@@ -22,7 +22,7 @@ public partial class NopDbStartup : INopStartup
     /// </summary>
     /// <param name="services">Collection of service descriptors</param>
     /// <param name="configuration">Configuration of the application</param>
-    public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+    public void ConfigureInfrastructureServices(IServiceCollection services, IConfiguration configuration)
     {
         var typeFinder = Singleton<ITypeFinder>.Instance;
         var mAssemblies = typeFinder.FindClassesOfType<MigrationBase>()

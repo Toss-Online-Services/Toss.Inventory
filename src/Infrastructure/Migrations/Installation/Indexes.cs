@@ -36,13 +36,13 @@ public class Indexes : ForwardOnlyMigration
             .WithOptions().NonClustered();        
 
      
-        Create.Index("IX_PSAM_SpecificationAttributeOptionId_AllowFiltering").OnTable(NameCompatibilityManager.GetTableName(typeof(ProductSpecificationAttribute)))
+        Create.Index("IX_PSAM_SpecificationAttributeOptionId_AllowFiltering").OnTable(typeof(ProductSpecificationAttribute).Name)
             .OnColumn(nameof(ProductSpecificationAttribute.SpecificationAttributeOptionId)).Ascending()
             .OnColumn(nameof(ProductSpecificationAttribute.AllowFiltering)).Ascending()
             .WithOptions().NonClustered()
             .Include(nameof(ProductSpecificationAttribute.ProductId));
 
-        Create.Index("IX_PSAM_AllowFiltering").OnTable(NameCompatibilityManager.GetTableName(typeof(ProductSpecificationAttribute)))
+        Create.Index("IX_PSAM_AllowFiltering").OnTable(typeof(ProductSpecificationAttribute).Name)
             .OnColumn(nameof(ProductSpecificationAttribute.AllowFiltering)).Ascending()
             .WithOptions().NonClustered()
             .Include(nameof(ProductSpecificationAttribute.ProductId))
@@ -81,7 +81,7 @@ public class Indexes : ForwardOnlyMigration
             .OnColumn(nameof(Product.Published)).Ascending()
             .WithOptions().NonClustered();
 
-        Create.Index("IX_Product_ProductAttribute_Mapping_ProductId_DisplayOrder").OnTable(NameCompatibilityManager.GetTableName(typeof(ProductAttributeMapping)))
+        Create.Index("IX_Product_ProductAttribute_Mapping_ProductId_DisplayOrder").OnTable(typeof(ProductAttributeMapping).Name)
             .OnColumn(nameof(ProductAttributeMapping.ProductId)).Ascending()
             .OnColumn(nameof(ProductAttributeMapping.DisplayOrder)).Ascending()
             .WithOptions().NonClustered();
@@ -99,7 +99,7 @@ public class Indexes : ForwardOnlyMigration
             .WithOptions().NonClustered();
 
         Create.Index("IX_Product_Manufacturer_Mapping_IsFeaturedProduct")
-            .OnTable(NameCompatibilityManager.GetTableName(typeof(ProductManufacturer)))
+            .OnTable(typeof(ProductManufacturer).Name)
             .OnColumn(nameof(ProductManufacturer.IsFeaturedProduct)).Ascending()
             .WithOptions().NonClustered();
 
@@ -117,7 +117,7 @@ public class Indexes : ForwardOnlyMigration
             .OnColumn(nameof(Product.Deleted)).Ascending()
             .WithOptions().NonClustered();
 
-        Create.Index("IX_Product_Category_Mapping_IsFeaturedProduct").OnTable(NameCompatibilityManager.GetTableName(typeof(ProductCategory)))
+        Create.Index("IX_Product_Category_Mapping_IsFeaturedProduct").OnTable(typeof(ProductCategory).Name)
             .OnColumn(nameof(ProductCategory.IsFeaturedProduct)).Ascending()
             .WithOptions().NonClustered();
 
@@ -126,24 +126,24 @@ public class Indexes : ForwardOnlyMigration
             .OnColumn(nameof(ProductAttributeValue.DisplayOrder)).Ascending()
             .WithOptions().NonClustered();
 
-        Create.Index("IX_PMM_Product_and_Manufacturer").OnTable(NameCompatibilityManager.GetTableName(typeof(ProductManufacturer)))
+        Create.Index("IX_PMM_Product_and_Manufacturer").OnTable(typeof(ProductManufacturer).Name)
             .OnColumn(nameof(ProductManufacturer.ManufacturerId)).Ascending()
             .OnColumn(nameof(ProductManufacturer.ProductId)).Ascending()
             .WithOptions().NonClustered();
 
-        Create.Index("IX_PMM_ProductId_Extended").OnTable(NameCompatibilityManager.GetTableName(typeof(ProductManufacturer)))
+        Create.Index("IX_PMM_ProductId_Extended").OnTable(typeof(ProductManufacturer).Name)
             .OnColumn(nameof(ProductManufacturer.ProductId)).Ascending()
             .OnColumn(nameof(ProductManufacturer.IsFeaturedProduct)).Ascending()
             .WithOptions().NonClustered()
             .Include(nameof(ProductManufacturer.ManufacturerId));
 
-        Create.Index("IX_PCM_ProductId_Extended").OnTable(NameCompatibilityManager.GetTableName(typeof(ProductCategory)))
+        Create.Index("IX_PCM_ProductId_Extended").OnTable(typeof(ProductCategory).Name)
             .OnColumn(nameof(ProductCategory.ProductId)).Ascending()
             .OnColumn(nameof(ProductCategory.IsFeaturedProduct)).Ascending()
             .WithOptions().NonClustered()
             .Include(nameof(ProductCategory.CategoryId));
 
-        Create.Index("IX_PCM_Product_and_Category").OnTable(NameCompatibilityManager.GetTableName(typeof(ProductCategory)))
+        Create.Index("IX_PCM_Product_and_Category").OnTable(typeof(ProductCategory).Name)
             .OnColumn(nameof(ProductCategory.CategoryId)).Ascending()
             .OnColumn(nameof(ProductCategory.ProductId)).Ascending()
             .WithOptions().NonClustered();       

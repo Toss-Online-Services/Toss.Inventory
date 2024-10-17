@@ -17,9 +17,9 @@ public partial class ShippingMethodCountryMappingBuilder : NopEntityBuilder<Ship
     public override void MapEntity(CreateTableExpressionBuilder table)
     {
         table
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(ShippingMethodCountryMapping), nameof(ShippingMethodCountryMapping.ShippingMethodId)))
+            .WithColumn(nameof(ShippingMethodCountryMapping.ShippingMethodId))
             .AsInt32().PrimaryKey().ForeignKey<ShippingMethod>()
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(ShippingMethodCountryMapping), nameof(ShippingMethodCountryMapping.CountryId)))
+            .WithColumn(nameof(ShippingMethodCountryMapping.CountryId))
             .AsInt32().PrimaryKey().ForeignKey<Country>();
     }
 

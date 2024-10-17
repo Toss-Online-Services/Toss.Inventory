@@ -18,7 +18,7 @@ public partial class AddressAttributeValueBuilder : NopEntityBuilder<AddressAttr
     {
         table
             .WithColumn(nameof(AddressAttributeValue.Name)).AsString(400).NotNullable()
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(AddressAttributeValue), nameof(AddressAttributeValue.AttributeId))).AsInt32().ForeignKey<AddressAttribute>();
+            .WithColumn(nameof(AddressAttributeValue.AttributeId)).AsInt32().ForeignKey<AddressAttribute>();
     }
 
     #endregion

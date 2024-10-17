@@ -18,7 +18,7 @@ public partial class CustomerAttributeValueBuilder : NopEntityBuilder<CustomerAt
     {
         table
             .WithColumn(nameof(CustomerAttributeValue.Name)).AsString(400).NotNullable()
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(CustomerAttributeValue), nameof(CustomerAttributeValue.AttributeId))).AsInt32().ForeignKey<CustomerAttribute>();
+            .WithColumn(nameof(CustomerAttributeValue.AttributeId)).AsInt32().ForeignKey<CustomerAttribute>();
     }
 
     #endregion

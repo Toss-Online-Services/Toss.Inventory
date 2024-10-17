@@ -17,9 +17,9 @@ public partial class PermissionRecordCustomerRoleMappingBuilder : NopEntityBuild
     public override void MapEntity(CreateTableExpressionBuilder table)
     {
         table
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(PermissionRecordCustomerRoleMapping), nameof(PermissionRecordCustomerRoleMapping.PermissionRecordId)))
+            .WithColumn(nameof(PermissionRecordCustomerRoleMapping.PermissionRecordId))
             .AsInt32().PrimaryKey().ForeignKey<PermissionRecord>()
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(PermissionRecordCustomerRoleMapping), nameof(PermissionRecordCustomerRoleMapping.CustomerRoleId)))
+            .WithColumn(nameof(PermissionRecordCustomerRoleMapping.CustomerRoleId))
             .AsInt32().PrimaryKey().ForeignKey<CustomerRole>();
     }
 

@@ -95,7 +95,7 @@ public partial class FluentMigratorMetadataReader : IMetadataReader
         var attribute = Types.GetOrAdd((type, memberInfo), _ =>
         {
 
-            var entityField = entityDescriptor.Fields.SingleOrDefault(cd => cd.Name.Equals(NameCompatibilityManager.GetColumnName(type, memberInfo.Name), StringComparison.OrdinalIgnoreCase));
+            var entityField = entityDescriptor.Fields.SingleOrDefault(cd => cd.Name.Equals(memberInfo.Name, StringComparison.OrdinalIgnoreCase));
 
             if (entityField is null)
                 return null;

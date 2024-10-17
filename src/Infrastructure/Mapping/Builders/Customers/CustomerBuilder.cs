@@ -39,8 +39,8 @@ public partial class CustomerBuilder : NopEntityBuilder<Customer>
             .WithColumn(nameof(Customer.LastIpAddress)).AsString(100).Nullable()
             .WithColumn(nameof(Customer.CurrencyId)).AsInt32().ForeignKey<Currency>(onDelete: Rule.SetNull).Nullable()
             .WithColumn(nameof(Customer.LanguageId)).AsInt32().ForeignKey<Language>(onDelete: Rule.SetNull).Nullable()
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(Customer), nameof(Customer.BillingAddressId))).AsInt32().ForeignKey<Address>(onDelete: Rule.None).Nullable()
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(Customer), nameof(Customer.ShippingAddressId))).AsInt32().ForeignKey<Address>(onDelete: Rule.None).Nullable();
+            .WithColumn(nameof(Customer.BillingAddressId)).AsInt32().ForeignKey<Address>(onDelete: Rule.None).Nullable()
+            .WithColumn(nameof(Customer.ShippingAddressId)).AsInt32().ForeignKey<Address>(onDelete: Rule.None).Nullable();
     }
 
     #endregion

@@ -14,7 +14,7 @@ public partial interface INopStartup
     /// </summary>
     /// <param name="services">Collection of service descriptors</param>
     /// <param name="configuration">Configuration of the application</param>
-    void ConfigureServices(IServiceCollection services, IConfiguration configuration);
+    void ConfigureInfrastructureServices(IServiceCollection services, IConfiguration configuration);
 
     /// <summary>
     /// Configure the using of added middleware

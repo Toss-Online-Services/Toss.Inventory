@@ -38,11 +38,15 @@ using FluentMigrator.Runner;
 using FluentMigrator.Runner.Initialization;
 using Infrastructure;
 using Infrastructure.DataProviders;
+using Infrastructure.Extensions;
 using Infrastructure.Migrations;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using Nop.Core;
 using Nop.Services.Media.RoxyFileman;
 using Nop.Services.Seo;
+using Toss.Extensions;
 using Toss.ServiceDefaults;
 using Web;
 using Web.Framework;
@@ -51,8 +55,10 @@ using Web.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+builder.AddInfrastructureServices();
 builder.Services.AddProblemDetails();
 builder.Services.AddWebServices();
+
 
 // Add services to the container.
 builder.Services.AddCors(options =>
@@ -89,6 +95,8 @@ builder.Services.Configure<AddressSettings>(builder.Configuration.GetSection("Ad
 services.AddSingleton<AppSettings>();
 services.Configure<DistributedCacheConfig>(builder.Configuration.GetSection("DistributedCacheConfig"));
 
+//create default file provider
+CommonHelper.DefaultFileProvider = new NopFileProvider(builder.Environment);
 
 
 // Register the required services
@@ -231,14 +239,6 @@ services.AddScoped<IPluginService, PluginService>();
 
 services.AddSingleton<IMigrationManager, MigrationManager>();
 
-services
-    .AddFluentMigratorCore()
-    .ConfigureRunner(runner => runner
-        .AddSqlServer() // Use your specific database provider, such as AddSqlServer, AddPostgres, etc.
-        .WithGlobalConnectionString("YourConnectionString") // Set the global connection string
-        .ScanIn(typeof(NopDbStartup).Assembly).For.Migrations()) // Replace with the assembly containing your migrations
-    .AddLogging(logging => logging.AddFluentMigratorConsole());
-
 services.AddTransient(p => new Lazy<IVersionLoader>(p.GetRequiredService<IVersionLoader>()));
 
 //web helper
@@ -246,6 +246,8 @@ services.AddScoped<IWebHelper, WebHelper>();
 
 // Register IActionContextAccessor
 services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+
+builder.Services.AddMigration<InventoryContext>();
 
 var app = builder.Build();
 
@@ -293,3 +295,5 @@ app.MapProductEndpoints();
 app.MapEndpoints();
 
 app.Run();
+
+

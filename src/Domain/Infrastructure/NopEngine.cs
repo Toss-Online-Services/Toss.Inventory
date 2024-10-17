@@ -119,7 +119,7 @@ public partial class NopEngine : IEngine
 
         //configure services
         foreach (var instance in instances)
-            instance.ConfigureServices(services, configuration);
+            instance.ConfigureInfrastructureServices(services, configuration);
 
         services.AddSingleton(services);
 

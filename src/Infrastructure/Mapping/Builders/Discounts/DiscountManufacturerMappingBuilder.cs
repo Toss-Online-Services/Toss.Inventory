@@ -17,9 +17,9 @@ public partial class DiscountManufacturerMappingBuilder : NopEntityBuilder<Disco
     public override void MapEntity(CreateTableExpressionBuilder table)
     {
         table
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(DiscountManufacturerMapping), nameof(DiscountManufacturerMapping.DiscountId)))
+            .WithColumn(nameof(DiscountManufacturerMapping.DiscountId))
             .AsInt32().PrimaryKey().ForeignKey<Discount>()
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(DiscountManufacturerMapping), nameof(DiscountManufacturerMapping.EntityId)))
+            .WithColumn(nameof(DiscountManufacturerMapping.EntityId))
             .AsInt32().PrimaryKey().ForeignKey<Manufacturer>();
     }
 

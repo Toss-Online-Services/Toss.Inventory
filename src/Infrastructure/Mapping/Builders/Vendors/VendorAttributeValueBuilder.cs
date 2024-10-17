@@ -18,7 +18,7 @@ public partial class VendorAttributeValueBuilder : NopEntityBuilder<VendorAttrib
     {
         table
             .WithColumn(nameof(VendorAttributeValue.Name)).AsString(400).NotNullable()
-            .WithColumn(NameCompatibilityManager.GetColumnName(typeof(VendorAttributeValue), nameof(VendorAttributeValue.AttributeId))).AsInt32().ForeignKey<VendorAttribute>();
+            .WithColumn(nameof(VendorAttributeValue.AttributeId)).AsInt32().ForeignKey<VendorAttribute>();
     }
 
     #endregion

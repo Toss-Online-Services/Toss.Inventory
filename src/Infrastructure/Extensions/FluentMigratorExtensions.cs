@@ -29,7 +29,7 @@ public static class FluentMigratorExtensions
         [typeof(string)] = c => c.AsString(int.MaxValue).Nullable(),
         [typeof(bool)] = c => c.AsBoolean(),
         [typeof(decimal)] = c => c.AsDecimal(18, 4),
-        [typeof(DateTime)] = c => c.AsNopDateTime2(),
+        //[typeof(DateTime)] = c => c.AsNopDateTime2(),
         [typeof(byte[])] = c => c.AsBinary(int.MaxValue),
         [typeof(Guid)] = c => c.AsGuid()
     };
@@ -57,18 +57,18 @@ public static class FluentMigratorExtensions
 
     /// <summary>
     /// Defines the column type as date that is combined with a time of day and a specified precision
-    /// </summary>
-    public static ICreateTableColumnOptionOrWithColumnSyntax AsNopDateTime2(this ICreateTableColumnAsTypeSyntax syntax)
-    {
-        var dataSettings = DataSettingsManager.LoadSettings();
+    ///// </summary>
+    //public static ICreateTableColumnOptionOrWithColumnSyntax AsNopDateTime2(this ICreateTableColumnAsTypeSyntax syntax)
+    //{
+    //    var dataSettings = DataSettingsManager.LoadSettings();
 
-        return dataSettings.DataProvider switch
-        {
-            DataProviderType.MySql => syntax.AsCustom($"datetime({DATE_TIME_PRECISION})"),
-            DataProviderType.SqlServer => syntax.AsCustom($"datetime2({DATE_TIME_PRECISION})"),
-            _ => syntax.AsDateTime2()
-        };
-    }
+    //    return dataSettings.DataProvider switch
+    //    {
+    //        DataProviderType.MySql => syntax.AsCustom($"datetime({DATE_TIME_PRECISION})"),
+    //        DataProviderType.SqlServer => syntax.AsCustom($"datetime2({DATE_TIME_PRECISION})"),
+    //        _ => syntax.AsDateTime2()
+    //    };
+    //}
 
     /// <summary>
     /// Specifies a foreign key
@@ -81,11 +81,8 @@ public static class FluentMigratorExtensions
     /// <returns>Set column options or create a new column or set a foreign key cascade rule</returns>
     public static ICreateTableColumnOptionOrForeignKeyCascadeOrWithColumnSyntax ForeignKey<TPrimary>(this ICreateTableColumnOptionOrWithColumnSyntax column, string primaryTableName = null, string primaryColumnName = null, Rule onDelete = Rule.Cascade) where TPrimary : BaseEntity
     {
-        if (string.IsNullOrEmpty(primaryTableName))
-            primaryTableName = NameCompatibilityManager.GetTableName(typeof(TPrimary));
-
-        if (string.IsNullOrEmpty(primaryColumnName))
-            primaryColumnName = nameof(BaseEntity.Id);
+        primaryTableName ??= typeof(TPrimary).Name;
+        primaryColumnName ??= nameof(BaseEntity.Id);
 
         return column.Indexed().ForeignKey(primaryTableName, primaryColumnName).OnDelete(onDelete);
     }
@@ -101,11 +98,8 @@ public static class FluentMigratorExtensions
     /// <returns>Alter/add a column with an optional foreign key</returns>
     public static IAlterTableColumnOptionOrAddColumnOrAlterColumnOrForeignKeyCascadeSyntax ForeignKey<TPrimary>(this IAlterTableColumnOptionOrAddColumnOrAlterColumnSyntax column, string primaryTableName = null, string primaryColumnName = null, Rule onDelete = Rule.Cascade) where TPrimary : BaseEntity
     {
-        if (string.IsNullOrEmpty(primaryTableName))
-            primaryTableName = NameCompatibilityManager.GetTableName(typeof(TPrimary));
-
-        if (string.IsNullOrEmpty(primaryColumnName))
-            primaryColumnName = nameof(BaseEntity.Id);
+        primaryTableName ??= typeof(TPrimary).Name;
+        primaryColumnName ??= nameof(BaseEntity.Id);
 
         return column.Indexed().ForeignKey(primaryTableName, primaryColumnName).OnDelete(onDelete);
     }
@@ -118,7 +112,7 @@ public static class FluentMigratorExtensions
     public static void TableFor<TEntity>(this ICreateExpressionRoot expressionRoot) where TEntity : BaseEntity
     {
         var type = typeof(TEntity);
-        var builder = expressionRoot.Table(NameCompatibilityManager.GetTableName(type)) as CreateTableExpressionBuilder;
+        var builder = expressionRoot.Table(type.Name) as CreateTableExpressionBuilder;
         builder.RetrieveTableExpressions(type);
     }
 
@@ -129,12 +123,7 @@ public static class FluentMigratorExtensions
     /// <param name="type">Type of entity</param>
     public static void RetrieveTableExpressions(this CreateTableExpressionBuilder builder, Type type)
     {
-        var typeFinder = Singleton<ITypeFinder>.Instance
-            .FindClassesOfType(typeof(IEntityBuilder))
-            .FirstOrDefault(t => t.BaseType?.GetGenericArguments().Contains(type) ?? false);
 
-        if (typeFinder != null)
-            (EngineContext.Current.ResolveUnregistered(typeFinder) as IEntityBuilder)?.MapEntity(builder);
 
         var expression = builder.Expression;
         if (!expression.Columns.Any(c => c.IsPrimaryKey))
@@ -144,7 +133,7 @@ public static class FluentMigratorExtensions
                 Name = nameof(BaseEntity.Id),
                 Type = DbType.Int32,
                 IsIdentity = true,
-                TableName = NameCompatibilityManager.GetTableName(type),
+                TableName = type.Name,
                 ModificationType = ColumnModificationType.Create,
                 IsPrimaryKey = true
             };
@@ -157,12 +146,12 @@ public static class FluentMigratorExtensions
             .Where(pi => pi.DeclaringType != typeof(BaseEntity) &&
                          pi.CanWrite &&
                          !pi.HasAttribute<NotMappedAttribute>() && !pi.HasAttribute<NotColumnAttribute>() &&
-                         !expression.Columns.Any(x => x.Name.Equals(NameCompatibilityManager.GetColumnName(type, pi.Name), StringComparison.OrdinalIgnoreCase)) &&
+                         !expression.Columns.Any(x => x.Name.Equals(pi.Name, StringComparison.OrdinalIgnoreCase)) &&
                          TypeMapping.ContainsKey(pi.PropertyType.GetTypeToMap().propType));
 
         foreach (var prop in propertiesToAutoMap)
         {
-            var columnName = NameCompatibilityManager.GetColumnName(type, prop.Name);
+            var columnName = prop.Name;
             var (propType, canBeNullable) = GetTypeToMap(prop.PropertyType);
             DefineByOwnType(columnName, propType, builder, canBeNullable);
         }

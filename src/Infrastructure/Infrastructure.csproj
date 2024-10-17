@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
     <PackageReference Include="FluentMigrator" />
     <PackageReference Include="FluentMigrator.Runner" />
     <PackageReference Include="linq2db" />
@@ -28,6 +29,8 @@
     <PackageReference Include="MySqlConnector" />
     <PackageReference Include="Npgsql" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Pgvector" />
+    <PackageReference Include="Pgvector.EntityFrameworkCore" />
     <PackageReference Include="System.Configuration.ConfigurationManager" />
     <PackageReference Include="System.Net.NameResolution" />
   </ItemGroup>
@@ -39,6 +42,7 @@
 
   <ItemGroup>
     <Folder Include="EntityConfigurations\" />
+    <Folder Include="Mapping\EntityFramework\" />
     <Folder Include="Migrations\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
