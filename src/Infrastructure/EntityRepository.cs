@@ -448,7 +448,7 @@ public partial class EntityRepository<TEntity> : IRepository<TEntity> where TEnt
         try
         {
             //await _dataProvider.InsertEntityAsync(entity);
-            _context.Products.Add(entity as Product);
+            _context.Add(entity);
             await _context.SaveChangesAsync();
             //event notification
             if (publishEvent)

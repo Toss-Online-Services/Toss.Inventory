@@ -5,7 +5,8 @@ using Domain.Logging;
 
 namespace Infrastructure.Migrations.Installation;
 
-[NopSchemaMigration("2020/03/13 09:36:08:9037677", "Infrastructure base indexes", MigrationProcessType.Installation)]
+//[NopSchemaMigration("2020/03/13 09:36:08:9037677", "Infrastructure base indexes", MigrationProcessType.Installation)]
+[Migration(1)]
 public class Indexes : ForwardOnlyMigration
 {
     #region Methods

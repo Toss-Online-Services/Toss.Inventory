@@ -1,5 +1,5 @@
 ﻿using FluentMigrator.Runner.VersionTableInfo;
-using Domain;
+using Nop.Core;
 
 namespace Infrastructure.Migrations;
 
@@ -84,7 +84,7 @@ public partial class MigrationVersionInfo : BaseEntity, IVersionTableMetaData
     /// </summary>
     public string AppliedOnColumnName { get; }
 
-    public bool CreateWithPrimaryKey => throw new NotImplementedException();
+    public bool CreateWithPrimaryKey { get; }
 
     #endregion
 

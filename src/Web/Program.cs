@@ -259,6 +259,18 @@ app.UseCors("AllowAngularClient");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    try
+    {
+        using (var scope = app.Services.CreateScope())
+        {
+            var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+            runner.MigrateUp();
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Migration failed: {ex.Message}");
+    }
     // await app.InitialiseDatabaseAsync();
 }
 else

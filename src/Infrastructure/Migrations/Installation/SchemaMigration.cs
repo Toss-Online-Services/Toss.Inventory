@@ -1,10 +1,12 @@
 ﻿using FluentMigrator;
 using Infrastructure.Extensions;
 using Domain.Logging;
+using Infrastructure.Mapping.Builders.Catalog;
 
 namespace Infrastructure.Migrations.Installation;
 
-[NopSchemaMigration("2020/01/31 11:24:16:2551771", "Infrastructure base schema", MigrationProcessType.Installation)]
+//[NopSchemaMigration("2020/01/31 11:24:16:2551771", "Infrastructure base schema", MigrationProcessType.Installation)]
+[Migration(0)]
 public class SchemaMigration : ForwardOnlyMigration
 {
     /// <summary>
@@ -16,6 +18,9 @@ public class SchemaMigration : ForwardOnlyMigration
     /// </summary>
     public override void Up()
     {
+        var productBuilder = new ProductBuilder();
+
+
         Create.TableFor<AddressAttribute>();
         Create.TableFor<AddressAttributeValue>();
         Create.TableFor<GenericAttribute>();
@@ -103,5 +108,6 @@ public class SchemaMigration : ForwardOnlyMigration
         Create.TableFor<VendorAttribute>();
         Create.TableFor<VendorAttributeValue>();
         Create.TableFor<VendorNote>();
+
     }
 }

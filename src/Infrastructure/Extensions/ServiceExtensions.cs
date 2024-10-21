@@ -15,6 +15,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Infrastructure.Migrations.Installation;
 
 namespace Infrastructure.Extensions
 {
@@ -35,12 +37,12 @@ namespace Infrastructure.Extensions
             // The DbContext of type 'OrderingContext' cannot be pooled because it does not have a public constructor accepting a single parameter of type DbContextOptions or has more than one constructor.
             services.AddDbContext<InventoryContext>(options =>
             {
-                options.UseNpgsql(builder.Configuration.GetConnectionString("inventorydb"));
+                options.UseNpgsql(builder.Configuration.GetConnectionString("ConnectionString"));
             });
-           // builder.EnrichNpgsqlDbContext<InventoryContext>();
+            // builder.EnrichNpgsqlDbContext<InventoryContext>();
 
             // Get the current assembly containing migrations
-            var currentAssembly = typeof(InventoryContext).Assembly;
+            var currentAssembly = typeof(SchemaMigration).Assembly;
 
             // Add FluentMigrator services and configure the runner
             services
@@ -48,7 +50,11 @@ namespace Infrastructure.Extensions
                 .ConfigureRunner(rb =>
                     rb.WithVersionTable(new MigrationVersionInfo())
                       .AddPostgres()
-                      .ScanIn(currentAssembly).For.Migrations());
+                       .WithGlobalConnectionString(builder.Configuration.GetConnectionString("ConnectionString"))
+                      .ScanIn(currentAssembly).For.Migrations())
+                .AddLogging(logging => logging.AddFluentMigratorConsole().SetMinimumLevel(LogLevel.Trace))
+                // Build the service provider
+                .BuildServiceProvider(false); 
 
             // Add version loader lazily
             services.AddTransient(p => new Lazy<IVersionLoader>(p.GetRequiredService<IVersionLoader>()));
@@ -71,7 +77,16 @@ namespace Infrastructure.Extensions
             var migrationRunner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
 
             // Run all the migrations
+            migrationRunner.ListMigrations();
             migrationRunner.MigrateUp();
+        }
+
+        private static void UpdateDatabase(IHost host)
+        {
+            using var scope = host.Services.CreateScope();
+            var serviceProvider = scope.ServiceProvider;
+            var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
+            runner.MigrateUp();
         }
     }
 }
