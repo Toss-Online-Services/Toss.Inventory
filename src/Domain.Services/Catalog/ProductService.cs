@@ -559,7 +559,7 @@ public partial class ProductService : IProductService
                          !p.Deleted &&
                          p.ShowOnHomepage
                    select p;
-        }, cache => cache.PrepareKeyForDefaultCache(NopCatalogDefaults.ProductsHomepageCacheKey));
+        });
 
         return products;
     }
@@ -597,7 +597,8 @@ public partial class ProductService : IProductService
     /// <returns>A task that represents the asynchronous operation</returns>
     public virtual async Task InsertProductAsync(Product product)
     {
-        await _productRepository.InsertAsync(product);
+        _productRepository.Add(product);
+        await _productRepository.UnitOfWork.SaveEntitiesAsync();
     }
 
     /// <summary>

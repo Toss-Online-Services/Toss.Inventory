@@ -7,6 +7,7 @@ using Domain.Entities.Configuration;
 using Domain.Events;
 using Microsoft.Extensions.Options;
 using Autofac.Core;
+using System;
 
 namespace Infrastructure;
 
@@ -24,6 +25,7 @@ public partial class EntityRepository<TEntity> : IRepository<TEntity> where TEnt
     protected readonly IStaticCacheManager _staticCacheManager;
     protected readonly bool _usingDistributedCache;
     protected readonly InventoryContext _context;
+    public IUnitOfWork UnitOfWork => _context;
 
     #endregion
 
@@ -41,7 +43,7 @@ public partial class EntityRepository<TEntity> : IRepository<TEntity> where TEnt
         _dataProvider = dataProvider;
         _shortTermCacheManager = shortTermCacheManager;
         _staticCacheManager = staticCacheManager;
-        _context = context;
+        _context = context ?? throw new ArgumentNullException(nameof(context));
 
         _usingDistributedCache = distributedSettings.Value.DistributedCacheType switch
         {
@@ -451,8 +453,8 @@ public partial class EntityRepository<TEntity> : IRepository<TEntity> where TEnt
             _context.Add(entity);
             await _context.SaveChangesAsync();
             //event notification
-            if (publishEvent)
-                await _eventPublisher.EntityInsertedAsync(entity);
+            //if (publishEvent)
+            //    await _eventPublisher.EntityInsertedAsync(entity);
         }
         catch (Exception ex)
         {
@@ -750,6 +752,18 @@ public partial class EntityRepository<TEntity> : IRepository<TEntity> where TEnt
     public virtual async Task TruncateAsync(bool resetIdentity = false)
     {
         await _dataProvider.TruncateAsync<TEntity>(resetIdentity);
+    }
+
+    public TEntity Add(TEntity entity)
+    {
+        if (entity.IsTransient())
+        {
+            return _context
+                .Add(entity)
+                .Entity;
+        }
+
+        return entity;
     }
 
     #endregion

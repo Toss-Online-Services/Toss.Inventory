@@ -17,6 +17,7 @@
     <PackageReference Include="FluentMigrator" />
     <PackageReference Include="FluentMigrator.Runner" />
     <PackageReference Include="linq2db" />
+    <PackageReference Include="MediatR" />
     <PackageReference Include="Microsoft.Data.SqlClient" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

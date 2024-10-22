@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System;
+using System.Linq.Expressions;
 using Domain;
 using Domain.Caching;
 
@@ -11,7 +12,7 @@ namespace Infrastructure;
 public partial interface IRepository<TEntity> where TEntity : BaseEntity
 {
     #region Methods
-
+    IUnitOfWork UnitOfWork { get; }
     /// <summary>
     /// Get the entity entry
     /// </summary>
@@ -135,6 +136,7 @@ public partial interface IRepository<TEntity> where TEntity : BaseEntity
     /// <returns>A task that represents the asynchronous operation</returns>
     Task InsertAsync(TEntity entity, bool publishEvent = true);
 
+    TEntity Add(TEntity entity);
     /// <summary>
     /// Insert the entity entry
     /// </summary>
