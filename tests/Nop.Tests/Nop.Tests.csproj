@@ -16,10 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Nop.Services\Nop.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Connections.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -41,6 +37,10 @@
     <PackageReference Include="Moq" />
     <PackageReference Include="NUnit" />
     <PackageReference Include="NUnit3TestAdapter" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Nop.Web.Framework\Nop.Web.Framework.csproj" />
   </ItemGroup>
 
 </Project>
