@@ -1,4 +1,6 @@
-﻿namespace Web.Models.Common;
+﻿using Web.Infrastructure;
+
+namespace Web.Models.Common;
 
 /// <summary>
 /// record that has a slug and page for route values. Used for Topic (posts) and 

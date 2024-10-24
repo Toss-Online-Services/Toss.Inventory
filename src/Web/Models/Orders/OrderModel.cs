@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Domain.Entities.Tax;
-using Web.Models.Common;
 
 namespace Web.Models.Orders;
 

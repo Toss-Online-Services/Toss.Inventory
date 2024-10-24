@@ -1,4 +1,6 @@
-﻿namespace Web.Models.Common;
+﻿using Domain.Entities.Tax;
+
+namespace Web.Models.Common;
 
 public partial record TaxTypeSelectorModel : BaseNopModel
 {

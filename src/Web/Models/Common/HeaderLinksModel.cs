@@ -1,4 +1,6 @@
-﻿namespace Web.Models.Common;
+﻿using Domain.Entities.Customers;
+
+namespace Web.Models.Common;
 
 public partial record HeaderLinksModel : BaseNopModel
 {

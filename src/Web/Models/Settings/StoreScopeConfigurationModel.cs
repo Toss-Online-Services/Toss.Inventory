@@ -1,4 +1,6 @@
-﻿namespace Web.Models.Settings;
+﻿using Web.Models.Stores;
+
+namespace Web.Models.Settings;
 
 /// <summary>
 /// Represents a store scope configuration model

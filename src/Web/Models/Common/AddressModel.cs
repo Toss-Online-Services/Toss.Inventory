@@ -87,7 +87,7 @@ public partial record AddressModel : BaseNopEntityModel
     public string FormattedCustomAddressAttributes { get; set; } = string.Empty;
     public IList<AddressAttributeModel> CustomAddressAttributes { get; set; }
 
-    public Address ToEntity(Address? destination = null)
+    public Address ToEntity(Address destination = null)
     {
         destination ??= new Address();
 

@@ -1,6 +1,4 @@
-﻿using Web.Models.Common;
-
-namespace Web.Models.Orders;
+﻿namespace Web.Models.Orders;
 
 public partial record OrderAddressModel : BaseNopModel
 {

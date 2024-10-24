@@ -105,13 +105,13 @@ public partial record ConditionModel : BaseNopEntityModel
 
 public partial record AttributeConditionModel : BaseNopEntityModel
 {
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     public AttributeControlType AttributeControlType { get; set; }
 
     public required IList<SelectListItem> Values { get; set; }
 
-    public string? SelectedValueId { get; set; }
+    public string SelectedValueId { get; set; }
 }
 
 public partial record CheckoutAttributeLocalizedModel : ILocalizedLocaleModel
@@ -119,11 +119,11 @@ public partial record CheckoutAttributeLocalizedModel : ILocalizedLocaleModel
     public int LanguageId { get; set; }
 
     [NopResourceDisplayName("Admin.Catalog.Attributes.CheckoutAttributes.Fields.Name")]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     [NopResourceDisplayName("Admin.Catalog.Attributes.CheckoutAttributes.Fields.TextPrompt")]
-    public string? TextPrompt { get; set; }
+    public string TextPrompt { get; set; }
 
     [NopResourceDisplayName("Admin.Catalog.Attributes.CheckoutAttributes.Fields.DefaultValue")]
-    public string? DefaultValue { get; set; }
+    public string DefaultValue { get; set; }
 }

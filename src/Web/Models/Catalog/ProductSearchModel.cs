@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Web.Models.Common;
 
 namespace Web.Models.Catalog;
 

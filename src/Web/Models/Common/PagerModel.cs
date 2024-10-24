@@ -1,4 +1,7 @@
-﻿namespace Web.Models.Common;
+﻿using Domain.Services.Localization;
+using Web.Infrastructure;
+
+namespace Web.Models.Common;
 
 public partial record PagerModel
 {

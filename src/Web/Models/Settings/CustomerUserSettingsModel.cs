@@ -1,4 +1,4 @@
-﻿using Web.Models.Common;
+﻿using Web.Models.Customers;
 
 namespace Web.Models.Settings;
 

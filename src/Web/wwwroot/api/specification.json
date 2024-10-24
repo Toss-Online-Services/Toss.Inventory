@@ -166,7 +166,6 @@
               }
             }
           },
-          "required": true,
           "x-position": 2
         },
         "responses": {
@@ -205,9 +204,9 @@
             "in": "query",
             "style": "form",
             "explode": true,
-            "required": true,
             "schema": {
               "type": "array",
+              "nullable": true,
               "items": {
                 "type": "integer",
                 "format": "int32"
@@ -235,7 +234,6 @@
               }
             }
           },
-          "required": true,
           "x-position": 1
         },
         "responses": {
@@ -261,7 +259,6 @@
               }
             }
           },
-          "required": true,
           "x-position": 1
         },
         "responses": {

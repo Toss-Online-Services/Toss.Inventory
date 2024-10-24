@@ -18,11 +18,11 @@ public partial record AddressAttributeValueModel : BaseNopEntityModel, ILocalize
 
     public int AttributeId { get; set; }
 
-    [NopResourceDisplayName("Admin.Address.AddressAttributes.Values.Fields.Name")]
-    public string Name { get; set; }
+    //[NopResourceDisplayName("Admin.Address.AddressAttributes.Values.Fields.Name")]
+    //public string Name { get; set; } = string.Empty;
 
-    [NopResourceDisplayName("Admin.Address.AddressAttributes.Values.Fields.IsPreSelected")]
-    public bool IsPreSelected { get; set; }
+    //[NopResourceDisplayName("Admin.Address.AddressAttributes.Values.Fields.IsPreSelected")]
+    //public bool IsPreSelected { get; set; }
 
     [NopResourceDisplayName("Admin.Address.AddressAttributes.Values.Fields.DisplayOrder")]
     public int DisplayOrder { get; set; }
@@ -37,5 +37,5 @@ public partial record AddressAttributeValueLocalizedModel : ILocalizedLocaleMode
     public int LanguageId { get; set; }
 
     [NopResourceDisplayName("Admin.Address.AddressAttributes.Values.Fields.Name")]
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 }

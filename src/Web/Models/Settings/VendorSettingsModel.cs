@@ -1,4 +1,6 @@
-﻿namespace Web.Models.Settings;
+﻿using Web.Models.Vendors;
+
+namespace Web.Models.Settings;
 
 /// <summary>
 /// Represents a vendor settings model

@@ -19,7 +19,7 @@ public partial record SeoSettingsModel : BaseNopModel, ISettingsModel
     [NopResourceDisplayName("Admin.Configuration.Settings.GeneralCommon.PageTitleSeoAdjustment")]
     public int PageTitleSeoAdjustment { get; set; }
     public bool PageTitleSeoAdjustment_OverrideForStore { get; set; }
-    public SelectList? PageTitleSeoAdjustmentValues { get; set; }
+    public SelectList PageTitleSeoAdjustmentValues { get; set; }
 
     [NopResourceDisplayName("Admin.Configuration.Settings.GeneralCommon.GenerateProductMetaDescription")]
     public bool GenerateProductMetaDescription { get; set; }
@@ -36,7 +36,7 @@ public partial record SeoSettingsModel : BaseNopModel, ISettingsModel
     [NopResourceDisplayName("Admin.Configuration.Settings.GeneralCommon.WwwRequirement")]
     public int WwwRequirement { get; set; }
     public bool WwwRequirement_OverrideForStore { get; set; }
-    public SelectList? WwwRequirementValues { get; set; }
+    public SelectList WwwRequirementValues { get; set; }
 
     [NopResourceDisplayName("Admin.Configuration.Settings.GeneralCommon.TwitterMetaTags")]
     public bool TwitterMetaTags { get; set; }
