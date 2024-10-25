@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
 using System.Resources;
+using Azure.Storage.Blobs.Models;
 using FluentAssertions;
 using FluentMigrator;
 using FluentMigrator.Runner;
@@ -76,6 +77,13 @@ using Nop.Services.Themes;
 using Nop.Services.Topics;
 using Nop.Services.Vendors;
 using Nop.Tests.Nop.Services.Tests.ScheduleTasks;
+
+using Nop.Web.Framework;
+using Nop.Web.Framework.Factories;
+using Nop.Web.Framework.Mvc.Routing;
+using Nop.Web.Framework.Themes;
+using Nop.Web.Framework.UI;
+using Nop.Web.Framework.WebOptimizer;
 using SkiaSharp;
 using IAuthenticationService = Nop.Services.Authentication.IAuthenticationService;
 using Task = System.Threading.Tasks.Task;
@@ -115,7 +123,7 @@ public partial class BaseNopTest
         permissionService.InsertPermissionsAsync().Wait();
     }
 
-    protected static void PropertiesShouldEqual<T1, T2>(T1 obj1, T2 obj2, params string[] filter) 
+    protected static void PropertiesShouldEqual<T1, T2>(T1 obj1, T2 obj2, params string[] filter)
     {
         var object1Properties = typeof(T1).GetProperties();
         var object2Properties = typeof(T2).GetProperties();
@@ -134,7 +142,7 @@ public partial class BaseNopTest
 
             var object1PropertyValue = object1Property.GetValue(obj1);
             var object2PropertyValue = object2Property.GetValue(obj2);
-            
+
             object1PropertyValue.Should().Be(object2PropertyValue, $"The property \"{typeof(T1).Name}.{object1Property.Name}\" of these objects is not equal");
         }
     }
@@ -363,6 +371,8 @@ public partial class BaseNopTest
         services.AddScoped<IBBCodeHelper, BBCodeHelper>();
         services.AddScoped<IHtmlFormatter, HtmlFormatter>();
 
+        services.AddScoped<INopAssetHelper, NopAssetHelper>();
+
         //slug route transformer
         services.AddSingleton<IReviewTypeService, ReviewTypeService>();
         services.AddSingleton<IEventPublisher, EventPublisher>();
@@ -383,6 +393,7 @@ public partial class BaseNopTest
 
         services.AddTransient<IPictureService, TestPictureService>();
         services.AddScoped<IVideoService, VideoService>();
+        services.AddScoped<INopUrlHelper, NopUrlHelper>();
 
         //register all settings
         var settings = typeFinder.FindClassesOfType(typeof(ISettings), false).ToList();
@@ -422,16 +433,26 @@ public partial class BaseNopTest
 
         services.AddOptions<GeneratorOptions>().Configure(go => go.CompatibilityMode = CompatibilityMode.LOOSE);
 
-       
+        services.AddTransient<IStoreContext, WebStoreContext>();
         services.AddTransient<Lazy<IStoreContext>>();
+        services.AddTransient<IWorkContext, WebWorkContext>();
         services.AddTransient<Lazy<IWorkContext>>();
+        services.AddTransient<IThemeContext, ThemeContext>();
         services.AddTransient<Lazy<ILocalizationService>>();
+        services.AddTransient<INopHtmlHelper, NopHtmlHelper>();
 
         //schedule tasks
         services.AddSingleton<ITaskScheduler, TestTaskScheduler>();
         services.AddTransient<IScheduleTaskRunner, ScheduleTaskRunner>();
 
-       
+        //WebOptimizer
+        services.AddWebOptimizer();
+
+        //common factories
+        services.AddTransient<IDiscountSupportedModelFactory, DiscountSupportedModelFactory>();
+        services.AddTransient<ILocalizedModelFactory, LocalizedModelFactory>();
+        services.AddTransient<IStoreMappingSupportedModelFactory, StoreMappingSupportedModelFactory>();        
+
 
         _serviceProvider = services.BuildServiceProvider();
 
