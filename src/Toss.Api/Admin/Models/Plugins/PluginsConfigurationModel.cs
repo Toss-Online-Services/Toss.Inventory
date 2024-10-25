@@ -1,7 +1,7 @@
-﻿using Nop.Web.Areas.Admin.Models.Plugins.Marketplace;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
+using Toss.Api.Admin.Models.Plugins.Marketplace;
 
-namespace Nop.Web.Areas.Admin.Models.Plugins;
+namespace Toss.Api.Admin.Models.Plugins;
 
 /// <summary>
 /// Represents a plugins configuration model

@@ -1,6 +1,6 @@
-﻿using Nop.Web.Areas.Admin.Models.Common;
+﻿using Toss.Api.Admin.Models.Common;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents common models factory

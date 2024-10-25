@@ -4,6 +4,7 @@ using Nop.Core;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Directory;
 using Nop.Core.Domain.Discounts;
+using Nop.Data.Extensions;
 using Nop.Services;
 using Nop.Services.Catalog;
 using Nop.Services.Directory;
@@ -12,12 +13,12 @@ using Nop.Services.Helpers;
 using Nop.Services.Localization;
 using Nop.Services.Orders;
 using Nop.Services.Seo;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Catalog;
-using Nop.Web.Areas.Admin.Models.Discounts;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Catalog;
+using Toss.Api.Admin.Models.Discounts;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the discount model factory implementation
@@ -311,7 +312,7 @@ public partial class DiscountModelFactory : IDiscountModelFactory
         //get URL of discount with coupon code
         if (model.RequiresCouponCode && !string.IsNullOrEmpty(model.CouponCode))
         {
-            model.DiscountUrl = QueryHelpers.AddQueryString((_webHelper.GetStoreLocation()).TrimEnd('/'),
+            model.DiscountUrl = QueryHelpers.AddQueryString(_webHelper.GetStoreLocation().TrimEnd('/'),
                 NopDiscountDefaults.DiscountCouponQueryParameter, model.CouponCode);
         }
 

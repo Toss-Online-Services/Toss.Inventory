@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Topics;
-using Nop.Web.Areas.Admin.Models.Topics;
+using Toss.Api.Admin.Models.Topics;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the topic model factory

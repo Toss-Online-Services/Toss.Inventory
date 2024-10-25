@@ -1,11 +1,12 @@
 ﻿using Nop.Core.Domain.Forums;
+using Nop.Data.Extensions;
 using Nop.Services.Forums;
 using Nop.Services.Helpers;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Forums;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Forums;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the forum model factory implementation

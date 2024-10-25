@@ -1,6 +1,6 @@
 ﻿using Nop.Core.Caching;
 
-namespace Nop.Web.Areas.Admin.Infrastructure.Cache;
+namespace Toss.Api.Admin.Infrastructure.Cache;
 
 public static partial class NopModelCacheDefaults
 {

@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Localization;
-using Nop.Web.Areas.Admin.Models.Localization;
+using Toss.Api.Admin.Models.Localization;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the language model factory

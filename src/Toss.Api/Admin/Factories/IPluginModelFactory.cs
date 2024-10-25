@@ -1,8 +1,8 @@
 ﻿using Nop.Services.Plugins;
-using Nop.Web.Areas.Admin.Models.Plugins;
-using Nop.Web.Areas.Admin.Models.Plugins.Marketplace;
+using Toss.Api.Admin.Models.Plugins;
+using Toss.Api.Admin.Models.Plugins.Marketplace;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the plugin model factory

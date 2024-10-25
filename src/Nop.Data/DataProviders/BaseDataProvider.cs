@@ -8,6 +8,7 @@ using LinqToDB.DataProvider;
 using LinqToDB.Tools;
 using Nop.Core;
 using Nop.Core.Infrastructure;
+using Nop.Data.Extensions;
 using Nop.Data.Mapping;
 using Nop.Data.Migrations;
 

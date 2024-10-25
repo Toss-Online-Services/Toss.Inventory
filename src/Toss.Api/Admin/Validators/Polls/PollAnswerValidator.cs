@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.Polls;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Polls;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Polls;
 
-namespace Nop.Web.Areas.Admin.Validators.Polls;
+namespace Toss.Api.Admin.Validators.Polls;
 
 public partial class PollAnswerValidator : BaseNopValidator<PollAnswerModel>
 {

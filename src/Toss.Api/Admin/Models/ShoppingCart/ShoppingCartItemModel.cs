@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.ShoppingCart;
+namespace Toss.Api.Admin.Models.ShoppingCart;
 
 /// <summary>
 /// Represents a shopping cart item model

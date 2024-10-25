@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.News;
+namespace Toss.Api.Admin.Models.News;
 
 /// <summary>
 /// Represents a news content model

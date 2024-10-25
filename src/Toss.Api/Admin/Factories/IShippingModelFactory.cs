@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Shipping;
-using Nop.Web.Areas.Admin.Models.Shipping;
+using Toss.Api.Admin.Models.Shipping;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the shipping model factory

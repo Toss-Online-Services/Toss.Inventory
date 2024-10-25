@@ -1,12 +1,13 @@
-﻿using Nop.Services.Directory;
+﻿using Nop.Data.Extensions;
+using Nop.Services.Directory;
 using Nop.Services.Localization;
 using Nop.Services.Payments;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Directory;
-using Nop.Web.Areas.Admin.Models.Payments;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Directory;
+using Toss.Api.Admin.Models.Payments;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the payment method model factory implementation

@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.Orders;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Orders;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Orders;
 
-namespace Nop.Web.Areas.Admin.Validators.Orders;
+namespace Toss.Api.Admin.Validators.Orders;
 
 public partial class CheckoutAttributeValueValidator : BaseNopValidator<CheckoutAttributeValueModel>
 {

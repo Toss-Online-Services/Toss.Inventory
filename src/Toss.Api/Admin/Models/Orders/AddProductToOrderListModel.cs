@@ -1,7 +1,7 @@
-﻿using Nop.Web.Areas.Admin.Models.Catalog;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
+using Toss.Api.Admin.Models.Catalog;
 
-namespace Nop.Web.Areas.Admin.Models.Orders;
+namespace Toss.Api.Admin.Models.Orders;
 
 /// <summary>
 /// Represents a product list model to add to the order

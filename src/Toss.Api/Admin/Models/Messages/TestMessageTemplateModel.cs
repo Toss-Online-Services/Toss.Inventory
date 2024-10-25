@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Messages;
+namespace Toss.Api.Admin.Models.Messages;
 
 public partial record TestMessageTemplateModel : BaseNopEntityModel
 {

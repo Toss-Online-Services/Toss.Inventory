@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Settings;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Settings;
 
-namespace Nop.Web.Areas.Admin.Validators.Settings;
+namespace Toss.Api.Admin.Validators.Settings;
 
 public partial class CatalogSettingsValidator : BaseNopValidator<CatalogSettingsModel>
 {

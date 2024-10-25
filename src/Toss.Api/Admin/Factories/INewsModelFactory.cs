@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.News;
-using Nop.Web.Areas.Admin.Models.News;
+using Toss.Api.Admin.Models.News;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the news model factory

@@ -1,4 +1,4 @@
-﻿namespace Nop.Web.Areas.Admin.Helpers;
+﻿namespace Toss.Api.Admin.Helpers;
 
 public partial interface ITinyMceHelper
 {

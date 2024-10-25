@@ -1,6 +1,6 @@
-﻿using Nop.Web.Areas.Admin.Models.Cms;
+﻿using Toss.Api.Admin.Models.Cms;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the widget model factory

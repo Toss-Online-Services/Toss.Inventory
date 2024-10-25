@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Settings;
+namespace Toss.Api.Admin.Models.Settings;
 
 /// <summary>
 /// Represents a display default menu item settings model

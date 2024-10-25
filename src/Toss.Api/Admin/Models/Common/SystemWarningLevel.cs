@@ -1,4 +1,4 @@
-﻿namespace Nop.Web.Areas.Admin.Models.Common;
+﻿namespace Toss.Api.Admin.Models.Common;
 
 /// <summary>
 /// Represents a level of warning

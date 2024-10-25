@@ -6,7 +6,7 @@ using Nop.Core.Events;
 using Nop.Services.Events;
 using Nop.Services.Plugins;
 
-namespace Nop.Web.Areas.Admin.Infrastructure.Cache;
+namespace Toss.Api.Admin.Infrastructure.Cache;
 
 /// <summary>
 /// Model cache event consumer (used for caching of presentation layer models)

@@ -2,7 +2,7 @@
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Messages;
+namespace Toss.Api.Admin.Models.Messages;
 
 /// <summary>
 /// Represents a message template search model
@@ -33,7 +33,7 @@ public partial record MessageTemplateSearchModel : BaseSearchModel
 
     [NopResourceDisplayName("Admin.ContentManagement.MessageTemplates.List.SearchEmailAccount")]
     public int EmailAccountId { get; set; }
-  
+
     public IList<SelectListItem> AvailableStores { get; set; }
 
     public IList<SelectListItem> AvailableActiveOptions { get; set; }

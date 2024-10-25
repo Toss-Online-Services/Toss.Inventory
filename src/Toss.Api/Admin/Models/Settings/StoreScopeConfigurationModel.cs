@@ -1,7 +1,7 @@
-﻿using Nop.Web.Areas.Admin.Models.Stores;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
+using Toss.Api.Admin.Models.Stores;
 
-namespace Nop.Web.Areas.Admin.Models.Settings;
+namespace Toss.Api.Admin.Models.Settings;
 
 /// <summary>
 /// Represents a store scope configuration model

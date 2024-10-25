@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Discounts;
-using Nop.Web.Areas.Admin.Models.Discounts;
+using Toss.Api.Admin.Models.Discounts;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the discount model factory

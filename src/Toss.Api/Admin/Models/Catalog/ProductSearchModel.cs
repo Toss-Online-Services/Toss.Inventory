@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Nop.Web.Areas.Admin.Models.Common;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
+using Toss.Api.Admin.Models.Common;
 
-namespace Nop.Web.Areas.Admin.Models.Catalog;
+namespace Toss.Api.Admin.Models.Catalog;
 
 /// <summary>
 /// Represents a product search model

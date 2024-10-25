@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Settings;
+namespace Toss.Api.Admin.Models.Settings;
 
 /// <summary>
 /// Represents a product editor settings model
@@ -143,7 +143,7 @@ public partial record ProductEditorSettingsModel : BaseNopModel, ISettingsModel
 
     [NopResourceDisplayName("Admin.Configuration.Settings.ProductEditor.AllowAddingOnlyExistingAttributeCombinations")]
     public bool AllowAddingOnlyExistingAttributeCombinations { get; set; }
-    
+
     [NopResourceDisplayName("Admin.Configuration.Settings.ProductEditor.NotReturnable")]
     public bool NotReturnable { get; set; }
 

@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Catalog;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Catalog;
 
-namespace Nop.Web.Areas.Admin.Validators.Catalog;
+namespace Toss.Api.Admin.Validators.Catalog;
 
 public partial class PredefinedProductAttributeValueModelValidator : BaseNopValidator<PredefinedProductAttributeValueModel>
 {

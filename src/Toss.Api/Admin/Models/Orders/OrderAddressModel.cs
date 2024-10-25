@@ -1,7 +1,7 @@
-﻿using Nop.Web.Areas.Admin.Models.Common;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
+using Toss.Api.Admin.Models.Common;
 
-namespace Nop.Web.Areas.Admin.Models.Orders;
+namespace Toss.Api.Admin.Models.Orders;
 
 public partial record OrderAddressModel : BaseNopModel
 {

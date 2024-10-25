@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Polls;
+namespace Toss.Api.Admin.Models.Polls;
 
 /// <summary>
 /// Represents a poll answer list model

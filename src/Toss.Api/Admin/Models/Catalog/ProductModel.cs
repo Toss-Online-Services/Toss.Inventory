@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Nop.Web.Areas.Admin.Models.Settings;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
+using Toss.Api.Admin.Models.Settings;
 
-namespace Nop.Web.Areas.Admin.Models.Catalog;
+namespace Toss.Api.Admin.Models.Catalog;
 
 /// <summary>
 /// Represents a product model

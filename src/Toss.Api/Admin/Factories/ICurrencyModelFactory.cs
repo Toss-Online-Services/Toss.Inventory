@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Directory;
-using Nop.Web.Areas.Admin.Models.Directory;
+using Toss.Api.Admin.Models.Directory;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the currency model factory

@@ -1,17 +1,18 @@
 ﻿using Nop.Core;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Topics;
+using Nop.Data.Extensions;
 using Nop.Services.Localization;
 using Nop.Services.Seo;
 using Nop.Services.Topics;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Topics;
 using Nop.Web.Framework.Extensions;
 using Nop.Web.Framework.Factories;
 using Nop.Web.Framework.Models.Extensions;
 using Nop.Web.Framework.Mvc.Routing;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Topics;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the topic model factory implementation
@@ -178,7 +179,7 @@ public partial class TopicModelFactory : ITopicModelFactory
 
         //prepare available topic templates
         await _baseAdminModelFactory.PrepareTopicTemplatesAsync(model.AvailableTopicTemplates, false);
-        
+
         //prepare model stores
         await _storeMappingSupportedModelFactory.PrepareModelStoresAsync(model, topic, excludeProperties);
 

@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Orders;
-using Nop.Web.Areas.Admin.Models.Orders;
+using Toss.Api.Admin.Models.Orders;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the return request model factory

@@ -4,7 +4,7 @@ using Nop.Core.Infrastructure.Mapper;
 using Nop.Services.Plugins;
 using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
+namespace Toss.Api.Admin.Infrastructure.Mapper.Extensions;
 
 /// <summary>
 /// Represents the extensions to map entity to model and vise versa

@@ -1,15 +1,16 @@
 ﻿using Nop.Core.Domain.Logging;
+using Nop.Data.Extensions;
 using Nop.Services.Customers;
 using Nop.Services.Helpers;
 using Nop.Services.Html;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Logging;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Logging;
 using ILogger = Nop.Services.Logging.ILogger;
 using LogLevel = Nop.Core.Domain.Logging.LogLevel;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the log model factory implementation

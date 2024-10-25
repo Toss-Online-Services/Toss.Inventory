@@ -1,6 +1,6 @@
-﻿using Nop.Web.Areas.Admin.Models.Reports;
+﻿using Toss.Api.Admin.Models.Reports;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the report model factory

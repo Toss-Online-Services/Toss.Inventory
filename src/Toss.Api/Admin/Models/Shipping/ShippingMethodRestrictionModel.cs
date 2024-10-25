@@ -1,7 +1,7 @@
-﻿using Nop.Web.Areas.Admin.Models.Directory;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
+using Toss.Api.Admin.Models.Directory;
 
-namespace Nop.Web.Areas.Admin.Models.Shipping;
+namespace Toss.Api.Admin.Models.Shipping;
 
 /// <summary>
 /// Represents a shipping method restriction model

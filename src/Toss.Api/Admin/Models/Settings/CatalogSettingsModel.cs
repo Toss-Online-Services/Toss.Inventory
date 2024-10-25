@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Nop.Web.Areas.Admin.Models.Catalog;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
+using Toss.Api.Admin.Models.Catalog;
 
-namespace Nop.Web.Areas.Admin.Models.Settings;
+namespace Toss.Api.Admin.Models.Settings;
 
 /// <summary>
 /// Represents a catalog settings model

@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Directory;
+namespace Toss.Api.Admin.Models.Directory;
 
 /// <summary>
 /// Represents a currency search model

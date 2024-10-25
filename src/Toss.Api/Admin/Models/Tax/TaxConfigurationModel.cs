@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Tax;
+namespace Toss.Api.Admin.Models.Tax;
 
 /// <summary>
 /// Represents a tax configuration model

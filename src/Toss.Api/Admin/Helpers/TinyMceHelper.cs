@@ -1,7 +1,7 @@
 ﻿using Nop.Core;
 using Nop.Core.Infrastructure;
 
-namespace Nop.Web.Areas.Admin.Helpers;
+namespace Toss.Api.Admin.Helpers;
 
 /// <summary>
 /// TinyMCE helper

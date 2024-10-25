@@ -4,7 +4,7 @@ using Nop.Services.Configuration;
 using Nop.Services.Stores;
 using Nop.Web.Framework.Components;
 
-namespace Nop.Web.Areas.Admin.Components;
+namespace Toss.Api.Admin.Components;
 
 public partial class AclDisabledWarningViewComponent : NopViewComponent
 {

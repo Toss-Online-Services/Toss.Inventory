@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Forums;
+namespace Toss.Api.Admin.Models.Forums;
 
 /// <summary>
 /// Represents a forum list model

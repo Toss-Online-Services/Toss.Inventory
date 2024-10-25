@@ -2,7 +2,7 @@
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Blogs;
+namespace Toss.Api.Admin.Models.Blogs;
 
 /// <summary>
 /// Represents a blog post search model

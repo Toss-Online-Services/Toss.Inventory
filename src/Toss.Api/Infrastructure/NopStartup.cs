@@ -1,8 +1,7 @@
 ﻿using Nop.Core.Infrastructure;
-using Nop.Services.Security;
-using Nop.Web.Areas.Admin.Factories;
-using Nop.Web.Areas.Admin.Helpers;
 using Nop.Web.Framework.Factories;
+using Toss.Api.Admin.Factories;
+using Toss.Api.Admin.Helpers;
 using Toss.Api.Infrastructure.Installation;
 
 namespace Toss.Api.Infrastructure;
@@ -82,7 +81,7 @@ public partial class NopStartup : INopStartup
         services.AddScoped<ITopicModelFactory, TopicModelFactory>();
         services.AddScoped<IVendorAttributeModelFactory, VendorAttributeModelFactory>();
         services.AddScoped<IVendorModelFactory, VendorModelFactory>();
-        services.AddScoped<Nop.Web.Areas.Admin.Factories.IWidgetModelFactory, Nop.Web.Areas.Admin.Factories.WidgetModelFactory>();
+        services.AddScoped<Admin.Factories.IWidgetModelFactory, Admin.Factories.WidgetModelFactory>();
 
         //factories
         services.AddScoped<Factories.IAddressModelFactory, Factories.AddressModelFactory>();

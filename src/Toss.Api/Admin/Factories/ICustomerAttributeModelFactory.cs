@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Customers;
-using Nop.Web.Areas.Admin.Models.Customers;
+using Toss.Api.Admin.Models.Customers;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the customer attribute model factory

@@ -3,7 +3,7 @@ using Nop.Services.Customers;
 using Nop.Services.Security;
 using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the model factory which supports access control list (ACL)

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Discounts;
+namespace Toss.Api.Admin.Models.Discounts;
 
 /// <summary>
 /// Represents a discount requirement rule model

@@ -1,7 +1,7 @@
-﻿using Nop.Web.Areas.Admin.Models.ShoppingCart;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
+using Toss.Api.Admin.Models.ShoppingCart;
 
-namespace Nop.Web.Areas.Admin.Models.Customers;
+namespace Toss.Api.Admin.Models.Customers;
 
 /// <summary>
 /// Represents a customer shopping cart list model

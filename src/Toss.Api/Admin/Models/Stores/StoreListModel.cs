@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Stores;
+namespace Toss.Api.Admin.Models.Stores;
 
 /// <summary>
 /// Represents a store list model

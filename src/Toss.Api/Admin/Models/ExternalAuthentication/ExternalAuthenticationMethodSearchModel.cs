@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.ExternalAuthentication;
+namespace Toss.Api.Admin.Models.ExternalAuthentication;
 
 /// <summary>
 /// Represents an external authentication method search model

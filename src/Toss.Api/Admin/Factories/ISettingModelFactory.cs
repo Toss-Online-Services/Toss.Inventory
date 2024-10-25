@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Gdpr;
-using Nop.Web.Areas.Admin.Models.Settings;
+using Toss.Api.Admin.Models.Settings;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the setting model factory

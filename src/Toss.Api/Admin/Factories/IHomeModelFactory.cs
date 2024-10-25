@@ -1,7 +1,7 @@
-﻿using Nop.Web.Areas.Admin.Models.Home;
-using Nop.Web.Framework.Models.DataTables;
+﻿using Nop.Web.Framework.Models.DataTables;
+using Toss.Api.Admin.Models.Home;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the home models factory

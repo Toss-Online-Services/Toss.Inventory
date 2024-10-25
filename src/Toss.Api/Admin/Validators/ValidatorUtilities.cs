@@ -1,6 +1,6 @@
-﻿using Nop.Web.Areas.Admin.Models.Settings;
+﻿using Toss.Api.Admin.Models.Settings;
 
-namespace Nop.Web.Areas.Admin.Validators;
+namespace Toss.Api.Admin.Validators;
 
 public partial class ValidatorUtilities
 {

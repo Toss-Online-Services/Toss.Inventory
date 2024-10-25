@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.Common;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Customers;
-using Nop.Web.Areas.Admin.Validators.Common;
+using Toss.Api.Admin.Models.Customers;
+using Toss.Api.Admin.Validators.Common;
 
-namespace Nop.Web.Areas.Admin.Validators.Customers;
+namespace Toss.Api.Admin.Validators.Customers;
 
 public partial class CustomerAddressValidator : AbstractValidator<CustomerAddressModel>
 {

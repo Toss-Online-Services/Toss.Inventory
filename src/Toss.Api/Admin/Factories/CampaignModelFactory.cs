@@ -1,13 +1,14 @@
 ﻿using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Messages;
+using Nop.Data.Extensions;
 using Nop.Services.Helpers;
 using Nop.Services.Messages;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Messages;
 using Nop.Web.Framework.Extensions;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Messages;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the campaign model factory implementation

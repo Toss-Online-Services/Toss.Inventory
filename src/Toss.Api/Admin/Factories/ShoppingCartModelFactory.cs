@@ -2,6 +2,7 @@
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Orders;
+using Nop.Data.Extensions;
 using Nop.Services.Catalog;
 using Nop.Services.Customers;
 using Nop.Services.Directory;
@@ -10,12 +11,12 @@ using Nop.Services.Localization;
 using Nop.Services.Orders;
 using Nop.Services.Stores;
 using Nop.Services.Tax;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.ShoppingCart;
 using Nop.Web.Framework.Extensions;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.ShoppingCart;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the shopping cart model factory implementation
@@ -161,7 +162,7 @@ public partial class ShoppingCartModelFactory : IShoppingCartModelFactory
                 };
 
                 //fill in additional values (not existing in the entity)
-                shoppingCartModel.CustomerEmail = (await _customerService.IsRegisteredAsync(customer))
+                shoppingCartModel.CustomerEmail = await _customerService.IsRegisteredAsync(customer)
                     ? customer.Email
                     : await _localizationService.GetResourceAsync("Admin.Customers.Guest");
                 shoppingCartModel.TotalItems = (await _shoppingCartService

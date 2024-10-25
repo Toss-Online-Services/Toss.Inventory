@@ -2,10 +2,10 @@
 using FluentValidation;
 using Nop.Core.Domain.Directory;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Directory;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Directory;
 
-namespace Nop.Web.Areas.Admin.Validators.Directory;
+namespace Toss.Api.Admin.Validators.Directory;
 
 public partial class CurrencyValidator : BaseNopValidator<CurrencyModel>
 {

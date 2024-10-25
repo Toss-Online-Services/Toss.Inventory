@@ -1,6 +1,6 @@
-﻿using Nop.Web.Areas.Admin.Models.Directory;
+﻿using Toss.Api.Admin.Models.Directory;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the measures model factory

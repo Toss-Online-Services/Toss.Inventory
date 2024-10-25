@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Plugins;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Plugins;
 
-namespace Nop.Web.Areas.Admin.Validators.Plugins;
+namespace Toss.Api.Admin.Validators.Plugins;
 
 public partial class PluginValidator : BaseNopValidator<PluginModel>
 {

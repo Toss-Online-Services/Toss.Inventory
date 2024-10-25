@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Customers;
+namespace Toss.Api.Admin.Models.Customers;
 
 /// <summary>
 /// Represents a reward point model

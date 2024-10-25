@@ -1,16 +1,17 @@
 ﻿using System.Globalization;
 using Nop.Core;
 using Nop.Core.Domain.Orders;
+using Nop.Data.Extensions;
 using Nop.Services.Customers;
 using Nop.Services.Helpers;
 using Nop.Services.Localization;
 using Nop.Services.Orders;
 using Nop.Services.Payments;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Orders;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Orders;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the recurring payment model factory implementation
@@ -123,7 +124,7 @@ public partial class RecurringPaymentModelFactory : IRecurringPaymentModelFactor
                 var customer = await _customerService.GetCustomerByIdAsync(order.CustomerId);
 
                 //convert dates to the user time
-                if ((await _orderProcessingService.GetNextPaymentDateAsync(recurringPayment)) is DateTime nextPaymentDate)
+                if (await _orderProcessingService.GetNextPaymentDateAsync(recurringPayment) is DateTime nextPaymentDate)
                 {
                     recurringPaymentModel.NextPaymentDate = (await _dateTimeHelper
                         .ConvertToUserTimeAsync(nextPaymentDate, DateTimeKind.Utc)).ToString(CultureInfo.InvariantCulture);
@@ -138,7 +139,7 @@ public partial class RecurringPaymentModelFactory : IRecurringPaymentModelFactor
                 recurringPaymentModel.InitialOrderId = order.Id;
 
                 recurringPaymentModel.CyclePeriodStr = await _localizationService.GetLocalizedEnumAsync(recurringPayment.CyclePeriod);
-                recurringPaymentModel.CustomerEmail = (await _customerService.IsRegisteredAsync(customer))
+                recurringPaymentModel.CustomerEmail = await _customerService.IsRegisteredAsync(customer)
                     ? customer.Email
                     : await _localizationService.GetResourceAsync("Admin.Customers.Guest");
 

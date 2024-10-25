@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Affiliates;
+namespace Toss.Api.Admin.Models.Affiliates;
 
 /// <summary>
 /// Represents an affiliated order search model

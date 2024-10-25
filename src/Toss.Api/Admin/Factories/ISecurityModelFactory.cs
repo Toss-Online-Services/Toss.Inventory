@@ -1,8 +1,8 @@
 ﻿using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Security;
-using Nop.Web.Areas.Admin.Models.Security;
+using Toss.Api.Admin.Models.Security;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the security model factory

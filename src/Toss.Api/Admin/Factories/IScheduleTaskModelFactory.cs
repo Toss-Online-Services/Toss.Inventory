@@ -1,6 +1,6 @@
-﻿using Nop.Web.Areas.Admin.Models.Tasks;
+﻿using Toss.Api.Admin.Models.Tasks;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the schedule task model factory

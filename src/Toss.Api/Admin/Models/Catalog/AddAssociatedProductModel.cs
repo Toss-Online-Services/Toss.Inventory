@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Catalog;
+namespace Toss.Api.Admin.Models.Catalog;
 
 /// <summary>
 /// Represents an associated product model to add to the product

@@ -2,7 +2,7 @@
 using Nop.Web.Framework.Factories;
 using Nop.Web.Framework.Components;
 
-namespace Nop.Web.Areas.Admin.Components;
+namespace Toss.Api.Admin.Components;
 
 /// <summary>
 /// Represents a view component that displays an admin widgets

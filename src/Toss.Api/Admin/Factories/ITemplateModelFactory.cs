@@ -1,6 +1,6 @@
-﻿using Nop.Web.Areas.Admin.Models.Templates;
+﻿using Toss.Api.Admin.Models.Templates;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the template model factory

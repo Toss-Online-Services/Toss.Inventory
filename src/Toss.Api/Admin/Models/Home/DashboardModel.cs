@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Home;
+namespace Toss.Api.Admin.Models.Home;
 
 /// <summary>
 /// Represents a dashboard model

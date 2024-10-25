@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Orders;
+namespace Toss.Api.Admin.Models.Orders;
 
 /// <summary>
 /// Represents an upload license model

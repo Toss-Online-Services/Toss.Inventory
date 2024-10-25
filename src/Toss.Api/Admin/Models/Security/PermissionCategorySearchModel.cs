@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Security;
+namespace Toss.Api.Admin.Models.Security;
 
 public partial record PermissionCategorySearchModel : BaseSearchModel
 {

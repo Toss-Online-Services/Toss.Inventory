@@ -1,8 +1,8 @@
-﻿using Nop.Web.Areas.Admin.Models.Common;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
+using Toss.Api.Admin.Models.Common;
 
-namespace Nop.Web.Areas.Admin.Models.Affiliates;
+namespace Toss.Api.Admin.Models.Affiliates;
 
 /// <summary>
 /// Represents an affiliate model

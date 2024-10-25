@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.Common;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Common;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Common;
 
-namespace Nop.Web.Areas.Admin.Validators.Common;
+namespace Toss.Api.Admin.Validators.Common;
 
 public partial class AddressAttributeValidator : BaseNopValidator<AddressAttributeModel>
 {

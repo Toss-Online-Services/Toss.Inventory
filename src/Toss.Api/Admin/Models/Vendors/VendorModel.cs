@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Nop.Core.Domain.Catalog;
-using Nop.Web.Areas.Admin.Models.Common;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
+using Toss.Api.Admin.Models.Common;
 
-namespace Nop.Web.Areas.Admin.Models.Vendors;
+namespace Toss.Api.Admin.Models.Vendors;
 
 /// <summary>
 /// Represents a vendor model

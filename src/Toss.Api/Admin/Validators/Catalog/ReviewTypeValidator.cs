@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.Catalog;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Catalog;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Catalog;
 
-namespace Nop.Web.Areas.Admin.Validators.Catalog;
+namespace Toss.Api.Admin.Validators.Catalog;
 
 /// <summary>
 /// Represent a review type validator

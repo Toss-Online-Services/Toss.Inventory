@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.ScheduleTasks;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Tasks;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Tasks;
 
-namespace Nop.Web.Areas.Admin.Validators.Tasks;
+namespace Toss.Api.Admin.Validators.Tasks;
 
 public partial class ScheduleTaskValidator : BaseNopValidator<ScheduleTaskModel>
 {

@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.News;
+namespace Toss.Api.Admin.Models.News;
 
 /// <summary>
 /// Represents a news item list model

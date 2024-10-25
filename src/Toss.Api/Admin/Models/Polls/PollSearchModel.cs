@@ -2,7 +2,7 @@
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Polls;
+namespace Toss.Api.Admin.Models.Polls;
 
 /// <summary>
 /// Represents a poll search model

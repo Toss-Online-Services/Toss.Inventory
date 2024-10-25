@@ -5,15 +5,15 @@ using Nop.Services.Common;
 using Nop.Services.Configuration;
 using Nop.Services.Localization;
 using Nop.Services.Orders;
-using Nop.Web.Areas.Admin.Infrastructure.Cache;
-using Nop.Web.Areas.Admin.Models.Common;
-using Nop.Web.Areas.Admin.Models.Home;
-using Nop.Web.Areas.Admin.Models.Orders;
-using Nop.Web.Areas.Admin.Models.Reports;
 using Nop.Web.Framework.Models.DataTables;
+using Toss.Api.Admin.Infrastructure.Cache;
+using Toss.Api.Admin.Models.Common;
+using Toss.Api.Admin.Models.Home;
+using Toss.Api.Admin.Models.Orders;
+using Toss.Api.Admin.Models.Reports;
 using ILogger = Nop.Services.Logging.ILogger;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the home models factory implementation

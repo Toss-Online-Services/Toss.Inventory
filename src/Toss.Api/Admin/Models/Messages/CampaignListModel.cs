@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Messages;
+namespace Toss.Api.Admin.Models.Messages;
 
 /// <summary>
 /// Represents a campaign list model

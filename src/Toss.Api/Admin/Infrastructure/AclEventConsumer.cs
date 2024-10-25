@@ -9,14 +9,14 @@ using Nop.Services.Events;
 using Nop.Services.Localization;
 using Nop.Services.Security;
 using Nop.Services.Topics;
-using Nop.Web.Areas.Admin.Factories;
-using Nop.Web.Areas.Admin.Models.Catalog;
-using Nop.Web.Areas.Admin.Models.Plugins;
-using Nop.Web.Areas.Admin.Models.Topics;
 using Nop.Web.Framework.Events;
 using Nop.Web.Framework.Models;
+using Toss.Api.Admin.Factories;
+using Toss.Api.Admin.Models.Catalog;
+using Toss.Api.Admin.Models.Plugins;
+using Toss.Api.Admin.Models.Topics;
 
-namespace Nop.Web.Areas.Admin.Infrastructure;
+namespace Toss.Api.Admin.Infrastructure;
 
 /// <summary>
 /// Represents ACL event consumer
@@ -90,7 +90,7 @@ public partial class AclEventConsumer : IConsumer<ModelPreparedEvent<BaseNopMode
     #endregion
 
     #region Methods
-    
+
     /// <summary>
     /// Handle model prepared event
     /// </summary>
@@ -207,6 +207,6 @@ public partial class AclEventConsumer : IConsumer<ModelPreparedEvent<BaseNopMode
         var entity = eventMessage.Entity;
         await SaveStoredDataAsync(entity.Name, entity);
     }
-    
+
     #endregion
 }

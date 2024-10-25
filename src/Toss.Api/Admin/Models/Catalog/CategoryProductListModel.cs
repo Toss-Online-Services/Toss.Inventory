@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Catalog;
+namespace Toss.Api.Admin.Models.Catalog;
 
 /// <summary>
 /// Represents a category product list model

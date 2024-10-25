@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.Forums;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Forums;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Forums;
 
-namespace Nop.Web.Areas.Admin.Validators.Forums;
+namespace Toss.Api.Admin.Validators.Forums;
 
 public partial class ForumValidator : BaseNopValidator<ForumModel>
 {

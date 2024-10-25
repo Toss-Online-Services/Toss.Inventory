@@ -3,10 +3,10 @@ using Nop.Core.Domain.Customers;
 using Nop.Services.Customers;
 using Nop.Services.Directory;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Customers;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Customers;
 
-namespace Nop.Web.Areas.Admin.Validators.Customers;
+namespace Toss.Api.Admin.Validators.Customers;
 
 public partial class CustomerValidator : BaseNopValidator<CustomerModel>
 {

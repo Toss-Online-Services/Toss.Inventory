@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Common;
-using Nop.Web.Areas.Admin.Models.Common;
+using Toss.Api.Admin.Models.Common;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the address attribute model factory

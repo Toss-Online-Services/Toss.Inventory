@@ -1,6 +1,7 @@
 ﻿using Nop.Core;
 using Nop.Core.Caching;
 using Nop.Core.Domain.Polls;
+using Nop.Data.Extensions;
 using Nop.Services.Polls;
 using Toss.Api.Infrastructure.Cache;
 using Toss.Api.Models.Polls;

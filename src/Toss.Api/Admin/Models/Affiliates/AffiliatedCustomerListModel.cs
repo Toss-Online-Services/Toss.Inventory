@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Affiliates;
+namespace Toss.Api.Admin.Models.Affiliates;
 
 /// <summary>
 /// Represents an affiliated customer list model

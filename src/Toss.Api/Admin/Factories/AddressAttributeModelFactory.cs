@@ -1,13 +1,14 @@
 ﻿using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Common;
+using Nop.Data.Extensions;
 using Nop.Services.Attributes;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Common;
 using Nop.Web.Framework.Factories;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Common;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the address attribute model factory implementation
@@ -264,38 +265,38 @@ public partial class AddressAttributeModelFactory : IAddressAttributeModelFactor
                 case AttributeControlType.DropdownList:
                 case AttributeControlType.RadioList:
                 case AttributeControlType.Checkboxes:
-                {
-                    if (!string.IsNullOrEmpty(selectedAddressAttributes))
                     {
-                        //clear default selection
-                        foreach (var item in attributeModel.Values)
-                            item.IsPreSelected = false;
+                        if (!string.IsNullOrEmpty(selectedAddressAttributes))
+                        {
+                            //clear default selection
+                            foreach (var item in attributeModel.Values)
+                                item.IsPreSelected = false;
 
-                        //select new values
-                        var selectedValues = await _addressAttributeParser.ParseAttributeValuesAsync(selectedAddressAttributes);
-                        foreach (var attributeValue in selectedValues)
-                        foreach (var item in attributeModel.Values)
-                            if (attributeValue.Id == item.Id)
-                                item.IsPreSelected = true;
+                            //select new values
+                            var selectedValues = await _addressAttributeParser.ParseAttributeValuesAsync(selectedAddressAttributes);
+                            foreach (var attributeValue in selectedValues)
+                                foreach (var item in attributeModel.Values)
+                                    if (attributeValue.Id == item.Id)
+                                        item.IsPreSelected = true;
+                        }
                     }
-                }
                     break;
                 case AttributeControlType.ReadonlyCheckboxes:
-                {
-                    //do nothing
-                    //values are already pre-set
-                }
+                    {
+                        //do nothing
+                        //values are already pre-set
+                    }
                     break;
                 case AttributeControlType.TextBox:
                 case AttributeControlType.MultilineTextbox:
-                {
-                    if (!string.IsNullOrEmpty(selectedAddressAttributes))
                     {
-                        var enteredText = _addressAttributeParser.ParseValues(selectedAddressAttributes, attribute.Id);
-                        if (enteredText.Any())
-                            attributeModel.DefaultValue = enteredText[0];
+                        if (!string.IsNullOrEmpty(selectedAddressAttributes))
+                        {
+                            var enteredText = _addressAttributeParser.ParseValues(selectedAddressAttributes, attribute.Id);
+                            if (enteredText.Any())
+                                attributeModel.DefaultValue = enteredText[0];
+                        }
                     }
-                }
                     break;
                 case AttributeControlType.ColorSquares:
                 case AttributeControlType.ImageSquares:

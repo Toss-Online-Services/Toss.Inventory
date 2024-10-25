@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.Catalog;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Templates;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Templates;
 
-namespace Nop.Web.Areas.Admin.Validators.Templates;
+namespace Toss.Api.Admin.Validators.Templates;
 
 public partial class ManufacturerTemplateValidator : BaseNopValidator<ManufacturerTemplateModel>
 {

@@ -16,6 +16,7 @@ using Nop.Core.Domain.Security;
 using Nop.Core.Events;
 using Nop.Core.Infrastructure;
 using Nop.Data;
+using Nop.Data.Extensions;
 using Nop.Services.Authentication.External;
 using Nop.Services.Authentication.MultiFactor;
 using Nop.Services.Catalog;
@@ -34,13 +35,13 @@ using Nop.Services.Shipping;
 using Nop.Services.Shipping.Pickup;
 using Nop.Services.Stores;
 using Nop.Services.Tax;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Common;
-using Nop.Web.Areas.Admin.Models.Localization;
 using Nop.Web.Framework.Models.Extensions;
 using Nop.Web.Framework.Security;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Common;
+using Toss.Api.Admin.Models.Localization;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents common models factory implementation
@@ -747,7 +748,7 @@ public partial class CommonModelFactory : ICommonModelFactory
                 //https://stackoverflow.com/questions/2050396/getting-the-date-of-a-net-assembly
                 //we use a simple method because the more Jeff Atwood's solution doesn't work anymore 
                 //more info at https://blog.codinghorror.com/determining-build-date-the-hard-way/
-                loadedAssemblyModel.BuildDate = assembly.IsDynamic ? null : (DateTime?)TimeZoneInfo.ConvertTimeFromUtc(_fileProvider.GetLastWriteTimeUtc(assembly.Location), TimeZoneInfo.Local);
+                loadedAssemblyModel.BuildDate = assembly.IsDynamic ? null : TimeZoneInfo.ConvertTimeFromUtc(_fileProvider.GetLastWriteTimeUtc(assembly.Location), TimeZoneInfo.Local);
 
             }
             catch
@@ -997,7 +998,7 @@ public partial class CommonModelFactory : ICommonModelFactory
         ArgumentNullException.ThrowIfNull(searchModel);
 
         var isActive = searchModel.IsActiveId == 0 ? null : (bool?)(searchModel.IsActiveId == 1);
-        var languageId = searchModel.LanguageId < 0 ? null : (int?)(searchModel.LanguageId);
+        var languageId = searchModel.LanguageId < 0 ? null : (int?)searchModel.LanguageId;
 
         //get URL records
         var urlRecords = await _urlRecordService.GetAllUrlRecordsAsync(slug: searchModel.SeName,

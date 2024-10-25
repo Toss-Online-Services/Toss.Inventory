@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Stores;
-using Nop.Web.Areas.Admin.Models.Stores;
+using Toss.Api.Admin.Models.Stores;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the store model factory

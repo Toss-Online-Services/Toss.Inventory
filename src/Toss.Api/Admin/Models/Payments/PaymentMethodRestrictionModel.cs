@@ -1,7 +1,7 @@
-﻿using Nop.Web.Areas.Admin.Models.Directory;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
+using Toss.Api.Admin.Models.Directory;
 
-namespace Nop.Web.Areas.Admin.Models.Payments;
+namespace Toss.Api.Admin.Models.Payments;
 
 /// <summary>
 /// Represents a payment method restriction model

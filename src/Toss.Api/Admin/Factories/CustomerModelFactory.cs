@@ -9,6 +9,7 @@ using Nop.Core.Domain.Gdpr;
 using Nop.Core.Domain.Media;
 using Nop.Core.Domain.Orders;
 using Nop.Core.Domain.Tax;
+using Nop.Data.Extensions;
 using Nop.Services.Affiliates;
 using Nop.Services.Attributes;
 using Nop.Services.Authentication.External;
@@ -25,13 +26,13 @@ using Nop.Services.Messages;
 using Nop.Services.Orders;
 using Nop.Services.Stores;
 using Nop.Services.Tax;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Common;
-using Nop.Web.Areas.Admin.Models.Customers;
-using Nop.Web.Areas.Admin.Models.ShoppingCart;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Common;
+using Toss.Api.Admin.Models.Customers;
+using Toss.Api.Admin.Models.ShoppingCart;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the customer model factory implementation
@@ -264,38 +265,38 @@ public partial class CustomerModelFactory : ICustomerModelFactory
                     case AttributeControlType.DropdownList:
                     case AttributeControlType.RadioList:
                     case AttributeControlType.Checkboxes:
-                    {
-                        if (!string.IsNullOrEmpty(selectedCustomerAttributes))
                         {
-                            //clear default selection
-                            foreach (var item in attributeModel.Values)
-                                item.IsPreSelected = false;
+                            if (!string.IsNullOrEmpty(selectedCustomerAttributes))
+                            {
+                                //clear default selection
+                                foreach (var item in attributeModel.Values)
+                                    item.IsPreSelected = false;
 
-                            //select new values
-                            var selectedValues = await _customerAttributeParser.ParseAttributeValuesAsync(selectedCustomerAttributes);
-                            foreach (var attributeValue in selectedValues)
-                            foreach (var item in attributeModel.Values)
-                                if (attributeValue.Id == item.Id)
-                                    item.IsPreSelected = true;
+                                //select new values
+                                var selectedValues = await _customerAttributeParser.ParseAttributeValuesAsync(selectedCustomerAttributes);
+                                foreach (var attributeValue in selectedValues)
+                                    foreach (var item in attributeModel.Values)
+                                        if (attributeValue.Id == item.Id)
+                                            item.IsPreSelected = true;
+                            }
                         }
-                    }
                         break;
                     case AttributeControlType.ReadonlyCheckboxes:
-                    {
-                        //do nothing
-                        //values are already pre-set
-                    }
+                        {
+                            //do nothing
+                            //values are already pre-set
+                        }
                         break;
                     case AttributeControlType.TextBox:
                     case AttributeControlType.MultilineTextbox:
-                    {
-                        if (!string.IsNullOrEmpty(selectedCustomerAttributes))
                         {
-                            var enteredText = _customerAttributeParser.ParseValues(selectedCustomerAttributes, attribute.Id);
-                            if (enteredText.Any())
-                                attributeModel.DefaultValue = enteredText[0];
+                            if (!string.IsNullOrEmpty(selectedCustomerAttributes))
+                            {
+                                var enteredText = _customerAttributeParser.ParseValues(selectedCustomerAttributes, attribute.Id);
+                                if (enteredText.Any())
+                                    attributeModel.DefaultValue = enteredText[0];
+                            }
                         }
-                    }
                         break;
                     case AttributeControlType.Datepicker:
                     case AttributeControlType.ColorSquares:
@@ -605,7 +606,7 @@ public partial class CustomerModelFactory : ICustomerModelFactory
                 var customerModel = customer.ToModel<CustomerModel>();
 
                 //convert dates to the user time
-                customerModel.Email = (await _customerService.IsRegisteredAsync(customer))
+                customerModel.Email = await _customerService.IsRegisteredAsync(customer)
                     ? customer.Email
                     : await _localizationService.GetResourceAsync("Admin.Customers.Guest");
                 customerModel.FullName = await _customerService.GetCustomerFullNameAsync(customer);
@@ -798,7 +799,7 @@ public partial class CustomerModelFactory : ICustomerModelFactory
         {
             await _baseAdminModelFactory.PrepareCountriesAsync(model.AvailableCountries);
             if (_customerSettings.StateProvinceEnabled)
-                await _baseAdminModelFactory.PrepareStatesAndProvincesAsync(model.AvailableStates, model.CountryId == 0 ? null : (int?)model.CountryId);
+                await _baseAdminModelFactory.PrepareStatesAndProvincesAsync(model.AvailableStates, model.CountryId == 0 ? null : model.CountryId);
         }
 
         return model;
@@ -838,10 +839,10 @@ public partial class CustomerModelFactory : ICustomerModelFactory
 
                 rewardPointsHistoryModel.PointsBalance = historyEntry.PointsBalance.HasValue
                     ? historyEntry.PointsBalance.ToString()
-                    : string.Format((await _localizationService.GetResourceAsync("Admin.Customers.Customers.RewardPoints.ActivatedLater")), activatingDate);
+                    : string.Format(await _localizationService.GetResourceAsync("Admin.Customers.Customers.RewardPoints.ActivatedLater"), activatingDate);
                 rewardPointsHistoryModel.EndDate = !historyEntry.EndDateUtc.HasValue
                     ? null
-                    : (DateTime?)(await _dateTimeHelper.ConvertToUserTimeAsync(historyEntry.EndDateUtc.Value, DateTimeKind.Utc));
+                    : await _dateTimeHelper.ConvertToUserTimeAsync(historyEntry.EndDateUtc.Value, DateTimeKind.Utc);
 
                 //fill in additional values (not existing in the entity)
                 rewardPointsHistoryModel.StoreName = (await _storeService.GetStoreByIdAsync(historyEntry.StoreId))?.Name ?? "Unknown";
@@ -1167,7 +1168,7 @@ public partial class CustomerModelFactory : ICustomerModelFactory
                 customerModel.LastActivityDate = await _dateTimeHelper.ConvertToUserTimeAsync(customer.LastActivityDateUtc, DateTimeKind.Utc);
 
                 //fill in additional values (not existing in the entity)
-                customerModel.CustomerInfo = (await _customerService.IsRegisteredAsync(customer))
+                customerModel.CustomerInfo = await _customerService.IsRegisteredAsync(customer)
                     ? customer.Email
                     : await _localizationService.GetResourceAsync("Admin.Customers.Guest");
                 customerModel.LastIpAddress = _customerSettings.StoreIpAddresses

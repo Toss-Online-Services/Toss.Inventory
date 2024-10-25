@@ -11,6 +11,7 @@ using Nop.Core.Domain.Discounts;
 using Nop.Core.Domain.Orders;
 using Nop.Core.Domain.Tax;
 using Nop.Core.Domain.Vendors;
+using Nop.Data.Extensions;
 using Nop.Services.Catalog;
 using Nop.Services.Common;
 using Nop.Services.Configuration;
@@ -24,15 +25,15 @@ using Nop.Services.Orders;
 using Nop.Services.Seo;
 using Nop.Services.Shipping;
 using Nop.Services.Stores;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Catalog;
-using Nop.Web.Areas.Admin.Models.Common;
-using Nop.Web.Areas.Admin.Models.Orders;
 using Nop.Web.Framework.Extensions;
 using Nop.Web.Framework.Factories;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Catalog;
+using Toss.Api.Admin.Models.Common;
+using Toss.Api.Admin.Models.Orders;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the product model factory implementation
@@ -367,9 +368,9 @@ public partial class ProductModelFactory : IProductModelFactory
                                     await _productAttributeParser.ParseProductAttributeValuesAsync(productAttributeMapping
                                         .ConditionAttributeXml);
                                 foreach (var attributeValue in selectedValues)
-                                foreach (var item in attributeModel.Values)
-                                    if (attributeValue.Id == item.Id)
-                                        item.IsPreSelected = true;
+                                    foreach (var item in attributeModel.Values)
+                                        if (attributeValue.Id == item.Id)
+                                            item.IsPreSelected = true;
                             }
 
                             break;
@@ -945,7 +946,7 @@ public partial class ProductModelFactory : IProductModelFactory
         //prepare model discounts
         var availableDiscounts = await _discountService.GetAllDiscountsAsync(DiscountType.AssignedToSkus, showHidden: true, isActive: null);
         await _discountSupportedModelFactory.PrepareModelDiscountsAsync(model, product, availableDiscounts, excludeProperties);
-        
+
         //prepare model stores
         await _storeMappingSupportedModelFactory.PrepareModelStoresAsync(model, product, excludeProperties);
 
@@ -1409,7 +1410,7 @@ public partial class ProductModelFactory : IProductModelFactory
                 var productPictureModel = productPicture.ToModel<ProductPictureModel>();
 
                 //fill in additional values (not existing in the entity)
-                var picture = (await _pictureService.GetPictureByIdAsync(productPicture.PictureId))
+                var picture = await _pictureService.GetPictureByIdAsync(productPicture.PictureId)
                               ?? throw new Exception("Picture cannot be loaded");
 
                 productPictureModel.PictureUrl = (await _pictureService.GetPictureUrlAsync(picture)).Url;
@@ -1450,7 +1451,7 @@ public partial class ProductModelFactory : IProductModelFactory
                 var productVideoModel = productVideo.ToModel<ProductVideoModel>();
 
                 //fill in additional values (not existing in the entity)
-                var video = (await _videoService.GetVideoByIdAsync(productVideo.VideoId))
+                var video = await _videoService.GetVideoByIdAsync(productVideo.VideoId)
                             ?? throw new Exception("Video cannot be loaded");
 
                 productVideoModel.VideoUrl = video.VideoUrl;
@@ -1553,7 +1554,7 @@ public partial class ProductModelFactory : IProductModelFactory
             };
         }
 
-        var attribute = await _specificationAttributeService.GetProductSpecificationAttributeByIdAsync(specificationId.Value) 
+        var attribute = await _specificationAttributeService.GetProductSpecificationAttributeByIdAsync(specificationId.Value)
                         ?? throw new ArgumentException("No specification attribute found with the specified id");
 
         //a vendor should have access only to his products
@@ -1795,7 +1796,7 @@ public partial class ProductModelFactory : IProductModelFactory
 
                 //fill in additional values (not existing in the entity)   
                 tierPriceModel.Store = price.StoreId > 0
-                    ? ((await _storeService.GetStoreByIdAsync(price.StoreId))?.Name ?? "Deleted")
+                    ? (await _storeService.GetStoreByIdAsync(price.StoreId))?.Name ?? "Deleted"
                     : await _localizationService.GetResourceAsync("Admin.Catalog.Products.TierPrices.Fields.Store.All");
                 tierPriceModel.CustomerRoleId = price.CustomerRoleId ?? 0;
                 tierPriceModel.CustomerRole = price.CustomerRoleId.HasValue
@@ -2280,7 +2281,7 @@ public partial class ProductModelFactory : IProductModelFactory
 
                 var combinationPicture = (await _productAttributeService.GetProductAttributeCombinationPicturesAsync(combination.Id)).FirstOrDefault();
                 var pictureThumbnailUrl = await _pictureService.GetPictureUrlAsync(combinationPicture?.PictureId ?? 0, 75, false);
-                    
+
                 //little hack here. Grid is rendered wrong way with <img> without "src" attribute
                 if (string.IsNullOrEmpty(pictureThumbnailUrl))
                     pictureThumbnailUrl = await _pictureService.GetDefaultPictureUrlAsync(targetSize: 1);

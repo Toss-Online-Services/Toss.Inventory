@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.Shipping;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Shipping;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Shipping;
 
-namespace Nop.Web.Areas.Admin.Validators.Shipping;
+namespace Toss.Api.Admin.Validators.Shipping;
 
 public partial class ShippingMethodValidator : BaseNopValidator<ShippingMethodModel>
 {

@@ -5,7 +5,7 @@ using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Messages;
+namespace Toss.Api.Admin.Models.Messages;
 
 /// <summary>
 /// Represents an email account model

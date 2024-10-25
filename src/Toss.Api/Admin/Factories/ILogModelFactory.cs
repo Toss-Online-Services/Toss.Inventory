@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Logging;
-using Nop.Web.Areas.Admin.Models.Logging;
+using Toss.Api.Admin.Models.Logging;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the log model factory

@@ -1,7 +1,7 @@
-﻿using Nop.Web.Areas.Admin.Models.Catalog;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
+using Toss.Api.Admin.Models.Catalog;
 
-namespace Nop.Web.Areas.Admin.Models.Discounts;
+namespace Toss.Api.Admin.Models.Discounts;
 
 /// <summary>
 /// Represents a manufacturer list model to add to the discount

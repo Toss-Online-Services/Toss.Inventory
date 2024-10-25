@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.Vendors;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Vendors;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Vendors;
 
-namespace Nop.Web.Areas.Admin.Validators.Vendors;
+namespace Toss.Api.Admin.Validators.Vendors;
 
 public partial class VendorAttributeValueValidator : BaseNopValidator<VendorAttributeValueModel>
 {

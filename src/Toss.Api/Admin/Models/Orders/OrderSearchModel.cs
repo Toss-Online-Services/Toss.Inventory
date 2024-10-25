@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Nop.Web.Areas.Admin.Models.Common;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
+using Toss.Api.Admin.Models.Common;
 
-namespace Nop.Web.Areas.Admin.Models.Orders;
+namespace Toss.Api.Admin.Models.Orders;
 
 /// <summary>
 /// Represents an order search model

@@ -1,7 +1,7 @@
-﻿using Nop.Web.Areas.Admin.Models.Localization;
-using Nop.Web.Framework.Models;
+﻿using Nop.Web.Framework.Models;
+using Toss.Api.Admin.Models.Localization;
 
-namespace Nop.Web.Areas.Admin.Models.Common;
+namespace Toss.Api.Admin.Models.Common;
 
 /// <summary>
 /// Represents an admin language selector model

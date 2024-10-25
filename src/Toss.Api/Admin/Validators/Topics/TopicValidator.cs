@@ -2,10 +2,10 @@
 using Nop.Core.Domain.Topics;
 using Nop.Services.Localization;
 using Nop.Services.Seo;
-using Nop.Web.Areas.Admin.Models.Topics;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Topics;
 
-namespace Nop.Web.Areas.Admin.Validators.Topics;
+namespace Toss.Api.Admin.Validators.Topics;
 
 public partial class TopicValidator : BaseNopValidator<TopicModel>
 {

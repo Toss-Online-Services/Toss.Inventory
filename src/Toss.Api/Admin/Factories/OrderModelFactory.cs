@@ -13,6 +13,7 @@ using Nop.Core.Domain.Orders;
 using Nop.Core.Domain.Payments;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Tax;
+using Nop.Data.Extensions;
 using Nop.Services.Affiliates;
 using Nop.Services.Catalog;
 using Nop.Services.Common;
@@ -31,15 +32,15 @@ using Nop.Services.Shipping;
 using Nop.Services.Stores;
 using Nop.Services.Tax;
 using Nop.Services.Vendors;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Catalog;
-using Nop.Web.Areas.Admin.Models.Common;
-using Nop.Web.Areas.Admin.Models.Orders;
-using Nop.Web.Areas.Admin.Models.Reports;
 using Nop.Web.Framework.Extensions;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Catalog;
+using Toss.Api.Admin.Models.Common;
+using Toss.Api.Admin.Models.Orders;
+using Toss.Api.Admin.Models.Reports;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the order model factory implementation
@@ -669,7 +670,7 @@ public partial class OrderModelFactory : IOrderModelFactory
 
             model.PickupAddress = pickupAddress.ToModel(model.PickupAddress);
             model.PickupAddressGoogleMapsUrl = $"https://maps.google.com/maps?f=q&hl=en&ie=UTF8&oe=UTF8&geocode=&q=" +
-                                               $"{WebUtility.UrlEncode($"{pickupAddress.Address1} {pickupAddress.ZipPostalCode} {pickupAddress.City} {(pickupCountry?.Name ?? string.Empty)}")}";
+                                               $"{WebUtility.UrlEncode($"{pickupAddress.Address1} {pickupAddress.ZipPostalCode} {pickupAddress.City} {pickupCountry?.Name ?? string.Empty}")}";
         }
     }
 
@@ -1009,9 +1010,9 @@ public partial class OrderModelFactory : IOrderModelFactory
         ArgumentNullException.ThrowIfNull(searchModel);
 
         //get parameters to filter orders
-        var orderStatusIds = (searchModel.OrderStatusIds?.Contains(0) ?? true) ? null : searchModel.OrderStatusIds.ToList();
-        var paymentStatusIds = (searchModel.PaymentStatusIds?.Contains(0) ?? true) ? null : searchModel.PaymentStatusIds.ToList();
-        var shippingStatusIds = (searchModel.ShippingStatusIds?.Contains(0) ?? true) ? null : searchModel.ShippingStatusIds.ToList();
+        var orderStatusIds = searchModel.OrderStatusIds?.Contains(0) ?? true ? null : searchModel.OrderStatusIds.ToList();
+        var paymentStatusIds = searchModel.PaymentStatusIds?.Contains(0) ?? true ? null : searchModel.PaymentStatusIds.ToList();
+        var shippingStatusIds = searchModel.ShippingStatusIds?.Contains(0) ?? true ? null : searchModel.ShippingStatusIds.ToList();
         var currentVendor = await _workContext.GetCurrentVendorAsync();
         if (currentVendor != null)
             searchModel.VendorId = currentVendor.Id;
@@ -1095,9 +1096,9 @@ public partial class OrderModelFactory : IOrderModelFactory
             return null;
 
         //get parameters to filter orders
-        var orderStatusIds = (searchModel.OrderStatusIds?.Contains(0) ?? true) ? null : searchModel.OrderStatusIds.ToList();
-        var paymentStatusIds = (searchModel.PaymentStatusIds?.Contains(0) ?? true) ? null : searchModel.PaymentStatusIds.ToList();
-        var shippingStatusIds = (searchModel.ShippingStatusIds?.Contains(0) ?? true) ? null : searchModel.ShippingStatusIds.ToList();
+        var orderStatusIds = searchModel.OrderStatusIds?.Contains(0) ?? true ? null : searchModel.OrderStatusIds.ToList();
+        var paymentStatusIds = searchModel.PaymentStatusIds?.Contains(0) ?? true ? null : searchModel.PaymentStatusIds.ToList();
+        var shippingStatusIds = searchModel.ShippingStatusIds?.Contains(0) ?? true ? null : searchModel.ShippingStatusIds.ToList();
         var currentVendor = await _workContext.GetCurrentVendorAsync();
         if (currentVendor != null)
             searchModel.VendorId = currentVendor.Id;

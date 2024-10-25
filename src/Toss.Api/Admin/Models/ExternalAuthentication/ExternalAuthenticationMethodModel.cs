@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.ExternalAuthentication;
+namespace Toss.Api.Admin.Models.ExternalAuthentication;
 
 /// <summary>
 /// Represents an external authentication method model

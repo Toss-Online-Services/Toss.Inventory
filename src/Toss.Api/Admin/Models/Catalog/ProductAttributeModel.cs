@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Catalog;
+namespace Toss.Api.Admin.Models.Catalog;
 
 /// <summary>
 /// Represents a product attribute model

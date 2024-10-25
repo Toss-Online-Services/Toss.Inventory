@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Forums;
-using Nop.Web.Areas.Admin.Models.Forums;
+using Toss.Api.Admin.Models.Forums;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the forum model factory

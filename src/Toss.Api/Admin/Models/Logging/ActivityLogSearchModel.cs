@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Logging;
+namespace Toss.Api.Admin.Models.Logging;
 
 /// <summary>
 /// Represents an activity log search model

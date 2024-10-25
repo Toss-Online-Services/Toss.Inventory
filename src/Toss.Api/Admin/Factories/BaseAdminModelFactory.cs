@@ -7,6 +7,7 @@ using Nop.Core.Domain.Orders;
 using Nop.Core.Domain.Payments;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Tax;
+using Nop.Data.Extensions;
 using Nop.Services;
 using Nop.Services.Catalog;
 using Nop.Services.Customers;
@@ -22,10 +23,10 @@ using Nop.Services.Stores;
 using Nop.Services.Tax;
 using Nop.Services.Topics;
 using Nop.Services.Vendors;
-using Nop.Web.Areas.Admin.Infrastructure.Cache;
+using Toss.Api.Admin.Infrastructure.Cache;
 using LogLevel = Nop.Core.Domain.Logging.LogLevel;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the implementation of the base model factory that implements a most common admin model factories methods

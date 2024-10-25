@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.MultiFactorAuthentication;
+namespace Toss.Api.Admin.Models.MultiFactorAuthentication;
 
 /// <summary>
 /// Represents an multi-factor authentication method list model

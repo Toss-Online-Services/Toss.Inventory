@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Cms;
+namespace Toss.Api.Admin.Models.Cms;
 
 /// <summary>
 /// Represents a widget search model

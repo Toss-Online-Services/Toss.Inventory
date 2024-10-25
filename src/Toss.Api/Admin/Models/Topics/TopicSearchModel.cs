@@ -2,7 +2,7 @@
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Topics;
+namespace Toss.Api.Admin.Models.Topics;
 
 /// <summary>
 /// Represents a topic search model

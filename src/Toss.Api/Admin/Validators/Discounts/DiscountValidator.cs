@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Nop.Core.Domain.Discounts;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Discounts;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Discounts;
 
-namespace Nop.Web.Areas.Admin.Validators.Discounts;
+namespace Toss.Api.Admin.Validators.Discounts;
 
 public partial class DiscountValidator : BaseNopValidator<DiscountModel>
 {

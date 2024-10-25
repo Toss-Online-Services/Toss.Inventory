@@ -4,7 +4,7 @@ using Nop.Services.Orders;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Reports;
+namespace Toss.Api.Admin.Models.Reports;
 
 /// <summary>
 /// Represents a best customers report search model

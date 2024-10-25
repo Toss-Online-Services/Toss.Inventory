@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Templates;
+namespace Toss.Api.Admin.Models.Templates;
 
 /// <summary>
 /// Represents a product template model

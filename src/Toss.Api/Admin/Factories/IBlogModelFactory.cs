@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Blogs;
-using Nop.Web.Areas.Admin.Models.Blogs;
+using Toss.Api.Admin.Models.Blogs;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the blog model factory

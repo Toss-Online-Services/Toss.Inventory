@@ -2,7 +2,7 @@
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Localization;
+namespace Toss.Api.Admin.Models.Localization;
 
 /// <summary>
 /// Represents a language model

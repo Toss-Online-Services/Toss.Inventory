@@ -2,7 +2,7 @@
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Affiliates;
+namespace Toss.Api.Admin.Models.Affiliates;
 
 /// <summary>
 /// Represents an affiliate search model

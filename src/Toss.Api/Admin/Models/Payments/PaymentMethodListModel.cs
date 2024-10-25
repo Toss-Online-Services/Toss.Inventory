@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Payments;
+namespace Toss.Api.Admin.Models.Payments;
 
 /// <summary>
 /// Represents a payment method list model

@@ -2,10 +2,10 @@
 using Nop.Core.Domain.News;
 using Nop.Services.Localization;
 using Nop.Services.Seo;
-using Nop.Web.Areas.Admin.Models.News;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.News;
 
-namespace Nop.Web.Areas.Admin.Validators.News;
+namespace Toss.Api.Admin.Validators.News;
 
 public partial class NewsItemValidator : BaseNopValidator<NewsItemModel>
 {

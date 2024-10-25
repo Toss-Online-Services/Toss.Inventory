@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Vendors;
-using Nop.Web.Areas.Admin.Models.Vendors;
+using Toss.Api.Admin.Models.Vendors;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the vendor attribute model factory

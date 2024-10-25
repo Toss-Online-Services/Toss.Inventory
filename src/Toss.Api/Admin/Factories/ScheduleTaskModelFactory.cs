@@ -1,12 +1,13 @@
-﻿using Nop.Services.Common;
+﻿using Nop.Data.Extensions;
+using Nop.Services.Common;
 using Nop.Services.Helpers;
 using Nop.Services.ScheduleTasks;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Tasks;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Tasks;
 using Task = System.Threading.Tasks.Task;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the schedule task model factory implementation

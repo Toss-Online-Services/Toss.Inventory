@@ -2,13 +2,14 @@
 using Nop.Core;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Security;
+using Nop.Data.Extensions;
 using Nop.Services.Customers;
 using Nop.Services.Localization;
 using Nop.Services.Security;
-using Nop.Web.Areas.Admin.Models.Security;
 using Nop.Web.Framework.Models.Extensions;
+using Toss.Api.Admin.Models.Security;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the security model factory implementation

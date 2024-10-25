@@ -1,6 +1,6 @@
-﻿using Nop.Web.Areas.Admin.Models.Payments;
+﻿using Toss.Api.Admin.Models.Payments;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the payment method model factory

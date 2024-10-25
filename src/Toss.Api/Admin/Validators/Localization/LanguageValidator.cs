@@ -2,10 +2,10 @@
 using FluentValidation;
 using Nop.Core.Domain.Localization;
 using Nop.Services.Localization;
-using Nop.Web.Areas.Admin.Models.Localization;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Localization;
 
-namespace Nop.Web.Areas.Admin.Validators.Localization;
+namespace Toss.Api.Admin.Validators.Localization;
 
 public partial class LanguageValidator : BaseNopValidator<LanguageModel>
 {

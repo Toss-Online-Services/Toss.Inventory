@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Forums;
+namespace Toss.Api.Admin.Models.Forums;
 
 /// <summary>
 /// Represents a forum group list model

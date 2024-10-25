@@ -1,7 +1,7 @@
 ﻿using Nop.Core.Domain.Affiliates;
-using Nop.Web.Areas.Admin.Models.Affiliates;
+using Toss.Api.Admin.Models.Affiliates;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the affiliate model factory

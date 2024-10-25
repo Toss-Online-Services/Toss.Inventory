@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Customers;
+namespace Toss.Api.Admin.Models.Customers;
 
 /// <summary>
 /// Represents a reward points model to add to the customer

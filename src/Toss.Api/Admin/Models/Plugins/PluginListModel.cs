@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Models;
 
-namespace Nop.Web.Areas.Admin.Models.Plugins;
+namespace Toss.Api.Admin.Models.Plugins;
 
 /// <summary>
 /// Represents a plugin list model

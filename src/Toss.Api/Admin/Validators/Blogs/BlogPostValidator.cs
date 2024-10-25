@@ -2,10 +2,10 @@
 using Nop.Core.Domain.Blogs;
 using Nop.Services.Localization;
 using Nop.Services.Seo;
-using Nop.Web.Areas.Admin.Models.Blogs;
 using Nop.Web.Framework.Validators;
+using Toss.Api.Admin.Models.Blogs;
 
-namespace Nop.Web.Areas.Admin.Validators.Blogs;
+namespace Toss.Api.Admin.Validators.Blogs;
 
 public partial class BlogPostValidator : BaseNopValidator<BlogPostModel>
 {

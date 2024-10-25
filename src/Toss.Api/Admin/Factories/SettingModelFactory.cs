@@ -21,6 +21,7 @@ using Nop.Core.Domain.Vendors;
 using Nop.Core.Infrastructure;
 using Nop.Data;
 using Nop.Data.Configuration;
+using Nop.Data.Extensions;
 using Nop.Services;
 using Nop.Services.Common;
 using Nop.Services.Configuration;
@@ -31,14 +32,14 @@ using Nop.Services.Localization;
 using Nop.Services.Media;
 using Nop.Services.Stores;
 using Nop.Services.Themes;
-using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Areas.Admin.Models.Settings;
-using Nop.Web.Areas.Admin.Models.Stores;
 using Nop.Web.Framework.Factories;
 using Nop.Web.Framework.Models.Extensions;
 using Nop.Web.Framework.WebOptimizer;
+using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
+using Toss.Api.Admin.Models.Settings;
+using Toss.Api.Admin.Models.Stores;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the setting model factory implementation
@@ -872,10 +873,10 @@ public partial class SettingModelFactory : ISettingModelFactory
         //Since we decided to use the naming of the DB connections section as in the .net core - "ConnectionStrings",
         //we are forced to adjust our internal model naming to this convention in this check.
         model.EnvironmentVariables.AddRange(from property in model.GetType().GetProperties()
-            where property.Name != nameof(AppSettingsModel.EnvironmentVariables)
-            from pp in property.PropertyType.GetProperties()
-            where Environment.GetEnvironmentVariables().Contains($"{property.Name.Replace("Model", "").Replace("DataConfig", "ConnectionStrings")}__{pp.Name}")
-            select $"{property.Name}_{pp.Name}");
+                                            where property.Name != nameof(AppSettingsModel.EnvironmentVariables)
+                                            from pp in property.PropertyType.GetProperties()
+                                            where Environment.GetEnvironmentVariables().Contains($"{property.Name.Replace("Model", "").Replace("DataConfig", "ConnectionStrings")}__{pp.Name}")
+                                            select $"{property.Name}_{pp.Name}");
         return model;
     }
 

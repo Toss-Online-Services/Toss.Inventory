@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Vendors;
+namespace Toss.Api.Admin.Models.Vendors;
 
 /// <summary>
 /// Represents a vendor note model

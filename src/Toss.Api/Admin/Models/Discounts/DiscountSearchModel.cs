@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Discounts;
+namespace Toss.Api.Admin.Models.Discounts;
 
 /// <summary>
 /// Represents a discount search model

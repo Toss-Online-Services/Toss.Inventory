@@ -1,6 +1,6 @@
-﻿using Nop.Web.Areas.Admin.Models.ExternalAuthentication;
+﻿using Toss.Api.Admin.Models.ExternalAuthentication;
 
-namespace Nop.Web.Areas.Admin.Factories;
+namespace Toss.Api.Admin.Factories;
 
 /// <summary>
 /// Represents the external authentication method model factory

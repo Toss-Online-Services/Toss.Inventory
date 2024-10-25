@@ -2,7 +2,7 @@
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Plugins;
+namespace Toss.Api.Admin.Models.Plugins;
 
 /// <summary>
 /// Represents a plugin search model

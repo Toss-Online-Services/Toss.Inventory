@@ -2,7 +2,7 @@
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Common;
+namespace Toss.Api.Admin.Models.Common;
 
 public partial record MaintenanceModel : BaseNopModel
 {

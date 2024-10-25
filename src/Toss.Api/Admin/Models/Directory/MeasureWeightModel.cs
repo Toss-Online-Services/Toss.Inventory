@@ -1,7 +1,7 @@
 ﻿using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
-namespace Nop.Web.Areas.Admin.Models.Directory;
+namespace Toss.Api.Admin.Models.Directory;
 
 /// <summary>
 /// Represents a measure weight model
