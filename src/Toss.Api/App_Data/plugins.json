@@ -1,0 +1,106 @@
+﻿{
+  "InstalledPluginNames": [
+    "Obsolete field, using only for compatibility"
+  ],
+  "InstalledPlugins": [
+    {
+      "SystemName": "Payments.PayPalCommerce",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "DiscountRequirement.MustBeAssignedToCustomerRole",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "CurrencyExchange.ECB",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Misc.Brevo",
+      "Version": "4.80.3"
+    },
+    {
+      "SystemName": "Misc.NopMobileApp",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Misc.Omnisend",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Misc.PowerBI",
+      "Version": "4.80.1"
+    },
+    {
+      "SystemName": "Misc.WebApi.Frontend",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Misc.Zettle",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "MultiFactorAuth.GoogleAuthenticator",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Payments.AmazonPay",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Payments.CheckMoneyOrder",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Payments.Manual",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Pickup.PickupInStore",
+      "Version": "4.80.3"
+    },
+    {
+      "SystemName": "Search.Lucene",
+      "Version": "4.80.1"
+    },
+    {
+      "SystemName": "Shipping.FixedByWeightByTotal",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Shipping.UPS",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Tax.Avalara",
+      "Version": "4.80.3"
+    },
+    {
+      "SystemName": "Tax.FixedOrByCountryStateZip",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Widgets.FacebookPixel",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Widgets.GoogleAnalytics",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Widgets.NivoSlider",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "Widgets.What3words",
+      "Version": "4.80.2"
+    },
+    {
+      "SystemName": "ExternalAuth.Facebook",
+      "Version": "4.80.2"
+    }
+  ],
+  "PluginNamesToUninstall": [],
+  "PluginNamesToDelete": [],
+  "PluginNamesToInstall": []
+}
