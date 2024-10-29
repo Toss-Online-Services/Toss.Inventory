@@ -773,7 +773,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             //a vendor should have access only to his products
             var currentVendor = await _workContext.GetCurrentVendorAsync();
             if (currentVendor != null && product.VendorId != currentVendor.Id)
-                return Content("This is not your product");
+                return  Forbid("This is not your product");
 
             //prepare model
             var model = await _productModelFactory.PrepareAssociatedProductListModelAsync(searchModel, product);
@@ -792,7 +792,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             //a vendor should have access only to his products
             var currentVendor = await _workContext.GetCurrentVendorAsync();
             if (currentVendor != null && associatedProduct.VendorId != currentVendor.Id)
-                return Content("This is not your product");
+                return Forbid("This is not your product");
 
             associatedProduct.DisplayOrder = model.DisplayOrder;
             await _productService.UpdateProductAsync(associatedProduct);
@@ -811,7 +811,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             //a vendor should have access only to his products
             var currentVendor = await _workContext.GetCurrentVendorAsync();
             if (currentVendor != null && product.VendorId != currentVendor.Id)
-                return Content("This is not your product");
+                return  Forbid("This is not your product");
 
             product.ParentGroupedProductId = 0;
             await _productService.UpdateProductAsync(product);
@@ -838,8 +838,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
-        [FormValueRequired("save")]
+        [HttpPost]        
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> AssociatedProductAddPopup(AddAssociatedProductModel model)
         {
