@@ -29,13 +29,13 @@ using Nop.Core.Domain.Customers;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc.Filters;
 using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Framework.Validators;
+using System.Text;
 
 namespace Toss.Api.Admin.Controllers.ProductCatalog
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductVideosController : ControllerBase
+    public class ProductExportImportController : ControllerBase
     {
         #region Fields
 
@@ -82,7 +82,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Ctor
 
-        public ProductVideosController(IAclService aclService,
+        public ProductExportImportController(IAclService aclService,
             IBackInStockSubscriptionService backInStockSubscriptionService,
             ICategoryService categoryService,
             ICopyProductService copyProductService,
@@ -761,166 +761,260 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #endregion
 
-        #region Product videos
+        #region Export / Import
 
-        [HttpPost]
-        [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
-        public virtual async Task<IActionResult> ProductVideoAdd(int productId, [Validate] ProductVideoModel model)
+        [HttpPost, ActionName("DownloadCatalogPDF")]
+        [FormValueRequired("download-catalog-pdf")]
+        [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
+        public virtual async Task<IActionResult> DownloadCatalogAsPdf(ProductSearchModel model)
         {
-            if (productId == 0)
-                throw new ArgumentException();
-
-            //try to get a product with the specified id
-            var product = await _productService.GetProductByIdAsync(productId)
-                ?? throw new ArgumentException("No product found with the specified id");
-
-            if (string.IsNullOrEmpty(model.VideoUrl))
-                ModelState.AddModelError(string.Empty,
-                    await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoAdd.EmptyUrl"));
-
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var videoUrl = model.VideoUrl.TrimStart('~');
-
-            try
-            {
-                await PingVideoUrlAsync(videoUrl);
-            }
-            catch (Exception exc)
-            {
-                return Ok(new
-                {
-                    success = false,
-                    error = $"{await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoAdd")} {exc.Message}",
-                });
-            }
-
-            //a vendor should have access only to his products
-            var currentVendor = await _workContext.GetCurrentVendorAsync();
-            if (currentVendor != null && product.VendorId != currentVendor.Id)
-                return Content("This is not your product");
-            try
-            {
-                var video = new Video
-                {
-                    VideoUrl = videoUrl
-                };
-
-                //insert video
-                await _videoService.InsertVideoAsync(video);
-
-                await _productService.InsertProductVideoAsync(new ProductVideo
-                {
-                    VideoId = video.Id,
-                    ProductId = product.Id,
-                    DisplayOrder = model.DisplayOrder
-                });
-            }
-            catch (Exception exc)
-            {
-                return Ok(new
-                {
-                    success = false,
-                    error = $"{await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoAdd")} {exc.Message}",
-                });
-            }
-
-            return Ok(new { success = true });
-        }
-
-        [HttpPost]
-        [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
-        public virtual async Task<IActionResult> ProductVideoList(ProductVideoSearchModel searchModel)
-        {
-            //try to get a product with the specified id
-            var product = await _productService.GetProductByIdAsync(searchModel.ProductId)
-                ?? throw new ArgumentException("No product found with the specified id");
-
-            //a vendor should have access only to his products
-            var currentVendor = await _workContext.GetCurrentVendorAsync();
-            if (currentVendor != null && product.VendorId != currentVendor.Id)
-                return Content("This is not your product");
-
-            //prepare model
-            var model = await _productModelFactory.PrepareProductVideoListModelAsync(searchModel, product);
-
-            return Ok(model);
-        }
-
-        [HttpPost]
-        [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
-        public virtual async Task<IActionResult> ProductVideoUpdate([Validate] ProductVideoModel model)
-        {
-            //try to get a product picture with the specified id
-            var productVideo = await _productService.GetProductVideoByIdAsync(model.Id)
-                ?? throw new ArgumentException("No product video found with the specified id");
-
             //a vendor should have access only to his products
             var currentVendor = await _workContext.GetCurrentVendorAsync();
             if (currentVendor != null)
             {
-                var product = await _productService.GetProductByIdAsync(productVideo.ProductId);
-                if (product != null && product.VendorId != currentVendor.Id)
-                    return Content("This is not your product");
+                model.SearchVendorId = currentVendor.Id;
             }
 
-            //try to get a video with the specified id
-            var video = await _videoService.GetVideoByIdAsync(productVideo.VideoId)
-                ?? throw new ArgumentException("No video found with the specified id");
+            var categoryIds = new List<int> { model.SearchCategoryId };
+            //include subcategories
+            if (model.SearchIncludeSubCategories && model.SearchCategoryId > 0)
+                categoryIds.AddRange(await _categoryService.GetChildCategoryIdsAsync(parentCategoryId: model.SearchCategoryId, showHidden: true));
 
-            var videoUrl = model.VideoUrl.TrimStart('~');
+            //0 - all (according to "ShowHidden" parameter)
+            //1 - published only
+            //2 - unpublished only
+            bool? overridePublished = null;
+            if (model.SearchPublishedId == 1)
+                overridePublished = true;
+            else if (model.SearchPublishedId == 2)
+                overridePublished = false;
+
+            var products = await _productService.SearchProductsAsync(0,
+                categoryIds: categoryIds,
+                manufacturerIds: new List<int> { model.SearchManufacturerId },
+                storeId: model.SearchStoreId,
+                vendorId: model.SearchVendorId,
+                warehouseId: model.SearchWarehouseId,
+                productType: model.SearchProductTypeId > 0 ? (ProductType?)model.SearchProductTypeId : null,
+                keywords: model.SearchProductName,
+                showHidden: true,
+                overridePublished: overridePublished);
 
             try
             {
-                await PingVideoUrlAsync(videoUrl);
+                byte[] bytes;
+                await using (var stream = new MemoryStream())
+                {
+                    await _pdfService.PrintProductsToPdfAsync(stream, products);
+                    bytes = stream.ToArray();
+                }
+
+                return File(bytes, MimeTypes.ApplicationPdf, "pdfcatalog.pdf");
             }
             catch (Exception exc)
             {
-                return Ok(new
-                {
-                    success = false,
-                    error = $"{await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoUpdate")} {exc.Message}",
-                });
+                await _notificationService.ErrorNotificationAsync(exc);
+                return BadRequest(exc.Message);
             }
-
-            video.VideoUrl = videoUrl;
-
-            await _videoService.UpdateVideoAsync(video);
-
-            productVideo.DisplayOrder = model.DisplayOrder;
-            await _productService.UpdateProductVideoAsync(productVideo);
-
-            return Ok();
         }
 
-        [HttpPost]
-        [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
-        public virtual async Task<IActionResult> ProductVideoDelete(int id)
+        [HttpPost, ActionName("ExportToXml")]
+        [FormValueRequired("exportxml-all")]
+        [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
+        public virtual async Task<IActionResult> ExportXmlAll(ProductSearchModel model)
         {
-            //try to get a product video with the specified id
-            var productVideo = await _productService.GetProductVideoByIdAsync(id)
-                ?? throw new ArgumentException("No product video found with the specified id");
-
             //a vendor should have access only to his products
             var currentVendor = await _workContext.GetCurrentVendorAsync();
             if (currentVendor != null)
             {
-                var product = await _productService.GetProductByIdAsync(productVideo.ProductId);
-                if (product != null && product.VendorId != currentVendor.Id)
-                    return Content("This is not your product");
+                model.SearchVendorId = currentVendor.Id;
             }
 
-            var videoId = productVideo.VideoId;
-            await _productService.DeleteProductVideoAsync(productVideo);
+            var categoryIds = new List<int> { model.SearchCategoryId };
+            //include subcategories
+            if (model.SearchIncludeSubCategories && model.SearchCategoryId > 0)
+                categoryIds.AddRange(await _categoryService.GetChildCategoryIdsAsync(parentCategoryId: model.SearchCategoryId, showHidden: true));
 
-            //try to get a video with the specified id
-            var video = await _videoService.GetVideoByIdAsync(videoId)
-                ?? throw new ArgumentException("No video found with the specified id");
+            //0 - all (according to "ShowHidden" parameter)
+            //1 - published only
+            //2 - unpublished only
+            bool? overridePublished = null;
+            if (model.SearchPublishedId == 1)
+                overridePublished = true;
+            else if (model.SearchPublishedId == 2)
+                overridePublished = false;
 
-            await _videoService.DeleteVideoAsync(video);
+            var products = await _productService.SearchProductsAsync(0,
+                categoryIds: categoryIds,
+                manufacturerIds: new List<int> { model.SearchManufacturerId },
+                storeId: model.SearchStoreId,
+                vendorId: model.SearchVendorId,
+                warehouseId: model.SearchWarehouseId,
+                productType: model.SearchProductTypeId > 0 ? (ProductType?)model.SearchProductTypeId : null,
+                keywords: model.SearchProductName,
+                showHidden: true,
+                overridePublished: overridePublished);
 
-            return Ok();
+            try
+            {
+                var xml = await _exportManager.ExportProductsToXmlAsync(products);
+
+                return Ok(File(Encoding.UTF8.GetBytes(xml), MimeTypes.ApplicationXml, "products.xml"));
+            }
+            catch (Exception exc)
+            {
+                await _notificationService.ErrorNotificationAsync(exc);
+                return BadRequest(exc.Message);
+            }
+        }
+
+        [HttpPost]
+        [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
+        public virtual async Task<IActionResult> ExportXmlSelected(string selectedIds)
+        {
+            var products = new List<Product>();
+            if (selectedIds != null)
+            {
+                var ids = selectedIds
+                    .Split(_separator, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(x => Convert.ToInt32(x))
+                    .ToArray();
+                products.AddRange(await _productService.GetProductsByIdsAsync(ids));
+            }
+            //a vendor should have access only to his products
+            var currentVendor = await _workContext.GetCurrentVendorAsync();
+            if (currentVendor != null)
+            {
+                products = products.Where(p => p.VendorId == currentVendor.Id).ToList();
+            }
+
+            try
+            {
+                var xml = await _exportManager.ExportProductsToXmlAsync(products);
+                return Ok(File(Encoding.UTF8.GetBytes(xml), MimeTypes.ApplicationXml, "products.xml"));
+            }
+            catch (Exception exc)
+            {
+                await _notificationService.ErrorNotificationAsync(exc);
+                return BadRequest(exc.Message);
+            }
+        }
+
+        [HttpPost, ActionName("ExportToExcel")]
+        [FormValueRequired("exportexcel-all")]
+        [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
+        public virtual async Task<IActionResult> ExportExcelAll(ProductSearchModel model)
+        {
+            //a vendor should have access only to his products
+            var currentVendor = await _workContext.GetCurrentVendorAsync();
+            if (currentVendor != null)
+            {
+                model.SearchVendorId = currentVendor.Id;
+            }
+
+            var categoryIds = new List<int> { model.SearchCategoryId };
+            //include subcategories
+            if (model.SearchIncludeSubCategories && model.SearchCategoryId > 0)
+                categoryIds.AddRange(await _categoryService.GetChildCategoryIdsAsync(parentCategoryId: model.SearchCategoryId, showHidden: true));
+
+            //0 - all (according to "ShowHidden" parameter)
+            //1 - published only
+            //2 - unpublished only
+            bool? overridePublished = null;
+            if (model.SearchPublishedId == 1)
+                overridePublished = true;
+            else if (model.SearchPublishedId == 2)
+                overridePublished = false;
+
+            var products = await _productService.SearchProductsAsync(0,
+                categoryIds: categoryIds,
+                manufacturerIds: new List<int> { model.SearchManufacturerId },
+                storeId: model.SearchStoreId,
+                vendorId: model.SearchVendorId,
+                warehouseId: model.SearchWarehouseId,
+                productType: model.SearchProductTypeId > 0 ? (ProductType?)model.SearchProductTypeId : null,
+                keywords: model.SearchProductName,
+                showHidden: true,
+                overridePublished: overridePublished);
+
+            try
+            {
+                var bytes = await _exportManager.ExportProductsToXlsxAsync(products);
+
+                return Ok(File(bytes, MimeTypes.TextXlsx, "products.xlsx"));
+            }
+            catch (Exception exc)
+            {
+                await _notificationService.ErrorNotificationAsync(exc);
+
+                return BadRequest(exc.Message);
+            }
+        }
+
+        [HttpPost]
+        [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
+        public virtual async Task<IActionResult> ExportExcelSelected(string selectedIds)
+        {
+            var products = new List<Product>();
+            if (selectedIds != null)
+            {
+                var ids = selectedIds
+                    .Split(_separator, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(x => Convert.ToInt32(x))
+                    .ToArray();
+                products.AddRange(await _productService.GetProductsByIdsAsync(ids));
+            }
+            //a vendor should have access only to his products
+            var currentVendor = await _workContext.GetCurrentVendorAsync();
+            if (currentVendor != null)
+            {
+                products = products.Where(p => p.VendorId == currentVendor.Id).ToList();
+            }
+
+            try
+            {
+                var bytes = await _exportManager.ExportProductsToXlsxAsync(products);
+
+                return Ok(File(bytes, MimeTypes.TextXlsx, "products.xlsx"));
+            }
+            catch (Exception exc)
+            {
+                await _notificationService.ErrorNotificationAsync(exc);
+                return BadRequest(exc.Message);
+            }
+        }
+
+        [HttpPost]
+        [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
+        public virtual async Task<IActionResult> ImportExcel(IFormFile importexcelfile)
+        {
+            if (await _workContext.GetCurrentVendorAsync() != null && !_vendorSettings.AllowVendorsToImportProducts)
+                //a vendor can not import products
+                return Forbid();
+
+            try
+            {
+                if (importexcelfile != null && importexcelfile.Length > 0)
+                {
+                    await _importManager.ImportProductsFromXlsxAsync(importexcelfile.OpenReadStream());
+                }
+                else
+                {
+                    _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Common.UploadFile"));
+
+                    return BadRequest();
+                }
+
+                _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Admin.Catalog.Products.Imported"));
+
+                return Ok();
+            }
+            catch (Exception exc)
+            {
+                await _notificationService.ErrorNotificationAsync(exc);
+
+                return BadRequest(exc.Message);
+            }
         }
 
         #endregion

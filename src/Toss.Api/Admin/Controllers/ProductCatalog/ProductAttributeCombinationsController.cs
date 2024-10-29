@@ -29,13 +29,13 @@ using Nop.Core.Domain.Customers;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc.Filters;
 using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Framework.Validators;
+using Nop.Data.Extensions;
 
 namespace Toss.Api.Admin.Controllers.ProductCatalog
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductVideosController : ControllerBase
+    public class ProductAttributeCombinationsController : ControllerBase
     {
         #region Fields
 
@@ -82,7 +82,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Ctor
 
-        public ProductVideosController(IAclService aclService,
+        public ProductAttributeCombinationsController(IAclService aclService,
             IBackInStockSubscriptionService backInStockSubscriptionService,
             ICategoryService categoryService,
             ICopyProductService copyProductService,
@@ -761,77 +761,11 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #endregion
 
-        #region Product videos
+        #region Product attribute combinations
 
         [HttpPost]
-        [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
-        public virtual async Task<IActionResult> ProductVideoAdd(int productId, [Validate] ProductVideoModel model)
-        {
-            if (productId == 0)
-                throw new ArgumentException();
-
-            //try to get a product with the specified id
-            var product = await _productService.GetProductByIdAsync(productId)
-                ?? throw new ArgumentException("No product found with the specified id");
-
-            if (string.IsNullOrEmpty(model.VideoUrl))
-                ModelState.AddModelError(string.Empty,
-                    await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoAdd.EmptyUrl"));
-
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var videoUrl = model.VideoUrl.TrimStart('~');
-
-            try
-            {
-                await PingVideoUrlAsync(videoUrl);
-            }
-            catch (Exception exc)
-            {
-                return Ok(new
-                {
-                    success = false,
-                    error = $"{await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoAdd")} {exc.Message}",
-                });
-            }
-
-            //a vendor should have access only to his products
-            var currentVendor = await _workContext.GetCurrentVendorAsync();
-            if (currentVendor != null && product.VendorId != currentVendor.Id)
-                return Content("This is not your product");
-            try
-            {
-                var video = new Video
-                {
-                    VideoUrl = videoUrl
-                };
-
-                //insert video
-                await _videoService.InsertVideoAsync(video);
-
-                await _productService.InsertProductVideoAsync(new ProductVideo
-                {
-                    VideoId = video.Id,
-                    ProductId = product.Id,
-                    DisplayOrder = model.DisplayOrder
-                });
-            }
-            catch (Exception exc)
-            {
-                return Ok(new
-                {
-                    success = false,
-                    error = $"{await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoAdd")} {exc.Message}",
-                });
-            }
-
-            return Ok(new { success = true });
-        }
-
-        [HttpPost]
-        [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
-        public virtual async Task<IActionResult> ProductVideoList(ProductVideoSearchModel searchModel)
+        [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
+        public virtual async Task<IActionResult> ProductAttributeCombinationList(ProductAttributeCombinationSearchModel searchModel)
         {
             //try to get a product with the specified id
             var product = await _productService.GetProductByIdAsync(searchModel.ProductId)
@@ -843,84 +777,281 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
                 return Content("This is not your product");
 
             //prepare model
-            var model = await _productModelFactory.PrepareProductVideoListModelAsync(searchModel, product);
+            var model = await _productModelFactory.PrepareProductAttributeCombinationListModelAsync(searchModel, product);
+
+            return Ok(model);
+        }
+
+        [HttpPost]
+        [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_CREATE_EDIT_DELETE)]
+        public virtual async Task<IActionResult> ProductAttributeCombinationDelete(int id)
+        {
+            //try to get a combination with the specified id
+            var combination = await _productAttributeService.GetProductAttributeCombinationByIdAsync(id)
+                ?? throw new ArgumentException("No product attribute combination found with the specified id");
+
+            //try to get a product with the specified id
+            var product = await _productService.GetProductByIdAsync(combination.ProductId)
+                ?? throw new ArgumentException("No product found with the specified id");
+
+            //a vendor should have access only to his products
+            var currentVendor = await _workContext.GetCurrentVendorAsync();
+            if (currentVendor != null && product.VendorId != currentVendor.Id)
+                return Content("This is not your product");
+
+            await _productAttributeService.DeleteProductAttributeCombinationAsync(combination);
+
+            return Ok();
+        }
+
+        [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_CREATE_EDIT_DELETE)]
+        public virtual async Task<IActionResult> ProductAttributeCombinationCreatePopup(int productId)
+        {
+            //try to get a product with the specified id
+            var product = await _productService.GetProductByIdAsync(productId);
+            if (product == null)
+                return RedirectToAction("List", "Product");
+
+            //a vendor should have access only to his products
+            var currentVendor = await _workContext.GetCurrentVendorAsync();
+            if (currentVendor != null && product.VendorId != currentVendor.Id)
+                return RedirectToAction("List", "Product");
+
+            //prepare model
+            var model = await _productModelFactory.PrepareProductAttributeCombinationModelAsync(new ProductAttributeCombinationModel(), product, null);
+
+            return Ok(model);
+        }
+
+        [HttpPost]
+        [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_CREATE_EDIT_DELETE)]
+        public virtual async Task<IActionResult> ProductAttributeCombinationCreatePopup(int productId, ProductAttributeCombinationModel model, IFormCollection form)
+        {
+            //try to get a product with the specified id
+            var product = await _productService.GetProductByIdAsync(productId);
+            if (product == null)
+                return RedirectToAction("List", "Product");
+
+            //a vendor should have access only to his products
+            var currentVendor = await _workContext.GetCurrentVendorAsync();
+            if (currentVendor != null && product.VendorId != currentVendor.Id)
+                return RedirectToAction("List", "Product");
+
+            //attributes
+            var warnings = new List<string>();
+            var attributesXml = await GetAttributesXmlForProductAttributeCombinationAsync(form, warnings, product.Id);
+
+            //check whether the attribute value is specified
+            if (string.IsNullOrEmpty(attributesXml))
+                warnings.Add(await _localizationService.GetResourceAsync("Admin.Catalog.Products.ProductAttributes.AttributeCombinations.Alert.FailedValue"));
+
+            warnings.AddRange(await _shoppingCartService.GetShoppingCartItemAttributeWarningsAsync(await _workContext.GetCurrentCustomerAsync(),
+                ShoppingCartType.ShoppingCart, product, 1, attributesXml, true));
+
+            //check whether the same attribute combination already exists
+            var existingCombination = await _productAttributeParser.FindProductAttributeCombinationAsync(product, attributesXml);
+            if (existingCombination != null)
+                warnings.Add(await _localizationService.GetResourceAsync("Admin.Catalog.Products.ProductAttributes.AttributeCombinations.AlreadyExists"));
+
+            if (!warnings.Any())
+            {
+                //save combination
+                var combination = model.ToEntity<ProductAttributeCombination>();
+
+                //fill attributes
+                combination.AttributesXml = attributesXml;
+
+                await _productAttributeService.InsertProductAttributeCombinationAsync(combination);
+
+                await SaveAttributeCombinationPicturesAsync(product, combination, model);
+
+                //quantity change history
+                await _productService.AddStockQuantityHistoryEntryAsync(product, combination.StockQuantity, combination.StockQuantity,
+                    message: await _localizationService.GetResourceAsync("Admin.StockQuantityHistory.Messages.Combination.Edit"), combinationId: combination.Id);
+
+
+
+                return Ok(model);
+            }
+
+            //prepare model
+            model = await _productModelFactory.PrepareProductAttributeCombinationModelAsync(model, product, null, true);
+            model.Warnings = warnings;
+
+            //if we got this far, something failed, redisplay form
+            return Ok(model);
+        }
+
+        [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
+        [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
+        public virtual async Task<IActionResult> ProductAttributeCombinationGeneratePopup(int productId)
+        {
+            //try to get a product with the specified id
+            var product = await _productService.GetProductByIdAsync(productId);
+            if (product == null)
+                return RedirectToAction("List", "Product");
+
+            //a vendor should have access only to his products
+            var currentVendor = await _workContext.GetCurrentVendorAsync();
+            if (currentVendor != null && product.VendorId != currentVendor.Id)
+                return RedirectToAction("List", "Product");
+
+            //prepare model
+            var model = await _productModelFactory.PrepareProductAttributeCombinationModelAsync(new ProductAttributeCombinationModel(), product, null);
 
             return Ok(model);
         }
 
         [HttpPost]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
-        public virtual async Task<IActionResult> ProductVideoUpdate([Validate] ProductVideoModel model)
+        [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
+        public virtual async Task<IActionResult> ProductAttributeCombinationGeneratePopup(IFormCollection form, ProductAttributeCombinationModel model)
         {
-            //try to get a product picture with the specified id
-            var productVideo = await _productService.GetProductVideoByIdAsync(model.Id)
-                ?? throw new ArgumentException("No product video found with the specified id");
+            //try to get a product with the specified id
+            var product = await _productService.GetProductByIdAsync(model.ProductId);
+            if (product == null)
+                return RedirectToAction("List", "Product");
+
+            var allowedAttributeIds = form.Keys.Where(key => key.Contains("attribute_value_"))
+                .Select(key => int.TryParse(form[key], out var id) ? id : 0).Where(id => id > 0).ToList();
+
+            var requiredAttributeNames = await (await _productAttributeService.GetProductAttributeMappingsByProductIdAsync(product.Id))
+                .Where(pam => pam.IsRequired)
+                .Where(pam => !pam.IsNonCombinable())
+                .WhereAwait(async pam => !(await _productAttributeService.GetProductAttributeValuesAsync(pam.Id)).Any(v => allowedAttributeIds.Any(id => id == v.Id)))
+                .SelectAwait(async pam => (await _productAttributeService.GetProductAttributeByIdAsync(pam.ProductAttributeId)).Name).ToListAsync();
+
+            if (requiredAttributeNames.Any())
+            {
+                model = await _productModelFactory.PrepareProductAttributeCombinationModelAsync(model, product, null, true);
+                var pavModels = model.ProductAttributes.SelectMany(pa => pa.Values)
+                    .Where(v => allowedAttributeIds.Any(id => id == v.Id))
+                    .ToList();
+                foreach (var pavModel in pavModels)
+                {
+                    pavModel.Checked = "checked";
+                }
+
+                model.Warnings.Add(string.Format(await _localizationService.GetResourceAsync("Admin.Catalog.Products.ProductAttributes.AttributeCombinations.SelectRequiredAttributes"), string.Join(", ", requiredAttributeNames)));
+
+                return Ok(model);
+            }
+
+            await GenerateAttributeCombinationsAsync(product, allowedAttributeIds);
+
+
+
+            return Ok(new ProductAttributeCombinationModel());
+        }
+
+        [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
+        [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
+        public virtual async Task<IActionResult> ProductAttributeCombinationEditPopup(int id)
+        {
+            //try to get a combination with the specified id
+            var combination = await _productAttributeService.GetProductAttributeCombinationByIdAsync(id);
+            if (combination == null)
+                return RedirectToAction("List", "Product");
+
+            //try to get a product with the specified id
+            var product = await _productService.GetProductByIdAsync(combination.ProductId);
+            if (product == null)
+                return RedirectToAction("List", "Product");
 
             //a vendor should have access only to his products
             var currentVendor = await _workContext.GetCurrentVendorAsync();
-            if (currentVendor != null)
-            {
-                var product = await _productService.GetProductByIdAsync(productVideo.ProductId);
-                if (product != null && product.VendorId != currentVendor.Id)
-                    return Content("This is not your product");
-            }
+            if (currentVendor != null && product.VendorId != currentVendor.Id)
+                return RedirectToAction("List", "Product");
 
-            //try to get a video with the specified id
-            var video = await _videoService.GetVideoByIdAsync(productVideo.VideoId)
-                ?? throw new ArgumentException("No video found with the specified id");
+            //prepare model
+            var model = await _productModelFactory.PrepareProductAttributeCombinationModelAsync(null, product, combination);
 
-            var videoUrl = model.VideoUrl.TrimStart('~');
-
-            try
-            {
-                await PingVideoUrlAsync(videoUrl);
-            }
-            catch (Exception exc)
-            {
-                return Ok(new
-                {
-                    success = false,
-                    error = $"{await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoUpdate")} {exc.Message}",
-                });
-            }
-
-            video.VideoUrl = videoUrl;
-
-            await _videoService.UpdateVideoAsync(video);
-
-            productVideo.DisplayOrder = model.DisplayOrder;
-            await _productService.UpdateProductVideoAsync(productVideo);
-
-            return Ok();
+            return Ok(model);
         }
 
         [HttpPost]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
-        public virtual async Task<IActionResult> ProductVideoDelete(int id)
+        [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
+        public virtual async Task<IActionResult> ProductAttributeCombinationEditPopup(ProductAttributeCombinationModel model, IFormCollection form)
         {
-            //try to get a product video with the specified id
-            var productVideo = await _productService.GetProductVideoByIdAsync(id)
-                ?? throw new ArgumentException("No product video found with the specified id");
+            //try to get a combination with the specified id
+            var combination = await _productAttributeService.GetProductAttributeCombinationByIdAsync(model.Id);
+            if (combination == null)
+                return RedirectToAction("List", "Product");
+
+            //try to get a product with the specified id
+            var product = await _productService.GetProductByIdAsync(combination.ProductId);
+            if (product == null)
+                return RedirectToAction("List", "Product");
 
             //a vendor should have access only to his products
             var currentVendor = await _workContext.GetCurrentVendorAsync();
-            if (currentVendor != null)
+            if (currentVendor != null && product.VendorId != currentVendor.Id)
+                return RedirectToAction("List", "Product");
+
+            //attributes
+            var warnings = new List<string>();
+            var attributesXml = await GetAttributesXmlForProductAttributeCombinationAsync(form, warnings, product.Id);
+
+            //check whether the attribute value is specified
+            if (string.IsNullOrEmpty(attributesXml))
+                warnings.Add(await _localizationService.GetResourceAsync("Admin.Catalog.Products.ProductAttributes.AttributeCombinations.Alert.FailedValue"));
+
+            warnings.AddRange(await _shoppingCartService.GetShoppingCartItemAttributeWarningsAsync(await _workContext.GetCurrentCustomerAsync(),
+                ShoppingCartType.ShoppingCart, product, 1, attributesXml, true));
+
+            //check whether the same attribute combination already exists
+            var existingCombination = await _productAttributeParser.FindProductAttributeCombinationAsync(product, attributesXml);
+            if (existingCombination != null && existingCombination.Id != model.Id && existingCombination.AttributesXml.Equals(attributesXml))
+                warnings.Add(await _localizationService.GetResourceAsync("Admin.Catalog.Products.ProductAttributes.AttributeCombinations.AlreadyExists"));
+
+            if (!warnings.Any() && ModelState.IsValid)
             {
-                var product = await _productService.GetProductByIdAsync(productVideo.ProductId);
-                if (product != null && product.VendorId != currentVendor.Id)
-                    return Content("This is not your product");
+                var previousStockQuantity = combination.StockQuantity;
+
+                //save combination
+                //fill entity from model
+                combination = model.ToEntity(combination);
+                combination.AttributesXml = attributesXml;
+
+                await _productAttributeService.UpdateProductAttributeCombinationAsync(combination);
+
+                await SaveAttributeCombinationPicturesAsync(product, combination, model);
+
+                //quantity change history
+                await _productService.AddStockQuantityHistoryEntryAsync(product, combination.StockQuantity - previousStockQuantity, combination.StockQuantity,
+                    message: await _localizationService.GetResourceAsync("Admin.StockQuantityHistory.Messages.Combination.Edit"), combinationId: combination.Id);
+
+
+
+                return Ok(model);
             }
 
-            var videoId = productVideo.VideoId;
-            await _productService.DeleteProductVideoAsync(productVideo);
+            //prepare model
+            model = await _productModelFactory.PrepareProductAttributeCombinationModelAsync(model, product, combination, true);
+            model.Warnings = warnings;
 
-            //try to get a video with the specified id
-            var video = await _videoService.GetVideoByIdAsync(videoId)
-                ?? throw new ArgumentException("No video found with the specified id");
+            //if we got this far, something failed, redisplay form
+            return Ok(model);
+        }
 
-            await _videoService.DeleteVideoAsync(video);
+        [HttpPost]
+        [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
+        [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
+        public virtual async Task<IActionResult> GenerateAllAttributeCombinations(int productId)
+        {
+            //try to get a product with the specified id
+            var product = await _productService.GetProductByIdAsync(productId)
+                ?? throw new ArgumentException("No product found with the specified id");
 
-            return Ok();
+            //a vendor should have access only to his products
+            var currentVendor = await _workContext.GetCurrentVendorAsync();
+            if (currentVendor != null && product.VendorId != currentVendor.Id)
+                return Content("This is not your product");
+
+            await GenerateAttributeCombinationsAsync(product);
+
+            return Ok(new { Success = true });
         }
 
         #endregion

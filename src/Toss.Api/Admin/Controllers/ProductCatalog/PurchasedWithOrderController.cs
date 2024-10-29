@@ -29,13 +29,12 @@ using Nop.Core.Domain.Customers;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc.Filters;
 using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
-using Nop.Web.Framework.Validators;
 
 namespace Toss.Api.Admin.Controllers.ProductCatalog
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductVideosController : ControllerBase
+    public class PurchasedWithOrderController : ControllerBase
     {
         #region Fields
 
@@ -82,7 +81,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Ctor
 
-        public ProductVideosController(IAclService aclService,
+        public PurchasedWithOrderController(IAclService aclService,
             IBackInStockSubscriptionService backInStockSubscriptionService,
             ICategoryService categoryService,
             ICopyProductService copyProductService,
@@ -761,77 +760,12 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #endregion
 
-        #region Product videos
-
-        [HttpPost]
-        [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
-        public virtual async Task<IActionResult> ProductVideoAdd(int productId, [Validate] ProductVideoModel model)
-        {
-            if (productId == 0)
-                throw new ArgumentException();
-
-            //try to get a product with the specified id
-            var product = await _productService.GetProductByIdAsync(productId)
-                ?? throw new ArgumentException("No product found with the specified id");
-
-            if (string.IsNullOrEmpty(model.VideoUrl))
-                ModelState.AddModelError(string.Empty,
-                    await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoAdd.EmptyUrl"));
-
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var videoUrl = model.VideoUrl.TrimStart('~');
-
-            try
-            {
-                await PingVideoUrlAsync(videoUrl);
-            }
-            catch (Exception exc)
-            {
-                return Ok(new
-                {
-                    success = false,
-                    error = $"{await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoAdd")} {exc.Message}",
-                });
-            }
-
-            //a vendor should have access only to his products
-            var currentVendor = await _workContext.GetCurrentVendorAsync();
-            if (currentVendor != null && product.VendorId != currentVendor.Id)
-                return Content("This is not your product");
-            try
-            {
-                var video = new Video
-                {
-                    VideoUrl = videoUrl
-                };
-
-                //insert video
-                await _videoService.InsertVideoAsync(video);
-
-                await _productService.InsertProductVideoAsync(new ProductVideo
-                {
-                    VideoId = video.Id,
-                    ProductId = product.Id,
-                    DisplayOrder = model.DisplayOrder
-                });
-            }
-            catch (Exception exc)
-            {
-                return Ok(new
-                {
-                    success = false,
-                    error = $"{await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoAdd")} {exc.Message}",
-                });
-            }
-
-            return Ok(new { success = true });
-        }
+        #region Purchased with order
 
         [HttpPost]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
-        public virtual async Task<IActionResult> ProductVideoList(ProductVideoSearchModel searchModel)
+        [CheckPermission(StandardPermission.Orders.ORDERS_VIEW)]
+        public virtual async Task<IActionResult> PurchasedWithOrders(ProductOrderSearchModel searchModel)
         {
             //try to get a product with the specified id
             var product = await _productService.GetProductByIdAsync(searchModel.ProductId)
@@ -843,84 +777,9 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
                 return Content("This is not your product");
 
             //prepare model
-            var model = await _productModelFactory.PrepareProductVideoListModelAsync(searchModel, product);
+            var model = await _productModelFactory.PrepareProductOrderListModelAsync(searchModel, product);
 
             return Ok(model);
-        }
-
-        [HttpPost]
-        [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
-        public virtual async Task<IActionResult> ProductVideoUpdate([Validate] ProductVideoModel model)
-        {
-            //try to get a product picture with the specified id
-            var productVideo = await _productService.GetProductVideoByIdAsync(model.Id)
-                ?? throw new ArgumentException("No product video found with the specified id");
-
-            //a vendor should have access only to his products
-            var currentVendor = await _workContext.GetCurrentVendorAsync();
-            if (currentVendor != null)
-            {
-                var product = await _productService.GetProductByIdAsync(productVideo.ProductId);
-                if (product != null && product.VendorId != currentVendor.Id)
-                    return Content("This is not your product");
-            }
-
-            //try to get a video with the specified id
-            var video = await _videoService.GetVideoByIdAsync(productVideo.VideoId)
-                ?? throw new ArgumentException("No video found with the specified id");
-
-            var videoUrl = model.VideoUrl.TrimStart('~');
-
-            try
-            {
-                await PingVideoUrlAsync(videoUrl);
-            }
-            catch (Exception exc)
-            {
-                return Ok(new
-                {
-                    success = false,
-                    error = $"{await _localizationService.GetResourceAsync("Admin.Catalog.Products.Multimedia.Videos.Alert.VideoUpdate")} {exc.Message}",
-                });
-            }
-
-            video.VideoUrl = videoUrl;
-
-            await _videoService.UpdateVideoAsync(video);
-
-            productVideo.DisplayOrder = model.DisplayOrder;
-            await _productService.UpdateProductVideoAsync(productVideo);
-
-            return Ok();
-        }
-
-        [HttpPost]
-        [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
-        public virtual async Task<IActionResult> ProductVideoDelete(int id)
-        {
-            //try to get a product video with the specified id
-            var productVideo = await _productService.GetProductVideoByIdAsync(id)
-                ?? throw new ArgumentException("No product video found with the specified id");
-
-            //a vendor should have access only to his products
-            var currentVendor = await _workContext.GetCurrentVendorAsync();
-            if (currentVendor != null)
-            {
-                var product = await _productService.GetProductByIdAsync(productVideo.ProductId);
-                if (product != null && product.VendorId != currentVendor.Id)
-                    return Content("This is not your product");
-            }
-
-            var videoId = productVideo.VideoId;
-            await _productService.DeleteProductVideoAsync(productVideo);
-
-            //try to get a video with the specified id
-            var video = await _videoService.GetVideoByIdAsync(videoId)
-                ?? throw new ArgumentException("No video found with the specified id");
-
-            await _videoService.DeleteVideoAsync(video);
-
-            return Ok();
         }
 
         #endregion
