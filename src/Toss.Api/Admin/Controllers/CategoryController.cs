@@ -229,7 +229,7 @@ public class CategoryController : ControllerBase
 
     //[HttpPost("ImportFromXlsx")]
     //[CheckPermission(StandardPermission.Catalog.CATEGORIES_IMPORT_EXPORT)]
-    //public async Task<IActionResult> ImportFromXlsx([FromForm] IFormFile importFile)
+    //public async Task<IActionResult> ImportFromXlsx([FromBody] IFormFile importFile)
     //{
     //    if (importFile == null || importFile.Length == 0)
     //    {

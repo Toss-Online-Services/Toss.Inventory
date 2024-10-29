@@ -286,7 +286,7 @@ namespace Nop.Web.Areas.Admin.Controllers
         //TODO:come back and fix for swaggerUI
 
         //[HttpPost("ImportCsv")]
-        //public async Task<IActionResult> ImportCsv([FromForm] IFormFile importcsvfile)
+        //public async Task<IActionResult> ImportCsv([FromBody] IFormFile importcsvfile)
         //{
         //    if (importcsvfile == null || importcsvfile.Length == 0)
         //    {
