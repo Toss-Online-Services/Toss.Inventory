@@ -1,4 +1,5 @@
-﻿using Nop.Web.Framework.Models;
+﻿using Nop.Core.Domain.Catalog;
+using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
 namespace Toss.Api.Admin.Models.Common;
@@ -38,6 +39,16 @@ public partial record AddressAttributeModel : BaseNopEntityModel, ILocalizedMode
     public IList<AddressAttributeLocalizedModel> Locales { get; set; }
 
     public AddressAttributeValueSearchModel AddressAttributeValueSearchModel { get; set; }
+       
+
+    /// <summary>
+    /// Selected value for textboxes
+    /// </summary>
+    public string DefaultValue { get; set; }
+
+    public AttributeControlType AttributeControlType { get; set; }
+
+    public IList<AddressAttributeValueModel> Values { get; set; }
 
     #endregion
 }

@@ -73,5 +73,5 @@ public partial interface IAddressAttributeModelFactory
     /// <param name="models">List of address attribute models</param>
     /// <param name="address">Address</param>
     /// <returns>A task that represents the asynchronous operation</returns>
-    Task PrepareCustomAddressAttributesAsync(IList<AddressModel.AddressAttributeModel> models, Address address);
+    Task PrepareCustomAddressAttributesAsync(IList<AddressAttributeModel> models, Address address);
 }

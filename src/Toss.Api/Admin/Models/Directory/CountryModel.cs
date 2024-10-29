@@ -64,11 +64,3 @@ public partial record CountryModel : BaseNopEntityModel, ILocalizedModel<Country
 
     #endregion
 }
-
-public partial record CountryLocalizedModel : ILocalizedLocaleModel
-{
-    public int LanguageId { get; set; }
-
-    [NopResourceDisplayName("Admin.Configuration.Countries.Fields.Name")]
-    public string Name { get; set; }
-}

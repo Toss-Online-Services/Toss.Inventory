@@ -1,4 +1,6 @@
 ﻿using Autofac.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.OpenApi.Models;
 using Nop.Core.Configuration;
 using Nop.Core.Infrastructure;
 using Nop.Web.Framework.Infrastructure.Extensions;
@@ -44,7 +46,16 @@ namespace Toss.Api
             // Set up controllers, endpoints, and Swagger
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TOSS ONLINE API", Version = "v1" });
+                c.OperationFilter<SwaggerFileOperationFilter>();
+            });
+
+            builder.Services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = 100 * 1024 * 1024; // Example: 100 MB limit
+            });
 
             var app = builder.Build();
 
@@ -54,6 +65,11 @@ namespace Toss.Api
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+                builder.Services.AddLogging(logging =>
+                {
+                    logging.AddConsole();
+                    logging.AddDebug();
+                });
             }
 
             app.UseHttpsRedirection();

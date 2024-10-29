@@ -227,14 +227,14 @@ public partial class AddressAttributeModelFactory : IAddressAttributeModelFactor
     /// <param name="models">List of address attribute models</param>
     /// <param name="address">Address</param>
     /// <returns>A task that represents the asynchronous operation</returns>
-    public virtual async Task PrepareCustomAddressAttributesAsync(IList<AddressModel.AddressAttributeModel> models, Address address)
+    public virtual async Task PrepareCustomAddressAttributesAsync(IList<AddressAttributeModel> models, Address address)
     {
         ArgumentNullException.ThrowIfNull(models);
 
         var attributes = await _addressAttributeService.GetAllAttributesAsync();
         foreach (var attribute in attributes)
         {
-            var attributeModel = new AddressModel.AddressAttributeModel
+            var attributeModel = new AddressAttributeModel
             {
                 Id = attribute.Id,
                 Name = attribute.Name,
@@ -248,7 +248,7 @@ public partial class AddressAttributeModelFactory : IAddressAttributeModelFactor
                 var attributeValues = await _addressAttributeService.GetAttributeValuesAsync(attribute.Id);
                 foreach (var attributeValue in attributeValues)
                 {
-                    var attributeValueModel = new AddressModel.AddressAttributeValueModel
+                    var attributeValueModel = new AddressAttributeValueModel
                     {
                         Id = attributeValue.Id,
                         Name = attributeValue.Name,
