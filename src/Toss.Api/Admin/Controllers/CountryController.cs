@@ -14,7 +14,7 @@ using Toss.Api.Admin.Factories;
 using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
 using Toss.Api.Admin.Models.Directory;
 
-namespace Nop.Web.Areas.Admin.Controllers
+namespace Toss.Api.Admin.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -259,9 +259,9 @@ namespace Nop.Web.Areas.Admin.Controllers
             else
             {
                 var defaultLabel = country == null
-                    ? (addSelectStateItem == true
+                    ? addSelectStateItem == true
                         ? await _localizationService.GetResourceAsync("Admin.Address.SelectState")
-                        : await _localizationService.GetResourceAsync("Admin.Address.Other"))
+                        : await _localizationService.GetResourceAsync("Admin.Address.Other")
                     : await _localizationService.GetResourceAsync("Admin.Address.Other");
                 result.Insert(0, new { id = 0, name = defaultLabel });
             }

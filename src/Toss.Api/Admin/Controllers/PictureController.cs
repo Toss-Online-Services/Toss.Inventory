@@ -2,7 +2,7 @@
 using Nop.Core.Http.Extensions;
 using Nop.Services.Media;
 
-namespace Nop.Web.Areas.Admin.Controllers
+namespace Toss.Api.Admin.Controllers
 {
     [Route("api/admin/[controller]")]
     [ApiController]

@@ -6,7 +6,7 @@ using Nop.Core.Infrastructure;
 using Nop.Services.Media;
 using ILogger = Nop.Services.Logging.ILogger;
 
-namespace Nop.Web.Areas.Admin.Controllers
+namespace Toss.Api.Admin.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

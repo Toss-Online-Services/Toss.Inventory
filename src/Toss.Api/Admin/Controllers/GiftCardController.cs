@@ -16,7 +16,7 @@ using Toss.Api.Admin.Factories;
 using Toss.Api.Admin.Infrastructure.Mapper.Extensions;
 using Toss.Api.Admin.Models.Orders;
 
-namespace Nop.Web.Areas.Admin.Controllers;
+namespace Toss.Api.Admin.Controllers;
 
 [ApiController]
 [Route("api/admin/[controller]")]
