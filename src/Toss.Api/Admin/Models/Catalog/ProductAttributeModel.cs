@@ -1,4 +1,5 @@
-﻿using Nop.Web.Framework.Models;
+﻿using Nop.Core.Domain.Catalog;
+using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
 namespace Toss.Api.Admin.Models.Catalog;
@@ -33,16 +34,16 @@ public partial record ProductAttributeModel : BaseNopEntityModel, ILocalizedMode
 
     public ProductAttributeProductSearchModel ProductAttributeProductSearchModel { get; set; }
 
+    public int ProductAttributeId { get; set; }
+
+    public string TextPrompt { get; set; }
+
+    public bool IsRequired { get; set; }
+
+    public AttributeControlType AttributeControlType { get; set; }
+
+    public IList<ProductAttributeValueModel> Values { get; set; }
+
+
     #endregion
-}
-
-public partial record ProductAttributeLocalizedModel : ILocalizedLocaleModel
-{
-    public int LanguageId { get; set; }
-
-    [NopResourceDisplayName("Admin.Catalog.Attributes.ProductAttributes.Fields.Name")]
-    public string Name { get; set; }
-
-    [NopResourceDisplayName("Admin.Catalog.Attributes.ProductAttributes.Fields.Description")]
-    public string Description { get; set; }
 }

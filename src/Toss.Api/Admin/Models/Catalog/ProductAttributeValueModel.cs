@@ -91,14 +91,9 @@ public partial record ProductAttributeValueModel : BaseNopEntityModel, ILocalize
     public IList<ProductPictureModel> ProductPictureModels { get; set; }
 
     public IList<ProductAttributeValueLocalizedModel> Locales { get; set; }
+    public string Checked { get; set; }
+
+
 
     #endregion
-}
-
-public partial record ProductAttributeValueLocalizedModel : ILocalizedLocaleModel
-{
-    public int LanguageId { get; set; }
-
-    [NopResourceDisplayName("Admin.Catalog.Products.ProductAttributes.Attributes.Values.Fields.Name")]
-    public string Name { get; set; }
 }

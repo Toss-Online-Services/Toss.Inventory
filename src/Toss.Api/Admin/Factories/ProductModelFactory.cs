@@ -318,7 +318,7 @@ public partial class ProductModelFactory : IProductModelFactory
             .ToList();
         foreach (var attribute in attributes)
         {
-            var attributeModel = new ProductAttributeConditionModel.ProductAttributeModel
+            var attributeModel = new ProductAttributeModel
             {
                 Id = attribute.Id,
                 ProductAttributeId = attribute.ProductAttributeId,
@@ -334,7 +334,7 @@ public partial class ProductModelFactory : IProductModelFactory
                 var attributeValues = await _productAttributeService.GetProductAttributeValuesAsync(attribute.Id);
                 foreach (var attributeValue in attributeValues)
                 {
-                    var attributeValueModel = new ProductAttributeConditionModel.ProductAttributeValueModel
+                    var attributeValueModel = new ProductAttributeValueModel
                     {
                         Id = attributeValue.Id,
                         Name = attributeValue.Name,
@@ -2365,7 +2365,7 @@ public partial class ProductModelFactory : IProductModelFactory
 
         foreach (var attribute in attributes)
         {
-            var attributeModel = new ProductAttributeCombinationModel.ProductAttributeModel
+            var attributeModel = new ProductAttributeModel
             {
                 Id = attribute.Id,
                 ProductAttributeId = attribute.ProductAttributeId,
@@ -2382,7 +2382,7 @@ public partial class ProductModelFactory : IProductModelFactory
                 var preSelectedValue = _productAttributeParser.ParseValues(model.AttributesXml, attribute.Id);
                 foreach (var attributeValue in attributeValues)
                 {
-                    var attributeValueModel = new ProductAttributeCombinationModel.ProductAttributeValueModel
+                    var attributeValueModel = new ProductAttributeValueModel
                     {
                         Id = attributeValue.Id,
                         Name = attributeValue.Name,

@@ -762,7 +762,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Cross-sell products
 
-        [HttpPost]
+        [HttpPost("create-list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> CrossSellProductList(CrossSellProductSearchModel searchModel)
         {
@@ -781,7 +781,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpDelete("delete")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> CrossSellProductDelete(int id)
         {
@@ -803,6 +803,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok();
         }
 
+        [HttpGet("{productId}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> CrossSellProductAddPopup(int productId)
         {
@@ -812,7 +813,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("add-popup-list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> CrossSellProductAddPopupList(AddCrossSellProductSearchModel searchModel)
         {
@@ -822,7 +823,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("add-popup")]
         [FormValueRequired("save")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> CrossSellProductAddPopup(AddCrossSellProductModel model)

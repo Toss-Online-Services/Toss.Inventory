@@ -763,7 +763,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Product attribute combinations
 
-        [HttpPost]
+        [HttpPost("create-list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
         public virtual async Task<IActionResult> ProductAttributeCombinationList(ProductAttributeCombinationSearchModel searchModel)
         {
@@ -782,7 +782,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpDelete("delete")]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductAttributeCombinationDelete(int id)
         {
@@ -804,6 +804,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok();
         }
 
+        [HttpGet("{productId}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductAttributeCombinationCreatePopup(int productId)
         {
@@ -823,7 +824,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("create-popup")]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductAttributeCombinationCreatePopup(int productId, ProductAttributeCombinationModel model, IFormCollection form)
         {
@@ -882,6 +883,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
+        [HttpGet("get-popup/{productId}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
         public virtual async Task<IActionResult> ProductAttributeCombinationGeneratePopup(int productId)
@@ -902,15 +904,13 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("generate-popup")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
         public virtual async Task<IActionResult> ProductAttributeCombinationGeneratePopup(IFormCollection form, ProductAttributeCombinationModel model)
         {
             //try to get a product with the specified id
-            var product = await _productService.GetProductByIdAsync(model.ProductId);
-            if (product == null)
-                return RedirectToAction("List", "Product");
+            var product = await _productService.GetProductByIdAsync(model.ProductId) ?? throw new ArgumentException("No product found with the specified id");
 
             var allowedAttributeIds = form.Keys.Where(key => key.Contains("attribute_value_"))
                 .Select(key => int.TryParse(form[key], out var id) ? id : 0).Where(id => id > 0).ToList();
@@ -944,6 +944,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(new ProductAttributeCombinationModel());
         }
 
+        [HttpPut("edit-popup/{id}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
         public virtual async Task<IActionResult> ProductAttributeCombinationEditPopup(int id)
@@ -969,7 +970,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPut("edit-popup")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
         public virtual async Task<IActionResult> ProductAttributeCombinationEditPopup(ProductAttributeCombinationModel model, IFormCollection form)
@@ -1035,7 +1036,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("combinations/{productId}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_ATTRIBUTES_VIEW)]
         public virtual async Task<IActionResult> GenerateAllAttributeCombinations(int productId)

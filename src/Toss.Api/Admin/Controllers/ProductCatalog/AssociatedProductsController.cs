@@ -75,7 +75,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
         protected readonly IWebHelper _webHelper;
         protected readonly IWorkContext _workContext;
         protected readonly VendorSettings _vendorSettings;
-        private static readonly char[] _separator = [','];
+        private static readonly char[] _separator = new[] { ',' };
 
         #endregion
 
@@ -762,7 +762,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Associated products
 
-        [HttpPost]
+        [HttpPost("create-list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> AssociatedProductList(AssociatedProductSearchModel searchModel)
         {
@@ -781,7 +781,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPut("update")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> AssociatedProductUpdate(AssociatedProductModel model)
         {
@@ -800,7 +800,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok();
         }
 
-        [HttpPost]
+        [HttpDelete("delete")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> AssociatedProductDelete(int id)
         {
@@ -819,6 +819,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok();
         }
 
+        [HttpGet("{productId}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> AssociatedProductAddPopup(int productId)
         {
@@ -828,7 +829,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("add-popup-list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> AssociatedProductAddPopupList(AddAssociatedProductSearchModel searchModel)
         {
@@ -838,7 +839,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]        
+        [HttpPost("add-popup")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> AssociatedProductAddPopup(AddAssociatedProductModel model)
         {

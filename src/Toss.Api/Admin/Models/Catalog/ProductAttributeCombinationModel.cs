@@ -66,37 +66,5 @@ public partial record ProductAttributeCombinationModel : BaseNopEntityModel
     public IList<string> Warnings { get; set; }
 
     #endregion
-
-    #region Nested classes
-
-    public partial record ProductAttributeModel : BaseNopEntityModel
-    {
-        public ProductAttributeModel()
-        {
-            Values = new List<ProductAttributeValueModel>();
-        }
-
-        public int ProductAttributeId { get; set; }
-
-        public string Name { get; set; }
-
-        public string TextPrompt { get; set; }
-
-        public bool IsRequired { get; set; }
-
-        public AttributeControlType AttributeControlType { get; set; }
-
-        public IList<ProductAttributeValueModel> Values { get; set; }
-    }
-
-    public partial record ProductAttributeValueModel : BaseNopEntityModel
-    {
-        public string Name { get; set; }
-
-        public bool IsPreSelected { get; set; }
-
-        public string Checked { get; set; }
-    }
-
-    #endregion
+      
 }

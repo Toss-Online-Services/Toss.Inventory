@@ -87,35 +87,5 @@ public partial record AddressModel : BaseNopEntityModel
     public bool PhoneRequired { get; set; }
     public bool FaxRequired { get; set; }
 
-    #region Nested classes
-
-    //public partial record AddressAttributeModel : BaseNopEntityModel
-    //{
-    //    public AddressAttributeModel()
-    //    {
-    //        Values = new List<AddressAttributeValueModel>();
-    //    }
-
-    //    public string Name { get; set; }
-
-    //    public bool IsRequired { get; set; }
-
-    //    /// <summary>
-    //    /// Selected value for textboxes
-    //    /// </summary>
-    //    public string DefaultValue { get; set; }
-
-    //    public AttributeControlType AttributeControlType { get; set; }
-
-    //    public IList<AddressAttributeValueModel> Values { get; set; }
-    //}
-
-    ////public partial record AddressAttributeValueModel : BaseNopEntityModel
-    //{
-    //    public string Name { get; set; }
-
-    //    public bool IsPreSelected { get; set; }
-    //}
-
-    #endregion
+   
 }
