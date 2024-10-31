@@ -1,4 +1,5 @@
-﻿using Nop.Web.Framework.Models;
+﻿using Nop.Core.Domain.Catalog;
+using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
 namespace Toss.Api.Admin.Models.Vendors;
@@ -37,7 +38,16 @@ public partial record VendorAttributeModel : BaseNopEntityModel, ILocalizedModel
 
     public IList<VendorAttributeLocalizedModel> Locales { get; set; }
 
-    public VendorAttributeValueSearchModel VendorAttributeValueSearchModel { get; set; }
+    public VendorAttributeValueSearchModel VendorAttributeValueSearchModel { get; set; }   
+
+    /// <summary>
+    /// Default value for textboxes
+    /// </summary>
+    public string DefaultValue { get; set; }
+
+    public AttributeControlType AttributeControlType { get; set; }
+
+    public IList<VendorAttributeValueModel> Values { get; set; }
 
     #endregion
 }

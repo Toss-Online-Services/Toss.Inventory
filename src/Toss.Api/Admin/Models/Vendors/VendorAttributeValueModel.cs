@@ -34,11 +34,3 @@ public partial record VendorAttributeValueModel : BaseNopEntityModel, ILocalized
 
     #endregion
 }
-
-public partial record VendorAttributeValueLocalizedModel : ILocalizedLocaleModel
-{
-    public int LanguageId { get; set; }
-
-    [NopResourceDisplayName("Admin.Vendors.VendorAttributes.Values.Fields.Name")]
-    public string Name { get; set; }
-}

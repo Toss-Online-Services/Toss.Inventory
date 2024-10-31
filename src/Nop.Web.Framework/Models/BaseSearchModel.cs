@@ -23,7 +23,7 @@ public abstract partial record BaseSearchModel : BaseNopModel, IPagingRequestMod
     /// <summary>
     /// Gets a page number
     /// </summary>
-    public int Page => (Start / Length) + 1;
+    public int Page => Start != 0 || Length != 0 ? (Start / Length) + 1 : 1;
 
     /// <summary>
     /// Gets a page size

@@ -108,7 +108,7 @@ public partial class VendorModelFactory : IVendorModelFactory
     /// <param name="models">List of vendor attribute models</param>
     /// <param name="vendor">Vendor</param>
     /// <returns>A task that represents the asynchronous operation</returns>
-    protected virtual async Task PrepareVendorAttributeModelsAsync(IList<VendorModel.VendorAttributeModel> models, Vendor vendor)
+    protected virtual async Task PrepareVendorAttributeModelsAsync(IList<VendorAttributeModel> models, Vendor vendor)
     {
         ArgumentNullException.ThrowIfNull(models);
 
@@ -116,7 +116,7 @@ public partial class VendorModelFactory : IVendorModelFactory
         var vendorAttributes = await _vendorAttributeService.GetAllAttributesAsync();
         foreach (var attribute in vendorAttributes)
         {
-            var attributeModel = new VendorModel.VendorAttributeModel
+            var attributeModel = new VendorAttributeModel
             {
                 Id = attribute.Id,
                 Name = attribute.Name,
@@ -130,7 +130,7 @@ public partial class VendorModelFactory : IVendorModelFactory
                 var attributeValues = await _vendorAttributeService.GetAttributeValuesAsync(attribute.Id);
                 foreach (var attributeValue in attributeValues)
                 {
-                    var attributeValueModel = new VendorModel.VendorAttributeValueModel
+                    var attributeValueModel = new VendorAttributeValueModel
                     {
                         Id = attributeValue.Id,
                         Name = attributeValue.Name,

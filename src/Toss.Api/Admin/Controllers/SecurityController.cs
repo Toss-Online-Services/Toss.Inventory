@@ -56,7 +56,7 @@ namespace Toss.Api.Admin.Controllers
         {
             if (!_menuSystemNames.Any())
             {
-                await _xmlSiteMap.LoadFromAsync("~/Areas/Admin/sitemap.config");
+                await _xmlSiteMap.LoadFromAsync("~/Admin/sitemap.config");
 
                 void FillSystemNames(SiteMapNode node)
                 {
