@@ -58,18 +58,5 @@ public partial record ShipmentItemModel : BaseNopEntityModel
     //used before a shipment is created
     public List<WarehouseInfo> AvailableWarehouses { get; set; }
 
-    #endregion
-
-    #region Nested Classes
-
-    public partial record WarehouseInfo : BaseNopModel
-    {
-        public int WarehouseId { get; set; }
-        public string WarehouseName { get; set; }
-        public int StockQuantity { get; set; }
-        public int ReservedQuantity { get; set; }
-        public int PlannedQuantity { get; set; }
-    }
-
-    #endregion
+#endregion
 }

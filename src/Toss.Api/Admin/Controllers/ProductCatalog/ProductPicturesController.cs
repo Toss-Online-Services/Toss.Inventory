@@ -762,7 +762,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Product pictures
 
-        [HttpPost]
+        [HttpPost("add")]
         [IgnoreAntiforgeryToken]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductPictureAdd(int productId, IFormCollection form)
@@ -811,7 +811,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(new { success = true });
         }
 
-        [HttpPost]
+        [HttpPost("list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> ProductPictureList(ProductPictureSearchModel searchModel)
         {
@@ -830,7 +830,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("update")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductPictureUpdate(ProductPictureModel model)
         {
@@ -864,7 +864,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPost("delete/{id}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductPictureDelete(int id)
         {

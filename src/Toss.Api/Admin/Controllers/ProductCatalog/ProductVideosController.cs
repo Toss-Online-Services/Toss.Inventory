@@ -763,7 +763,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Product videos
 
-        [HttpPost]
+        [HttpPost("add")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductVideoAdd(int productId, [Validate] ProductVideoModel model)
         {
@@ -829,7 +829,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(new { success = true });
         }
 
-        [HttpPost]
+        [HttpPost("list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> ProductVideoList(ProductVideoSearchModel searchModel)
         {
@@ -848,7 +848,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("update")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductVideoUpdate([Validate] ProductVideoModel model)
         {
@@ -894,7 +894,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPost("delete/{id:int}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductVideoDelete(int id)
         {

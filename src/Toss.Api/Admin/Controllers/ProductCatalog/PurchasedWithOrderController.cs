@@ -762,7 +762,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Purchased with order
 
-        [HttpPost]
+        [HttpPost("purchased_with_orders")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         [CheckPermission(StandardPermission.Orders.ORDERS_VIEW)]
         public virtual async Task<IActionResult> PurchasedWithOrders(ProductOrderSearchModel searchModel)

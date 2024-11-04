@@ -10,12 +10,6 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Admin\Controllers\ProductCatalog\**" />
-    <Content Remove="Admin\Controllers\ProductCatalog\**" />
-    <EmbeddedResource Remove="Admin\Controllers\ProductCatalog\**" />
-    <None Remove="Admin\Controllers\ProductCatalog\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />

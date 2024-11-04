@@ -762,7 +762,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Product list / create / edit / delete
 
-
+        [HttpGet("list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> List()
         {
@@ -772,7 +772,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("product-list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> ProductList(ProductSearchModel searchModel)
         {
@@ -782,7 +782,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost, ActionName("List")]
+        [HttpPost("go-to-product-by-sku")]
         [FormValueRequired("go-to-product-by-sku")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> GoToSku(ProductSearchModel searchModel)
@@ -798,6 +798,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return await List();
         }
 
+        [HttpGet("create")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> Create(bool showtour = false)
         {
@@ -829,9 +830,9 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
+        [HttpPost("create")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
-        public virtual async Task<IActionResult> Create(ProductModel model, bool continueEditing)
+        public virtual async Task<IActionResult> Create(bool continueEditing, ProductModel model)
         {
             //validate maximum number of products per vendor
             var currentVendor = await _workContext.GetCurrentVendorAsync();
@@ -905,7 +906,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             //if we got this far, something failed, redisplay form
             return BadRequest(model);
         }
-
+        [HttpGet("edit/{id}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> Edit(int id)
         {
@@ -925,7 +926,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
+        [HttpPost("edit")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> Edit(ProductModel model, bool continueEditing)
         {
@@ -1093,7 +1094,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return BadRequest("Something went wrong");
         }
 
-        [HttpPost]
+        [HttpPost("delete/{id}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> Delete(int id)
         {
@@ -1118,7 +1119,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok("Product Deleted");
         }
 
-        [HttpPost]
+        [HttpPost("delete-selected")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> DeleteSelected(ICollection<int> selectedIds)
         {
@@ -1132,7 +1133,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(new { Result = true });
         }
 
-        [HttpPost]
+        [HttpPost("copy-product")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> CopyProduct(ProductModel model)
         {
@@ -1160,6 +1161,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
         }
 
         //action displaying notification (warning) to a store owner that entered SKU already exists
+        [HttpGet("sku-reserved-warning")]
         public virtual async Task<IActionResult> SkuReservedWarning(int productId, string sku)
         {
             string message;

@@ -762,7 +762,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Required products
 
-        [HttpPost]
+        [HttpPost("load_product_friendly_names")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> LoadProductFriendlyNames(string productIds)
         {
@@ -794,6 +794,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(new { Text = result });
         }
 
+        [HttpGet("required_product_add_popup")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> RequiredProductAddPopup()
         {
@@ -803,7 +804,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("required_product_add_popup_list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> RequiredProductAddPopupList(AddRequiredProductSearchModel searchModel)
         {

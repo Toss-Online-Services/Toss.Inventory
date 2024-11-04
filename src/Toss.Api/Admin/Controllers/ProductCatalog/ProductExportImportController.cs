@@ -763,7 +763,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Export / Import
 
-        [HttpPost, ActionName("DownloadCatalogPDF")]
+        [HttpPost("download-catalog-pdf")]
         [FormValueRequired("download-catalog-pdf")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
         public virtual async Task<IActionResult> DownloadCatalogAsPdf(ProductSearchModel model)
@@ -818,7 +818,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             }
         }
 
-        [HttpPost, ActionName("ExportToXml")]
+        [HttpPost()]
         [FormValueRequired("exportxml-all")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
         public virtual async Task<IActionResult> ExportXmlAll(ProductSearchModel model)
@@ -868,7 +868,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             }
         }
 
-        [HttpPost]
+        [HttpPost("export_xml_selected")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
         public virtual async Task<IActionResult> ExportXmlSelected(string selectedIds)
         {
@@ -900,7 +900,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             }
         }
 
-        [HttpPost, ActionName("ExportToExcel")]
+        [HttpPost("export-to-xml")]
         [FormValueRequired("exportexcel-all")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
         public virtual async Task<IActionResult> ExportExcelAll(ProductSearchModel model)
@@ -951,7 +951,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             }
         }
 
-        [HttpPost]
+        [HttpPost("export_excel_selected")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
         public virtual async Task<IActionResult> ExportExcelSelected(string selectedIds)
         {
@@ -984,7 +984,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             }
         }
 
-        [HttpPost]
+        [HttpPost("import-excel")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_IMPORT_EXPORT)]
         public virtual async Task<IActionResult> ImportExcel(IFormFile importexcelfile)
         {

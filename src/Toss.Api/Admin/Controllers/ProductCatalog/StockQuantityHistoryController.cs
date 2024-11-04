@@ -771,7 +771,7 @@ public partial class StockQuantityHistoryController : ControllerBase
 
     #region Stock quantity history
 
-    [HttpPost]
+    [HttpPost("stock_quantity_history")]
     [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
     public virtual async Task<IActionResult> StockQuantityHistory(StockQuantityHistorySearchModel searchModel)
     {

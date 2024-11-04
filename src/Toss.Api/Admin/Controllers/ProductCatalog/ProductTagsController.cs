@@ -762,6 +762,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Product tags
 
+        [HttpGet("list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_TAGS_VIEW)]
         public virtual async Task<IActionResult> ProductTags()
@@ -772,7 +773,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("search")]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_TAGS_VIEW)]
         public virtual async Task<IActionResult> ProductTags(ProductTagSearchModel searchModel)
         {
@@ -782,7 +783,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("delete/{id:int}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_TAGS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductTagDelete(int id)
         {
@@ -797,7 +798,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok("Deleted");
         }
 
-        [HttpPost]
+        [HttpPost("delete-multiple")]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_TAGS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> ProductTagsDelete(ICollection<int> selectedIds)
         {
@@ -809,7 +810,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
             return Ok(new { Result = true });
         }
-
+        [HttpGet("edit/{id:int}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_TAGS_VIEW)]
         public virtual async Task<IActionResult> EditProductTag(int id)
         {
@@ -823,7 +824,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
+        [HttpPost("edit")]
         [CheckPermission(StandardPermission.Catalog.PRODUCT_TAGS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> EditProductTag(ProductTagModel model, bool continueEditing)
         {

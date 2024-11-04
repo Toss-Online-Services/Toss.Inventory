@@ -762,7 +762,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
         #region Tier prices
 
-        [HttpPost]
+        [HttpPost("tier-price-list")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> TierPriceList(TierPriceSearchModel searchModel)
         {
@@ -780,7 +780,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
 
             return Ok(model);
         }
-
+        [HttpGet("tier-price-create-popup/{productId:int}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> TierPriceCreatePopup(int productId)
         {
@@ -794,7 +794,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("tier_price_create_popup")]
         [FormValueRequired("save")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> TierPriceCreatePopup(TierPriceModel model)
@@ -827,6 +827,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
+        [HttpGet("tier-price-edit-popup")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_VIEW)]
         public virtual async Task<IActionResult> TierPriceEditPopup(int id)
         {
@@ -848,7 +849,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("tier_price_edit_popup")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> TierPriceEditPopup(TierPriceModel model)
         {
@@ -881,7 +882,7 @@ namespace Toss.Api.Admin.Controllers.ProductCatalog
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPost("tier_price_delete/{id:int}")]
         [CheckPermission(StandardPermission.Catalog.PRODUCTS_CREATE_EDIT_DELETE)]
         public virtual async Task<IActionResult> TierPriceDelete(int id)
         {

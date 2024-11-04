@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Nop.Core.Domain.Catalog;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
@@ -252,62 +251,5 @@ public partial record CustomerModel : BaseNopEntityModel, IAclSupportedModel
 
     public CustomerAssociatedExternalAuthRecordsSearchModel CustomerAssociatedExternalAuthRecordsSearchModel { get; set; }
 
-    #endregion
-
-    #region Nested classes
-
-    public partial record SendEmailModel : BaseNopModel
-    {
-        [NopResourceDisplayName("Admin.Customers.Customers.SendEmail.Subject")]
-        public string Subject { get; set; }
-
-        [NopResourceDisplayName("Admin.Customers.Customers.SendEmail.Body")]
-        public string Body { get; set; }
-
-        [NopResourceDisplayName("Admin.Customers.Customers.SendEmail.SendImmediately")]
-        public bool SendImmediately { get; set; }
-
-        [NopResourceDisplayName("Admin.Customers.Customers.SendEmail.DontSendBeforeDate")]
-        [UIHint("DateTimeNullable")]
-        public DateTime? DontSendBeforeDate { get; set; }
-    }
-
-    public partial record SendPmModel : BaseNopModel
-    {
-        [NopResourceDisplayName("Admin.Customers.Customers.SendPM.Subject")]
-        public string Subject { get; set; }
-
-        [NopResourceDisplayName("Admin.Customers.Customers.SendPM.Message")]
-        public string Message { get; set; }
-    }
-
-    public partial record CustomerAttributeModel : BaseNopEntityModel
-    {
-        public CustomerAttributeModel()
-        {
-            Values = new List<CustomerAttributeValueModel>();
-        }
-
-        public string Name { get; set; }
-
-        public bool IsRequired { get; set; }
-
-        /// <summary>
-        /// Default value for textboxes
-        /// </summary>
-        public string DefaultValue { get; set; }
-
-        public AttributeControlType AttributeControlType { get; set; }
-
-        public IList<CustomerAttributeValueModel> Values { get; set; }
-    }
-
-    public partial record CustomerAttributeValueModel : BaseNopEntityModel
-    {
-        public string Name { get; set; }
-
-        public bool IsPreSelected { get; set; }
-    }
-
-    #endregion
+#endregion
 }
