@@ -34,7 +34,7 @@
 //using Toss.Api.Admin.Models.Customers;
 
 //namespace Nop.Web.Areas.Admin.Controllers;
-////TODO: thisight be buggy 
+//TODO: thisight be buggy 
 //[ApiController]
 //[Route("api/[controller]")]
 //public partial class CustomerController : ControllerBase
@@ -159,7 +159,7 @@
 
 //        ArgumentNullException.ThrowIfNull(existingCustomerRoles);
 
-//        //check ACL permission to manage customer roles
+//        check ACL permission to manage customer roles
 //        var rolesToAdd = customerRoles.Except(existingCustomerRoles, new CustomerRoleComparerByName());
 //        var rolesToDelete = existingCustomerRoles.Except(customerRoles, new CustomerRoleComparerByName());
 //        if (rolesToAdd.Any(role => role.SystemName != NopCustomerDefaults.RegisteredRoleName) || rolesToDelete.Any())
@@ -168,8 +168,8 @@
 //                return await _localizationService.GetResourceAsync("Admin.Customers.Customers.CustomerRolesManagingError");
 //        }
 
-//        //ensure a customer is not added to both 'Guests' and 'Registered' customer roles
-//        //ensure that a customer is in at least one required role ('Guests' and 'Registered')
+//        ensure a customer is not added to both 'Guests' and 'Registered' customer roles
+//        ensure that a customer is in at least one required role ('Guests' and 'Registered')
 //        var isInGuestsRole = customerRoles.FirstOrDefault(cr => cr.SystemName == NopCustomerDefaults.GuestsRoleName) != null;
 //        var isInRegisteredRole = customerRoles.FirstOrDefault(cr => cr.SystemName == NopCustomerDefaults.RegisteredRoleName) != null;
 //        if (isInGuestsRole && isInRegisteredRole)
@@ -177,7 +177,7 @@
 //        if (!isInGuestsRole && !isInRegisteredRole)
 //            return await _localizationService.GetResourceAsync("Admin.Customers.Customers.AddCustomerToGuestsOrRegisteredRoleError");
 
-//        //no errors
+//        no errors
 //        return string.Empty;
 //    }
 
@@ -222,7 +222,7 @@
 
 //                    break;
 //                case AttributeControlType.ReadonlyCheckboxes:
-//                    //load read-only (already server-side selected) values
+//                    load read-only (already server-side selected) values
 //                    var attributeValues = await _customerAttributeService.GetAttributeValuesAsync(attribute.Id);
 //                    foreach (var selectedAttributeId in attributeValues
 //                                 .Where(v => v.IsPreSelected)
@@ -249,7 +249,7 @@
 //                case AttributeControlType.ColorSquares:
 //                case AttributeControlType.ImageSquares:
 //                case AttributeControlType.FileUpload:
-//                //not supported customer attributes
+//                not supported customer attributes
 //                default:
 //                    break;
 //            }
@@ -272,7 +272,7 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_VIEW)]
 //    public virtual async Task<IActionResult> List()
 //    {
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerSearchModelAsync(new CustomerSearchModel());
 
 //        return Ok(model);
@@ -282,16 +282,16 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_VIEW)]
 //    public virtual async Task<IActionResult> CustomerList(CustomerSearchModel searchModel)
 //    {
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerListModelAsync(searchModel);
 
-//         return Ok(model);
+//        return Ok(model);
 //    }
 
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> Create()
 //    {
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerModelAsync(new CustomerModel(), null);
 
 //        return Ok(model);
@@ -311,7 +311,7 @@
 //            ModelState.AddModelError(string.Empty, "Username is already registered");
 //        }
 
-//        //validate customer roles
+//        validate customer roles
 //        var allCustomerRoles = await _customerService.GetAllCustomerRolesAsync(true);
 //        var newCustomerRoles = new List<CustomerRole>();
 //        foreach (var customerRole in allCustomerRoles)
@@ -324,7 +324,7 @@
 //            _notificationService.ErrorNotification(customerRolesError);
 //        }
 
-//        // Ensure that valid email address is entered if Registered role is checked to avoid registered customers with empty email address
+//         Ensure that valid email address is entered if Registered role is checked to avoid registered customers with empty email address
 //        if (newCustomerRoles.Any() && newCustomerRoles.FirstOrDefault(c => c.SystemName == NopCustomerDefaults.RegisteredRoleName) != null &&
 //            !CommonHelper.IsValidEmail(model.Email))
 //        {
@@ -333,7 +333,7 @@
 //            _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.ValidEmailRequiredRegisteredRole"));
 //        }
 
-//        //custom customer attributes
+//        custom customer attributes
 //        var customerAttributesXml = await ParseCustomCustomerAttributesAsync(form);
 //        if (newCustomerRoles.Any() && newCustomerRoles.FirstOrDefault(c => c.SystemName == NopCustomerDefaults.RegisteredRoleName) != null)
 //        {
@@ -346,7 +346,7 @@
 
 //        if (ModelState.IsValid)
 //        {
-//            //fill entity from model
+//            fill entity from model
 //            var customer = model.ToEntity<Customer>();
 //            var currentStore = await _storeContext.GetCurrentStoreAsync();
 
@@ -355,7 +355,7 @@
 //            customer.LastActivityDateUtc = DateTime.UtcNow;
 //            customer.RegisteredInStoreId = currentStore.Id;
 
-//            //form fields
+//            form fields
 //            if (_dateTimeSettings.AllowCustomersToSetTimeZone)
 //                customer.TimeZoneId = model.TimeZoneId;
 //            if (_customerSettings.GenderEnabled)
@@ -390,7 +390,7 @@
 
 //            await _customerService.InsertCustomerAsync(customer);
 
-//            //newsletter subscriptions
+//            newsletter subscriptions
 //            if (!string.IsNullOrEmpty(customer.Email))
 //            {
 //                var allStores = await _storeService.GetAllStoresAsync();
@@ -401,7 +401,7 @@
 //                    if (model.SelectedNewsletterSubscriptionStoreIds != null &&
 //                        model.SelectedNewsletterSubscriptionStoreIds.Contains(store.Id))
 //                    {
-//                        //subscribed
+//                        subscribed
 //                        if (newsletterSubscription == null)
 //                        {
 //                            await _newsLetterSubscriptionService.InsertNewsLetterSubscriptionAsync(new NewsLetterSubscription
@@ -417,7 +417,7 @@
 //                    }
 //                    else
 //                    {
-//                        //not subscribed
+//                        not subscribed
 //                        if (newsletterSubscription != null)
 //                        {
 //                            await _newsLetterSubscriptionService.DeleteNewsLetterSubscriptionAsync(newsletterSubscription);
@@ -426,7 +426,7 @@
 //                }
 //            }
 
-//            //password
+//            password
 //            if (!string.IsNullOrWhiteSpace(model.Password))
 //            {
 //                var changePassRequest = new ChangePasswordRequest(model.Email, false, _customerSettings.DefaultPasswordFormat, model.Password);
@@ -438,10 +438,10 @@
 //                }
 //            }
 
-//            //customer roles
+//            customer roles
 //            foreach (var customerRole in newCustomerRoles)
 //            {
-//                //ensure that the current customer cannot add to "Administrators" system role if he's not an admin himself
+//                ensure that the current customer cannot add to "Administrators" system role if he's not an admin himself
 //                if (customerRole.SystemName == NopCustomerDefaults.AdministratorsRoleName && !await _customerService.IsAdminAsync(await _workContext.GetCurrentCustomerAsync()))
 //                    continue;
 
@@ -450,8 +450,8 @@
 
 //            await _customerService.UpdateCustomerAsync(customer);
 
-//            //ensure that a customer with a vendor associated is not in "Administrators" role
-//            //otherwise, he won't have access to other functionality in admin area
+//            ensure that a customer with a vendor associated is not in "Administrators" role
+//            otherwise, he won't have access to other functionality in admin area
 //            if (await _customerService.IsAdminAsync(customer) && customer.VendorId > 0)
 //            {
 //                customer.VendorId = 0;
@@ -460,8 +460,8 @@
 //                _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.AdminCouldNotbeVendor"));
 //            }
 
-//            //ensure that a customer in the Vendors role has a vendor account associated.
-//            //otherwise, he will have access to ALL products
+//            ensure that a customer in the Vendors role has a vendor account associated.
+//            otherwise, he will have access to ALL products
 //            if (await _customerService.IsVendorAsync(customer) && customer.VendorId == 0)
 //            {
 //                var vendorRole = await _customerService.GetCustomerRoleBySystemNameAsync(NopCustomerDefaults.VendorsRoleName);
@@ -470,7 +470,7 @@
 //                _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.CannotBeInVendoRoleWithoutVendorAssociated"));
 //            }
 
-//            //activity log
+//            activity log
 //            await _customerActivityService.InsertActivityAsync("AddNewCustomer",
 //                string.Format(await _localizationService.GetResourceAsync("ActivityLog.AddNewCustomer"), customer.Id), customer);
 //            _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.Added"));
@@ -481,22 +481,22 @@
 //            return RedirectToAction("Edit", new { id = customer.Id });
 //        }
 
-//        //prepare model
+//        prepare model
 //        model = await _customerModelFactory.PrepareCustomerModelAsync(model, null, true);
 
-//        //if we got this far, something failed, redisplay form
+//        if we got this far, something failed, redisplay form
 //        return Ok(model);
 //    }
 
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_VIEW)]
 //    public virtual async Task<IActionResult> Edit(int id)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(id);
 //        if (customer == null || customer.Deleted)
 //            return Ok();
 
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerModelAsync(null, customer);
 
 //        return Ok(model);
@@ -507,12 +507,12 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> Edit(CustomerModel model, bool continueEditing, IFormCollection form)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.Id);
 //        if (customer == null || customer.Deleted)
 //            return Ok();
 
-//        //validate customer roles
+//        validate customer roles
 //        var allCustomerRoles = await _customerService.GetAllCustomerRolesAsync(true);
 //        var newCustomerRoles = new List<CustomerRole>();
 //        foreach (var customerRole in allCustomerRoles)
@@ -527,7 +527,7 @@
 //            _notificationService.ErrorNotification(customerRolesError);
 //        }
 
-//        // Ensure that valid email address is entered if Registered role is checked to avoid registered customers with empty email address
+//         Ensure that valid email address is entered if Registered role is checked to avoid registered customers with empty email address
 //        if (newCustomerRoles.Any() && newCustomerRoles.FirstOrDefault(c => c.SystemName == NopCustomerDefaults.RegisteredRoleName) != null &&
 //            !CommonHelper.IsValidEmail(model.Email))
 //        {
@@ -535,7 +535,7 @@
 //            _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.ValidEmailRequiredRegisteredRole"));
 //        }
 
-//        //custom customer attributes
+//        custom customer attributes
 //        var customerAttributesXml = await ParseCustomCustomerAttributesAsync(form);
 //        if (newCustomerRoles.Any() && newCustomerRoles.FirstOrDefault(c => c.SystemName == NopCustomerDefaults.RegisteredRoleName) != null)
 //        {
@@ -553,19 +553,19 @@
 //                customer.AdminComment = model.AdminComment;
 //                customer.IsTaxExempt = model.IsTaxExempt;
 
-//                //prevent deactivation of the last active administrator
+//                prevent deactivation of the last active administrator
 //                if (!await _customerService.IsAdminAsync(customer) || model.Active || await SecondAdminAccountExistsAsync(customer))
 //                    customer.Active = model.Active;
 //                else
 //                    _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.AdminAccountShouldExists.Deactivate"));
 
-//                //email
+//                email
 //                if (!string.IsNullOrWhiteSpace(model.Email))
 //                    await _customerRegistrationService.SetEmailAsync(customer, model.Email, false);
 //                else
 //                    customer.Email = model.Email;
 
-//                //username
+//                username
 //                if (_customerSettings.UsernamesEnabled)
 //                {
 //                    if (!string.IsNullOrWhiteSpace(model.Username))
@@ -574,13 +574,13 @@
 //                        customer.Username = model.Username;
 //                }
 
-//                //VAT number
+//                VAT number
 //                if (_taxSettings.EuVatEnabled)
 //                {
 //                    var prevVatNumber = customer.VatNumber;
 
 //                    customer.VatNumber = model.VatNumber;
-//                    //set VAT number status
+//                    set VAT number status
 //                    if (!string.IsNullOrEmpty(model.VatNumber))
 //                    {
 //                        if (!model.VatNumber.Equals(prevVatNumber, StringComparison.InvariantCultureIgnoreCase))
@@ -592,10 +592,10 @@
 //                        customer.VatNumberStatusId = (int)VatNumberStatus.Empty;
 //                }
 
-//                //vendor
+//                vendor
 //                customer.VendorId = model.VendorId;
 
-//                //form fields
+//                form fields
 //                if (_dateTimeSettings.AllowCustomersToSetTimeZone)
 //                    customer.TimeZoneId = model.TimeZoneId;
 //                if (_customerSettings.GenderEnabled)
@@ -627,10 +627,10 @@
 //                if (_customerSettings.FaxEnabled)
 //                    customer.Fax = model.Fax;
 
-//                //custom customer attributes
+//                custom customer attributes
 //                customer.CustomCustomerAttributesXML = customerAttributesXml;
 
-//                //newsletter subscriptions
+//                newsletter subscriptions
 //                if (!string.IsNullOrEmpty(customer.Email))
 //                {
 //                    var allStores = await _storeService.GetAllStoresAsync();
@@ -641,7 +641,7 @@
 //                        if (model.SelectedNewsletterSubscriptionStoreIds != null &&
 //                            model.SelectedNewsletterSubscriptionStoreIds.Contains(store.Id))
 //                        {
-//                            //subscribed
+//                            subscribed
 //                            if (newsletterSubscription == null)
 //                            {
 //                                await _newsLetterSubscriptionService.InsertNewsLetterSubscriptionAsync(new NewsLetterSubscription
@@ -657,7 +657,7 @@
 //                        }
 //                        else
 //                        {
-//                            //not subscribed
+//                            not subscribed
 //                            if (newsletterSubscription != null)
 //                            {
 //                                await _newsLetterSubscriptionService.DeleteNewsLetterSubscriptionAsync(newsletterSubscription);
@@ -668,31 +668,31 @@
 
 //                var currentCustomerRoleIds = await _customerService.GetCustomerRoleIdsAsync(customer, true);
 
-//                //customer roles
+//                customer roles
 //                foreach (var customerRole in allCustomerRoles)
 //                {
-//                    //ensure that the current customer cannot add/remove to/from "Administrators" system role
-//                    //if he's not an admin himself
+//                    ensure that the current customer cannot add/remove to/from "Administrators" system role
+//                    if he's not an admin himself
 //                    if (customerRole.SystemName == NopCustomerDefaults.AdministratorsRoleName &&
 //                        !await _customerService.IsAdminAsync(await _workContext.GetCurrentCustomerAsync()))
 //                        continue;
 
 //                    if (model.SelectedCustomerRoleIds.Contains(customerRole.Id))
 //                    {
-//                        //new role
+//                        new role
 //                        if (currentCustomerRoleIds.All(roleId => roleId != customerRole.Id))
 //                            await _customerService.AddCustomerRoleMappingAsync(new CustomerCustomerRoleMapping { CustomerId = customer.Id, CustomerRoleId = customerRole.Id });
 //                    }
 //                    else
 //                    {
-//                        //prevent attempts to delete the administrator role from the user, if the user is the last active administrator
+//                        prevent attempts to delete the administrator role from the user, if the user is the last active administrator
 //                        if (customerRole.SystemName == NopCustomerDefaults.AdministratorsRoleName && !await SecondAdminAccountExistsAsync(customer))
 //                        {
 //                            _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.AdminAccountShouldExists.DeleteRole"));
 //                            continue;
 //                        }
 
-//                        //remove role
+//                        remove role
 //                        if (currentCustomerRoleIds.Any(roleId => roleId == customerRole.Id))
 //                            await _customerService.RemoveCustomerRoleMappingAsync(customer, customerRole);
 //                    }
@@ -700,8 +700,8 @@
 
 //                await _customerService.UpdateCustomerAsync(customer);
 
-//                //ensure that a customer with a vendor associated is not in "Administrators" role
-//                //otherwise, he won't have access to the other functionality in admin area
+//                ensure that a customer with a vendor associated is not in "Administrators" role
+//                otherwise, he won't have access to the other functionality in admin area
 //                if (await _customerService.IsAdminAsync(customer) && customer.VendorId > 0)
 //                {
 //                    customer.VendorId = 0;
@@ -709,8 +709,8 @@
 //                    _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.AdminCouldNotbeVendor"));
 //                }
 
-//                //ensure that a customer in the Vendors role has a vendor account associated.
-//                //otherwise, he will have access to ALL products
+//                ensure that a customer in the Vendors role has a vendor account associated.
+//                otherwise, he will have access to ALL products
 //                if (await _customerService.IsVendorAsync(customer) && customer.VendorId == 0)
 //                {
 //                    var vendorRole = await _customerService.GetCustomerRoleBySystemNameAsync(NopCustomerDefaults.VendorsRoleName);
@@ -719,7 +719,7 @@
 //                    _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.CannotBeInVendoRoleWithoutVendorAssociated"));
 //                }
 
-//                //activity log
+//                activity log
 //                await _customerActivityService.InsertActivityAsync("EditCustomer",
 //                    string.Format(await _localizationService.GetResourceAsync("ActivityLog.EditCustomer"), customer.Id), customer);
 
@@ -736,10 +736,10 @@
 //            }
 //        }
 
-//        //prepare model
+//        prepare model
 //        model = await _customerModelFactory.PrepareCustomerModelAsync(model, customer, true);
 
-//        //if we got this far, something failed, redisplay form
+//        if we got this far, something failed, redisplay form
 //        return Ok(model);
 //    }
 
@@ -748,12 +748,12 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> ChangePassword(CustomerModel model)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.Id);
 //        if (customer == null)
 //            return Ok();
 
-//        //ensure that the current customer cannot change passwords of "Administrators" if he's not an admin himself
+//        ensure that the current customer cannot change passwords of "Administrators" if he's not an admin himself
 //        if (await _customerService.IsAdminAsync(customer) && !await _customerService.IsAdminAsync(await _workContext.GetCurrentCustomerAsync()))
 //        {
 //            _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.OnlyAdminCanChangePassword"));
@@ -777,7 +777,7 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> MarkVatNumberAsValid(CustomerModel model)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.Id);
 //        if (customer == null)
 //            return Ok();
@@ -793,7 +793,7 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> MarkVatNumberAsInvalid(CustomerModel model)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.Id);
 //        if (customer == null)
 //            return Ok();
@@ -809,7 +809,7 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> RemoveAffiliate(CustomerModel model)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.Id);
 //        if (customer == null)
 //            return Ok();
@@ -824,14 +824,14 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> RemoveBindMFA(int id)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(id);
 //        if (customer == null)
 //            return Ok();
 
 //        await _genericAttributeService.SaveAttributeAsync(customer, NopCustomerDefaults.SelectedMultiFactorAuthenticationProviderAttribute, string.Empty);
 
-//        //raise event       
+//        raise event       
 //        await _eventPublisher.PublishAsync(new CustomerChangeMultiFactorAuthenticationProviderEvent(customer));
 
 //        _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.UnbindMFAProvider"));
@@ -843,31 +843,31 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> Delete(int id)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(id);
 //        if (customer == null)
 //            return Ok();
 
 //        try
 //        {
-//            //prevent attempts to delete the user, if it is the last active administrator
+//            prevent attempts to delete the user, if it is the last active administrator
 //            if (await _customerService.IsAdminAsync(customer) && !await SecondAdminAccountExistsAsync(customer))
 //            {
 //                _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.AdminAccountShouldExists.DeleteAdministrator"));
 //                return RedirectToAction("Edit", new { id = customer.Id });
 //            }
 
-//            //ensure that the current customer cannot delete "Administrators" if he's not an admin himself
+//            ensure that the current customer cannot delete "Administrators" if he's not an admin himself
 //            if (await _customerService.IsAdminAsync(customer) && !await _customerService.IsAdminAsync(await _workContext.GetCurrentCustomerAsync()))
 //            {
 //                _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.OnlyAdminCanDeleteAdmin"));
 //                return RedirectToAction("Edit", new { id = customer.Id });
 //            }
 
-//            //delete
+//            delete
 //            await _customerService.DeleteCustomerAsync(customer);
 
-//            //remove newsletter subscription (if exists)
+//            remove newsletter subscription (if exists)
 //            foreach (var store in await _storeService.GetAllStoresAsync())
 //            {
 //                var subscription = await _newsLetterSubscriptionService.GetNewsLetterSubscriptionByEmailAndStoreIdAsync(customer.Email, store.Id);
@@ -875,7 +875,7 @@
 //                    await _newsLetterSubscriptionService.DeleteNewsLetterSubscriptionAsync(subscription);
 //            }
 
-//            //activity log
+//            activity log
 //            await _customerActivityService.InsertActivityAsync("DeleteCustomer",
 //                string.Format(await _localizationService.GetResourceAsync("ActivityLog.DeleteCustomer"), customer.Id), customer);
 
@@ -895,7 +895,7 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_IMPERSONATION)]
 //    public virtual async Task<IActionResult> Impersonate(int id)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(id);
 //        if (customer == null)
 //            return Ok();
@@ -907,8 +907,8 @@
 //            return RedirectToAction("Edit", customer.Id);
 //        }
 
-//        //ensure that a non-admin user cannot impersonate as an administrator
-//        //otherwise, that user can simply impersonate as an administrator and gain additional administrative privileges
+//        ensure that a non-admin user cannot impersonate as an administrator
+//        otherwise, that user can simply impersonate as an administrator and gain additional administrative privileges
 //        var currentCustomer = await _workContext.GetCurrentCustomerAsync();
 //        if (!await _customerService.IsAdminAsync(currentCustomer) && await _customerService.IsAdminAsync(customer))
 //        {
@@ -916,13 +916,13 @@
 //            return RedirectToAction("Edit", customer.Id);
 //        }
 
-//        //activity log
+//        activity log
 //        await _customerActivityService.InsertActivityAsync("Impersonation.Started",
 //            string.Format(await _localizationService.GetResourceAsync("ActivityLog.Impersonation.Started.StoreOwner"), customer.Email, customer.Id), customer);
 //        await _customerActivityService.InsertActivityAsync(customer, "Impersonation.Started",
 //            string.Format(await _localizationService.GetResourceAsync("ActivityLog.Impersonation.Started.Customer"), currentCustomer.Email, currentCustomer.Id), currentCustomer);
 
-//        //ensure login is not required
+//        ensure login is not required
 //        customer.RequireReLogin = false;
 //        await _customerService.UpdateCustomerAsync(customer);
 //        await _genericAttributeService.SaveAttributeAsync<int?>(currentCustomer, NopCustomerDefaults.ImpersonatedCustomerIdAttribute, customer.Id);
@@ -935,7 +935,7 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> SendWelcomeMessage(CustomerModel model)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.Id);
 //        if (customer == null)
 //            return Ok();
@@ -952,12 +952,12 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> ReSendActivationMessage(CustomerModel model)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.Id);
 //        if (customer == null)
 //            return Ok();
 
-//        //email validation message
+//        email validation message
 //        await _genericAttributeService.SaveAttributeAsync(customer, NopCustomerDefaults.AccountActivationTokenAttribute, Guid.NewGuid().ToString());
 //        await _workflowMessageService.SendCustomerEmailValidationMessageAsync(customer, (await _workContext.GetWorkingLanguageAsync()).Id);
 
@@ -969,7 +969,7 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> SendEmail(CustomerModel model)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.Id);
 //        if (customer == null)
 //            return Ok();
@@ -1017,7 +1017,7 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> SendPm(CustomerModel model)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.Id);
 //        if (customer == null)
 //            return Ok();
@@ -1068,33 +1068,33 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_VIEW)]
 //    public virtual async Task<IActionResult> RewardPointsHistorySelect(CustomerRewardPointsSearchModel searchModel)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(searchModel.CustomerId)
 //            ?? throw new ArgumentException("No customer found with the specified id");
 
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareRewardPointsListModelAsync(searchModel, customer);
 
-//         return Ok(model);
+//        return Ok(model);
 //    }
 
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> RewardPointsHistoryAdd(AddRewardPointsToCustomerModel model)
 //    {
-//        //prevent adding a new row with zero value
+//        prevent adding a new row with zero value
 //        if (model.Points == 0)
 //            return BadRequest(await _localizationService.GetResourceAsync("Admin.Customers.Customers.RewardPoints.AddingZeroValueNotAllowed"));
 
-//        //prevent adding negative point validity for point reduction
+//        prevent adding negative point validity for point reduction
 //        if (model.Points < 0 && model.PointsValidity.HasValue)
 //            return BadRequest(await _localizationService.GetResourceAsync("Admin.Customers.Customers.RewardPoints.Fields.AddNegativePointsValidity"));
 
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.CustomerId);
 //        if (customer == null)
 //            return BadRequest("Customer cannot be loaded");
 
-//        //check whether delay is set
+//        check whether delay is set
 //        DateTime? activatingDate = null;
 //        if (!model.ActivatePointsImmediately && model.ActivationDelay > 0)
 //        {
@@ -1103,12 +1103,12 @@
 //            activatingDate = DateTime.UtcNow.AddHours(delayInHours);
 //        }
 
-//        //whether points validity is set
+//        whether points validity is set
 //        DateTime? endDate = null;
 //        if (model.PointsValidity > 0)
 //            endDate = (activatingDate ?? DateTime.UtcNow).AddDays(model.PointsValidity.Value);
 
-//        //add reward points
+//        add reward points
 //        await _rewardPointService.AddRewardPointsHistoryEntryAsync(customer, model.Points, model.StoreId, model.Message,
 //            activatingDate: activatingDate, endDate: endDate);
 
@@ -1123,25 +1123,25 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_VIEW)]
 //    public virtual async Task<IActionResult> AddressesSelect(CustomerAddressSearchModel searchModel)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(searchModel.CustomerId)
 //            ?? throw new ArgumentException("No customer found with the specified id");
 
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerAddressListModelAsync(searchModel, customer);
 
-//         return Ok(model);
+//        return Ok(model);
 //    }
 
 //    [HttpPost]
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> AddressDelete(int id, int customerId)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(customerId)
 //            ?? throw new ArgumentException("No customer found with the specified id", nameof(customerId));
 
-//        //try to get an address with the specified id
+//        try to get an address with the specified id
 //        var address = await _customerService.GetCustomerAddressAsync(customer.Id, id);
 
 //        if (address == null)
@@ -1150,7 +1150,7 @@
 //        await _customerService.RemoveCustomerAddressAsync(customer, address);
 //        await _customerService.UpdateCustomerAsync(customer);
 
-//        //now delete the address record
+//        now delete the address record
 //        await _addressService.DeleteAddressAsync(address);
 
 //        return new NullJsonResult();
@@ -1159,12 +1159,12 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> AddressCreate(int customerId)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(customerId);
 //        if (customer == null)
 //            return Ok();
 
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerAddressModelAsync(new CustomerAddressModel(), customer, null);
 
 //        return Ok(model);
@@ -1174,12 +1174,12 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> AddressCreate(CustomerAddressModel model, IFormCollection form)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.CustomerId);
 //        if (customer == null)
 //            return Ok();
 
-//        //custom address attributes
+//        custom address attributes
 //        var customAttributes = await _addressAttributeParser.ParseCustomAttributesAsync(form, NopCommonDefaults.AddressAttributeControlName);
 //        var customAttributeWarnings = await _addressAttributeParser.GetAttributeWarningsAsync(customAttributes);
 //        foreach (var error in customAttributeWarnings)
@@ -1193,7 +1193,7 @@
 //            address.CustomAttributes = customAttributes;
 //            address.CreatedOnUtc = DateTime.UtcNow;
 
-//            //some validation
+//            some validation
 //            if (address.CountryId == 0)
 //                address.CountryId = null;
 //            if (address.StateProvinceId == 0)
@@ -1208,27 +1208,27 @@
 //            return RedirectToAction("AddressEdit", new { addressId = address.Id, customerId = model.CustomerId });
 //        }
 
-//        //prepare model
+//        prepare model
 //        model = await _customerModelFactory.PrepareCustomerAddressModelAsync(model, customer, null, true);
 
-//        //if we got this far, something failed, redisplay form
+//        if we got this far, something failed, redisplay form
 //        return Ok(model);
 //    }
 
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> AddressEdit(int addressId, int customerId)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(customerId);
 //        if (customer == null)
 //            return Ok();
 
-//        //try to get an address with the specified id
+//        try to get an address with the specified id
 //        var address = await _addressService.GetAddressByIdAsync(addressId);
 //        if (address == null)
 //            return RedirectToAction("Edit", new { id = customer.Id });
 
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerAddressModelAsync(null, customer, address);
 
 //        return Ok(model);
@@ -1238,17 +1238,17 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
 //    public virtual async Task<IActionResult> AddressEdit(CustomerAddressModel model, IFormCollection form)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(model.CustomerId);
 //        if (customer == null)
 //            return Ok();
 
-//        //try to get an address with the specified id
+//        try to get an address with the specified id
 //        var address = await _addressService.GetAddressByIdAsync(model.Address.Id);
 //        if (address == null)
 //            return RedirectToAction("Edit", new { id = customer.Id });
 
-//        //custom address attributes
+//        custom address attributes
 //        var customAttributes = await _addressAttributeParser.ParseCustomAttributesAsync(form, NopCommonDefaults.AddressAttributeControlName);
 //        var customAttributeWarnings = await _addressAttributeParser.GetAttributeWarningsAsync(customAttributes);
 //        foreach (var error in customAttributeWarnings)
@@ -1267,10 +1267,10 @@
 //            return RedirectToAction("AddressEdit", new { addressId = model.Address.Id, customerId = model.CustomerId });
 //        }
 
-//        //prepare model
+//        prepare model
 //        model = await _customerModelFactory.PrepareCustomerAddressModelAsync(model, customer, address, true);
 
-//        //if we got this far, something failed, redisplay form
+//        if we got this far, something failed, redisplay form
 //        return Ok(model);
 //    }
 
@@ -1282,14 +1282,14 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_VIEW)]
 //    public virtual async Task<IActionResult> OrderList(CustomerOrderSearchModel searchModel)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(searchModel.CustomerId)
 //            ?? throw new ArgumentException("No customer found with the specified id");
 
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerOrderListModelAsync(searchModel, customer);
 
-//         return Ok(model);
+//        return Ok(model);
 //    }
 
 //    #endregion
@@ -1310,7 +1310,7 @@
 //        switch (period)
 //        {
 //            case "year":
-//                //year statistics
+//                year statistics
 //                var yearAgoDt = nowDt.AddYears(-1).AddMonths(1);
 //                var searchYearDateUser = new DateTime(yearAgoDt.Year, yearAgoDt.Month, 1);
 //                for (var i = 0; i <= 12; i++)
@@ -1331,7 +1331,7 @@
 
 //                break;
 //            case "month":
-//                //month statistics
+//                month statistics
 //                var monthAgoDt = nowDt.AddDays(-30);
 //                var searchMonthDateUser = new DateTime(monthAgoDt.Year, monthAgoDt.Month, monthAgoDt.Day);
 //                for (var i = 0; i <= 30; i++)
@@ -1353,7 +1353,7 @@
 //                break;
 //            case "week":
 //            default:
-//                //week statistics
+//                week statistics
 //                var weekAgoDt = nowDt.AddDays(-7);
 //                var searchWeekDateUser = new DateTime(weekAgoDt.Year, weekAgoDt.Month, weekAgoDt.Day);
 //                for (var i = 0; i <= 7; i++)
@@ -1386,14 +1386,14 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_VIEW)]
 //    public virtual async Task<IActionResult> GetCartList(CustomerShoppingCartSearchModel searchModel)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(searchModel.CustomerId)
 //            ?? throw new ArgumentException("No customer found with the specified id");
 
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerShoppingCartListModelAsync(searchModel, customer);
 
-//         return Ok(model);
+//        return Ok(model);
 //    }
 
 //    #endregion
@@ -1405,14 +1405,14 @@
 //    [CheckPermission(StandardPermission.Customers.ACTIVITY_LOG_VIEW)]
 //    public virtual async Task<IActionResult> ListActivityLog(CustomerActivityLogSearchModel searchModel)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(searchModel.CustomerId)
 //            ?? throw new ArgumentException("No customer found with the specified id");
 
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerActivityLogListModelAsync(searchModel, customer);
 
-//         return Ok(model);
+//        return Ok(model);
 //    }
 
 //    #endregion
@@ -1423,14 +1423,14 @@
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_VIEW)]
 //    public virtual async Task<IActionResult> BackInStockSubscriptionList(CustomerBackInStockSubscriptionSearchModel searchModel)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(searchModel.CustomerId)
 //            ?? throw new ArgumentException("No customer found with the specified id");
 
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareCustomerBackInStockSubscriptionListModelAsync(searchModel, customer);
 
-//         return Ok(model);
+//        return Ok(model);
 //    }
 
 //    #endregion
@@ -1441,7 +1441,7 @@
 //    [CheckPermission(StandardPermission.Customers.GDPR_MANAGE)]
 //    public virtual async Task<IActionResult> GdprLog()
 //    {
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareGdprLogSearchModelAsync(new GdprLogSearchModel());
 
 //        return Ok(model);
@@ -1452,7 +1452,7 @@
 //    [CheckPermission(StandardPermission.Customers.GDPR_MANAGE)]
 //    public virtual async Task<IActionResult> GdprLogList(GdprLogSearchModel searchModel)
 //    {
-//        //prepare model
+//        prepare model
 //        var model = await _customerModelFactory.PrepareGdprLogListModelAsync(searchModel);
 
 //        return Ok(model);
@@ -1463,7 +1463,7 @@
 //    [CheckPermission(StandardPermission.Customers.GDPR_MANAGE)]
 //    public virtual async Task<IActionResult> GdprDelete(int id)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(id);
 //        if (customer == null)
 //            return BadRequest();
@@ -1473,24 +1473,24 @@
 
 //        try
 //        {
-//            //prevent attempts to delete the user, if it is the last active administrator
+//            prevent attempts to delete the user, if it is the last active administrator
 //            if (await _customerService.IsAdminAsync(customer) && !await SecondAdminAccountExistsAsync(customer))
 //            {
 //                _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.AdminAccountShouldExists.DeleteAdministrator"));
 //                return Forbid();
 //            }
 
-//            //ensure that the current customer cannot delete "Administrators" if he's not an admin himself
+//            ensure that the current customer cannot delete "Administrators" if he's not an admin himself
 //            if (await _customerService.IsAdminAsync(customer) && !await _customerService.IsAdminAsync(await _workContext.GetCurrentCustomerAsync()))
 //            {
 //                _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.OnlyAdminCanDeleteAdmin"));
 //                return BadRequest();
 //            }
 
-//            //delete
+//            delete
 //            await _gdprService.PermanentDeleteCustomerAsync(customer);
 
-//            //activity log
+//            activity log
 //            await _customerActivityService.InsertActivityAsync("DeleteCustomer",
 //                string.Format(await _localizationService.GetResourceAsync("ActivityLog.DeleteCustomer"), customer.Id), customer);
 
@@ -1509,17 +1509,17 @@
 //    [CheckPermission(StandardPermission.Customers.GDPR_MANAGE)]
 //    public virtual async Task<IActionResult> GdprExport(int id)
 //    {
-//        //try to get a customer with the specified id
+//        try to get a customer with the specified id
 //        var customer = await _customerService.GetCustomerByIdAsync(id);
 //        if (customer == null)
 //            return Ok();
 
 //        try
 //        {
-//            //log
-//            //_gdprService.InsertLog(customer, 0, GdprRequestType.ExportData, await _localizationService.GetResource("Gdpr.Exported"));
+//            log
+//            _gdprService.InsertLog(customer, 0, GdprRequestType.ExportData, await _localizationService.GetResource("Gdpr.Exported"));
 
-//            //export
+//            export
 //            var store = await _storeContext.GetCurrentStoreAsync();
 //            var bytes = await _exportManager.ExportCustomerGdprInfoToXlsxAsync(customer, store.Id);
 
@@ -1622,7 +1622,7 @@
 //        }
 //    }
 
-   
+
 //    [HttpPost("ExportXmlSelected/{selectedIds}")]
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_VIEW)]
 //    [CheckPermission(StandardPermission.Customers.CUSTOMERS_IMPORT_EXPORT)]
@@ -1649,39 +1649,39 @@
 //            return BadRequest();
 //        }
 //    }
-//    //TODO: fix file imports
+//    TODO: fix file imports
 
-//    //[HttpPost]
-//    //[CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
-//    //[CheckPermission(StandardPermission.Customers.CUSTOMERS_IMPORT_EXPORT)]
-//    //public virtual async Task<IActionResult> ImportExcel(IFormFile importexcelfile)
-//    //{
-//    //    if (await _workContext.GetCurrentVendorAsync() != null)
-//    //        //a vendor can not import customer
-//    //          return Forbid();
+//    [HttpPost]
+//    [CheckPermission(StandardPermission.Customers.CUSTOMERS_CREATE_EDIT_DELETE)]
+//    [CheckPermission(StandardPermission.Customers.CUSTOMERS_IMPORT_EXPORT)]
+//    public virtual async Task<IActionResult> ImportExcel(IFormFile importexcelfile)
+//    {
+//        if (await _workContext.GetCurrentVendorAsync() != null)
+//            //a vendor can not import customer
+//              return Forbid();
 
-//    //    try
-//    //    {
-//    //        if ((importexcelfile?.Length ?? 0) > 0)
-//    //            await _importManager.ImportCustomersFromXlsxAsync(importexcelfile.OpenReadStream());
-//    //        else
-//    //        {
-//    //            _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Common.UploadFile"));
+//        try
+//        {
+//            if ((importexcelfile?.Length ?? 0) > 0)
+//                await _importManager.ImportCustomersFromXlsxAsync(importexcelfile.OpenReadStream());
+//            else
+//            {
+//                _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Common.UploadFile"));
 
-//    //            return BadRequest();
-//    //        }
+//                return BadRequest();
+//            }
 
-//    //        _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.Imported"));
+//            _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.Imported"));
 
-//    //        return Ok();
-//    //    }
-//    //    catch (Exception exc)
-//    //    {
-//    //        await _notificationService.ErrorNotificationAsync(exc);
+//            return Ok();
+//        }
+//        catch (Exception exc)
+//        {
+//            await _notificationService.ErrorNotificationAsync(exc);
 
-//    //        return BadRequest(); 
-//    //    }
-//    //}
+//            return BadRequest(); 
+//        }
+//    }
 
 //    #endregion
 //}
