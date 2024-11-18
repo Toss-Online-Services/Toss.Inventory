@@ -1,0 +1,21 @@
+﻿namespace Catalog.Domain.AggregatesModel.Orders;
+
+/// <summary>
+/// Order authorized event
+/// </summary>
+public partial class OrderAuthorizedEvent
+{
+    /// <summary>
+    /// Ctor
+    /// </summary>
+    /// <param name="order">Order</param>
+    public OrderAuthorizedEvent(Order order)
+    {
+        Order = order;
+    }
+
+    /// <summary>
+    /// Order
+    /// </summary>
+    public Order Order { get; }
+}
