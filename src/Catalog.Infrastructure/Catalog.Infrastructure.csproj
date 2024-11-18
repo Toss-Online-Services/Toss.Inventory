@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Catalog.Domain\Catalog.Domain.csproj" />
     <ProjectReference Include="..\IntegrationEventLogEF\IntegrationEventLogEF.csproj" />
-  </ItemGroup>
+  </ItemGroup>  
+
 
 </Project>

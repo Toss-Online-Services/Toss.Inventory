@@ -1,4 +1,7 @@
-﻿namespace eShop.Ordering.Infrastructure.Idempotency;
+﻿using System;
+using System.Threading.Tasks;
+
+namespace Catalog.Infrastructure.Idempotency;
 
 public interface IRequestManager
 {

@@ -1,10 +1,15 @@
-﻿namespace eShop.Ordering.Infrastructure.Idempotency;
+﻿using System;
+using System.Threading.Tasks;
+using Catalog.Domain.Exceptions;
+using Catalog.Infrastructure;
+
+namespace Catalog.Infrastructure.Idempotency;
 
 public class RequestManager : IRequestManager
 {
-    private readonly OrderingContext _context;
+    private readonly CatalogContext _context;
 
-    public RequestManager(OrderingContext context)
+    public RequestManager(CatalogContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
@@ -23,7 +28,7 @@ public class RequestManager : IRequestManager
         var exists = await ExistAsync(id);
 
         var request = exists ?
-            throw new OrderingDomainException($"Request with {id} already exists") :
+            throw new CatalogDomainException($"Request with {id} already exists") :
             new ClientRequest()
             {
                 Id = id,
