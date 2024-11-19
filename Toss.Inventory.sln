@@ -17,12 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.EventBus", "src\Infrastructure.EventBus\Infrastructure.EventBus.csproj", "{65967031-91DF-4514-BCFA-CD445B4E1F00}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.IntegrationEventLogEF", "src\Infrastructure.IntegrationEventLogEF\Infrastructure.IntegrationEventLogEF.csproj", "{28FE140F-3C50-429D-BFF4-5795521D1856}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.EventBusRabbitMQ", "src\Infrastructure.EventBusRabbitMQ\Infrastructure.EventBusRabbitMQ.csproj", "{70505AEA-CEAA-4994-9743-446AA6A42D9D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Core", "src\Nop.Core\Nop.Core.csproj", "{D3CDC74D-6F56-4134-A94F-D1665FB63C61}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Data", "src\Nop.Data\Nop.Data.csproj", "{9556BECD-2977-4E58-B4DB-1D48B26B1D4A}"
@@ -41,18 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{65967031-91DF-4514-BCFA-CD445B4E1F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65967031-91DF-4514-BCFA-CD445B4E1F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65967031-91DF-4514-BCFA-CD445B4E1F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65967031-91DF-4514-BCFA-CD445B4E1F00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{28FE140F-3C50-429D-BFF4-5795521D1856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{28FE140F-3C50-429D-BFF4-5795521D1856}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{28FE140F-3C50-429D-BFF4-5795521D1856}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{28FE140F-3C50-429D-BFF4-5795521D1856}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70505AEA-CEAA-4994-9743-446AA6A42D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70505AEA-CEAA-4994-9743-446AA6A42D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70505AEA-CEAA-4994-9743-446AA6A42D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70505AEA-CEAA-4994-9743-446AA6A42D9D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D3CDC74D-6F56-4134-A94F-D1665FB63C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D3CDC74D-6F56-4134-A94F-D1665FB63C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3CDC74D-6F56-4134-A94F-D1665FB63C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -82,9 +64,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{65967031-91DF-4514-BCFA-CD445B4E1F00} = {6ED356A7-8B47-4613-AD01-C85CF28491BD}
-		{28FE140F-3C50-429D-BFF4-5795521D1856} = {6ED356A7-8B47-4613-AD01-C85CF28491BD}
-		{70505AEA-CEAA-4994-9743-446AA6A42D9D} = {6ED356A7-8B47-4613-AD01-C85CF28491BD}
 		{D3CDC74D-6F56-4134-A94F-D1665FB63C61} = {6ED356A7-8B47-4613-AD01-C85CF28491BD}
 		{9556BECD-2977-4E58-B4DB-1D48B26B1D4A} = {6ED356A7-8B47-4613-AD01-C85CF28491BD}
 		{4FBE171C-7E61-4677-9168-5B1B3D8A7691} = {6ED356A7-8B47-4613-AD01-C85CF28491BD}

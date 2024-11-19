@@ -4,7 +4,7 @@
 /// Paged list
 /// </summary>
 /// <typeparam name="T">T</typeparam>
-[Serializable]
+//[Serializable]
 public partial class PagedList<T> : List<T>, IPagedList<T>
 {
     /// <summary>

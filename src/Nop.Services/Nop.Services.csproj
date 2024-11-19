@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Copyright>Copyright © Nop Solutions, Ltd</Copyright>
     <Company>Nop Solutions, Ltd</Company>
     <Authors>Nop Solutions, Ltd</Authors>
@@ -16,20 +16,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Storage.Blobs" />
-    <PackageReference Include="ClosedXML" />
-    <PackageReference Include="Google.Apis.Auth" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.23.0" />
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
     <!--Do not remove this reference. HarfBuzzSharp.NativeAssets.Linux library needed for properly working SkiaSharp.HarfBuzz on the UNIX system-->
-    <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" />
-    <PackageReference Include="MailKit" />
-    <PackageReference Include="MaxMind.GeoIP2" />
-    <PackageReference Include="Microsoft.Identity.Client" />
-    <PackageReference Include="QuestPDF" />
-    <PackageReference Include="System.ServiceModel.Http" />
-    <PackageReference Include="SkiaSharp" />
-    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" />
-    <PackageReference Include="Svg.Skia" />
-    <PackageReference Include="System.Linq.Dynamic.Core" />
+    <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="7.3.0.3" />
+    <PackageReference Include="MailKit" Version="4.8.0" />
+    <PackageReference Include="MaxMind.GeoIP2" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.66.2" />
+    <PackageReference Include="MimeKit" Version="4.8.0" />
+    <PackageReference Include="QuestPDF" Version="2024.10.3" />
+    <PackageReference Include="System.ServiceModel.Http" Version="8.1.0" />
+    <PackageReference Include="SkiaSharp" Version="2.88.9" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.9" />
+    <PackageReference Include="Svg.Skia" Version="2.0.0.2" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.4.9" />
   </ItemGroup>
 
   <ItemGroup>
