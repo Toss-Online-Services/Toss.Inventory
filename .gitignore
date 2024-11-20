@@ -478,4 +478,4 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
-/src/Toss.WebApp/Toss.WebApp/wwwroot/lib/bootstrap
+/src/Toss.WebApp/Toss.WebApp/wwwroot/lib
