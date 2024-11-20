@@ -10,7 +10,7 @@ using Toss.WebApp.Components.Account.Pages;
 using Toss.WebApp.Components.Account.Pages.Manage;
 using Toss.WebApp.Data;
 
-namespace Microsoft.AspNetCore.Routing;
+namespace Toss.WebApp.Components.Account;
 
 internal static class IdentityComponentsEndpointRouteBuilderExtensions
 {

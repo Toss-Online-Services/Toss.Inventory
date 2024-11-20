@@ -1,10 +1,11 @@
-using Microsoft.AspNetCore.Components.Authorization;
+﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Toss.WebApp.Client.Pages;
 using Toss.WebApp.Components;
 using Toss.WebApp.Components.Account;
 using Toss.WebApp.Data;
+using Toss.WebApp.Services;
 
 namespace Toss.WebApp;
 
@@ -21,7 +22,8 @@ public class Program
             .AddInteractiveWebAssemblyComponents()
             .AddAuthenticationStateSerialization();
 
-        builder.Services.AddCascadingAuthenticationState();
+        builder.Services.AddCascadingAuthenticationState();       
+        builder.Services.AddScoped<LogOutService>();
         builder.Services.AddScoped<IdentityUserAccessor>();
         builder.Services.AddScoped<IdentityRedirectManager>();
         builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();

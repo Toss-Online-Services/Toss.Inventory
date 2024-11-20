@@ -1,5 +1,5 @@
 ﻿@page "/Account/RegisterConfirmation"
-
+@layout PublicLayout
 @using System.Text
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.WebUtilities
@@ -12,21 +12,37 @@
 
 <PageTitle>Register confirmation</PageTitle>
 
-<h1>Register confirmation</h1>
+<section class="pt-0 pt-md-5 pb-md-5 pt-lg-5 mt-5 mt-md-7 mt-lg-0">
+    <div class="container">
+        <div class="col-12 mx-auto pb-5">
+            <div class="card shadow-lg">
+                <div class="card-header p-0 position-relative mt-2 mx-2 z-index-2 bg-transparent">
+                    <div class="bg-gradient-dark shadow-dark border-radius-lg p-4">
+                        <h3 class="h4 text-white mb-0">Register confirmation</h3>
+                        <p class="text-white opacity-8 mb-0">Last modified: Sept 01 2021</p>
+                    </div>
+                </div>
+                <div class="card-body pt-lg-2 mt-2">
+                    <StatusMessage Message="@statusMessage" />
 
-<StatusMessage Message="@statusMessage" />
+                    @if (emailConfirmationLink is not null)
+                    {
+                        <p>
+                            <a href="@emailConfirmationLink">Click here</a> to confirm your account
+                        </p>
+                    }
+                    else
+                    {
+                        <p role="alert">Please check your email to confirm your account.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-@if (emailConfirmationLink is not null)
-{
-    <p>
-        This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
-        Normally this would be emailed: <a href="@emailConfirmationLink">Click here to confirm your account</a>
-    </p>
-}
-else
-{
-    <p role="alert">Please check your email to confirm your account.</p>
-}
+
+
 
 @code {
     private string? emailConfirmationLink;

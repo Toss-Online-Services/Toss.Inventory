@@ -1,5 +1,5 @@
 ﻿@page "/Account/ConfirmEmail"
-
+@layout PublicLayout
 @using System.Text
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.WebUtilities
@@ -10,8 +10,23 @@
 
 <PageTitle>Confirm email</PageTitle>
 
-<h1>Confirm email</h1>
-<StatusMessage Message="@statusMessage" />
+<section class="pt-0 pt-md-5 pb-md-5 pt-lg-5 mt-5 mt-md-7 mt-lg-0">
+    <div class="container">
+        <div class="col-12 mx-auto pb-5">
+            <div class="card shadow-lg">
+                <div class="card-header p-0 position-relative mt-2 mx-2 z-index-2 bg-transparent">
+                    <div class="bg-gradient-dark shadow-dark border-radius-lg p-4">
+                        <h3 class="h4 text-white mb-0">Confirm email</h3>
+                        <p class="text-white opacity-8 mb-0">Last modified: Sept 01 2021</p>
+                    </div>
+                </div>
+                <div class="card-body pt-lg-2 mt-2">
+                    <StatusMessage Message="@statusMessage" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @code {
     private string? statusMessage;
