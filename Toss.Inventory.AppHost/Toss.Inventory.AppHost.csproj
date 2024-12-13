@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\src\Toss.Api\Toss.Api.csproj" />
     <ProjectReference Include="..\src\Toss.WebApp\Toss.WebApp\Toss.WebApp.csproj" />
   </ItemGroup>
 

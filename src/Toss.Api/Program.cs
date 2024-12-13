@@ -1,4 +1,4 @@
-﻿using Autofac.Extensions.DependencyInjection;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.OpenApi.Models;
 using Nop.Core.Configuration;
@@ -12,6 +12,7 @@ namespace Toss.Api
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.AddServiceDefaults();
 
             // Load app settings from JSON files and environment variables
             builder.Configuration.AddJsonFile(NopConfigurationDefaults.AppSettingsFilePath, optional: true, reloadOnChange: true);
@@ -58,6 +59,8 @@ namespace Toss.Api
             });
 
             var app = builder.Build();
+
+            app.MapDefaultEndpoints();
 
 
             // Configure middleware and request pipeline

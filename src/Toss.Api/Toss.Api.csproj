@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Toss.Inventory.ServiceDefaults\Toss.Inventory.ServiceDefaults.csproj" />
     <ProjectReference Include="..\Nop.Core\Nop.Core.csproj" />
     <ProjectReference Include="..\Nop.Data\Nop.Data.csproj" />
     <ProjectReference Include="..\Nop.Services\Nop.Services.csproj" />

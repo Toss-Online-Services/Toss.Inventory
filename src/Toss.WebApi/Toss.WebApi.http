@@ -1,0 +1,6 @@
+@Toss.WebApi_HostAddress = http://localhost:5218
+
+GET {{Toss.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
