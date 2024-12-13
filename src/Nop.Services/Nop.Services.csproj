@@ -16,21 +16,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.13.1" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.23.0" />
     <PackageReference Include="ClosedXML" Version="0.104.2" />
     <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
     <!--Do not remove this reference. HarfBuzzSharp.NativeAssets.Linux library needed for properly working SkiaSharp.HarfBuzz on the UNIX system-->
-    <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="7.3.0.3" />
-    <PackageReference Include="MailKit" Version="4.8.0" />
+    <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="8.3.0.1" />
+    <PackageReference Include="MailKit" Version="4.9.0" />
     <PackageReference Include="MaxMind.GeoIP2" Version="5.2.0" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.66.2" />
-    <PackageReference Include="MimeKit" Version="4.8.0" />
-    <PackageReference Include="QuestPDF" Version="2024.10.3" />
-    <PackageReference Include="System.ServiceModel.Http" Version="8.1.0" />
-    <PackageReference Include="SkiaSharp" Version="2.88.9" />
-    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.9" />
-    <PackageReference Include="Svg.Skia" Version="2.0.0.2" />
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.4.9" />
+    <PackageReference Include="MimeKit" Version="4.9.0" />
+    <PackageReference Include="QuestPDF" Version="2024.12.1" />
+    <PackageReference Include="System.ServiceModel.Http" Version="8.1.1" />
+    <PackageReference Include="SkiaSharp" Version="3.116.1" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="3.116.1" />
+    <PackageReference Include="Svg.Skia" Version="2.0.0.4" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.5.1" />
   </ItemGroup>
 
   <ItemGroup>
