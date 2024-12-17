@@ -1,4 +1,5 @@
-using Autofac.Extensions.DependencyInjection;
+﻿using Autofac.Extensions.DependencyInjection;
+using eShop.ServiceDefaults;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.OpenApi.Models;
 using Nop.Core.Configuration;
@@ -47,11 +48,9 @@ namespace Toss.Api
             // Set up controllers, endpoints, and Swagger
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TOSS ONLINE API", Version = "v1" });
-                c.OperationFilter<SwaggerFileOperationFilter>();
-            });
+
+            var withApiVersioning = builder.Services.AddApiVersioning();
+            builder.AddDefaultOpenApi(withApiVersioning);
 
             builder.Services.Configure<FormOptions>(options =>
             {
@@ -64,24 +63,15 @@ namespace Toss.Api
 
 
             // Configure middleware and request pipeline
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-                builder.Services.AddLogging(logging =>
-                {
-                    logging.AddConsole();
-                    logging.AddDebug();
-                });
-            }
+            app.UseDefaultOpenApi();
 
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
 
             // Custom application request pipeline configuration
-            app.ConfigureRequestPipeline();
-            await app.StartEngineAsync();
+            //app.ConfigureRequestPipeline();
+            //await app.StartEngineAsync();
 
             await app.RunAsync();
         }

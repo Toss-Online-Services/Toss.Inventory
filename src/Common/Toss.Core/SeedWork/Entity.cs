@@ -1,4 +1,6 @@
-﻿namespace Toss.Core.SeedWork;
+﻿using MediatR;
+
+namespace Toss.Core.SeedWork;
 
 public abstract class Entity
 {

@@ -1,7 +1,5 @@
-var builder = DistributedApplication.CreateBuilder(args);
+﻿var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.Investory_API>("investory-api");
-
-builder.AddProject<Projects.Buying_Domain>("buying-domain");
+builder.AddProject<Projects.Toss_Api>("toss-api");
 
 builder.Build().Run();

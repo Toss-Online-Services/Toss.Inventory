@@ -17,11 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Toss.Inventory.ServiceDefaults\Toss.ServiceDefaults.csproj" />
     <ProjectReference Include="..\Nop.Core\Nop.Core.csproj" />
     <ProjectReference Include="..\Nop.Data\Nop.Data.csproj" />
     <ProjectReference Include="..\Nop.Services\Nop.Services.csproj" />
     <ProjectReference Include="..\Nop.Web.Framework\Nop.Web.Framework.csproj" />
+    <ProjectReference Include="..\Toss.ServiceDefaults\Toss.ServiceDefaults.csproj" />
   </ItemGroup>
 
 
