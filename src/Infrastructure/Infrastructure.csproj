@@ -29,6 +29,7 @@
     <PackageReference Include="Npgsql" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
     <PackageReference Include="System.Configuration.ConfigurationManager" />
+    <PackageReference Include="System.Drawing.Common" />
     <PackageReference Include="System.Net.NameResolution" />
   </ItemGroup>
 
